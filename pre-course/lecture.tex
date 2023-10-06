@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{scrartcl}
 
 %%%%%%%%%%%%%%
 %%% layout %%%
@@ -8,18 +8,25 @@
 \newlength{\lmargin}
 \newlength{\rmargin}
 \newlength{\fmargin}
-\setlength{\hmargin}		{3cm}
+\setlength{\hmargin}		{2cm}
 \setlength{\lmargin}		{2cm}
 \setlength{\rmargin}		{2cm}
-\setlength{\fmargin}		{1cm}
+\setlength{\fmargin}		{2cm}
 
 \usepackage{layout}
 \usepackage[top=\hmargin, left=\lmargin, right=\rmargin, bottom=\fmargin]{geometry}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyfoot{}
-\lhead{\leftmark}
-\rhead{\thepage}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyfoot{}
+%\lhead{\leftmark}
+%\rhead{\thepage}
+\usepackage[markcase = upper]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\automark[section]{section}
+\ihead{\headmark}
+\ohead*{\pagemark}
+\chead{}
+\cfoot{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,6 +39,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{siunitx}
+\usepackage{tikz}
 %not math
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
@@ -62,19 +70,6 @@
 \definecolor{gadse-light-blue}	{RGB}{079, 160, 183}
 \definecolor{gadse-another-blue}{RGB}{051, 110, 217}
 \definecolor{gadse-dark-blue}	{RGB}{051, 030, 181}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% sets #2numbers to #1 %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\setnumbers}[2]{
-	\expandafter\xdef\csname #2problemnumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2exercisenumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2examplenumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2definitionnumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2theoremnumber\endcsname	{\number#1}
-}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,17 +134,46 @@
 				{gadse-light-green!100!gadse-white}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% sets #2numbers to #1 %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\setnumbers}[2]{
+	\expandafter\xdef\csname #2examplenumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2exercisenumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2problemnumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2definitionnumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2theoremnumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2lemmanumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2conjecturenumber\endcsname	{\number#1}
+	\expandafter\xdef\csname #2proofnumber\endcsname	{\number#1}
+}
+
+
 %I dunno where this comes from
 %\setlength\parindent{0pt}
+\usepackage[indent = 1em]{parskip}
 
 
+%%%%%%%%%%%%
+%%% tikz %%%
+%%%%%%%%%%%%
+
+\newcommand{\circled}[1]{
+	\tikz[baseline=(char.base)]{
+		\node[shape=circle, draw, inner sep = 2pt] (char) {#1};
+	}
+}
 %%%%%%%%%%%%%
 %%% title %%%
 %%%%%%%%%%%%%
 
-\usepackage{titlesec}
-\titleformat{\section}{\bfseries}{\setnumbers{1}{}\thesection . }{0pt}{}{}
-\titleformat{\subsection}{\bfseries}{\setnumbers{1}{sub}\thesubsection . }{0pt}{}{}
+%\usepackage{titlesec}
+%\titleformat{\section}{\bfseries}{\setnumbers{1}{}\thesection . }{0pt}{}{}
+%\titleformat{\subsection}{\bfseries}{\setnumbers{1}{sub}\thesubsection . }{0pt}{}{}
+
+\renewcommand*{\sectionformat}{\setnumbers{1}{}\thesection.\enskip}
+\renewcommand*{\subsectionformat}{\setnumbers{1}{sub}\thesubsection.\enskip}
 
 
 %%%%%%%%%%%%%
@@ -168,12 +192,12 @@
 \setlength{\topmargin}		{-0.5cm}
 \setlength{\headheight}		{1cm}
 \setlength{\headsep}		{0.5\hmargin-0.5cm}
-
+%
 \setlength{\textheight}		{\paperheight-\hmargin-\fmargin}
 \setlength{\textwidth}		{\paperwidth-\lmargin-\rmargin}
 \setlength{\linewidth}		{\textwidth}
-\setlength{\headwidth}		{\textwidth}
-
+%\setlength{\headwidth}		{\textwidth}
+%
 \setlength{\marginparsep}	{0.25cm}
 \setlength{\marginparwidth}	{1.5cm}
 
@@ -390,8 +414,8 @@ $\mathcal{P}(\emptyset) = \{\emptyset\}\:\mathcal{P}(\{1\}) = \{\emptyset, 1\}$
 Auf einem Baum saß ein Rabe mit einem Käse im Schnabel, als ein Fuchs vorbeikommt.\\
 Sei $B \in \text{Bäume}$ und $R \in \text{Raben}$ sitze auf $B$ mit $K \in \text{Käsestückchen}$ im Schnabel, als $F \in \text{Füchse}$ vorbeikommt.\par
 Er überlegte wie er an den Käse kommt. Da sagte er zu dem Raben, ...\\
-$F$ überlegte wie $F$ an $K$ kommt. Da sagte $F$ zu $R$, ...\\\par
-
+$F$ überlegte wie $F$ an $K$ kommt. Da sagte $F$ zu $R$, ...
+\bigskip
 allgemeine mathematische Situationen bestehen aus
 \begin{itemize}
 	\item Eine Liste von Namen für mathematische Objekte
@@ -473,8 +497,9 @@ die genau dann falsch ist, wenn $A$ wahr ist und $B$ falsch ist und sonst ist si
 Äquivalenz ``A genau dann, wenn B'' ist die Aussage
 \[ A \iff B \]
 die genau dann wahr ist, wenn $A$ und $B$ beide wahr sind oder $A$ und $B$ beide falsch sind.\par
-Eine zusammengesetzte Aussage heißt \underline{Tautologie,} falls sie immer wahr ist, unabhängig davon, welche Wahrheitswerte die verknüpften Einzelaussagen haben.\\
+Eine zusammengesetzte Aussage heißt \underline{Tautologie,} falls sie immer wahr ist, unabhängig davon, welche Wahrheitswerte die verknüpften Einzelaussagen haben.
 
+\bigskip
 Ist  $A(n)$ eine Aussageform mit Wertebereich $M$, so können wir folgende Aussagen betrachten:
 \begin{itemize}
 	\item für alle $n \in M$ gilt: $A(n)$\\
@@ -486,7 +511,7 @@ Ist  $A(n)$ eine Aussageform mit Wertebereich $M$, so können wir folgende Aussa
 	\item Eine Aussage der Form
 		\[\forall n \in M : A(n)\]
 		ist immer wahr, wenn $M = \{\}$
-	\item Reihenfolge der Quantoren spielt eine Rolle\\
+	\item Reihenfolge der Quantoren spielt eine Rolle
 		\[A : \forall n \in \mathbb{N}: (\exists m \in \mathbb{N}: m > n)\text{ (wahr)}\]
 		\[B : \exists m \in \mathbb{N}: \forall n \in \mathbb{N}: m > n\text{ (falsch)}\]
 \end{itemize}
@@ -520,7 +545,7 @@ ist logisch Äquivalent zu der Aussage
 			$((A \implies B) \land (B \implies C)) \implies A \;\implies\; C$ ist eine Tautologie
 		\item Kontraposition\\
 			$(A \implies B) \iff (\neg B \implies \neg A)$ ist eine Tautologie
-		\item Ringschluss\\
+		\item Ringschluss
 			\begin{equation*}
 				((A \iff B) \land (B \iff C) \land (A \iff C))
 			\end{equation*}
@@ -540,7 +565,7 @@ ist logisch Äquivalent zu der Aussage
 \section{Beweise und Beweisformen}
 
 Ein Beweis ist eine logisch vollständige Begründung einer Aussage. Oft möchten wir Aussagen vom Typ ``Wenn A, dann B'' zeigen.\\
-Aussagen lassen sich meist in folgende Form bringen\\
+Aussagen lassen sich meist in folgende Form bringen
 \begin{itemize}
 	\item Vorraussetzung z.B. Sei $a \in \mathbb{N}$.
 	\item Behauptung\quad\quad\quad\quad dann ist $2 = \text{gerade}$
@@ -568,5 +593,42 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 	\end{subproofbox}
 \end{subconjecturebox}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Apendix B von Junk/Traude %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Apendix B von Junk/Traude}
+\begin{definitionbox}
+	\\\fbox{B.10} Definitionen
+	\begin{enumerate}[label=]
+		\item Nachweistext: Definition $\bigstar$ wird \fbox{Blubb} genannt, falls \circled{...} gilt.\\
+			Schreibe: Zu zeigen \circled{...}
+		\item Benutzungsbedingung: um zu benutzen, dass ein Objekt nach Definition $\bigstar$ Blubb genannt wird, falls \circled{...} gilt.\\
+			Schreibe: Nach Definition von ``Blubb'', folgt \circled{...}
+	\end{enumerate}
+	\fbox{B.7} Existenzaussagen
+	\begin{enumerate}[label=]
+		\item Nachweistext: zu beweisen:
+			\[ \exists x \in X : \circled{\text{...}} \]
+			Schreibe:
+			\begin{enumerate}[label=]
+				\item Setze $x \coloneqq \_ \_ \_$.
+				\item zu zeigen: $ x \in X$ mit \circled{...}
+			\end{enumerate}
+		\item Benutzungstext: Es gilt
+	\end{enumerate}
+\end{definitionbox}
+\begin{examplebox}
+	\newline
+	Vor. Sei $a \in \mathbb{N}$\\
+	Bew. Dann ist $2 \times a$ gerade\par
+	Es sei $a \in \mathbb{N}$. Es gilt $2 \times a \in \mathbb{N}$. Nach Definition \defgeradezahl zu geraden Zahlen ist zu zeigen:
+	\[ 2 \mid a \]
+	d.h. zu zeigen: $ \exists c \in \mathbb{N} : s \times a = 2 \times c $\\
+	Setzte $ c \coloneqq a $\\
+	Dann gilt $ c \in \mathbb{N} $ und
+	\[ 2 \times a = 2 \times c, \square \]
+\end{examplebox}
 
 \end{document}
