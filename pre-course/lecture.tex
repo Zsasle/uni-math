@@ -1,4 +1,4 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper, markcase = upper, parskip = true]{scrartcl}
 
 %%%%%%%%%%%%%%
 %%% layout %%%
@@ -20,7 +20,7 @@
 %\fancyfoot{}
 %\lhead{\leftmark}
 %\rhead{\thepage}
-\usepackage[markcase = upper]{scrlayer-scrpage}
+\usepackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \automark[section]{section}
 \ihead{\headmark}
@@ -151,8 +151,7 @@
 
 
 %I dunno where this comes from
-%\setlength\parindent{0pt}
-\usepackage[indent = 1em]{parskip}
+\setlength\parindent{1em}
 
 
 %%%%%%%%%%%%
@@ -281,7 +280,7 @@ $\mathbb{N}_0 = \{0, 1, 2, ...\} \text{ natürliche Zahlen mit der Null}$\par
 $\mathbb{P} = \text{Menge aller Primzahlen}$\\
 $\mathbb{P} = {2, 3, 5, 7, ...}$\\
 Offene Fragen: Gibt es eine Formel für Primzahlen?\\
-Fermat (1637):\par
+Fermat (1637):
 \begin{minipage}{0.5\textwidth}
 	\setlength{\parindent}{1em}
 	\begin{conjecturebox}
@@ -414,8 +413,8 @@ $\mathcal{P}(\emptyset) = \{\emptyset\}\:\mathcal{P}(\{1\}) = \{\emptyset, 1\}$
 Auf einem Baum saß ein Rabe mit einem Käse im Schnabel, als ein Fuchs vorbeikommt.\\
 Sei $B \in \text{Bäume}$ und $R \in \text{Raben}$ sitze auf $B$ mit $K \in \text{Käsestückchen}$ im Schnabel, als $F \in \text{Füchse}$ vorbeikommt.\par
 Er überlegte wie er an den Käse kommt. Da sagte er zu dem Raben, ...\\
-$F$ überlegte wie $F$ an $K$ kommt. Da sagte $F$ zu $R$, ...
-\bigskip
+$F$ überlegte wie $F$ an $K$ kommt. Da sagte $F$ zu $R$, ...\par
+
 allgemeine mathematische Situationen bestehen aus
 \begin{itemize}
 	\item Eine Liste von Namen für mathematische Objekte
@@ -497,9 +496,8 @@ die genau dann falsch ist, wenn $A$ wahr ist und $B$ falsch ist und sonst ist si
 Äquivalenz ``A genau dann, wenn B'' ist die Aussage
 \[ A \iff B \]
 die genau dann wahr ist, wenn $A$ und $B$ beide wahr sind oder $A$ und $B$ beide falsch sind.\par
-Eine zusammengesetzte Aussage heißt \underline{Tautologie,} falls sie immer wahr ist, unabhängig davon, welche Wahrheitswerte die verknüpften Einzelaussagen haben.
+Eine zusammengesetzte Aussage heißt \underline{Tautologie,} falls sie immer wahr ist, unabhängig davon, welche Wahrheitswerte die verknüpften Einzelaussagen haben.\par
 
-\bigskip
 Ist  $A(n)$ eine Aussageform mit Wertebereich $M$, so können wir folgende Aussagen betrachten:
 \begin{itemize}
 	\item für alle $n \in M$ gilt: $A(n)$\\
