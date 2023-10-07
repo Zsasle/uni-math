@@ -112,8 +112,8 @@
 	\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}
 	\myboxenvironment{#1}{#2}{#3}{#4}
 	\newenvironment{#1#2box}[1][~]{
-		\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad##1}%
-			\refstepcounter{#1#2number}
+		\refstepcounter{#1#2number}
+		\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}%
 			\setlength\parindent{1em}
 		}{
 		\end{cache#1#2box}
@@ -185,12 +185,8 @@
 %%% title %%%
 %%%%%%%%%%%%%
 
-%\usepackage{titlesec}
-%\titleformat{\section}{\bfseries}{\setnumbers{1}{}\thesection . }{0pt}{}{}
-%\titleformat{\subsection}{\bfseries}{\setnumbers{1}{sub}\thesubsection . }{0pt}{}{}
-
-\renewcommand*{\sectionformat}{\setnumbers{1}{}\thesection.\enskip}
-\renewcommand*{\subsectionformat}{\setnumbers{1}{sub}\thesubsection.\enskip}
+\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
+\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
 
 
 %%%%%%%%%%%%%
@@ -305,7 +301,7 @@ Fermat (1637):
 		F(1) &= 2^{2^1} + 1 &&= 2^2 + 1 &&= 5\\
 		F(2) &= 2^{2^2} + 1 &&= 2^4 + 1 &&= 17\\
 		F(3) &= 2^{2^3} + 1 &&= 2^8 + 1 &&= 257\\
-		F(4) &= 2^{2^4} + 1 &&= 2^16 + 1 &&= 65537
+		F(4) &= 2^{2^4} + 1 &&= 2^{16} + 1 &&= 65537
 	\end{alignat*}
 \end{conjecturebox}
 100 Jahre später Euler:\\
@@ -325,7 +321,7 @@ Skatspiel\par
 Situation: Aus gemischtem Skatspiel werden zwei Karten gezogen. Sind es zwei Karten gleicher Farbe oder zwei Karten mit gleichem Wert, dann gewinnen wir.\par
 Symbole: Kreuz, Pik, Herz, Karo\par
 Werte: 7, 8, 9, 10, B, D, K, Ass\par
-Definitionssymbol: ``$\coloneqq$''\par
+Definitionssymbol: `` $\coloneqq$ ''\par
 \begin{examplebox}
 	\begin{align*}
 		11 &\coloneqq \text{Bube}	& a &\coloneqq \text{Kreuz}\\
@@ -688,6 +684,39 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 		\[
 			c = 2 \times k, \tag*{$\square$}
 		\]
+	\end{proofbox}
+\end{exercisebox}
+\begin{definitionbox}[`` $\mid$ '']
+	\label{def:mid}
+	$ a, b \in \mathbb{N} $\\
+	$ b \mid a $, falls es $ c \in \mathbb{N} $ mit $ a = b \times c $ gibt.
+\end{definitionbox}
+	$\Downarrow$\\
+	$ a, b, c \in \mathbb{N} $\\
+	$ b \times c \mid a \times c $, falls es $ n \in \mathbb{N} $ mit $ a \times c = ( b \times c ) \times n $ gibt.
+
+\begin{exercisebox}[Es seien $a, b \in \mathbb{N}$. Weiter gelte $ b \mid a $. Dann gilt auch $ b \times c \mid a \times c $]
+	\begin{proofbox}[Vor.: Es seien $ a, b \in \mathbb{N} $ mit $ b \mid a $]
+		z.z.: $ ( b \times c ) \mid ( a \times c ) $\\
+		d.h.: z.z.: es existiert $ n \in \mathbb{N} $ mit\\
+		\[ a \times c = n ( b \times c ) \]
+		nach Definition \ref{def:mid} von `` $\mid$ ''\par
+		Da $ b \mid a $, folgt (nach Definition von `` $\mid$ ''), dass es
+		\[ m \in \mathbb{N} \text{gibt, mit} \]
+		\begin{equation}
+			\label{one}
+			a = b \times m
+		\end{equation}
+		Multiplikation von \ref{one} mit $ c \in \mathbb{N} $ liefert
+		\[ a \times c = ( b \times m ) \times c \]
+		Somit folgt (Rechengesetze für `` $\times$ '')
+		\[ a \times c = m \times b \times c, \]
+		also folgt
+		\[ b \times c \mid a \times c\]
+		Setze $n \coloneqq m $
+		Dann folgt
+		\[ a \times c = n ( b \times c ) \]
+		und $ b \times c \mid a \times c $
 	\end{proofbox}
 \end{exercisebox}
 
