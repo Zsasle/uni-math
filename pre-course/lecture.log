@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.5)  6 OCT 2023 16:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.5)  7 OCT 2023 11:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -818,27 +818,44 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.1.0'
 \tcb@lowerfitdim=\dimen289
 \tcb@upperfitdim=\dimen290
 \tcb@cur@hbadness=\count358
-)) (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+))
+\c@examplenumber=\count359
+\c@subexamplenumber=\count360
+\c@exercisenumber=\count361
+\c@subexercisenumber=\count362
+\c@problemnumber=\count363
+\c@subproblemnumber=\count364
+\c@definitionnumber=\count365
+\c@subdefinitionnumber=\count366
+\c@theoremnumber=\count367
+\c@subtheoremnumber=\count368
+\c@lemmanumber=\count369
+\c@sublemmanumber=\count370
+\c@conjecturenumber=\count371
+\c@subconjecturenumber=\count372
+\c@proofnumber=\count373
+\c@subproofnumber=\count374
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count359
+\l__color_backend_stack_int=\count375
 \l__pdf_internal_box=\box93
 ) (./lecture.aux)
 \openout1 = `lecture.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 186.
-LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -881,20 +898,20 @@ File: translations-basic-dictionary-german.trsl (german translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `german'. on input line 186.
+or `german'. on input line 206.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count360
+\scratchcounter=\count376
 \scratchdimen=\dimen291
 \scratchbox=\box94
-\nofMPsegments=\count361
-\nofMParguments=\count362
+\nofMPsegments=\count377
+\nofMParguments=\count378
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count363
+\MPscratchCnt=\count379
 \MPscratchDim=\dimen292
-\MPnumerator=\count364
-\makeMPintoPDFobject=\count365
+\MPnumerator=\count380
+\makeMPintoPDFobject=\count381
 \everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -906,18 +923,18 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
-04.
+24.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 204
+LaTeX Font Info:    Trying to load font information for U+msa on input line 224
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 204
+LaTeX Font Info:    Trying to load font information for U+msb on input line 224
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -927,7 +944,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Overfull \hbox (63.6857pt too wide) in paragraph at lines 280--307
+Overfull \hbox (63.6857pt too wide) in paragraph at lines 300--327
 \T1/cmr/m/n/10.95 Fermat (1637): $[]$ $[]$ $[]$ 
  []
 
@@ -939,13 +956,13 @@ L3 programming layer <2023-08-29>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 29079 strings out of 474928
- 681941 string characters out of 5759533
+ 29135 strings out of 474928
+ 682941 string characters out of 5759533
  1945791 words of memory out of 5000000
- 50240 multiletter control sequences out of 15000+600000
+ 50296 multiletter control sequences out of 15000+600000
  574949 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,19n,111p,10902b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,19n,111p,10902b,1042s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
@@ -962,7 +979,7 @@ l/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/te
 xlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texl
 ive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb>
-Output written on lecture.pdf (9 pages, 254001 bytes).
+Output written on lecture.pdf (9 pages, 254328 bytes).
 PDF statistics:
  122 PDF objects out of 1000 (max. 8388607)
  77 compressed objects within 1 object stream

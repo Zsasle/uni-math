@@ -93,14 +93,16 @@
 	}
 }
 \newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
-	\expandafter\xdef\csname#1#2number\endcsname{\number1}
+	%\expandafter\xdef\csname#1#2number\endcsname{\number1}
+	\newcounter{#1#2number}[#1section]
+	\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}
 	\myboxenvironment{#1}{#2}{#3}{#4}
 	\newenvironment{#1#2box}{
-		\begin{cache#1#2box}
-			{\textbf{\MakeUppercase#2 \csname the#1section\endcsname.\csname#1#2number\endcsname}}
+		\begin{cache#1#2box}%
+			\refstepcounter{#1#2number}
+			{\textbf{\MakeUppercase#2 \csname the#1#2number\endcsname}}%
 			\setlength\parindent{1em}
 		}{
-			\expandafter\xdef\csname#1#2number\endcsname{\expandafter\number\numexpr\csname#1#2number\endcsname+1\relax}
 		\end{cache#1#2box}
 	}
 }
@@ -112,33 +114,40 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\myenvironment}[3]{
-	\cachemyenvironment{}{#1}{#2}{#3}
+	\cachemyenvironment{}{#1}{#2}{#3}%
 	\cachemyenvironment{sub}{#1}{#2}{#3}
 }
 
-\myenvironment{example}		{gadse-orange}
+\myenvironment{example}		{gadse-orange}%
 				{gadse-red}
-\myenvironment{exercise}	{gadse-orange!50!gadse-yellow}
+\myenvironment{exercise}	{gadse-orange!50!gadse-yellow}%
 				{gadse-red!50!gadse-orange}
-\myenvironment{problem}		{gadse-yellow}
+\myenvironment{problem}		{gadse-yellow}%
 				{gadse-orange}
-\myenvironment{definition}	{gadse-pink!50!gadse-white}
+\myenvironment{definition}	{gadse-pink!50!gadse-white}%
 				{gadse-pink}
-\myenvironment{theorem}		{gadse-dark-green!50!gadse-light-green}
+\myenvironment{theorem}		{gadse-dark-green!50!gadse-light-green}%
 				{gadse-dark-green!100!gadse-ligth-green}
-\myenvironment{lemma}		{gadse-dark-green!25!gadse-light-green}
+\myenvironment{lemma}		{gadse-dark-green!25!gadse-light-green}%
 				{gadse-dark-green!75!gadse-light-green}
-\myenvironment{conjecture}	{gadse-light-green}
+\myenvironment{conjecture}	{gadse-light-green}%
 				{gadse-dark-green!25!gadse-light-green}
-\myenvironment{proof}		{gadse-light-green!50!gadse-white}
+\myenvironment{proof}		{gadse-light-green!50!gadse-white}%
 				{gadse-light-green!100!gadse-white}
 
+
+\newenvironment{indentpar}{
+	\hfill\begin{minipage}{\dimexpr\textwidth-2em}%
+		\xdef\tpd{\the\prevdepth}
+	}{
+	\end{minipage}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% sets #2numbers to #1 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\setnumbers}[2]{
+\newcommand{\setnumbersxx}[2]{
 	\expandafter\xdef\csname #2examplenumber\endcsname	{\number#1}
 	\expandafter\xdef\csname #2exercisenumber\endcsname	{\number#1}
 	\expandafter\xdef\csname #2problemnumber\endcsname	{\number#1}
@@ -147,6 +156,17 @@
 	\expandafter\xdef\csname #2lemmanumber\endcsname	{\number#1}
 	\expandafter\xdef\csname #2conjecturenumber\endcsname	{\number#1}
 	\expandafter\xdef\csname #2proofnumber\endcsname	{\number#1}
+}
+
+\newcommand{\setnumbers}[2]{
+	\setcounter{#2examplenumber}	{#1}
+	\setcounter{#2exercisenumber}	{#1}
+	\setcounter{#2problemnumber}	{#1}
+	\setcounter{#2definitionnumber}	{#1}
+	\setcounter{#2theoremnumber}	{#1}
+	\setcounter{#2lemmanumber}	{#1}
+	\setcounter{#2conjecturenumber}	{#1}
+	\setcounter{#2proofnumber}	{#1}
 }
 
 
@@ -171,8 +191,8 @@
 %\titleformat{\section}{\bfseries}{\setnumbers{1}{}\thesection . }{0pt}{}{}
 %\titleformat{\subsection}{\bfseries}{\setnumbers{1}{sub}\thesubsection . }{0pt}{}{}
 
-\renewcommand*{\sectionformat}{\setnumbers{1}{}\thesection.\enskip}
-\renewcommand*{\subsectionformat}{\setnumbers{1}{sub}\thesubsection.\enskip}
+\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
+\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
 
 
 %%%%%%%%%%%%%
@@ -577,14 +597,14 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 	Eine natürliche Zahl $b \in \mathbb{N}$ teilt eine natürliche Zahl $a \in \mathbb{N}$ (in Zeichen $b \mid a$), wenn es eine natürliche Zahl $c \in \mathbb{N}$ gibt, mit $a = b \times c$
 \end{subdefinitionbox}
 \begin{subdefinitionbox}
-	\xdef\defgeradezahl{\thesubsection.\subdefinitionnumber}
+	\label{subdefgeradezahl}
 	Eine Zahl $a \in \mathbb{N}$ heißt \underline{gerade}, falls $2\mid a$ gilt, d.h. falls es ein $c \in \mathbb{N}$ mmit $a = 2 \times c$ gibt.\\
 	Eine Zahl $q \in \mathbb{N}$ heißt \underline{ungerade}, falls $q$ nicht gerade ist.
 \end{subdefinitionbox}
 \begin{subconjecturebox}
 	$18$ ist gerade.
 	\begin{subproofbox}
-		$18 \in \mathbb{N}$, also können wir obrige Definition \defgeradezahl{} anwenden.\\
+		$18 \in \mathbb{N}$, also können wir obrige Definition \ref{subdefgeradezahl} anwenden.\\
 		Setze $c \coloneqq 9$\\
 		Dann gilt $c \in \mathbb{N}$ und $18 = 2 \times 9$\\
 		Also gilt $2 \mid 18$. Also ist $18$ gerade, $\square$
@@ -616,17 +636,29 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 			\end{enumerate}
 		\item Benutzungstext: Es gilt
 	\end{enumerate}
+	\begin{examplebox}
+		\newline
+		Vor. Sei $a \in \mathbb{N}$\\
+		Bew. Dann ist $2 \times a$ gerade\par
+		Es sei $a \in \mathbb{N}$. Es gilt $2 \times a \in \mathbb{N}$. Nach Definition \ref{subdefgeradezahl} zu geraden Zahlen ist zu zeigen:
+		\[ 2 \mid a \]
+		d.h. zu zeigen: $ \exists c \in \mathbb{N} : s \times a = 2 \times c $\\
+		Setzte $ c \coloneqq a $\\
+		Dann gilt $ c \in \mathbb{N} $ und
+		\[ 2 \times a = 2 \times c, \square \]
+	\end{examplebox}
 \end{definitionbox}
-\begin{examplebox}
-	\newline
-	Vor. Sei $a \in \mathbb{N}$\\
-	Bew. Dann ist $2 \times a$ gerade\par
-	Es sei $a \in \mathbb{N}$. Es gilt $2 \times a \in \mathbb{N}$. Nach Definition \defgeradezahl zu geraden Zahlen ist zu zeigen:
-	\[ 2 \mid a \]
-	d.h. zu zeigen: $ \exists c \in \mathbb{N} : s \times a = 2 \times c $\\
-	Setzte $ c \coloneqq a $\\
-	Dann gilt $ c \in \mathbb{N} $ und
-	\[ 2 \times a = 2 \times c, \square \]
-\end{examplebox}
+\begin{definitionbox}
+	\fbox{B.6} Allaussagen\\
+	Nachweistext: zu zeigen
+	\[ \forall x \in X : \text{\circled{...}} \]
+	\begin{indentpar}
+		Schreibe:
+		Sei ein $ x \in X $ gegeben.\\
+		Zeige: \circled{...}
+	\end{indentpar}
+	Benutzungstext:
+	\[ \label{B.6.1} \]
+\end{definitionbox}
 
 \end{document}
