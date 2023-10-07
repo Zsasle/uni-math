@@ -28,6 +28,17 @@
 \chead{}
 \cfoot{}
 
+\setlength\parindent{1em}
+\newcommand{\saveparinfos}{%
+	\edef\myindent{\the\parindent}%
+	\edef\myparskip{\the\parskip}%
+}
+\saveparinfos
+\newcommand{\pardefs}{%
+	\setlength{\parindent}{\myindent}%
+	\setlength{\parskip}{\myparskip}%
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% necessary packages %%%
@@ -93,7 +104,7 @@
 	}
 }
 \newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
-	%\expandafter\xdef\csname#1#2number\endcsname{\number1}
+	%\setlength\parindent{1em}
 	\newcounter{#1#2number}[#1section]
 	\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}
 	\myboxenvironment{#1}{#2}{#3}{#4}
@@ -138,7 +149,7 @@
 
 \newenvironment{indentpar}{
 	\hfill\begin{minipage}{\dimexpr\textwidth-2em}%
-		\xdef\tpd{\the\prevdepth}
+		\pardefs%
 	}{
 	\end{minipage}
 }
@@ -146,17 +157,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% sets #2numbers to #1 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\setnumbersxx}[2]{
-	\expandafter\xdef\csname #2examplenumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2exercisenumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2problemnumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2definitionnumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2theoremnumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2lemmanumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2conjecturenumber\endcsname	{\number#1}
-	\expandafter\xdef\csname #2proofnumber\endcsname	{\number#1}
-}
 
 \newcommand{\setnumbers}[2]{
 	\setcounter{#2examplenumber}	{#1}
@@ -168,10 +168,6 @@
 	\setcounter{#2conjecturenumber}	{#1}
 	\setcounter{#2proofnumber}	{#1}
 }
-
-
-%I dunno where this comes from
-\setlength\parindent{1em}
 
 
 %%%%%%%%%%%%
@@ -300,7 +296,7 @@ $\mathbb{N}_0 = \{0, 1, 2, ...\} \text{ natürliche Zahlen mit der Null}$\par
 $\mathbb{P} = \text{Menge aller Primzahlen}$\\
 $\mathbb{P} = {2, 3, 5, 7, ...}$\\
 Offene Fragen: Gibt es eine Formel für Primzahlen?\\
-Fermat (1637):
+Fermat (1637):\\
 \begin{minipage}{0.5\textwidth}
 	\setlength{\parindent}{1em}
 	\begin{conjecturebox}
@@ -317,7 +313,7 @@ Fermat (1637):
 	~
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
-	\setlength{\parindent}{1em}
+	\pardefs
 	100 Jahre später Euler:\\
 	$651$ teilt $F(5)$,\\
 	also ist
@@ -653,12 +649,54 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 	Nachweistext: zu zeigen
 	\[ \forall x \in X : \text{\circled{...}} \]
 	\begin{indentpar}
-		Schreibe:
+		\indent Schreibe:\\
 		Sei ein $ x \in X $ gegeben.\\
 		Zeige: \circled{...}
 	\end{indentpar}
 	Benutzungstext:
-	\[ \label{B.6.1} \]
+	\begin{equation}
+		\label{B.6.1}
+		\forall x \in X : \text{\circled{...}} \text anzuwenden
+	\end{equation}
+	Dann muss ein $ a \in X $ vorliegen\\
+	Wegen $ a \in X $ folgt (aus der $\forall$-Aussage)\\
+	\indent\circled{...}
+	\begin{examplebox}
+		\begin{exercisebox}
+			Zeige, dass die Summe zweier geraden natürlichen Zahlen auch gerade ist\par
+			Vor.: Gegeben seien $ a \in \mathbb{N} $ und $ b \in \mathbb{N} $ gerade.\\
+			Setzte
+			\[ c \coloneqq a + b \in \mathbb{N} \]
+			Beh.: $c$ ist gerade\\
+			Da $ c \in \mathbb{N} $, kann man Definition \ref{subdefgeradezahl} zu geraden Zahlen anwenden. Zu zeigen ist
+			\[ 2 \mid c \]
+			d.h. zu zeigen: $ \exists k \in \mathbb{N} : c = 2 \times k $\par
+			Da $a, b$ gerade, gilt nach Definition \ref{subdefgeradezahl} zu geraden Zahlen
+			\begin{equation}
+				\label{exampleone}
+				a = 2 \times m \text{ und}
+			\end{equation}
+			\begin{equation}
+				\label{exampletwo}
+				b = 2 \times n,
+			\end{equation}
+			mit $ m, n \in \mathbb{N} $, sodass
+			\begin{equation}
+				\label{examplethree}
+				c = a + b = 2 \times m + 2 \times n = 2 \times ( m + n ),
+			\end{equation}
+			wobei wir für die erste Gleicheit \ref{exampleone} und \ref{exampletwo}, für die zweite Gleichheit die Rechenregeln für natürliche Zahlen benutzt haben.\\
+			Setze
+			\[ k \coloneqq m + n \]
+			Dann gilt
+			\[ k \in \mathbb{N} \]
+			und wegen \ref{examplethree}
+			\[ c = 2 \times ( m + n ) \]
+			also
+			\[ c = 2 \times k, \square \]
+		\end{exercisebox}
+	\end{examplebox}
 \end{definitionbox}
+
 
 \end{document}
