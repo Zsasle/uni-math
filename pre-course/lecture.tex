@@ -1,4 +1,4 @@
-\documentclass[a4paper, markcase = upper, parskip = true]{scrartcl}
+\documentclass[a4paper, markcase = upper, parskip = true, fleqn]{scrartcl}
 
 %%%%%%%%%%%%%%
 %%% layout %%%
@@ -46,6 +46,7 @@
 \usepackage{mathtools}
 \usepackage{siunitx}
 \usepackage{tikz}
+\newcommand{\qed}{\tag{$\square$}}
 %not math
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
@@ -655,42 +656,43 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 	Dann muss ein $ a \in X $ vorliegen\\
 	Wegen $ a \in X $ folgt (aus der $\forall$-Aussage)\\
 	\indent\circled{...}
-	\begin{examplebox}
-		\begin{exercisebox}
-			Zeige, dass die Summe zweier geraden natürlichen Zahlen auch gerade ist\par
-			Vor.: Gegeben seien $ a \in \mathbb{N} $ und $ b \in \mathbb{N} $ gerade.\\
-			Setzte
-			\[ c \coloneqq a + b \in \mathbb{N} \]
-			Beh.: $c$ ist gerade\\
-			Da $ c \in \mathbb{N} $, kann man Definition \ref{subdefgeradezahl} zu geraden Zahlen anwenden. Zu zeigen ist
-			\[ 2 \mid c \]
-			d.h. zu zeigen: $ \exists k \in \mathbb{N} : c = 2 \times k $\par
-			Da $a, b$ gerade, gilt nach Definition \ref{subdefgeradezahl} zu geraden Zahlen
-			\begin{equation}
-				\label{exampleone}
-				a = 2 \times m \text{ und}
-			\end{equation}
-			\begin{equation}
-				\label{exampletwo}
-				b = 2 \times n,
-			\end{equation}
-			mit $ m, n \in \mathbb{N} $, sodass
-			\begin{equation}
-				\label{examplethree}
-				c = a + b = 2 \times m + 2 \times n = 2 \times ( m + n ),
-			\end{equation}
-			wobei wir für die erste Gleicheit \ref{exampleone} und \ref{exampletwo}, für die zweite Gleichheit die Rechenregeln für natürliche Zahlen benutzt haben.\\
-			Setze
-			\[ k \coloneqq m + n \]
-			Dann gilt
-			\[ k \in \mathbb{N} \]
-			und wegen \ref{examplethree}
-			\[ c = 2 \times ( m + n ) \]
-			also
-			\[ c = 2 \times k, \square \]
-		\end{exercisebox}
-	\end{examplebox}
 \end{definitionbox}
-
+\begin{exercisebox}
+	Zeige, dass die Summe zweier geraden natürlichen Zahlen auch gerade ist\par
+	Vor.: Gegeben seien $ a \in \mathbb{N} $ und $ b \in \mathbb{N} $ gerade.\\
+	Setzte
+	\[ c \coloneqq a + b \in \mathbb{N} \]
+	Beh.: $c$ ist gerade\\
+	\begin{proofbox}
+		Da $ c \in \mathbb{N} $, kann man Definition \ref{subdefgeradezahl} zu geraden Zahlen anwenden. Zu zeigen ist
+		\[ 2 \mid c \]
+		d.h. zu zeigen: $ \exists k \in \mathbb{N} : c = 2 \times k $\par
+		Da $a, b$ gerade, gilt nach Definition \ref{subdefgeradezahl} zu geraden Zahlen
+		\begin{equation}
+			\label{exampleone}
+			a = 2 \times m \text{ und}
+		\end{equation}
+		\begin{equation}
+			\label{exampletwo}
+			b = 2 \times n,
+		\end{equation}
+		mit $ m, n \in \mathbb{N} $, sodass
+		\begin{equation}
+			\label{examplethree}
+			c = a + b = 2 \times m + 2 \times n = 2 \times ( m + n ),
+		\end{equation}
+		wobei wir für die erste Gleicheit \ref{exampleone} und \ref{exampletwo}, für die zweite Gleichheit die Rechenregeln für natürliche Zahlen benutzt haben.\\
+		Setze
+		\[ k \coloneqq m + n \]
+		Dann gilt
+		\[ k \in \mathbb{N} \]
+		und wegen \ref{examplethree}
+		\[ c = 2 \times ( m + n ) \]
+		also
+		\[
+			c = 2 \times k, \tag*{$\square$}
+		\]
+	\end{proofbox}
+\end{exercisebox}
 
 \end{document}
