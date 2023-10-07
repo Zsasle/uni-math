@@ -47,6 +47,11 @@
 \usepackage{siunitx}
 \usepackage{tikz}
 \newcommand{\qed}{\tag{$\square$}}
+\DeclareRobustCommand{\qed}{%
+	\ifmmode \tag*{$\square$}%
+	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\square$}%
+	\fi
+}
 %not math
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
@@ -293,30 +298,21 @@ $\mathbb{N}_0 = \{0, 1, 2, ...\} \text{ natürliche Zahlen mit der Null}$\par
 $\mathbb{P} = \text{Menge aller Primzahlen}$\\
 $\mathbb{P} = {2, 3, 5, 7, ...}$\\
 Offene Fragen: Gibt es eine Formel für Primzahlen?\\
-Fermat (1637):\\
-\begin{minipage}{0.5\textwidth}
-	\setlength{\parindent}{1em}
-	\begin{conjecturebox}
-		$F(n) = 2^{2^n} + $ ist eine Primzahl für jedes $n \in \mathbb{N}$
-		\begin{alignat*}{3}
-			F(1) &= 2^{2^1} + 1 &&= 2^2 + 1 &&= 5\\
-			F(2) &= 2^{2^2} + 1 &&= 2^4 + 1 &&= 17\\
-			F(3) &= 2^{2^3} + 1 &&= 2^8 + 1 &&= 257\\
-			F(4) &= 2^{2^4} + 1 &&= 2^16 + 1 &&= 65537
-		\end{alignat*}
-	\end{conjecturebox}
-\end{minipage}
-\begin{minipage}{0.05\textwidth}
-	~
-\end{minipage}
-\begin{minipage}{0.4\textwidth}
-	\pardefs
-	100 Jahre später Euler:\\
-	$651$ teilt $F(5)$,\\
-	also ist
-	\[F(5) = 4294967297\]
-	\underline{keine} Primzahl.
-\end{minipage}
+Fermat (1637):
+\begin{conjecturebox}
+	$F(n) = 2^{2^n} + $ ist eine Primzahl für jedes $n \in \mathbb{N}$
+	\begin{alignat*}{3}
+		F(1) &= 2^{2^1} + 1 &&= 2^2 + 1 &&= 5\\
+		F(2) &= 2^{2^2} + 1 &&= 2^4 + 1 &&= 17\\
+		F(3) &= 2^{2^3} + 1 &&= 2^8 + 1 &&= 257\\
+		F(4) &= 2^{2^4} + 1 &&= 2^16 + 1 &&= 65537
+	\end{alignat*}
+\end{conjecturebox}
+100 Jahre später Euler:\\
+$651$ teilt $F(5)$,\\
+also ist
+\[F(5) = 4294967297\]
+\underline{keine} Primzahl.
 
 \section{Vorkurs}
 \begin{itemize}
@@ -662,7 +658,7 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 	Vor.: Gegeben seien $ a \in \mathbb{N} $ und $ b \in \mathbb{N} $ gerade.\\
 	Setzte
 	\[ c \coloneqq a + b \in \mathbb{N} \]
-	Beh.: $c$ ist gerade\\
+	Beh.: $c$ ist gerade
 	\begin{proofbox}
 		Da $ c \in \mathbb{N} $, kann man Definition \ref{subdefgeradezahl} zu geraden Zahlen anwenden. Zu zeigen ist
 		\[ 2 \mid c \]
