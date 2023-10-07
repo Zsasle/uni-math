@@ -85,14 +85,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\myboxenvironment}[4]{ % tcolorbox-environment %
-	\newtcolorbox{cache#1#2box}{
-		arc		= 2pt,
+	\newtcolorbox{cache#1#2box}[1]{
+		title		= ##1,
+		fonttitle	= \bfseries,
+		colback		= #3,
+		colframe	= #4,
 		sharp corners,
 		rounded corners	= northeast,
 		rounded corners	= southeast,
+		arc		= 2pt,
 		outer arc	= 2pt,
-		colback		= #3,
-		colframe	= #4,
 		boxrule = 0pt,
 		leftrule = 4pt,
 		breakable
@@ -103,10 +105,9 @@
 	\newcounter{#1#2number}[#1section]
 	\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}
 	\myboxenvironment{#1}{#2}{#3}{#4}
-	\newenvironment{#1#2box}{
-		\begin{cache#1#2box}%
+	\newenvironment{#1#2box}[1][~]{
+		\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad##1}%
 			\refstepcounter{#1#2number}
-			{\textbf{\MakeUppercase#2 \csname the#1#2number\endcsname}}%
 			\setlength\parindent{1em}
 		}{
 		\end{cache#1#2box}
@@ -182,8 +183,8 @@
 %\titleformat{\section}{\bfseries}{\setnumbers{1}{}\thesection . }{0pt}{}{}
 %\titleformat{\subsection}{\bfseries}{\setnumbers{1}{sub}\thesubsection . }{0pt}{}{}
 
-\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
-\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
+\renewcommand*{\sectionformat}{\setnumbers{1}{}\thesection.\enskip}
+\renewcommand*{\subsectionformat}{\setnumbers{1}{sub}\thesubsection.\enskip}
 
 
 %%%%%%%%%%%%%
@@ -429,7 +430,7 @@ $F$ überlegte wie $F$ an $K$ kommt. Da sagte $F$ zu $R$, ...\par
 allgemeine mathematische Situationen bestehen aus
 \begin{itemize}
 	\item Eine Liste von Namen für mathematische Objekte
-	\item Eine Liste von geltenden Aussagen üver diese Objekte
+	\item Eine Liste von geltenden Aussagen über diese Objekte
 \end{itemize}
 Was kann man damit tun?
 \begin{itemize}
@@ -609,7 +610,7 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 
 \section{Apendix B von Junk/Traude}
 \begin{definitionbox}
-	\\\fbox{B.10} Definitionen
+	\fbox{B.10} Definitionen
 	\begin{enumerate}[label=]
 		\item Nachweistext: Definition $\bigstar$ wird \fbox{Blubb} genannt, falls \circled{...} gilt.\\
 			Schreibe: Zu zeigen \circled{...}
@@ -628,7 +629,6 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 		\item Benutzungstext: Es gilt
 	\end{enumerate}
 	\begin{examplebox}
-		\newline
 		Vor. Sei $a \in \mathbb{N}$\\
 		Bew. Dann ist $2 \times a$ gerade\par
 		Es sei $a \in \mathbb{N}$. Es gilt $2 \times a \in \mathbb{N}$. Nach Definition \ref{subdefgeradezahl} zu geraden Zahlen ist zu zeigen:
@@ -639,8 +639,7 @@ Situation: $\mathbb{N} = \{1, 2, ... \}, \mathbb{N}_0 = \{0, 1, 2, ... \}$, Rech
 		\[ 2 \times a = 2 \times c, \square \]
 	\end{examplebox}
 \end{definitionbox}
-\begin{definitionbox}
-	\fbox{B.6} Allaussagen\\
+\begin{definitionbox}[\fbox{B.6} Allaussagen]
 	Nachweistext: zu zeigen
 	\[ \forall x \in X : \text{\circled{...}} \]
 	\begin{indentpar}
