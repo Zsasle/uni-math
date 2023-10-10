@@ -1002,40 +1002,69 @@ Um für Mengen $ C, D $ die Gleichheit $ C = D $ zu zeigen, zeigt man $ C \subse
 \[ A = B \iff A \subseteq B \wedge B \subseteq A \]
 
 \begin{task}
+	\label{task:16.1}
 	Es seien $ X $ Menge und $A, B \subseteq X $ zwei Teilmengen.\\
 	Beweisen Sie folgende Äquivalenz
 	\[ A \cup B = X \text{ und } A \cap B \neq \emptyset \iff A = X \setminus B \]
-	\begin{proof}
-		Wir beweisen die Äquivalenz durch Beweis der beide Implikationen ``$ \implies $'' und ``$ \impliedby $''.\par
-		\begin{description}
-			\item[``$ \implies $'':]
-			Wir nehmen an, dass
-			\[ A \cup B = X \wedge A \cap B = \emptyset \]
-			gilt
-			z.z.: $ A = X \setminus B $.\\
-			Dazu genügt es, die Inklusion
-			\[ \underbrace{A \subseteq X \setminus B}_{\text{1.}} \wedge \underbrace{X \setminus B \subseteq A}_{\text{2.}} \]
-			z.z.
-			\begin{enumerate}[label=\arabic*.]
-				\item \label{enum:ASubseteqXSetminusB} Wir zeigen $ A \subseteq X \setminus B $\\
-					Es  sei $ x \in A $. z.z $ x \in X \setminus B $\\
-					Da $ A \subseteq X $ gilt, $ x \in X $.\\
-					Es bleibt z.z., dass 
-					\[ x \notin B \]
-					Wir führen einen Widerspruchsbeweis und nehmen dazu an, dass $ x \in B $ gilt. Dann folt aber $ a \in A \wedge x \in B $, also $ x \in A \cap B $. Wiederspruch, da $ A \cap B = \emptyset $\\
-					Also muss $ x \notin B $ gelten. Insgesamt folgt
-					\[x \in X \setminus B \]
-					Da $ x \in A $ beliebig war, ist somit $ A \subseteq X \setminus B $ bewiesen.
-				\item \label{enum:XSetminusBSubseteqA}Wir zeigen $ X \setminus B \subseteq A $. Sei $ x \in X \setminus B $. Dann gilt
-					\[ x \in X \wedge x \notin B \]
-					Da $ X = A \cup B $, folgt $ x \in A \vee x \in B $. Da aber
-					\[ x \notin B \text{, folgt } x \in A \]
-					Da $ x \in X \setminus B $ beliebig war, ist $ X \setminus B \subseteq A $ bewiesen.
-			\end{enumerate}
-			Damit (mit \ref{enum:ASubseteqXSetminusB} und \ref{enum:XSetminusBSubseteqA}) ist die Gleichheit $ A = B \setminus B $ bewiesen. \qed
-		\end{description}
-	\end{proof}
 \end{task}
+\begin{proof}[to Task \ref{task:16.1}]
+	Wir beweisen die Äquivalenz durch Beweis der beide Implikationen ``$ \implies $'' und ``$ \impliedby $''.\par
+	\begin{description}
+		\item[``$ \implies $'':]
+		Wir nehmen an, dass
+		\[ A \cup B = X \wedge A \cap B = \emptyset \]
+		gilt
+		z.z.: $ A = X \setminus B $.\\
+		Dazu genügt es, die Inklusion
+		\[ \underbrace{A \subseteq X \setminus B}_{\text{1.}} \wedge \underbrace{X \setminus B \subseteq A}_{\text{2.}} \]
+		z.z.
+		\begin{enumerate}[label=\arabic*.]
+			\item \label{enum:ASubseteqXSetminusB} Wir zeigen $ A \subseteq X \setminus B $\\
+				Es  sei $ x \in A $. z.z $ x \in X \setminus B $\\
+				Da $ A \subseteq X $ gilt, $ x \in X $.\\
+				Es bleibt z.z., dass 
+				\[ x \notin B \]
+				Wir führen einen Widerspruchsbeweis und nehmen dazu an, dass $ x \in B $ gilt. Dann folt aber $ a \in A \wedge x \in B $, also $ x \in A \cap B $. Wiederspruch, da $ A \cap B = \emptyset $\\
+				Also muss $ x \notin B $ gelten. Insgesamt folgt
+				\[x \in X \setminus B \]
+				Da $ x \in A $ beliebig war, ist somit $ A \subseteq X \setminus B $ bewiesen.
+			\item \label{enum:XSetminusBSubseteqA}Wir zeigen $ X \setminus B \subseteq A $. Sei $ x \in X \setminus B $. Dann gilt
+				\[ x \in X \wedge x \notin B \]
+				Da $ X = A \cup B $, folgt $ x \in A \vee x \in B $. Da aber
+				\[ x \notin B \text{, folgt } x \in A \]
+				Da $ x \in X \setminus B $ beliebig war, ist $ X \setminus B \subseteq A $ bewiesen.
+		\end{enumerate}
+		Damit (mit \ref{enum:ASubseteqXSetminusB} und \ref{enum:XSetminusBSubseteqA}) ist die Gleichheit $ A = X \setminus B $ bewiesen.
+
+		\item[``$ \impliedby $'':]
+			Wir nehmen an, dass $ A = X \setminus B $ gilt.\\
+			z.z.: Es gilt $ \underbrace{ A \cup B = X }_{ I } $ und $ \underbrace{ A \cap B = \emptyset }_{ II } $\\
+			Zum Beweis von $ I $ zeigen wir
+			\begin{enumerate}
+				\item \label{enum:ACupBSubseteqX} $ A \cup B \subseteq X $
+				\item \label{enum:XSubseteqACupB} $ X \subseteq A \cup B $
+			\end{enumerate}
+			1. Zeige $ A \cup B \subseteq X $. Sei $ x \in A \cup B $. DAnn gilt $ ( x \in A ) \vee ( x \in B ) $. Gilt $ x \in A $, so folgt wegen $ A \subseteq X $ sofort $ x \in X $. Gilt $ x \in B $, so folgt wegen $ B \subseteq X $ sofort $ x \in X $. In beiden Fällen folgt also $ x \in X $, wie gewünscht.\par
+			2. Zeige $ X \subseteq A \cup B $: Sei $ x \in X $.\\
+			z.z.: $ x \in A \vee x \in B $\\
+			1. Fall: $ x \in A \implies x \in A \vee x \in B $\\
+			2. Fall: $ x \notin A $ z.z. $ x \in B $\\
+			(Annahme von $ x \notin B $. Dann gilt
+			\[ x \in X \setminus B \]
+			Da aber $ X \setminus B = A $ folgt $ x \in A $, was zu einem Wiederspruch führt.\\
+			Also muss $x  \in B $ gelten.)
+			Da $ A = X \setminus B $ folgt
+			\[ x \notin X \setminus B \]
+			Also gilt
+			\[ \neg ( x \in X \wedge x \notin B ) \]
+			\[ x \notin X \vee x \in B \]
+			Fall 1: $ x \notin X $ Wiederspruch zur Vor. $ x \in X $, also muss
+			Fall 2: 
+			\[x \in B \]
+			gelten.\par
+			Insgesamt $ x \in A \cup B $, wie gewünscht
+	\end{description}
+\end{proof}
 
 \begin{lemma}
 	Es sei $ a \in \mathbb{N} $. Dann gilt
