@@ -137,7 +137,19 @@
 	leftrule = 4pt,
 	breakable
 }
-
+\newtcolorbox{blackbox}[1][]{
+	title = #1,
+	standard jigsaw,
+	opacityback = 0,
+	colframe = gadse-black,
+	sharp corners,
+	rounded corners	= northeast,
+	rounded corners	= southeast,
+	arc		= 2pt,
+	outer arc	= 2pt,
+	boxrule = 0pt,
+	leftrule = 4pt
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%    command to create     %%%
@@ -1116,6 +1128,27 @@ Um für Mengen $ C, D $ die Gleichheit $ C = D $ zu zeigen, zeigt man $ C \subse
 		\[ p \mid ( \underbrace{ a - p_1 \times p_2 \times ... \times p_n ) }_{=1} \]
 		Also $ p \mid 1 $ $ \implies $ Widerspruch: Also war unsere Annahme falsch und es muss unendlich vile Primzahlen geben \qed
 	\end{proof}
+\end{theorem}
+
+\section{Vollständige Induktion}
+
+\begin{theorem}[Vollständige Induktion]
+	\label{theo:Induktion}
+	Sei $ A(n) $ eine Eigenschaft für natürliche Zahlen\\
+	Es gelte
+	\begin{enumerate}[label=(\roman*)]
+		\item $ A(1) $, d.h. $ 1 $ hat diese Eigenschaft
+		\item $ \forall a \in \N : A(n) \implies A(n+1) $
+	\end{enumerate}
+	d.h. für alle $ n \in \N $ gilt: Wenn $ n $ die Eigenschaft hat, dann hat $ n + 1 $ die Eigenschaft.
+	Dann gilt $ A(n) $ für \underline{alle} $ n \in \N $
+	\begin{blackbox}[Induktionsanfang (I.A.)]
+		$ A(1) $ überprüfen auf Wahrheitswert (muss wahr sein)
+	\end{blackbox}
+	\begin{blackbox}[Induktionsschritt (I.S.)]
+		Es sei $ n \in N $
+		\[ \underbrace{A(n)}_{\text{Induktionsvoraussetzung (I.V.)}} \implies A(n+1) \]
+	\end{blackbox}
 \end{theorem}
 
 \end{document}
