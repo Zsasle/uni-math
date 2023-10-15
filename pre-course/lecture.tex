@@ -179,6 +179,8 @@
 				{gadse-light-green!100!gadse-white}%
 \myenvironment{corollary}	{gadse-dark-green!75!gadse-light-green}%
 				{gadse-dark-green!75!gadse-black}%
+\myenvironment{axiom}		{gadse-dark-green!50!gadse-light-green}%
+				{gadse-dark-green!100!gadse-black}%
 
 
 \newenvironment{indentpar}{%
@@ -201,6 +203,8 @@
 	\setcounter{#2lemmanumber}	{#1}%
 	\setcounter{#2conjecturenumber}	{#1}%
 	\setcounter{#2proofnumber}	{#1}%
+	\setcounter{#2corollarynumber}	{#1}%
+	\setcounter{#2axiomnumber}	{#1}%
 }
 
 
@@ -1150,5 +1154,106 @@ Um für Mengen $ C, D $ die Gleichheit $ C = D $ zu zeigen, zeigt man $ C \subse
 		\[ \underbrace{A(n)}_{\text{Induktionsvoraussetzung (I.V.)}} \implies A(n+1) \]
 	\end{blackbox}
 \end{theorem}
+
+\begin{task}
+	Zeigen Sie mithilfe volllständiger Induktion, dass für all $n \in \N $ gilt:
+	\[ 7 \mid \left( 5^{2 \cdot n} - 2^{2 \cdot n} \right) \qquad A(n) \]
+	\begin{proof}
+		\begin{description}
+			\item[I.A. ($n = 1$)] Z.z.: $ 7 \mid \left( 5^{2 \cdot 1} - 2^{2 \cdot 1} \right) $\\
+				Da $ 5^2 - 2^2 = 21 = 7 \cdot 3 $, also folgt $ 7 \mid \left( 5^{2 \cdot 1} - 2^{2 \cdot 1} \right) $
+			\item[I.S.] Es sei $ n \in \N $
+				\begin{description}
+					\item[I.V.] \label{Ind.1:I.V.} Es gelte $ A(n) $ d.h. wir nehmen an, dass
+						\[ 7 \mid \left( 5^{2n} - 2^{2n} \right) \]
+				\end{description}
+				z.z.: (I. Behauptung) $ A( n + 1 ) $ gilt,\\
+				d.h.: $ 7 \mid \left[ 5^{2 \cdot ( n + 1 )} - 2^{2 \cdot ( n + 1 )} \right] $\\
+				Es gilt
+				\begin{align*}
+					5^{2 \cdot ( n + 1 )} - 2^{2 \cdot ( n + 1 )} &= 5^{2n + 2} - 2^{2n + 2}\\
+						~&= 25 \cdot 5^{2n} - 4 \cdot 2^{2n}\\
+						~&= 25 \cdot 5^{2n} - 25 \cdot 2^{2n} + 25 \cdot 2^{2n} - 4 \cdot 2^{2n}\\
+						~&= 25 \cdot \left( 5^{2n} - 2^{2n} \right) + ( 25 - 4 ) \cdot 2^{2n}\\
+				\end{align*}
+				Da nach \ref{Ind.1:I.V.} die Teilbarkeit
+				\[ 7 \mid \left( 5^{2n} - 2^{2n} \right) \]
+				gilt und auch $ 7 \mid (25 - 4) $ gilt, folgt (Teilbarkeitsregeln !) $ 7 \mid \left( 5^{2 \cdot ( n + 1 )} - 2^{2 \cdot ( n + 1 )} \right) $, \qed
+		\end{description}
+		Mit Induktionsprinzip ergibt insgesamt
+		\[ \forall n \in \N : 7 \mid \left( 5^{2n} - 2^{2n} \right) \]
+	\end{proof}
+\end{task}
+
+\begin{definition}
+	Wir wollen die Behauptung beweisen:
+	\[ \forall n \in \N : A(n) \]\par
+	Teil 1: I.A.\\
+	Wir beweisen, dass $ A(1) $ gilt\par
+	Tail 2: I.S.\\
+	von $ n $ nach $ n + 1 $
+	\begin{description}
+		\item[I.V.:] Es gelte $ A(n) $ für $ n \in \N $\\
+			Z.z.: Es gilt auch $ A( n + 1 ) $
+			\[ \implies \forall n \in \N : A(n) \]
+	\end{description}
+\end{definition}
+
+\begin{task}
+	\begin{proof}[$ \forall n \in \N : \sum_{k = 1}^{n}\left( 2k - 1 \right) = n^2 $]
+		\begin{description}
+			\item[I.A. ($ n = 1 $)]\label{proof:1:des:I.A.}~\\
+				z.z.: $ \sum_{k = 1}^{1}\left( 2k - 1 \right) = 1^2 $\\
+				Es gilt
+				\[ \sum_{k = 1}^{1}\left( 2k - 1 \right) = 2 \cdot 1 - 1 = 1 \]
+				und
+				\[ 1^2 = 1 \]
+				was \ref{proof:1:des:I.A.} beweist
+			\item[I.S.] z.z. (I. Beh.)
+				\[ \sum_{k = 1}^{n + 1}\left( 2k - 1 \right) = ( n + 1)^2 \]
+				\begin{description}
+					\item[I.V.] \label{proof:1:des:I.V.} Es sei $ n \in \N $, es gelte
+						\[ \sum_{k=1}^{n}\left( 2k - 1 \right) = n^2 \]
+				\end{description}
+				\[ \sum_{k = 1}^{n + 1}\left( 2k - 1 \right) = \underbrace{\sum_{k = 1}^{n}\left( 2k - 1\right)}_{\text{ersten $ n $ Summanden}} + \underbrace{\left( 2( n + 1 ) - 1 \right)}_{\text{ $n + 1 $-ter Summand}} \]
+				\begin{align*}
+					\sum_{k = 1}^{n + 1}\left( 2k - 1 \right) &= n^2 + \left( 2 ( n + 1 ) - 1 \right)\\
+						~&= n^2 + 2n + 2 - 1\\
+						~&= n^2 + 2n + 2\\
+						~&= ( n + 1 )^2, \qed
+				\end{align*}
+		\end{description}
+		Mit dem Prinzip der vollständigen Induktion könnnen wir folgern, dass gilt
+		\[ \forall n \in \N : \sum_{k = 1}^{n} = n^2 .\]
+	\end{proof}
+\end{task}
+
+In reiner Zahlentheorie betrachtete man die Induktion als Axiom
+\begin{axiom}[Induktionsaxiom]
+	Es sei $ M \subseteq \N $ eine teilmenge mit
+	\begin{enumerate}[label=(\roman*)]
+		\item $ 1 \in M $
+		\item $ \forall n \in \N : n \in M \implies n + 1 \in M $
+	\end{enumerate}
+	Dann ist
+	\[ M = \N \]\par
+	Dieses Axiom ermöglicht das Beweisverfahren durch vollständige Induktion, denn:\\
+	Es sei $  M \coloneqq \{ n \in \N : A(n) \} $, Gilt
+	\begin{enumerate}[label=(\roman*)]
+		\item $ 1 \in M $, d.h. es gilt $ A(1) $
+		\item $ \forall n \in \N : Wenn n \in M $ 8also $ A(n) $ gilt), folgt $ n + 1 \in M $ (also $ A( n + 1 ) $ gilt)
+	\end{enumerate}
+	Dann folgt nach Axiom
+	\[ M = \N \]
+	d.h. $ \forall n \in \N : A(n) $
+\end{axiom}
+
+\section{Abbildung (Funktionen)}
+
+\begin{definition}
+	Es seien $ X, Y $ bel. Mengen.\\
+	Eine \underline{Abbildung} (oder Funktion) $ f $ von $ X $ nach $ Y $ ist eine Vorschrift, die jedem Element $ x \in X $ genau ein Element $ y_x \in Y $ zuordnet.
+	\[ f : X \to Y, x \mapsto y_x \]
+\end{definition}
 
 \end{document}
