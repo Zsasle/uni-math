@@ -55,7 +55,6 @@
 \usepackage{mathtools}
 \usepackage{siunitx}
 \usepackage{tikz}
-\newcommand{\qed}{\tag{$\square$}}
 %not math
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
@@ -224,10 +223,11 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \DeclareRobustCommand{\qed}{%
-	\ifmmode \tag*{$\square$}%
-	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\square$}%
+	\ifmmode \tag*{$\Box$}%
+	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\Box$}%
 	\fi%
 }
+\newcommand{\contradiction}{\bot}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
@@ -1253,7 +1253,31 @@ In reiner Zahlentheorie betrachtete man die Induktion als Axiom
 \begin{definition}
 	Es seien $ X, Y $ bel. Mengen.\\
 	Eine \underline{Abbildung} (oder Funktion) $ f $ von $ X $ nach $ Y $ ist eine Vorschrift, die jedem Element $ x \in X $ genau ein Element $ y_x \in Y $ zuordnet.
-	\[ f : X \to Y, x \mapsto y_x \]
+	\[ f :
+		\begin{cases}
+			X \to Y\\
+			x \mapsto y_x
+		\end{cases}
+		f \text{ ist Abbildung von $ X $ nach $ Y $, $ x $ wird auf $ y_x $ abgeblidet}
+	\]
+	Das dem Element $ x \in X $ in eindutiger Weise durch $ f $ zugeordnete Element $ y_x $ wird auch mit \[ f(x) \] bezeichnet; $ f(x) $ \underline{heißt das Bild von $ x $ unter $ f(x) $}, oder \underline{der Wert von $ f $ an der Stelle $ x $}.
+	\[ X \text{heißt auch \underline{Definitionsbereich von $ f $}, (Auch $ \operatorname{Def}(f) $)} \]
+	\[ Y \text{ heißt auch \underline{Zielbereich von} $ f $ und} \]
+	\[ W_f \coloneqq \{ y \in Y : \exists x \in X : f(x) = y \} \]
+	der (exakte) \underline{Wertebereich von} $ f $ oder kurz das \underline{Bild von} $ f $. Andere Bezeichnungen für $ W_f : \operatorname{Bild}(f) \text{ oder } f(X) $\par
+	\begin{definition}
+		Ein $ x \in X $ heißt Urbild von $ y \in Y $, falls $ f(x) = y $ gilt.
+		\begin{example}
+			$ X, Y \in \R $. Betrachte \[ f: \begin{cases} \R \to \R\\ x \mapsto x^2 \end{cases} \] $ \operatorname{Def}(f) = \R $, Zielbereich von $ \R $; $ \operatorname{Bild}(f) = f(\R) = \R_{\geq 0} = \R^{+} $
+		\end{example}
+		\begin{example}[keine Funktion $ f: \R \to \R, x \mapsto \begin{cases} ( x - 1 ), & \text{falls } x \geq 1\\ x + 2, & \text{falls } x \leq 1 \end{cases} $]
+			\begin{itemize}
+				\item Urbilder von $ 4 $ unter $ f : \text{ für welche $ x \in \R $ gilt $f(x) = 4 $? $ : 2, -2 $} $
+				\item Urbilder von $ -2 \in \R = Y $ unter $ f $? Für welche $ x \in \R $ gilt $ f(x) = -2 $? d.h. $ x^2 = -2 \contradiction $ kein $ x \in \R $
+				\item Urbilder von $ i $ unter $ f $? $ \contradiction $ kann man nicht fragen. $ i \notin \R $
+			\end{itemize}
+		\end{example}
+	\end{definition}
 \end{definition}
 
 \end{document}
