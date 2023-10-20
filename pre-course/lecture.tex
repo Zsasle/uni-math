@@ -1280,4 +1280,58 @@ In reiner Zahlentheorie betrachtete man die Induktion als Axiom
 	\end{definition}
 \end{definition}
 
+\begin{definition}[Graph]
+	Ist $ f : X \to Y $ eine Abbildung, dann heißt
+	\[ \operatorname{Graph}(f) \coloneqq \{ ( x, y ) \in X \times Y \mid y = f(x) \]
+	der \underline{Graph von $ f $}.
+	\begin{example}
+		\begin{math}
+			g : X = \{ 1, 2, 3 \} \to \{ -2 , -1, 0, 1, 2 \} = Y,%
+			\begin{cases}
+				1 \mapsto 1\\
+				2 \mapsto 2\\
+				3 \mapsto 0
+			\end{cases}
+		\end{math}\\
+		$ \operatorname{Def}(g) = \{ 1, 2, 3 \} $, $ \operatorname{Bild}(g) = g(X) = \{ 1, 2, 0 \} $\\
+		\begin{itemize}
+			\item Urbilder von $ 0 $: $ 3 $\\
+			\item Urbilder von $ - 2 $: keine
+		\end{itemize}
+		\begin{align*}
+			g^{-1}(\{ 0, 2 \}) \coloneqq &\{ x \in \{ 1, 2, 3 \} : g(x) = 0 \vee g(x) = 2\\
+			= &\{ x \in \{ 1, 2, 3 \} : g(x) \in \{ 0, 2 \} \}
+		\end{align*}
+		\[ g(\{ 1, 3 \}) \coloneqq \{ g(x) : x \in \{ 1, 3 \} \} = \{ g(1), g(3) \} = \{ 1, 0 \} \]
+	\end{example}
+\end{definition}
+
+\begin{definition}
+	Es sei $ f : X \to Y $ eine Abbildung
+	\begin{itemize}
+		\item[\circled{1}] Für eine Teilmenge $ A \subseteq X $ heißt
+			\begin{align*}
+				f(A) \coloneq &\{ f(x) \mid x \in A \} \subseteq Y\\
+				= &\{ y \in Y \mid \exists x \in A : f(x) = y \}
+			\end{align*}
+			\underline{Bild der Menge $ A $ unter $ f $}.
+		\item[\circled{2}] Für eine Teilmenge $ B \subseteq Y $ heißt die Menge
+			\[ f^{-1}(B) = \{ x \in X : f(x) \in B \} = \{ x \in X : \exists y \in B : f(x) = y \} \]
+			das \underline{Urbild von $ B $ unter $ f $}\par
+			Falls $ B = \{ y \} $\\
+			Für $ y \in Y $ ist das Urbild von $ y $ unter $ f $ die Menge
+			\[ f^{-1}(y) \coloneqq \{ x \in X : f(x) \in \{ y \} = \{ x \in X : f(x) = y \} \]
+	\end{itemize}
+\end{definition}
+
+\begin{example}[$
+	f :
+	\begin{cases}
+		\R \to \R\\
+		x \to x^2
+	\end{cases}
+	$]
+	$ f([ 0, 1 ]) = \{ x^2 : x \in [ 0, 1 ] \} \overset{!?}{=} [ 0, 1 ] $
+\end{example}
+
 \end{document}
