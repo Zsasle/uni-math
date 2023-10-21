@@ -55,9 +55,14 @@
 \usepackage{mathtools}
 \usepackage{siunitx}
 \usepackage{tikz}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},%
+%default radius will be 1pt.
+cross/.default={1pt}}
+\newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 %not math
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
+\usepackage{tabularx, booktabs}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,6 +234,7 @@
 }
 \newcommand{\contradiction}{\bot}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -1293,13 +1299,13 @@ In reiner Zahlentheorie betrachtete man die Induktion als Axiom
 				3 \mapsto 0
 			\end{cases}
 		\end{math}\\
-		$ \operatorname{Def}(g) = \{ 1, 2, 3 \} $, $ \operatorname{Bild}(g) = g(X) = \{ 1, 2, 0 \} $\\
+		$ \operatorname{Def}(g) = \{ 1, 2, 3 \} $, $ \operatorname{Bild}(g) = g(X) = \{ 1, 2, 0 \} $
 		\begin{itemize}
-			\item Urbilder von $ 0 $: $ 3 $\\
+			\item Urbilder von $ 0 $: $ 3 $
 			\item Urbilder von $ - 2 $: keine
 		\end{itemize}
 		\begin{align*}
-			g^{-1}(\{ 0, 2 \}) \coloneqq &\{ x \in \{ 1, 2, 3 \} : g(x) = 0 \vee g(x) = 2\\
+			g^{-1}(\{ 0, 2 \}) \coloneqq &\{ x \in \{ 1, 2, 3 \} : ( g(x) = 0 ) \vee ( g(x) = 2 )\}\\
 			= &\{ x \in \{ 1, 2, 3 \} : g(x) \in \{ 0, 2 \} \}
 		\end{align*}
 		\[ g(\{ 1, 3 \}) \coloneqq \{ g(x) : x \in \{ 1, 3 \} \} = \{ g(1), g(3) \} = \{ 1, 0 \} \]
@@ -1331,7 +1337,306 @@ In reiner Zahlentheorie betrachtete man die Induktion als Axiom
 		x \to x^2
 	\end{cases}
 	$]
-	$ f([ 0, 1 ]) = \{ x^2 : x \in [ 0, 1 ] \} \overset{!?}{=} [ 0, 1 ] $
+	$ f([ 0, 1 ]) = \{ x^2 : x \in [ 0, 1 ] \} \overset{!?}{=} [ 0, 1 ] $\\
+	$ f(\{ 0, 2 \} ) = \{ f(0), f(2) \} = \{ 0, 4 \} $\\
+	$ \operatorname{Bild}(f) = f(\R) = \R_{\geq0} $\par
+	$ f^{-1}([-1, 1]) = \{ x \in \R : f(x) \in [-1, 1]\} \overset{?!}{=} [-1, 1] $\\
+	$ f^{-1}(\{0, 1\}) = \{ x \in \R : f(x) \in \{0, 1\} \} = \{ x \in \R : f(x) = 0 \vee f(x) = 1 \} = \{ 0, 1, -1 \} $
 \end{example}
+
+\section{Grobe Einteilung von mathematischen Objekten}
+\begin{tabularx}{\textwidth}{>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+	\multicolumn{1}{c}{Zahlen} & \multicolumn{1}{c}{\mynode{Mengen}{Mengen}} & \multicolumn{1}{c}{\mynode{Funktionen}{Funktionen}}\\\hline
+	\begin{itemize}
+		\item \raggedright Ausgangsmaterial zur Ob\-jektbildung
+	\end{itemize} &
+	\begin{itemize}
+		\item schaffen Begriffe
+		\item[] ``gerade Zahlen''
+		\item[] $ \quad \vdots $
+		\item dienen der Zusammenfassung/Einteilung von Objekten
+	\end{itemize} &
+	\begin{itemize}
+		\item schaffen
+		\item[] \underline{\mynode{Zusammenhänge}{Zusammenhänge}}
+	\end{itemize}
+\end{tabularx}\\
+Was macht man damit\mynode{?}{?}
+\begin{itemize}
+	\item abhängige (Mess-)Werte
+\end{itemize}
+\begin{tikzpicture}[remember picture, overlay]
+	\draw[->] ([xshift=2pt]Mengen.east) to ([xshift=-2pt]Funktionen.west);
+	\draw[->,>=stealth] ([yshift=-2pt]Zusammenhänge.south) to [out=-90, in = 0] ([xshift=2pt]?.east);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+	\fill[gray] ( 0, 0, 0 ) -- ( 3, 0, 0 ) -- ( 3, 0, 1 ) -- ( 0, 0, 1 );
+	\draw ( 0, 1, 1 ) -- ( 0, 0, 1 ) -- ( 3, 0, 1 ) -- ( 3, 1, 1 ) -- ( 0, 1, 1 ) -- ( 0, 1, 0 ) -- ( 3, 1, 0 ) -- ( 3, 0, 0 ) -- ( 3, 0, 1 );
+	\draw[dotted] ( 0, 0, 1 ) -- ( 0, 0, 0 ) -- ( 0, 1, 0 );
+	\draw[dotted] ( 0, 0, 0 ) -- ( 3, 0, 0 );
+	\draw ( 3, 1, 0 ) -- ( 3, 1, 1 );
+	\draw[fill] ( 1, 0.5, 0.5 ) circle (2pt);
+	\draw ( 4.7, 0.2, 0 ) rectangle ( 6.3, 0.7, 0 );
+	\node [anchor = center ] at ( 5.5, 0.45, 0 ) {$\qty{42.5}{\celsius}$};
+	\draw[-,>=stealth] ( 1, 0.5, 0.5 ) to [out = 45, in = 135] ( 4.7, 0.7, 0 );
+	\draw ( 2, 0, 1 ) -- ( 2.3, 0, 1.5 ) node[anchor = north] {Heizplatte};
+	\draw ( 5.7, 0.2, 0 ) -- ( 5.8, 0.0, 0 ) node[anchor = north] {$ f(x) $};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+	\draw ( 0, 0 ) circle (1);
+	\draw ( 0, 0 ) -- node [anchor = south] {$r$} ( 1, 0 );
+	\draw[->, > = stealth] ( 1.3, 1 ) node [anchor = west] {Umfang $U(r)$} to [out = 180, in = 45] ( 0.8, 0.8 );
+	\node [anchor = west] at ( 1.5, -0.5 ) {$ U \coloneqq \begin{cases} \R_{\geq 0} \to \R_{\geq 0}\\r \mapsto 2 \pi r \end{cases}$};
+		\node [anchor = west] at ( 1.5, -1.5 ) {$ U = (2 \pi r )_{r \in \R_{\geq}} $};
+\end{tikzpicture}
+
+Rezept/Bastelanleitung\\
+Zutat $ x $ mit $ x \in X $\\
+Ergebnis: z.B. $ 2 \pi x $
+
+\begingroup
+	\setlength\tabcolsep{0pt}
+	\begin{tabularx}{0.9\textwidth}{l>{\ }X}
+		Funktionsausdruck $ \hat= $ &allg. Situationsbeschreibung mit einer Ergebnisdefinition\\
+		~&Bennenung/Indizierung\\
+		~&\quad``Abzählen''. Jedes Objekt bekmomt eine Nummer bzw. Jede Nummer bekommt ein Objekt\\
+	\end{tabularx}
+\endgroup
+
+$ f \coloneqq ( \N, \Z, \Q, \R, \dotsc) $ \underline{Tupel} sind \underline{Funktionen}\\
+$ \quad \operatorname{Def}(f) = \{ 1, 2, 3, \dotsc, n \} \quad f(1) = \N \text{ oft } f_1 $\\
+$ \operatorname{Bild}(f) = \{ y \in U: \exists x \in \operatorname{Def}(f) : y = f(x) \} = \{ \N, \Z, \Q, \R, \dotsc \} $
+
+\begin{itemize}
+	\item Attribute von Objekten\\[1em]
+		\begin{tabular}{c|c}
+			Land & Hauptstadt\\
+			\hline
+			D	& Berlin\\
+			CH	& ?\\
+			F	& Paris\\
+			A	& Wien\\
+		\end{tabular}
+		\hspace{2em}
+		\begin{minipage}{0.5\textwidth}
+			Tabellen! c:\\
+			``$\operatorname{Hauptstadt}(\operatorname{Land})$''
+		\end{minipage}
+\end{itemize}
+
+\hrule width 50pt \kern 1pt \hrule width 50pt
+Was macht man damit ...?
+\begin{itemize}
+	\item abhängige (Mess-)Werte \qquad $ (2 \pi r )_{ r \in \R_{\geq} } $
+	\item Benennung/Indizierung \qquad $ ( \N, \Z, \Q, \R ), ( 2i - 1 )_{ i \in \N } = \{ 2i - 1 : i \in \N \} $
+	\item Attribute von Objekten
+\end{itemize}
+
+\begin{tikzpicture}
+	\draw ( 0, 0 ) rectangle node {hat Inhalt} ( 2, 0.7 );
+	\node [anchor = north] at ( 1, -0.5 ) {hat Länge};
+	\node [anchor = north] at ( 1, -0.1 ) {$a$};
+	\node [anchor = west] at  ( 2, 0.35 ) {$ b $ hat Breite};
+	\draw[->, > = stealth] ( 2, 1.5 ) node [anchor = west] {hat Umfang} to [out = 180, in = 90] ( 1, 1.2 );
+\end{tikzpicture}
+\hspace{2em}
+\begin{minipage}{0.5\textwidth}
+	$ R \coloneqq \R_{>0}^{2} $ \qquad $ ( \Z, + ) $\\
+	Länge $ \coloneqq (r_1)_{r \in R} $\\
+	Breite $ \coloneqq ( r_2 )_{r \in R} $\\
+	Umfang $ \coloneqq ( 2r_1 + 2r_2)_{r \in R} $\\
+	Inhalt $ \coloneqq ( r_1, r_2 )_{r \in R} $
+\end{minipage}
+
+\begin{example}[``Gleichungen'']
+	Finde $ x \in \R $, sodass gilt
+	\begin{enumerate}[label=\alph*)]
+		\item $ x^3 + x = 1 $ \quad\qquad x-Abhängigkeit durch Funktion $ f : (x^3 + x )_{x \in \R} $
+		\item $ x^3 + x =  -5 $ \qquad beschreibe rechte Seite jeweils durch ein Element $ y \coloneqq 1 $
+	\end{enumerate}
+	$ ( f, y ) $ kodiert die Gleichung
+\end{example}
+
+\begin{definition}
+	Unter einer Gleichung verstehen wir ein Paar $ (f, y ) $ mit einer Funktion $ f $ und einem Element $ y $.\\
+	Die Lösungsmenge einer Gleichung $ (f, y ) $ ist gegeben durch $ \operatorname{L"os}(f, y)\bigl(=\operatorname{L"os}(f, y)\bigr) = \{x \in \operatorname{Def}(f) : f(x) = y \} $\\
+	Gleichungen = $ \mathcal{F} \times \mathcal{U}  ( \mathcal{F} \coloneqq \text{ alle Funktionen }, \mathcal{U} \coloneqq \text{ alle Elemente } ) $
+
+	\begin{tabularx}{\textwidth}{XcX}
+		Eigenschaften von Gleichungen & \;\; ergeben sich \;\; & Eigenschaften der zugehörigen Funktion\\\toprule
+		``Lösbarkeit'' für alle rechte Seiten aus einer Menge $ W $ &~& ``$ f $ ist \underline{surjektiv nach W}'' ($ f $ nimmt alle Werte von $ W $ an)\\
+		$ \forall y \in W : \exists x \in \operatorname{L"os}(f, y) $ & $ \iff $ & $ \forall y \in W : \exists x \in \operatorname{Def}(f) : f(x) = y $\\
+		\midrule
+		``Eindeutigkeit von Lösungen'' &~& ``$ f $ ist \underline{injektiv}'' ($ f $ nimmt keinen Wert mehrfach an)\\
+		$ \forall y \in \operatorname{Bild}(f) : \exists! x \in \operatorname{L"os}(f, y) $ & $ \impliedby $ & $ \neq \exists u,v \in \operatorname{Def}(f) : u \neq v \wedge f(u) = f(v) $\\
+		``Existenz und Eindeutigkeit'' von Lösungen zu $ ( f, y ) $ für $ f : A \to B $ und alle $ y \in B $ &~& ``$ f $ ist \underline{bijektiv} von $ A $ nach $ B $, d.h. $ f : A \to B $ injektiv und $ f : $ surjektiv nach $ B $
+	\end{tabularx}
+\end{definition}
+
+\begin{example}[$ f \coloneqq (x^2)_{x \in \Q} \quad g \coloneqq (x^2)_{x \in \R}$]
+	$ f, g $ surjektiv nach $ \Q $?: nein\\
+	$ f, g $ surjektiv nach $ \Q_{\geq 0} $?: für $ g $: ja, für $ f $: nein\\
+	$ f, g $ injektiv: nein $ f(1) = g(1) = g(-1) = f(-1) $\\
+	$ f = ( x^3 + x )_{x \in \R} \quad f^{\prime} = ( x^2 + 1 )_{x \in \R} \implies f^{\prime} \geq 1 > 0 \implies f \text{ streng monoton wachsend} $\\
+	alle Gleichungen zu $ f $ mit $ y \in \R $ sind eindeutig lösbar
+	\[ f \text{ ist bijektiv von $ \R $ nach $ \R $} \]
+	$ \exists a \in \R : \operatorname{L"os}(f, y) = \{ a \} $
+	$ \operatorname{Eintrag}(\{ a \}) = a \quad \operatorname{Eintrag}(\operatorname{L"os}(f, 1)) = $ ist \underline{die} Lösung von $ (f, 1) $ ``$ x^3 + x = 1 $''\\[2pt]
+	\begin{tikzpicture}
+		\draw ( 0, 1, 1 ) -- ( 0, 0, 1 ) -- ( 2, 0, 1 ) -- ( 2, 1, 1 ) -- ( 0, 1, 1 ) -- ( 0, 1, 0 ) -- ( 2, 1, 0 ) -- node [anchor = west] {$ f = \operatorname{Eintrag}(\operatorname{L"os}( F, y)) $} ( 2, 0, 0 ) -- ( 2, 0, 1 );
+		\draw ( 2, 1, 1 ) -- ( 2, 1, 0 );
+	\end{tikzpicture}
+\end{example}
+
+\begin{theorem}
+	\begin{tabularx}{\textwidth}{l>{\ }X}
+		\setlength\tabcolsep{0pt}
+		Es seien $ f : X \to Y $ eine Abbildung & und $ A_1, A_2 $ Teilmengen von $ X $ (d.h. $ A_1 \subseteq X, A_2 \subseteq X $)\\
+		~& sowie $ B, B_1, B_2 $ Teilmengen von $ Y $ (d.h. $ B, \subseteq Y, B_1 \subseteq Y, B_2 \subseteq Y $)\\
+	\end{tabularx}\\
+	Dann gelten folgende Aussgaen:
+	\begin{enumerate}[label=(\arabic*)]
+		\item $ A_1 \subseteq A_2 \implies f(A_1) {\color{yellow} \subseteq} f(A_2) $\\
+			$ B_1 \subseteq B_2 \implies f^{-1}(B_1) { \color{yellow} \subseteq } f^{-1}(B_2) $\\
+			d.h. sowohl ``Bild als auch Urbild'' respektieren die Inklusion
+		\item \label{enum:2023-10-21-01-53}$ f(A_1 \cup A_2) = f(A_1) \cup f(A_2) = \{ f(a) : a \in A_1 \cup A_2 \} $\\
+			$ f(A_1 \cap A_2) \subseteq f(A_1) \cap f(A_2) $
+		\item $ f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2) $\\
+			$ f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2) $\\
+	\end{enumerate}
+\end{theorem}
+Zum Beweis der ersten Aussage in \ref{enum:2023-10-21-01-53} zeigen wir
+\[ I f(A_1 \cup A_2) \subseteq f(A_1) \cup f(A_2) \]
+\[ II f(A_1) \cup f(A_2) \subseteq f(A_1 \cup A_2) \]
+\par
+\begin{description}
+	\item[I.] Sei $ y \in f(A_1 \cup A_2) $. Z.z.: $ y \in f(A_1) \wedge f(A_2) $\\
+		Da $ y \in f(A_1 \cup A_2) $, existiert ein 
+		\[ a \in A_1 \cup A_2 \text{ (d.h. $ a \in A_1 \wedge A_2 $)} \]
+		mit
+		\[ f(a) = y. \]
+		\begin{description}
+			\item[1. Fall:] ($ a \in A_1 $).\quad Dann existiert also $ a \in A_1 $ mit $ f(a) = y $, also
+				\[ y \in f(A_1) \]
+			\item[2. Fall:] ($ a \in A_2 $).\quad Dann existiert also $ a \in A_2 $ mit $ f(a) = y $, also
+				\[ y \in f(A_2) \]
+		\end{description}
+		Insgesamt folgt
+		\[ y \in f(A_1) \vee y \in f(A_2), \qed \]
+	\item[II.] Sei $y \in f(A_1) \cup f(A_2) $. Z.z.: $ y \in f(A_1 \cup A_2) $\\
+		Da $ y \in f(A_1) \cup f(A_2) $, folgt
+			\[ y \in f(A_1) \vee f(A_2) \]
+		\begin{description}
+			\item[1. Fall:] $ y \in f(A_1) $. Dann existiert $ a \in A_1 $ mit
+				\begin{equation}
+					\label{eq:2023-10-21-02-13}
+					y = f(a)
+				\end{equation}
+				Da $ A_1 \subseteq ( A_1 \cup A_2 ) $ folgt $ a \in ( A_1 \cup A_2 ) $, also (wegen \ref{eq:2023-10-21-02-13}) $ y \in f(A_1 \cup A_2) $
+			\item[2. Fall:] $ y \in f(A_2) $. Dann existiert $ a \in A_2 $ mit
+				\begin{equation}
+					\label{eq:2023-10-21-02-13_2}
+					y = f(a)
+				\end{equation}
+				Da $ A_2 \subseteq ( A_1 \cup A_2 ) $ folgt $ a \in ( A_1 \cup A_2 ) $, also (wegen \ref{eq:2023-10-21-02-13_2}) $ y \in f(A_1 \cup A_2) $
+		\end{description}
+\end{description}
+
+\section{Verkettung von Funktionen}
+\begin{tikzpicture}
+	\draw ( 0, 0) circle [x radius = 1, y radius = 2];
+	\node at ( -1, 2 ) {$X$};
+	\draw ( 3, 0) circle [x radius = 1, y radius = 2];
+	\node at ( 2, 2 ) {$Y$};
+	\draw ( 6, 0) circle [x radius = 1, y radius = 2];
+	\node at ( 5, 2 ) {$Z$};
+	\draw[->, > = stealth] ( 1.1, 0 ) to [out = 5, in = 175] node [anchor = south] {$ f $} ( 1.9, 0);
+	\draw[->, > = stealth] ( 4.1, 0 ) to [out = 5, in = 175] node [anchor = south] {$ g $} ( 4.9, 0);
+	\draw[->, > = stealth] ( 0.7, -2 ) to [out = -30, in = -150] node [anchor = north] {$ h(x) = g(\underbrace{f(x)}_{\in Y}) $} ( 5.3, -2 );
+\end{tikzpicture}
+\begin{definition}
+	Die \underline{Identität auf $ X $} (identische Abbildung auf $ X $) ist die Abbildung
+	\[ \operatorname{id}_x : X \to X, x \mapsto x \]
+	z.B. $ \operatorname{id}_{\R} : \R \to \R, x \mapsto x $\\
+	$ \quad \operatorname{id}_{\{1, 2\}} : \{ 1, 2 \} \to \{ 1, 2 \}, 1 \mapsto 1, 2 \mapsto 2 $
+\end{definition}
+
+\begin{definition}
+	Seien $ f : X \to Y_1, g : Y_2 \to Z $ zwei Abbildungen mit 
+	\[ f(X) \subseteqq Y_2 \]
+	Die \underline{Verkettung $ g \circ f $} (lies ``$ g $ nach $ f $'') ist die Abbildung
+	\[ g \circ f : X \to Z, x \mapsto g(f(x)) \]
+	d.h.
+	\[ g \circ f \coloneqq g(f(x)) \quad \text{für alle $ x \in X $} \]
+	! Zuerst wird $ f $ angewendet, dann $ g $. !
+\end{definition}
+
+\begin{example}
+	$ f :
+	\begin{cases}
+		\R_{0}^{+} \to \R_{0}^{+}\\
+		x \mapsto x^2
+	\end{cases},
+	g :
+	\begin{cases}
+		\R_{0}^{+} \to \R_{0}^{+}\\
+		x \mapsto \sqrt{x}
+	\end{cases} $
+	Es können beide Verkettungen $ g \circ g $ und $ f \circ g $ gebilded werden. Für $ x \in \R_{0}^{+} $:
+	\[ ( g \circ f )(x) = g(f(x)) = g(x^2) = \sqrt{x^2} = \mid x \mid = x \text{ da $ x \in \R_{0}^{+} $} \]
+	\[ ( f \circ g )(x) = f(g(x)) = f(\sqrt{x}) = \sqrt{x}^2 = x \]
+	\[ g \circ f = f \circ g = \operatorname{id}_{\R_0^+} \]
+\end{example}
+
+\begin{definition}
+	$ f : X \to Y $ heißt bijektiv, wenn sie surjektiv und injektiv ist.
+\end{definition}
+
+\begin{theorem}
+	Sei $ f : X \to Y $ eine Abbildung.
+	\begin{enumerate}[label=(1\arabic*)]
+		\item \label{enum:2023-10-21-03-17} Existiert eine Abbildung $ g : Y \to X $ mit
+			\[ g \circ f = \operatorname{id}_x, \]
+			dann ist $ f $ injektiv.
+		\item \label{enum:2023-10-21-03-18} Existiert eine Abbildung $ h: Y \to X $ mit
+			\[ f \circ h = \operatorname{id}_y, \]
+			dann ist $ f $ surjektiv.
+		\item $ f $ ist genau dann \underline{bijektiv}, wenn es eine Abbildung $ g : Y \to X $ mit
+			\[ g \circ f = \operatorname{id}_x \text{ und} \]
+			\[ f \circ g = \operatorname{id}_y \]
+			gibt.
+	\end{enumerate}
+	\begin{proof}
+		\begin{enumerate}[label=(\arabic*)]
+			\item Es sei also $ g : Y \to X $ eine Abbildung mit
+				\[ g \circ f = \operatorname{id}_x \]
+				d.h.
+				\begin{equation}
+					\label{eq:2023-10-21-03-07}
+					g(f(x)) = x \quad \text{für alle $ x \in X $}
+				\end{equation}
+				Z.z.: $ f $ ist surjektv.\\
+				Es seien $x_1, x_2 \in X $ mit $ f(x_1) = f(x_2) $. Z.z.: $ x_1 = x_2 $\\
+				Da $ f(x_1) = f(x_2) $, folgt
+				\[ g(f(x_1)) = g(f(x_2)). \]
+				Wegen \ref{eq:2023-10-21-03-07} folgt $ x_1 = x_2 $
+			\item Sei $ h : Y \to X $ mit
+				\[ f \circ h = \operatorname{id}_y, \]
+				d.h. es gilt
+				\begin{equation}
+					\label{eq:2023-10-21-03-13}
+					f(h(y)) = y \quad \text{für alle $ y \in Y $}
+				\end{equation}
+				Z.z.: $ f $ ist surjektiv. Sei dazu $ y \in Y $ (z.z.: $ \exists x \in X : f(x) = y $)\\
+				Setze
+				\[ x \coloneqq h(y) \]
+				Dann gilt $ x \in X $ und wegen \ref{eq:2023-10-21-03-13} $ f(x) = f(h(y)) = y $
+			\item ``$\impliedby$'' kar mit \ref{enum:2023-10-21-03-17} und \ref{enum:2023-10-21-03-18}\\
+				``$\implies$'' Uff!
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
 
 \end{document}
