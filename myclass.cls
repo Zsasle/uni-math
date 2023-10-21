@@ -1,10 +1,15 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{myclass}[2023/10/22 1.0 myclass]
+
+\LoadClass[a4paper, parskip = true, fleqn]{scrartcl}
+
 %%%%%%%%%%%%%%
 %%% layout %%%
 %%%%%%%%%%%%%%
 
 \RequirePackage{layout}
-\RequirePackage[top=2cm, left=2cm, right=2cm, bottom=2cm]{geometry}
-\RequirePackage{scrlayer-scrpage}
+\RequirePackage[top=3cm, left=2cm, right=2cm, bottom=2cm]{geometry}
+\RequirePackage[headsepline]{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \automark[section]{section}
 \ihead{\normalfont\scshape\headmark}
@@ -255,7 +260,7 @@ cross/.default={1pt}}
 	\hrule height 0.8pt%
 	%\setlength\topsep{0pt}%
 	\begin{center}%
-		%\unskip%
+		\unskip%
 		\ifx\mysubtitle\undefined%
 		{\LARGE \mytitle}\\%
 		\else%
