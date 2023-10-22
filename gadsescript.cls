@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{myclass}[2023/10/22 1.0 myclass]
+\ProvidesClass{gadsescript}[2023/10/22 1.0 gadse script]
 
-\LoadClass[a4paper, parskip = true, fleqn]{scrartcl}
+\LoadClass[a4paper, parskip = true]{scrartcl}
 
 %%%%%%%%%%%%%%
 %%% layout %%%
@@ -24,7 +24,6 @@
 \renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
 \renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
 \setkomafont{disposition}{\raggedright\large\bfseries}
-%\RedeclareSectionCommand[beforeskip = 0pt, afterindent = false, indent = -200pt]{section}
 
 \setlength\parindent{1em}
 \newcommand{\saveparinfos}{%
@@ -43,29 +42,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %math and physics
-\RequirePackage{amsmath}
+\RequirePackage[fleqn]{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
 \RequirePackage{siunitx}
 \RequirePackage{tikz}
-\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},%
-%default radius will be 1pt.
-cross/.default={1pt}}
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
+
 %not math
 \RequirePackage[T1]{fontenc}
 \RequirePackage{enumitem}
 \RequirePackage{tabularx, booktabs}
 \RequirePackage{multicol}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% not necessary packages %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\RequirePackage[ngerman]{babel}
-\RequirePackage{ulem}
 
 
 %%%%%%%%%%%%%%
@@ -109,6 +98,7 @@ cross/.default={1pt}}
 		breakable
 	}
 }
+
 \newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
 	%\setlength\parindent{1em}
 	\newcounter{#1#2number}[#1section]%
@@ -122,6 +112,7 @@ cross/.default={1pt}}
 		\end{cache#1#2box}%
 	}
 }
+
 \newtcolorbox{important}[1][]{
 	title		= Important: #1,
 	fonttitle	= \bfseries,
@@ -236,36 +227,53 @@ cross/.default={1pt}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
-%\let\crossprod\times
-%\let\times\ast
 
 %%%%%%%%%%%%%
 %%% specs %%%
 %%%%%%%%%%%%%
 
-\newcommand{\setmytitle}[1]{\newcommand{\mytitle}{#1}}
-\newcommand{\setmysubtitle}[1]{\newcommand{\mysubtitle}{#1}}
-\newcommand{\makemytitle}{%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% makes my titlepage %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% defines command to change title, subtitle and titleheaders
+\newcommand{\definetitles}[1]{%
+	\expandafter\gdef\csname set#1\endcsname##1{%
+		\expandafter\gdef\csname #1\endcsname{##1}%
+	}%
+}
+
+\definetitles{title}
+\definetitles{subtitle}
+\definetitles{titlelh}
+\definetitles{titlerh}
+
+% sets title headers
+\settitlelh{\today\\Wintersemester 2023/2024}
+
+\settitlerh{Universität Konstanz\\Fachbereich Mathematik und Statistik}
+
+% sets maketitle
+\renewcommand{\maketitle}{%
 	\begingroup%
 	\setlength\multicolsep{\baselineskip}%
 	\begin{multicols}{2}%
 		\raggedright%
-		\today\\%
-		Wintersemester 2023/2024\\%
+		\titlelh\\
 		\columnbreak%
 		\raggedleft%
-		Universität Konstanz\\%
-		Fachbereich Mathematik und Statistik%
+		\titlerh
 	\end{multicols}%
 	\hrule height 0.8pt%
 	%\setlength\topsep{0pt}%
 	\begin{center}%
 		\unskip%
 		\ifx\mysubtitle\undefined%
-		{\LARGE \mytitle}\\%
+		{\LARGE \title}\\%
 		\else%
-		{\LARGE \mytitle}\\[2pt]%
-		{\large \mysubtitle}\\%
+		{\LARGE \title}\\[2pt]%
+		{\large \subtitle}\\%
 		\fi%
 	\end{center}%
 	\endgroup%
