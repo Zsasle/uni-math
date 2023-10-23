@@ -1,7 +1,160 @@
 \documentclass{gadsescript}
 
+\usepackage[ngerman]{babel}
+%\usepackage[english=quotes]{csquotes}
+
+
 \settitle{Integrierter Kurs I}
 
 \begin{document}
 \maketitle
+\begin{itemize}
+	\item novak.uni-konstanz.de
+	\item Tobias Dannegger macht Übungsgruppe Zeug
+	\item nach der Vorlesung in Übungsgruppen einteilen
+		\begin{itemize}
+			\item Übungsgruppe wechseln möglich
+		\end{itemize}
+	\item theoretisch erste Aufgaben heute, aber nicht weil nächste Woche Mittwoch Feiertag
+	\item Bepunktete Aufgaben
+		\begin{itemize}
+			\item ist abzugeben (und zu machen lol)
+			\item wird bepunkted
+		\end{itemize}
+	\item Unbepunktete Aufgaben
+		\begin{itemize}
+			\item sagen ob wir sie gemacht haben oder nicht
+			\item[->] an der Tafel dann vorrechnen
+		\end{itemize}
+	\item Präsenzaufgaben
+		\begin{itemize}
+			\item werden nicht bewertet und sind zur Selbstkontrolle
+		\end{itemize}
+	\item Scripts on ILIAS
+		\begin{itemize}
+			\item hat er während Corona geschrieben
+			\item ``aber trotzdem schöne Ergänzung''
+		\end{itemize}
+\end{itemize}
+
+\section{Inhalt}
+\%\%\% Wo finden? aber gibt Dokument \%\%\%
+\begin{itemize}
+	\item  Messung und Einheiten
+	\item Vektoralgebra und physikalischer Raum
+	\item Mechanik des Massenpunkts
+	\item Eindimensionale Systeme
+	\item Vektoranalysis
+	\item Bewegung in drei Dimensionen
+	\item Erhaltungssätze in Mehrteilchensystemen
+	\item Dynamik starrer ausgedehnter Körper
+\end{itemize}
+\%\%\% Fertig \%\%\%
+
+Vorlesungen werden \textbf{nicht} aufgezeichnet
+
+\section{Willkommen zur Vorlesung Integrierter Kurs Physik 1: ``Mechanik''}
+Prof. Dr. Marina Müller\\
+Vorlesungs-``Skript'': Wolfgang Demtröder, Experimentalphysik 1 Mechanik und Wärme\\
+\indent\quad weiter Materialien auf ILIAS\\
+\indent\qquad V01\_2023-10-23\_Folien.pdf\\
+
+\textbf{lesen Sie Lehrbücher}
+\begin{itemize}
+	\item Brandt, Dahmen: Mechanik
+	\item Torsten Fließbach: Mechanik
+	\item Friedhelm Kuypers: Klassische Mechanik
+	\item Dieter Meschede Hrsg.: Gerthsen Physik\\
+		\indent$\quad \vdots$
+\end{itemize}
+
+\textbf{gehen Sie in die Uni, wenn Sie recherchieren wollen}
+
+\subsection{Womit beschäftigt sich die Physik?}
+\begin{itemize}
+	\item Physik, von griechisch $\Phi\nu\sigma\iota\kappa...$\\
+	\item Die Physik beschäftigt sich vom kleinsten im Universum bis zum größten
+	\item Wir beginnen mit der Mechanik
+		\begin{itemize}
+			\item eines der ältesten Teilgebiete der Physik
+			\item Grundlage
+		\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Daten
+		\begin{itemize}
+			\item sind eindeutig
+		\end{itemize}
+	\item Fakten
+		\begin{itemize}
+			\item sind nicht eindeutig
+			\item Modell/Interpretation liegt zugrunde
+		\end{itemize}
+\end{itemize}
+
+``... there are known knowns;\\there are things we know we know.\\~\\We also know there are known unkowns; that to say...''\\
+Wir beschäftigen uns in den Vorlesungen mit dem ``known knowns''\\
+\indent\quad KI kann nur \textbf{``known knowns''}-Zeug, weil input nur aus \textbf{``known knowns''} besteht??
+
+\section{Integreiter Kurs Physik 1}
+\subsection{Messungen und Einheiten [D1, 1.6]}
+Für experminetelle Beobachtungen brachen wir eindeutige Meßvorschriften:\\
+Physikalische Größe:
+\begin{align*}
+	u &= \{u\}[u]\\
+	~&= \{u\} \text{ Zahlenwert, Meßzahl}\\
+	~&= [u]: \text{ Einheit}
+\end{align*}
+
+\textbf{Wichtige Grundgrößen in der Physik}
+\begin{itemize}
+	\item Zeit $t$ in Sekunden: $[t] = \unit{\second}$
+	\item Länge $L$ in Metern: $[L] = \unit{\metre}$
+	\item Masse $m$ in Kilogramm: $[m] = \unit{\kilogram}$
+	\item SI: systéme internationale (diumités)
+\end{itemize}
+Alle Basiseinheiten sind Normale oder Standards definiert\\
+\indent$\quad\Rightarrow$ seit 2019: Definition der Einheiten über \textbf{Naturkonstanzen} = const.\\
+
+\textbf{Mechanik}	\quad Zeit		\quad Länge	\quad Masse\\
+\indent$\qquad\qquad\qquad\unit{\second}$\\
+\textbf{Thermodynamik}	\quad Temperatur	\quad Stoffmenge\\
+\textbf{Elektrodynamik}	\quad Stromstärke\\
+\textbf{Optik}		\quad Lichtstärke
+
+\subsubsection{Zeit [D1, 1.6 / Wikipedia (Wiki)]}
+Allgemein: jedes sich periodisch wiederholende Phänomen\\
+z.B. Natur gibt Tag bzw Jahr $\rightarrow$ in der Praxis zu groß $\rightarrow$ teilen in Std, Min, s\\
+\indent\quad 1 Tag $\leftrightarrow$ Rotationsperoder der Erde $\hat= 24 \times 60 \times 60$\\
+
+\textbf{SI System:}\\
+``Die Sekunde ist die Dauer von $9192.631.770$ Schwingungsperioden der Strahlung, die dem Übergang zwischen den beiden Hyperfeinstrukturniveaus des Grundzustand eines ruhenden Atoms des Isotops Cäsiums-133 entspricht.''\\
+
+\begin{tikzpicture}
+	\draw (0, 0) -- (4, 0);
+	\draw (0, 2) -- (4, 2);
+	\draw[<->] (0.2, 0) -- node [anchor = west] {$\Delta E$}(0.2, 2);
+\end{tikzpicture}
+\[ \Delta E = h \Delta \nu_{Cs} \rightarrow \Delta\nu_{Cs} = \frac{\Delta E}{h} \]
+\[ \Delta\nu \coloneqq 9192631700 \unit{\per\second} \]
+\[ \Delta\nu_{Cs} = 9.192631770 \unit{\giga\hertz} \]
+\[ \Delta\nu = 9.19... \cdot 10^{9}\unit{\hertz} \]
+
+\subsubsection{Länge}
+lichtgeschwindigkeit im Vakuum $ c_0 \coloneqq 299792458 \unit{\metre\per\second} $\\
+$\qty{1}{\metre} \hat= \text{ Entfernung, die Licht ``$\frac{1}{c} \unit{\second}$'' zurücklegt} $\\
+
+\subsubsection{Masse}
+Planksche Wirkungsquantum (``Energie $\times$ Zeit'')
+\[ h = \qty{6.62607015e-34}{\kilogram\square\meter\per\second} \]
+$\rightarrow$ Masse \textbf{formal} exakt definiert über Definition von Sekunde und Meter\\
+
+\textbf{MKS System:}
+\begin{itemize}
+	\item Sekund $\rightarrow$ $\Delta\nu_{Cs}$
+	\item Meter $\rightarrow$ $ c[\unit{\metre\per\second]}$  $\rightarrow$(impplizit) $\unit{s}$
+	\item Kilogram $\rightarrow$ $h [\unit{\kilogram\square\metre\per\second]}$ $\rightarrow$(impliziert) $\unit{s}$, $\unit{\metre}$
+\end{itemize}
+
 \end{document}
