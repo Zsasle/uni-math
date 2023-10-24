@@ -1,0 +1,24 @@
+\documentclass{gadsescript}
+
+\usepackage[ngerman]{babel}
+
+\settitle{Zettel 1}
+\begin{document}
+\maketitle
+\section{Aufgabe 1}
+$ n \coloneqq \text{ Anzahl der Studierenden }, n \in \N $\\
+Beh.: Alle Studierende der Analysis 1-Vorlesung haben denselben Namen.\\
+\begin{description}
+	\item[I.A. ( $ n = 1 $)] ein*e Student*in hat einen Namen
+	\item[I.S.]
+		\begin{description}
+			\item[I.V.] $ n $ Studenten haben denselben Namen
+		\end{description}
+		
+\end{description}
+
+\hrule
+
+Der Fehler liegt darin, dass für $ n = 1 $ die Mengen $ M_1 \coloneqq \{ a_1, \dotsc, a_n \} $ und $ M_2 \coloneqq \{ a_2, \dotsc, a_n+1 \} $, folgendes gilt: $M_1 \cap M_2 = \emptyset$, also gibt es keine Personen die sowohl in $ M_1 $ und $ M_2 $ sind, also müssen die Person(en) in $ M_1 $ und $ M_2 $ nicht denselben Namen tragen.
+
+\end{document}
