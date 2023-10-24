@@ -51,7 +51,10 @@
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 
 %not math
+\RequirePackage[ngerman, english]{babel}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\RequirePackage[babel]{csquotes}
 \RequirePackage{enumitem}
 \RequirePackage{tabularx, booktabs}
 \RequirePackage{multicol}
