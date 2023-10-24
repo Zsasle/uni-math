@@ -5,7 +5,7 @@
 \settitle{Zettel 1}
 \begin{document}
 \maketitle
-\section{Aufgabe 1}
+\section*{Aufgabe 2}
 $ n \coloneqq \text{ Anzahl der Studierenden }, n \in \N $\\
 Beh.: Alle Studierende der Analysis 1-Vorlesung haben denselben Namen.\\
 \begin{description}
@@ -17,8 +17,91 @@ Beh.: Alle Studierende der Analysis 1-Vorlesung haben denselben Namen.\\
 		
 \end{description}
 
-\hrule
+\noindent\rule{\textwidth}{0.4pt}
 
-Der Fehler liegt darin, dass für $ n = 1 $ die Mengen $ M_1 \coloneqq \{ a_1, \dotsc, a_n \} $ und $ M_2 \coloneqq \{ a_2, \dotsc, a_n+1 \} $, folgendes gilt: $M_1 \cap M_2 = \emptyset$, also gibt es keine Personen die sowohl in $ M_1 $ und $ M_2 $ sind, also müssen die Person(en) in $ M_1 $ und $ M_2 $ nicht denselben Namen tragen.
+Der Fehler liegt darin, dass für $ n = 1 $ die Mengen $ M_1 \coloneqq \{ a_1, \dotsc, a_n \} $ und $ M_2 \coloneqq \{ a_2, \dotsc, a_n+1 \} $, folgendes gilt: $M_1 \cap M_2 = \emptyset$, also gibt es keine Personen die sowohl in $ M_1 $ und $ M_2 $ sind. Dementsprechend gilt nicht, dass $ a_1 $ und $ a_2 $ denselben Namen haben müssen.
+
+\section*{Aufgabe 3}
+Wir wollen mithilfe vollständiger Induktion beweisen, dass
+\[ \forall \sum_{i=1}^{n} i = \frac{ n ( n+1 ) }{ 2 }. \]
+\begin{description}
+	\item[I.A. ($ n = 1 $)]
+		\[ \sum_{ i = 1 }^{ 1 } i = 1 = \frac{ 2 }{ 2} \frac{ 1 ( 1 + 1 ) }{ 2 } \]
+	\item[I.S.] ~
+		\begin{description}
+			\item[Induktionsannahme ( = Induktionsvorraussetzung (I.V.))]
+				\[\sum_{ i = 1 }{ n } i = \frac{ n ( n + 1 }{ 2 } \]
+		\end{description}
+		z.z.
+		\begin{equation}
+			\label{eq:Aufgabe 3.zu-zeigen}
+			\sum_{ i = 1 }^{ n + 1} = \frac{ ( n + 1 ) ( ( n + 1 ) + 1 ) }{ 2 }
+		\end{equation}
+		Für die linke Seite gilt:
+		\[ \sum_{ i = 1 }^{ n + 1 } = \sum_{ i = 1 }^{ n } + n + 1 \]
+		nach I.V. und den Rechengesetzen für Addition und Multiplikation ganzer Zahlen gilt:
+		\begin{align*}
+			\sum_{ i = 1 }^{ n + 1 } &= \sum_{ i = 1 }^{ n } + n + 1\\
+			~&= \frac{ n ( n + 1 ) }{ 2 } + n + 1 \\
+			~&= \frac{ n ( n + 1 ) }{ 2 } + ( n + 1 ) \times 1\\
+			~&= \frac{ n ( n + 1 ) }{ 2 } + ( n + 1 ) \times \frac{2}{2}\\
+			~&= \frac{ n ( n + 1 ) }{ 2 } + \frac{ ( n + 1 ) \times 2 }{2}\\
+			~&= \frac{ n ( n + 1 ) }{ 2 } + \frac{ 2 ( n + 1 ) }{2}\\
+			~&= \frac{ n ( n + 1 ) + 2 ( n + 1 ) }{2}\\
+			~&= \frac{ ( n + 2 ) ( n + 1 ) }{2}\\
+			~&= \frac{ ( n + 1 ) ( n + 2 ) }{2}\\
+			~&= \frac{ ( n + 1 ) ( ( n + 1 ) + 1 ) }{2}\qed
+		\end{align*}
+\end{description}
+
+\textbf{Bonus}
+Es gilt:
+\[ \sum_{ i = 1 }^{ n } i = 1 + 2 + 3 + \dotsb + n - 2 + n - 1 + n. \]
+Daraus folgt, dass 
+\[ 2 \sum_{ i = 1 }^{ n } i = \]
+\begin{alignat*}{7}
+	&&& \omit\hfill 1 \hfill &\,+\,& \omit\hfill 2 \hfill &\,+\,& \omit\hfill 3 \hfill &\,+ \dotsb +\,& \omit\hfill n - 2 \hfill &\,+\,& \omit\hfill n - 1 \hfill &\,+\,& \omit\hfill n \hfill\\
+	&&+\,& \omit\hfill n \hfill &\,+\,& \omit\hfill n - 1 \hfill &\,+\,& \omit\hfill n - 2 \hfill &\,+ \dotsb +\,& \omit\hfill 3 \hfill &\,+\,& \omit\hfill 2 \hfill &\,+\,& \omit\hfill 1 \hfill\\
+	&&=\,& \omit\hfill ( n + 1 ) \hfill &\,+\,& \omit\hfill ( n + 1 ) \hfill &\,+\,& \omit\hfill ( n + 1 ) \hfill &\,+ \dotsb +\,& \omit\hfill ( n + 1 ) \hfill &\,+\,& \omit\hfill ( n + 1 ) \hfill &\,+\,& \omit\hfill ( n + 1 ) \hfill.\\
+\end{alignat*}
+Da diese Summe aus $ n $ Summanden besteht, die alle $ n + 1 $ sind, folgt
+\begin{align*}
+	2 \sum_{ i = 1 }^{ n } i & = n ( n + 1 )\\
+	\sum_{ i = 1 }^{ n } i & = \frac{n ( n + 1 )}{2}\qed
+\end{align*}
+
+\section*{Aufgabe 3}
+Wir zeigen mithilfe vollständiger Induktion, dass
+\[ \sum_{ k = 1 }^{ n } k^3 = \frac{ n^2 ( n + 1 )^2 }{ 4 } \]
+gilt.
+\begin{description}
+	\item[I.A. ($ n = 1 $)]
+		\[ \sum_{ k = 1 }^{ 1 } k^3 = 1^3 = \frac{2^2}{4} = 1^3 \frac{ 1^2 ( 1 + 1 )^2 }{ 4 } \]
+	\item[I.S.] ~
+		\begin{description}
+			\item[I.V.]
+				\[ \sum_{ k = 1 }^{ n } k^3 = \frac{ n^2 ( n + 1 )^2 }{ 4 } \]
+		\end{description}
+		Z.z.:
+		\[ \sum_{ k = 1 }^{ n + 1 } k^3 = \frac{ ( n + 1 )^2 ( ( n + 1 ) + 1 )^2 }{ 4 } \]
+		Für die linke Seite folgt aus I.V. und Rechengesetzen für Potenzen, Multiplikation und Addition:
+		\begin{align*}
+			\sum_{ k = 1 }^{ n + 1 } k^3 &= \sum_{ k = 1 }^{ n } k^3 + ( n + 1 )^3\\
+			~&= \frac{ n^2 ( n + 1 )^2 }{ 4 } + ( n + 1 )^3 \times \frac{4}{4}\\
+			~&= \frac{ n^2 ( n + 1 )^2 }{ 4 } + \frac{4( n + 1 )^3 }{4}\\
+			~&= \frac{ n^2 ( n + 1 )^2 + 4( n + 1 )^3 }{4}\\
+			~&= \frac{ n^2 {\color{red}( n + 1 )^2} + 4( n + 1 ) {\color{red} ( n + 1 )^2 } }{4}\\
+			~&= \frac{ [ n^2 + 4( n + 1 ) ] {\color{red} ( n + 1 )^2 } }{4}\\
+			~&= \frac{ [ n^2 + 4n + 4 ] ( n + 1 )^2 }{4}\\
+		\end{align*}
+		Mithilfe der ersten binomischen Formel lässt sich $ n^2 + 4n + 4 $ auch als $ ( n + 2 )^2 $ schreiben:
+		\[ \sum_{ k = 1 }^{ n + 1 } k^3 = \frac{ ( n + 2 )^2 ( n + 1 )^2 }{4} \]
+		Aus den Gesetzen für Multiplikation und Addition folgt schließlich:
+		\begin{align*}
+			\sum_{ k = 1 }^{ n + 1 } k^3 &= \frac{ ( n + 1 )^2 ( n + 2 )^2 }{4}\\
+			~&= \frac{ ( n + 1 )^2 ( ( n + 1 ) + 1 )^2 }{4} \qed
+		\end{align*}
+
+\end{description}
 
 \end{document}
