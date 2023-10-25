@@ -1,10 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gadsescript}[2023/10/22 1.0 gadse script]
 
+\gdef\consecutivenumbering{0}
+\DeclareOption{consecutivenumbering}{
+	\gdef\consecutivenumbering{1}
+	\typeout{im here}
+}
+\ProcessOptions\relax
+
 \LoadClass[a4paper, parskip = true]{scrartcl}
 
-\newcommand{\consecutivenumbering}{0}
-\DeclareOption{consecutive numbering}{\renewcommand{\consecutivenumbering}{1}}
 
 %%%%%%%%%%%%%%
 %%% layout %%%
@@ -31,6 +36,7 @@
 	\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
 	\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
 \fi
+
 \setkomafont{disposition}{\raggedright\large\bfseries}
 
 \setlength\parindent{1em}
@@ -110,19 +116,33 @@
 	}
 }
 
-\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
-	%\setlength\parindent{1em}
-	\newcounter{#1#2number}[#1section]%
-	\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}%
-	\myboxenvironment{#1}{#2}{#3}{#4}%
-	\newenvironment{#1#2}[1][]{%
-		\refstepcounter{#1#2number}%
-		\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}%
-			\setlength\parindent{1em}%
-		}{%
-		\end{cache#1#2box}%
+\if\consecutivenumbering 0
+	\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
+		%\setlength\parindent{1em}
+		\newcounter{#1#2number}[#1section]%
+		\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}%
+		\myboxenvironment{#1}{#2}{#3}{#4}%
+		\newenvironment{#1#2}[1][]{%
+			\refstepcounter{#1#2number}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
 	}
-}
+\else
+	\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
+		%\setlength\parindent{1em}
+		\myboxenvironment{#1}{#2}{#3}{#4}%
+		\newenvironment{#1#2}[1][]{%
+			\refstepcounter{#1environmentnumber}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1environmentnumber\endcsname\quad{##1}}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
+	}
+\fi
 
 \newtcolorbox{important}[1][]{
 	title		= Important: #1,
@@ -157,10 +177,26 @@
 %%% these environments I use %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\myenvironment}[3]{%
-	\cachemyenvironment{}{#1}{#2}{#3}%
-	\cachemyenvironment{sub}{#1}{#2}{#3}%
-}
+\if\consecutivenumbering0
+	\newcommand{\myenvironment}[3]{%
+		\cachemyenvironment{}{#1}{#2}{#3}%
+		\cachemyenvironment{sub}{#1}{#2}{#3}%
+		\cachemyenvironment{subsub}{#1}{#2}{#3}%
+	}
+\else
+	\newcounter{environmentnumber}[section]%
+	\newcounter{subenvironmentnumber}[subsection]%
+	\newcounter{subsubenvironmentnumber}[subsubsection]%
+	\expandafter\renewcommand\csname theenvironmentnumber\endcsname{\csname thesection\endcsname.\arabic{environmentnumber}}%
+		\expandafter\renewcommand\csname thesubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subenvironmentnumber}}%
+		\expandafter\renewcommand\csname thesubsubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subsubenvironmentnumber}}%
+
+	\newcommand{\myenvironment}[3]{%
+		\cachemyenvironment{}{#1}{#2}{#3}%
+		\cachemyenvironment{sub}{#1}{#2}{#3}%
+		\cachemyenvironment{subsub}{#1}{#2}{#3}%
+	}
+\fi
 
 \myenvironment{example}		{gadse-orange}%
 				{gadse-red}%
