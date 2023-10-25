@@ -1,0 +1,44 @@
+\documentclass{gadsescript}
+\usepackage{marvosym}
+
+
+\settitle{IK1 Übungsgruppe 2 (P712)}
+
+\begin{document}
+\maketitle
+Daniel Schick\\
+P718\\
+dniel.schick@uni-konstanz.de\\
+Blätter\\
+\begin{itemize}
+	\item 60 \%
+	\item 60 \%
+\end{itemize}
+
+\section*{Aufgabe 1: Dimensionen}
+\begin{enumerate}[label=\alph*)]
+	\item \[ [T] = [2 \pi] \sqrt{\frac{[L]}{[g]}} \]
+		\[ \unit{\second} = 1 \sqrt{\frac{\unit{\metre}}{\unit{\metre\per\square\second}}} \]
+		\[ \unit{\second} = \sqrt{\unit{\square\second}} \]
+	\item \[ [x_w] = \frac{[v_0^2]}{[2g]} \left([1] + \left( [1] + \frac{[2gh]}{[v_0\operatorname{sin}^2(\phi)} \right)^{\frac{1}{2}} \right) [\sin (2\phi)] \]
+		\[ \unit{\metre} = \unit{\metre\square\second\per\metre\per\square\second} \left( 1 + \left( 1 + \unit{\square\metre\second\per\metre\per\square\second} \right)^{\frac{1}{2}} \right) \times 1 \]
+		\[ 1 \left( 1 + \left( \underbrace{1 + \unit{\metre\per\second}}_{\text{ERROR}} \right)^{\frac{1}{2}} \right) \]
+\end{enumerate}
+
+\section*{Aufgabe 2: Vorfaktoren und Umrechnung}
+\begin{enumerate}[label=\alph*)]
+	\item $ \frac{\qty{1.5e6}{\watt}}{\qty{60}{\watt}} = 25000 $
+	\item zweitausen  Quettagramm $ = \qty{2e30}{\kilogram} $\\
+		\num{1.67} Yoktogramm $ = \qty{1.67e-27}{\kilogram} $\\
+		$ 3 \times \qty{1.67e-27}{\kilogram} + 4 \times \qty{1.67e-27}{\kilogram} $\\
+		$ = \qty{15.0467e-27}{\kilogram} $ für 4 Atome\\
+		$ \frac{4\times\qty{2e30}{\kilogram}}{\text{Masse für vier Atome}} = \frac{\qty{8e30}{\kilogram}}{\qty{15.0467}{\kilogram}} = \frac{\num{8e57}}{\num{15.0467}} $
+	\item $ \qty{2.4e9}{Euro} $
+	\item Kosten $ \times $ Anzahl $ = $ Kosten $ \times \frac{\text{Wörter}}{\text{Wörter pro Doppelseite}} $\\
+		$ \num{60e-3}Euro \times \frac{\num{4.5e9}}{2 \times 300} = \qty{450e3}{Euro}$\\
+		Wir haben \qty{466e6}{Euro} zur verfügung
+	\item $ \qty{1.5e-2}{\metre}^3 = \qty{3.375e-6}{\metre} = \qty{3.375e-3}{\litre} $
+	\item $ \frac{\qty{514.2e-12}{\metre}}{\qty{1e-10}{\metre}}^3 = \num{514.2} $
+	\item $ \qty{300e6}{\metre\per\second} \times \qty{250e-18}{\second} = \qty{7.5e-8}{\metre} $
+\end{enumerate}
+\end{document}

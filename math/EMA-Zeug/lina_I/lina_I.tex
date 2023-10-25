@@ -1,0 +1,87 @@
+\documentclass[consecutivenumbering]{gadsescript}
+
+\settitle{Plenumsübung Lineare Algebra}
+
+\begin{document}
+\maketitle
+
+\section*{Organisatorisches}
+\textbf{Sebastian} Krapp\\
+sebastian.krapp@uni-konstanz.de\\
+
+Literatur
+\begin{itemize}
+	\item Merlin Carl: Wie kommt man darauf?
+	\item Dierk Schleicher: Eine Einladung in die Mathematik
+	\item Regula Krapf: Elementare Grundlagen der Hochschulmathematik
+	\item Clara Löh et al.: Quod erat knobelandum
+\end{itemize}
+
+{\color{red}\scshape
+\noindent Regelmäßig website checken\\
+Schick Konstanz Uni -> Lehre -> Lina
+}
+
+Resultate:
+\begin{itemize}
+	\item Theorem: Wichtiger \textbf{Hauptsatz}/Fundamentalsatz
+	\item Proposition/Satz: normale Resultate
+		\begin{itemize}
+			\item (Satz von = Theorem)
+		\end{itemize}
+	\item Korollar: Folgesatz, fogt schnell aus anderem Resultat
+	\item Lemma: Hilfssatz, wird \textbf{nur} für Beweis anderer Resultate benötigt
+		\begin{itemize}
+			\item (Lemma + Name = Theorem)
+		\end{itemize}
+\end{itemize}
+\textbf{zu lernen: alles was einen Namen hat}
+
+\begin{task}[Schreibe das Resultat ``Divisionsalgorithmus'' auf]
+	Seien $ a, b \in \Z $ mit $ b > 0 $\\
+	Dann gilt : $ \exists! q, r \in \Z $ mit\\
+	$ 0 \leq r < b $ und\\
+	$ a = bq + r $
+\end{task}
+
+\begin{alignat*}{2}
+	&52&&0 : 3 = 173 \text{ Rest } 1\\
+	-&3&&~\\
+	&22&&~\\
+	-&20&&~\\
+	&01&&0\\
+	&-&&9\\
+	~&&&1
+\end{alignat*}
+
+\begin{proof}
+	$ a = 520, b = 3, ( q = 173 ), ( r = 1 ) $\\
+	$ 520 > 0 \rightsquigarrow \text{ Fall 1.} $\\
+	$ 0 < 520 < 3 \text{ nein } \rightsquigarrow \text{ Zeile überspringen } $\\
+	$ 520 \geq 3 \rightsquigarrow \text{ ja } $\\
+	Start der Prozedur\\
+	$ S = \{ s \in \N : s \times 3 \leq 520 \} $\\
+	$ 1 \in S, \text{ da } 1 \times 3 \leq 520 \implies S \neq \emptyset $.
+	$ S $ ist endlich, denn $ 1000 \notin S $, da $ 1000 \times 3 \nleq 520 $ und Zahlen größer $ 1000 $ nicht, da ..., also hat $ S $ maximal $ 999 $ Elemente.\\
+	{\color{violet}
+	Beweistechnik\\
+	Jede nach oben beschänkte Teilmenge der natürlichen Zahlen besitzt ein Maximum
+	}\\
+	\fbox{$ q \coloneqq \operatorname{max} S $}\\
+	\[ 173 \times 3 = 519 \leq 520 \rightsquigarrow 173 \in S \]
+	\[ 174 \times 3 = 522 > 520 \rightsquigarrow 174 \notin S \]
+	also ist $ 173 $ das Maximum von $ S $\\
+	\fbox{ $ r = 520 - 173 \times 3 = 1 $ }\\
+	{\color{red}\scshape Ende der Prozedur}
+	Fall 2: $ a \leq 0 $\\
+	$ \quad \overset{\text{Fall $ A $}}{\rightsquigarrow} a = 0 \rightsquigarrow q = 0, r = a $\\
+	$ \quad \overset{\text{Fall $ B $}}{\rightsquigarrow} a < 0 \rightsquigarrow $\\
+	\begin{itemize}
+		\item Wende FAll 1 auf $ - a $ an
+		\item Erhalte $ r\prime, q\prime $ aus Fall 1
+		\item Falls $ r\prime = 0 $, setze $ q = -q\prime, r = 0 $
+		\item Falls $ r\prime \neq 0 $, setze $ q = -(q\prime + 1), r = b - r\prime $
+	\end{itemize}
+\end{proof}
+
+\end{document}

@@ -61,6 +61,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
 \RequirePackage{siunitx}
+\sisetup{%
+	display-per-mode = fraction,%
+	inline-per-mode = symbol%
+	}
 \RequirePackage{tikz}
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 
