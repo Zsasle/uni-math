@@ -3,6 +3,9 @@
 
 \LoadClass[a4paper, parskip = true]{scrartcl}
 
+\newcommand{\consecutivenumbering}{0}
+\DeclareOption{consecutive numbering}{\renewcommand{\consecutivenumbering}{1}}
+
 %%%%%%%%%%%%%%
 %%% layout %%%
 %%%%%%%%%%%%%%
@@ -21,8 +24,13 @@
 %%% title %%%
 %%%%%%%%%%%%%
 
-\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
-\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
+\if\consecutivenumbering 0
+	\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
+	\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
+\else 
+	\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
+	\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
+\fi
 \setkomafont{disposition}{\raggedright\large\bfseries}
 
 \setlength\parindent{1em}
