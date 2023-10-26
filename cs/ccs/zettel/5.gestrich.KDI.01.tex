@@ -17,23 +17,118 @@ For the record, I'm using \verb|.|'s as decimal separator
 \begin{enumerate}[label=\alph*)]
 	\item $\decnum{13} = \binnum{00001101}$\\
 		$ \decnum{17} = \binnum{00010001} $\\
-		Ones' Complement:\\
-		\begin{align*}
-			\binnum{00001101} - \binnum{00010001} &= \binnum{00001101} + (-\binnum{00010001})\\
-			~&= \binnum{00001101} + \binnum{11101110}\\
-			~&= \binnum{11111011}\\
-			~&= -\binnum{00000100}\\
-			~&= -\decnum{4}
-		\end{align*}
-		Two's Complement:\\
+		Ones' Complement:
 		\begin{align*}
 			\binnum[8]{00001101} - \binnum[8]{00010001} &= \binnum[8]{00001101} + (-\binnum[8]{00010001})\\
-			~&= \binnum[8]{00001101} + (\binnum{11101110} + \binnum{1} )\\
+			~&= \binnum[8]{00001101} + \binnum[8]{11101110}\\
+			~&= \binnum[8]{11111011}\\
+			~&= -\binnum[8]{00000100}\\
+			~&= -\decnum{4}
+		\end{align*}
+		Two's Complement:
+		\begin{align*}
+			\binnum[8]{00001101} - \binnum[8]{00010001} &= \binnum[8]{00001101} + (-\binnum[8]{00010001})\\
+			~&= \binnum[8]{00001101} + ( \binnum{11101110} + \binnum{1} )\\
+			~&= \binnum[8]{00001101} + ( \binnum{11101111} )\\
 			~&= \binnum{11111100}\\
-			~&= -(\binnum[8]{00000011} + \binnum{1})\\
+			~&= -( \binnum[8]{00000011} + \binnum{1} )\\
 			~&= -\binnum[8]{100}\\
 			~&= -\decnum{4}
 		\end{align*}
+
+	\item $\decnum{19} = \binnum{00010011}$\\
+		Ones' Complement:
+		\begin{align*}
+			\binnum[8]{00010011} - \binnum[8]{00010011} &= \binnum[8]{00010011} + (-\binnum[8]{00010011})\\
+			~&= \binnum[8]{00010011} + \binnum[8]{11101100}\\
+			~&= \binnum[8]{11111111}\\
+			~&= \decnum{0}
+		\end{align*}
+		Two's Complement:
+		\begin{align*}
+			\binnum[8]{00010011} - \binnum[8]{00010011} &= \binnum[8]{00010011} + (-\binnum[8]{00010011})\\
+			~&= \binnum[8]{00010011} + ( \binnum[8]{11101100} + \binnum{1} )\\
+			~&= \binnum[8]{00010011} + ( \binnum[8]{11101101} )\\
+			~&= \binnum[8]{0}\\
+			~&= \decnum{0}
+		\end{align*}
+
+	\item $\decnum{14} = \binnum{00001110}$\\
+		$ \decnum{13} = \binnum{00001101} $\\
+		Ones' Complement:
+		\begin{align*}
+			\binnum[8]{00001110} - \binnum[8]{00001101} &= \binnum[8]{00001110} + (-\binnum[8]{00001101})\\
+			~&= \binnum[8]{00001110} + (\binnum{11110010} )\\
+			~&= \binnum{0}\\
+			~&= \decnum{0}
+		\end{align*}
+		Two's Complement:
+		\begin{align*}
+			\binnum[8]{00001110} - \binnum[8]{00001101} &= \binnum[8]{00001110} + (-\binnum[8]{00001101})\\
+			~&= \binnum[8]{00001110} + (\binnum{11110010} + \binnum{1} )\\
+			~&= \binnum[8]{00001110} + (\binnum{11110011} )\\
+			~&= \binnum{1}\\
+			~&= \decnum{1}
+		\end{align*}
+
+	\item $\decnum{25} = \binnum{11001}$\\
+		$ \decnum{21} = \binnum{10101} $\\
+		Ones' Complement:
+		\begin{align*}
+			\binnum[8]{11001} - \binnum[8]{10101} &= \binnum[8]{11001} + (-\binnum[8]{10101})\\
+			~&= \binnum[8]{11001} + (\binnum{11101010} )\\
+			~&= \binnum{11}\\
+			~&= \decnum{3}
+		\end{align*}
+		Two's Complement:
+		\begin{align*}
+			\binnum[8]{11001} - \binnum[8]{10101} &= \binnum[8]{11001} + (-\binnum[8]{10101})\\
+			~&= \binnum[8]{11001} + (\binnum{11101010} + \binnum{1} )\\
+			~&= \binnum[8]{11001} + (\binnum{11101011} )\\
+			~&= \binnum{100}\\
+			~&= \decnum{4}
+		\end{align*}
+\end{enumerate}
+
+\section*{Exercise 3: Algorithms}
+\begin{enumerate}[label=\alph*)]
+	\item One can adapt the algorithm by replacing the $ 2 $ with a $ 5 $, so that the algorithm looks like:
+		\begin{algorithm}
+			\label{al:int to 5-adic}
+			let $ x_k $ be the $ k $th digit of the $ 5 $-adic number\\
+			Step 1: $ k \coloneqq 0 $\\
+			Step 2: $ x_k \coloneqq n \operatorname{mod} 5; n \coloneqq \lfloor \frac{ n }{ 5 } \rfloor; k \coloneqq k + 1 $\\
+			Step 3: If $ n > 0 $ go to Step 2\\
+			Step 4: output $ x_{k-1} \dotso x_0 $
+		\end{algorithm}
+
+	\item One can adapt the algorithm to convert decimal places from decimal to binary, by replacing all $ 2 $s with $ 5 $s,  the algorithm will look like:
+		\begin{algorithm}
+			\label{al:mantissa to 5-adic}
+			let $ x_k $ be the $ k $th digit of the $ 5 $-adic number\\
+			Step 1: $ k \coloneqq -1 $\\
+			Step 2: $ x_k \coloneqq \lfloor n \times 5 \rfloor; n \coloneqq n \times 5 - x_k; k \coloneqq k - 1 $\\
+			Step 3: if not $ n = 0 $ go to Step 2\\
+			Step 4: output $ 0.x_{-1} x_{-2} \dotso x_{k+1} $
+		\end{algorithm}
+
+	\item If one wants to convert $\decnum{11.4}$ to base 5 with the algorithms \ref{al:int to 5-adic} and \ref{al:mantissa to 5-adic} one needs to add the algorithm \ref{al:int to 5-adic} of $ \lfloor \decnum{11.4} \rfloor $ and the algorithm \ref{al:mantissa to 5-adic} of $ \decnum{11.4} - \lfloor \decnum{11.4} \rfloor $.\\
+		The algorithm \ref{al:int to 5-adic} of $ \lfloor \num{11.4} \rfloor $ does the following:\\
+		Step 1: $ k \coloneqq 0 $\\
+		Step 2: $ x_0 \coloneqq 11 \bmod{5} = 1; n \coloneqq \lfloor \frac{ 11 }{ 5 } \rfloor = 2; k \coloneqq 0 + 1; $\\
+		Step 3: if $ 2 > 0 $ go to Step 2\\
+		Step 2: $ x_1 \coloneqq 2 \bmod{5} = 2; n \coloneqq \lfloor \frac{ 2 }{ 5 } \rfloor = 0; k \coloneqq 1 + 1 = 2; $\\
+		Step 3: if $ 0 > 0 $ go to Step 2\\
+		Step 4: output $ x_{k-1} \dotso x_0 = 21 $
+
+		The algorithm \ref{al:mantissa to 5-adic} of $ \decnum{11.4} - \lfloor \decnum{11.4} \rfloor $ does the follwing:\\
+		Step 1: $ k \coloneqq -1 $\\
+		Step 2: $ x_{-1} \coloneqq \lfloor 0.4 \times 5 \rfloor = 2; n \coloneqq 0.4 \times 5 - 2 = 0; k \coloneqq k - 1 $\\
+		Step 3: if not $ 0 = 0 $ go to Step 2\\
+		Step 4: output $ 0.x_{-1} x_{-2} \dotso x_{k+1} = 0.2 $
+
+		That means $\decnum{11.4} = 21_{5} + 0.2_{5}$
+
 \end{enumerate}
 
 \end{document}

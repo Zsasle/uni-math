@@ -66,10 +66,7 @@
 	inline-per-mode = symbol%
 	}
 \newcommand{\binnum}[2][0]{
-	\expandafter\ifnum#1=0%
-	\typeout{no-format}%
-	\fi
-	\num[digit-group-size = 4]{#2}_{2}%
+	\num[digit-group-size = 4, minimum-integer-digits = #1]{#2}_{2}%
 }
 \newcommand{\decnum}[1]{
 	\num{#1}_{10}%
@@ -234,6 +231,8 @@
 				{gadse-dark-green!75!gadse-black}%
 \myenvironment{axiom}		{gadse-dark-green!50!gadse-light-green}%
 				{gadse-dark-green!100!gadse-black}%
+\myenvironment{algorithm}	{gadse-light-blue}%
+				{gadse-dark-blue}%
 
 
 \newenvironment{indentpar}{%
