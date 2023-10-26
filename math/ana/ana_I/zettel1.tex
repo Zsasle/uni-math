@@ -30,18 +30,18 @@ Wir wollen mithilfe vollständiger Induktion beweisen, dass
 	\item[I.S.] ~
 		\begin{description}
 			\item[Induktionsannahme ( = Induktionsvorraussetzung (I.V.))]
-				\[\sum_{ i = 1 }{ n } i = \frac{ n ( n + 1 }{ 2 } \]
+				\[\sum_{ i = 1 }^{ n } i = \frac{ n ( n + 1 }{ 2 } \]
 		\end{description}
 		z.z.
 		\begin{equation}
 			\label{eq:Aufgabe 3.zu-zeigen}
-			\sum_{ i = 1 }^{ n + 1} = \frac{ ( n + 1 ) ( ( n + 1 ) + 1 ) }{ 2 }
+			\sum_{ i = 1 }^{ n + 1} i = \frac{ ( n + 1 ) ( ( n + 1 ) + 1 ) }{ 2 }
 		\end{equation}
 		Für die linke Seite gilt:
-		\[ \sum_{ i = 1 }^{ n + 1 } = \sum_{ i = 1 }^{ n } + n + 1 \]
+		\[ \sum_{ i = 1 }^{ n + 1 } i = \sum_{ i = 1 }^{ n } i + n + 1 \]
 		nach I.V. und den Rechengesetzen für Addition und Multiplikation ganzer Zahlen gilt:
 		\begin{align*}
-			\sum_{ i = 1 }^{ n + 1 } &= \sum_{ i = 1 }^{ n } + n + 1\\
+			\sum_{ i = 1 }^{ n + 1 } i &= \sum_{ i = 1 }^{ n } i + n + 1\\
 			~&= \frac{ n ( n + 1 ) }{ 2 } + n + 1 \\
 			~&= \frac{ n ( n + 1 ) }{ 2 } + ( n + 1 ) \times 1\\
 			~&= \frac{ n ( n + 1 ) }{ 2 } + ( n + 1 ) \times \frac{2}{2}\\
