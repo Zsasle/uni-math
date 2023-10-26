@@ -1,0 +1,39 @@
+\documentclass{gadsescript}
+
+\settitle{KDI exercise sheet no 1}
+
+\begin{document}
+\maketitle
+
+For the record, I'm using \verb|.|'s as decimal separator
+\section*{Exercise 1: Number conversions}
+\begin{enumerate}[label=\alph*)]
+	\item $ \binnum{1011 1010 1110 1001 0101 1100} = \hexnum{bae95c} = \decnum{12249436} $
+	\item $ \binnum{1011.001} = \decnum{11.125} $
+	\item $ \decnum{13.25} = \binnum{1101.01} $
+\end{enumerate}
+
+\section*{Exercise 2: Arithmetics}
+\begin{enumerate}[label=\alph*)]
+	\item $\decnum{13} = \binnum{00001101}$\\
+		$ \decnum{17} = \binnum{00010001} $\\
+		Ones' Complement:\\
+		\begin{align*}
+			\binnum{00001101} - \binnum{00010001} &= \binnum{00001101} + (-\binnum{00010001})\\
+			~&= \binnum{00001101} + \binnum{11101110}\\
+			~&= \binnum{11111011}\\
+			~&= -\binnum{00000100}\\
+			~&= -\decnum{4}
+		\end{align*}
+		Two's Complement:\\
+		\begin{align*}
+			\binnum[8]{00001101} - \binnum[8]{00010001} &= \binnum[8]{00001101} + (-\binnum[8]{00010001})\\
+			~&= \binnum[8]{00001101} + (\binnum{11101110} + \binnum{1} )\\
+			~&= \binnum{11111100}\\
+			~&= -(\binnum[8]{00000011} + \binnum{1})\\
+			~&= -\binnum[8]{100}\\
+			~&= -\decnum{4}
+		\end{align*}
+\end{enumerate}
+
+\end{document}

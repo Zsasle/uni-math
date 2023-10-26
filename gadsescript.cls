@@ -65,6 +65,18 @@
 	display-per-mode = fraction,%
 	inline-per-mode = symbol%
 	}
+\newcommand{\binnum}[2][0]{
+	\expandafter\ifnum#1=0%
+	\typeout{no-format}%
+	\fi
+	\num[digit-group-size = 4]{#2}_{2}%
+}
+\newcommand{\decnum}[1]{
+	\num{#1}_{10}%
+}
+\newcommand{\hexnum}[1]{
+	\text{#1}_{16}%
+}
 \RequirePackage{tikz}
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 
