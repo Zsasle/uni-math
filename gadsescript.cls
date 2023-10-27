@@ -190,13 +190,13 @@
 %%% these environments I use %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\if\consecutivenumbering0
+\if\consecutivenumbering0%
 	\newcommand{\myenvironment}[3]{%
 		\cachemyenvironment{}{#1}{#2}{#3}%
 		\cachemyenvironment{sub}{#1}{#2}{#3}%
 		\cachemyenvironment{subsub}{#1}{#2}{#3}%
-	}
-\else
+	}%
+\else%
 	\newcounter{environmentnumber}[section]%
 	\newcounter{subenvironmentnumber}[subsection]%
 	\newcounter{subsubenvironmentnumber}[subsubsection]%
@@ -250,16 +250,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\setnumbers}[2]{%
-	\setcounter{#2examplenumber}	{#1}%
-	\setcounter{#2tasknumber}	{#1}%
-	\setcounter{#2problemnumber}	{#1}%
-	\setcounter{#2definitionnumber}	{#1}%
-	\setcounter{#2theoremnumber}	{#1}%
-	\setcounter{#2lemmanumber}	{#1}%
-	\setcounter{#2conjecturenumber}	{#1}%
-	\setcounter{#2proofnumber}	{#1}%
-	\setcounter{#2corollarynumber}	{#1}%
-	\setcounter{#2axiomnumber}	{#1}%
+	\if\consecutivenumbering0%
+		\setcounter{#2examplenumber}	{#1}%
+		\setcounter{#2tasknumber}	{#1}%
+		\setcounter{#2problemnumber}	{#1}%
+		\setcounter{#2definitionnumber}	{#1}%
+		\setcounter{#2theoremnumber}	{#1}%
+		\setcounter{#2lemmanumber}	{#1}%
+		\setcounter{#2conjecturenumber}	{#1}%
+		\setcounter{#2proofnumber}	{#1}%
+		\setcounter{#2corollarynumber}	{#1}%
+		\setcounter{#2axiomnumber}	{#1}%
+	\else%
+		\setcounter{#2environmentnumber}{#1}%
+	\fi%
 }
 
 
