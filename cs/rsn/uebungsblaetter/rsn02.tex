@@ -12,7 +12,74 @@
 	\item $\wedge$: ``und''\\
 		$\vee$: ``oder''\\
 		$\neg$: ``nicht''\\
-	\item ~
+	\item
+		\begin{align*}
+			\neg \left( a \vee b \right) \vee b &\mid \text{ DeMorgan}\\
+			(\neg a \wedge \neg b) \vee b &\mid \text{ Distributivität}\\
+			(\neg a \vee b) \wedge (\neg b \vee b) &\mid \text{ Komplementarität}\\
+			(\neg a \vee b) \wedge 1 &\mid \text{ Neutralität}\\
+			\neg a \vee b
+		\end{align*}
+	\item
+		\begin{tabular}{cc|| c|c|c ||c}
+			$ a $ & $ b $ & $ a $ & $ \vee $ & $ ( \neg a \wedge b ) $ & $ a \vee b $\\\hline
+			0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 1 & 0 & 1 & 1 & 1\\
+			1 & 0 & 1 & 1 & 0 & 1\\
+			1 & 1 & 1 & 1 & 1 & 1
+		\end{tabular}
+	\item
+		\begin{align*}
+			( \neg \wedge d ) \vee ( d \wedge ( a \vee \neg )) \vee &\iff c \vee ( \neg c \wedge d ) \vee ( d \wedge ( a \vee \neg b ))\\
+			&\iff c \vee d \vee ( d \wedge ( a \vee \neg b))\\
+			&\iff d \vee ( ( c \vee d ) \wedge ( c \vee ( a \vee \neg b ) ) ) \\
+			&\iff d \vee ( ( c \vee d ) \wedge ( c \vee a \vee \neg b ) )\\
+			&\iff ( d \vee c \vee d ) \wedge ( d \vee c \vee a \vee \neg b )\\
+			&\iff ( ( d \vee c \vee ) 0) \wedge ( ( d \vee c ) \vee a \vee \neg b )\\
+			&\iff ( d \vee c ) \vee ( 0 \wedge ( a \vee \neg b ) )\\
+			&\iff ( d \vee c ) \vee ( 0 )\\
+			&\iff ( d \vee c ) \qed
+		\end{align*}
 \end{enumerate}
+
+\section{Boolesche Algebra/Schaltalgebra}
+\begin{enumerate}[label=\alph*)]
+	\item
+		\begin{align*}
+			\neg ( a_1 \wedge 1_2 \wedge a_3 \wedge \dotsb \wedge a_{n-1} \wedge a_n ) &\iff \neg a_1 \vee \neg ( a_2 \wedge a_3 \wedge \dotsb \wedge a_{n-1} \wedge a_n )\\
+			&\iff \neg a_1 \vee \neg a_2 \vee \neg ( a_3 \wedge \dotsb \wedge a_{n-1} \wedge a_n )\\
+			&\vdots\\
+			&\iff \neg a_1 \vee \neg a_2 \vee \neg a_3 \vee \dotsb \vee \neg ( a_{n-1} \wedge a_n )\\
+			&\iff \neg a_1 \vee \neg a_2 \vee \neg a_3 \vee \dotsb \vee \neg a_{n-1} \vee \neg a_n\\
+		\end{align*}
+		\begin{align*}
+			\neg ( a_1 \vee 1_2 \vee a_3 \vee \dotsb \vee a_{n-1} \vee a_n ) &\iff \neg a_1 \wedge \neg ( a_2 \vee a_3 \vee \dotsb \vee a_{n-1} \vee a_n )\\
+			&\iff \neg a_1 \wedge \neg a_2 \wedge \neg ( a_3 \vee \dotsb \vee a_{n-1} \vee a_n )\\
+			&\vdots\\
+			&\iff \neg a_1 \wedge \neg a_2 \wedge \neg a_3 \wedge \dotsb \wedge \neg ( a_{n-1} \vee a_n )\\
+			&\iff \neg a_1 \wedge \neg a_2 \wedge \neg a_3 \wedge \dotsb \wedge \neg a_{n-1} \wedge \neg a_n\\
+		\end{align*}
+	\item Alle, bei denen binäre Operatoren mit Klammern vorkommen, also Distributivität, Assoziativität und Absorbtion
+\end{enumerate}
+
+\section{Boolesche Algebra/Schaltalgebra}
+zu zeigen: Term 1 $ \iff $ Term 2, also $ ( a \wedge \neg c ) \vee b \iff \neg ( \neg a \wedge \neg b \wedge \neg c ) \wedge ( a \vee b \vee \neg c ) \wedge \neg ( c \wedge \neg b ) $
+\begin{description}
+	\item[Term 2:]
+		\begin{alignat*}{2}
+			\neg ( \neg a \wedge \neg b \wedge \neg c ) \wedge ( a \vee b \vee \neg c ) \wedge \neg ( c \wedge \neg b ) & \iff (\neg \neg a \vee \neg\neg b \vee \neg\neg c) \wedge ( a \vee b \vee \neg c ) \wedge (\neg c \vee \neg \neg b )\\
+			~&\iff ( a \vee b \vee c ) \wedge ( a \vee b \vee \neg c ) \wedge ( \neg c \vee b )\\
+			~&\iff ( ( a \vee b ) \vee c ) \wedge ( ( a \vee b ) \vee neg c ) \wedge ( \neg c \vee b )\\
+			~&\iff ( ( a \vee b ) \vee ( c \wedge \neg c ) )  \wedge ( \neg c \vee b )\\
+			~&\iff ( ( a \vee b ) \vee 0 ) \wedge ( \neg c \vee b )\\
+			~&\iff ( a \vee b ) \wedge ( \neg c \vee b )\\
+			~&\iff ( a \wedge \neg c ) \vee b\\
+		\end{alignat*}
+\end{description}
+Somit ist Term 2 logisch äquivalent zu Term 1.\\
+Neben einem direkten Beweis durch Termumformung, könnte man auch zwei Wertetabelle erstellen, zu je einem Term eine, und dann diese auf Gleichheit überprüfen.
+
+\section{Disjunktive und konjunktive Normalform}
+
 
 \end{document}

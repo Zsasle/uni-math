@@ -205,7 +205,7 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 			$ n = 4 \to n^2 = 16 \nless 16 = 2^4 $\\
 			$ n = 5 \to n^2 25 < 32 = 2^5 $\\
 	\end{itemize}
-	Wir versuchen die Aussage $ \forall n \leq 5 $ zu zeigen.\\
+	Wir versuchen die Aussage $ \forall n \geq 5 $ zu zeigen.\\
 	\begin{description}
 		\item[I.A.:] $ n = 5 : n^2 = 25 < 32 = 2^5 $
 		\item[I.S.:] Ang., Aussage gilt für $ n \geq 5 $. Wir müssen zeigen:
@@ -263,7 +263,7 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 			\begin{align*}
 				(\ref{eq:7}) &=\underbrace{\sum_{l=1}^{n}\binom{n}{l-i}x^ly^{n+1-l}}_{\text{Hier Indexverschiebung}} + \underbrace{\sum_{l=0}^{n}\binom{n}{l}x^ly^{n+1-l}}_{\text{Hier nennen wir einfach $ k = l $}}\\
 				~&= \binom{n}{n}x^{n+1}y^0 + \left(\sum_{k=0}^{n}\left(\binom{n}{l-1}+\binom{n}{l}\right)x^ly^{n+1-l} \right) + \binom{n}{0}x^0 y^{n+1}\\
-				~&= \binom{n+1}{n+1}x^{n+1}{0} + \left( \sum_{l=1}^{n}\binom{n+1}{l}x^ly^{(n+1)-l} \right) + \binom{n+1}{0}x^0y^{n+1}\\
+				~&= \binom{n+1}{n+1}x^{n+1}y^{0} + \left( \sum_{l=1}^{n}\binom{n+1}{l}x^ly^{(n+1)-l} \right) + \binom{n+1}{0}x^0y^{n+1}\\
 				~&= \sum_{l=0}^{n+1} \binom{n+1}{l} x^ly^{(n+1)-l} \qed
 			\end{align*}
 	\end{description}
@@ -302,9 +302,9 @@ Für eine Menge $ M \subset \R $ sind äquivalent
 $\ref{en:4} \iff \ref{en:5} \iff \ref{en:6}$
 \begin{subproof}
 	\begin{description}
-		\item['$\ref{en:4} \implies \ref{en:5}$':] Sei$ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{=}{\ref{en:4}} \N \subset N $\\
+		\item[`$\ref{en:4} \implies \ref{en:5}$':] Sei$ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{\ref{en:4}}{=} \N \subset N $\\
 		Aber $ I \in \N $, und $ I \in N $ (da $ N $ ind. ), Da $ N $ ind. ist, ist mit jeder nat. $ x \in \N $ also auch $ x \in N $. Damit \fbox{$\N \subset N.$}\\
-	\item['$\ref{en:5} \implies \ref{en:6}$'] Wir zeigen: $\text{Schnitt}_{N \text{ ind. Menge}} N $ ist ind. Menge\\
+	\item[`$\ref{en:5} \implies \ref{en:6}$'] Wir zeigen: $\text{Schnitt}_{N \text{ ind. Menge}} N $ ist ind. Menge\\
 		$\overset{\ref{en:5}}{\implies} M \overset{\ref{en:5}}{\subset} N \subset M $. Also $ M = \text{ Schnitt}_{N \text{ ind.}} N $.\\
 			$\text{Schnitt}_{N \text{ ind}} N $ induktiv: \ref{en:4} $ ( \forall N \text{ ind: } I \in N) \implies I \in \text{ Schnitt}_{N \text{ ind.}} N $
 	\end{description}
