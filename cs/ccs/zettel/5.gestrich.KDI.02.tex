@@ -95,6 +95,50 @@
 				}
 			;
 		\end{tikzpicture}\\[4pt]
+		remove(12) $ \rightarrow $ 12 has no child:
+		\begin{tikzpicture}
+			\node{\fbox{11}} [level distance = 1cm]
+				child {node {\fbox{10}}
+					child {node [xshift = -0.5cm] {\fbox{9}}
+						child {node[xshift = -0.5cm] {\fbox{6}} }
+					}
+				}
+				child {node {\fbox{14}}
+					child {node [xshift = 0.5cm]{\fbox{15}} }
+				}
+			;
+		\end{tikzpicture}\\[4pt]
+		remove(11) $ \rightarrow $ 11 has two childs: replace 11 with the most right element of the left child (the 10) and remove the child, because 10 has one child on the left side move this child to the left side of the root:\\
+		\begin{tikzpicture}
+			\node{\fbox{10}} [level distance = 1cm]
+				child {node {\fbox{9}}
+					child {node[xshift = -0.5cm] {\fbox{6}} }
+				}
+				child {node {\fbox{14}}
+					child {node [xshift = 0.5cm]{\fbox{15}} }
+				}
+			;
+		\end{tikzpicture}\\[4pt]
+\end{enumerate}
+
+\section*{Exercise 4: Hashing}
+\begin{enumerate}[label=\alph*)]
+	\item 13???
+	\item~\\
+		\begin{tabular}{c|l}
+			0 & $\rightarrow$ 7\\\hline
+			1 & $\rightarrow$ 6\\\hline
+			2 & $\rightarrow$ 5\\\hline
+			3 & $\rightarrow$ 8\\\hline
+			4 & $\rightarrow$ (7 collision $\rightarrow$ +7) 14\\\hline
+			5 & $\rightarrow$ 1\\\hline
+			6 & $\rightarrow$ 10\\\hline
+			7 & $\rightarrow$ (5 collision $\rightarrow$ + 31) 36\\\hline
+			8 & $\rightarrow$ 12\\\hline
+			9 & $\rightarrow$ 3\\\hline
+			10 & $\rightarrow$ (1 collision $\rightarrow$ + 27) 28\\\hline
+			11 & $\rightarrow$ (8 collision $\rightarrow$ + 34) 42\\
+		\end{tabular}
 \end{enumerate}
 
 \end{document}
