@@ -1,0 +1,16 @@
+\documentclass{gadsescript}
+
+\settitle{Encoding II, Algorithms and Data Structures}
+\setsubtitle{Elias Gestrich}
+
+\begin{document}
+\maketitle
+\section*{\textbf{Exercise1:} IEE 754 Number format}
+\begin{enumerate}[label=\alph*)]
+	\item first bit: $ 1 $ $ \rightarrow $ negative\\
+		following $ 8 $ bits: $ 10000001 = \binnum[8]{0111 1111} + \binnum{10} $ $ \rightarrow $ Exponent is $ \binnum{10} $\\
+		other bits: $ {10100000000000000000000} \rightarrow $ Mantissa is $ \binnum{1.101} $\\
+		$\implies$ $11000000110100000000000000000000 = - \binnum{1.101} \times \binnum{10}^{\binnum{10}} = -\binnum{1101.1} = -\decnum{13.5} $
+\end{enumerate}
+
+\end{document}
