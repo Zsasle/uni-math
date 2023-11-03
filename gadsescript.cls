@@ -335,7 +335,7 @@
 	%\setlength\topsep{0pt}%
 	\begin{center}%
 		\unskip%
-		\ifx\mysubtitle\undefined%
+		\ifx\subtitle\undefined%
 		{\LARGE \title}\\%
 		\else%
 		{\LARGE \title}\\[2pt]%
