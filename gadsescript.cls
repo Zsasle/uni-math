@@ -1,14 +1,50 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gadsescript}[2023/10/22 1.0 gadse script]
+\RequirePackage{kvoptions}
 
-\gdef\consecutivenumbering{0}
-\DeclareOption{consecutivenumbering}{
-	\gdef\consecutivenumbering{1}
-	\typeout{im here}
-}
-\ProcessOptions\relax
+\SetupKeyvalOptions{%
+	family=gadse,%
+	prefix=gadse@%
+}%
 
-\LoadClass[a4paper, parskip = true]{scrartcl}
+\DeclareStringOption[0]{consecutivenumbering}[1]%
+
+\DeclareStringOption{presectionnum}[{Section}]%
+\DeclareStringOption[.]{aftersectionnum}[:]%
+\DeclareStringOption[bfseries]{sectionnumseries}[mdseries]%
+\DeclareStringOption[bfseries]{sectionseries}[mdseries]%
+\DeclareBoolOption{presectionnumspace}%
+\DeclareBoolOption{aftersectionnumspace}%
+
+\DeclareStringOption[default]{presubsectionnum}[{Subsection}]%
+\DeclareStringOption[default]{aftersubsectionnum}[:]%
+\DeclareStringOption[default]{subsectionnumseries}[mdseries]%
+\DeclareStringOption[default]{subsectionseries}[mdseries]%
+\DeclareBoolOption{presubsectionnumspace}%
+\DeclareBoolOption{aftersubsectionnumspace}%
+
+\DeclareStringOption[default]{sectionformat}[missing_argument]
+\DeclareStringOption[default]{subsectionformat}[missing_argument]
+
+\ProcessKeyvalOptions*%
+
+\if\gadse@presubsectionnum default%
+	\xdef\gadse@presubsectionnum{\gadse@presectionnum}%
+\fi%
+
+\if\gadse@aftersubsectionnum default%
+	\xdef\gadse@aftersubsectionnum{\gadse@aftersectionnum}%
+\fi%
+
+\if\gadse@subsectionnumseries default%
+	\xdef\gadse@subsectionnumseries{\gadse@sectionnumseries}%
+\fi%
+
+\if\gadse@subsectionseries default%
+	\xdef\gadse@subsectionsection{\gadse@sectionseries}%
+\fi%
+
+\LoadClass[a4paper, parskip = true]{scrartcl}%
 
 
 %%%%%%%%%%%%%%
@@ -29,15 +65,86 @@
 %%% title %%%
 %%%%%%%%%%%%%
 
-\if\consecutivenumbering 0
-	\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
-	\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
-\else 
-	\renewcommand*{\sectionformat}{\setnumbers{0}{}\thesection.\enskip}
-	\renewcommand*{\subsectionformat}{\setnumbers{0}{sub}\thesubsection.\enskip}
-\fi
+\xdef\temp@default{default}%
+\xdef\temp@missingargument{missing_argument}%
+\xdef\temp@exercise{exercise}%
 
-\setkomafont{disposition}{\raggedright\large\bfseries}
+\ifx\gadse@sectionformat\temp@default%
+\else%
+\ifx\tempmacrosectionformat\temp@missingargument%
+	\typeout{##########################################################}%
+	\typeout{### There's a missing argument for gadse@sectionformat ###}%
+	\typeout{##########################################################}%
+\else%
+\ifx\gadse@sectionformat\temp@exercise%
+	\gdef\gadse@presectionnum{Exercise}%
+	\gdef\gadse@aftersectionnum{:}%
+	\gdef\gadse@sectionnumseries{bfseries}%
+	\gdef\gadse@sectionseries{mdseries}%
+	\gadse@presectionnumspacetrue%
+	\gadse@aftersectionnumspacetrue%
+
+	\gdef\gadse@presubsectionnum{Exercise}%
+	\gdef\gadse@aftersubsectionnum{:}%
+	\gdef\gadse@subsectionnumseries{bfseries}%
+	\gdef\gadse@subsectionseries{mdseries}%
+	\gadse@presubsectionnumspacetrue%
+	\gadse@aftersubsectionnumspacetrue%
+\else%
+	\typeout{}%
+	\typeout{---}%
+	\typeout{!!! \gadse@sectionformat\space is no valid sectionformat !!!}%
+	\typeout{using \gadse@sectionformat\space as presectionnum}
+	\typeout{---}%
+	\typeout{}%
+
+	\xdef\gadse@presectionnum{\gadse@sectionformat}%
+	\gdef\gadse@aftersectionnum{:}%
+	\gdef\gadse@sectionnumseries{bfseries}%
+	\gdef\gadse@sectionseries{mdseries}%
+	\gadse@presectionnumspacetrue%
+	\gadse@aftersectionnumspacetrue%
+
+	\gdef\gadse@presubsectionnum{\gadse@sectionformat}%
+	\gdef\gadse@aftersubsectionnum{:}%
+	\gdef\gadse@subsectionnumseries{bfseries}%
+	\gdef\gadse@subsectionseries{mdseries}%
+	\gadse@presubsectionnumspacetrue%
+	\gadse@aftersubsectionnumspacetrue%
+\fi%
+\fi%
+\fi%
+
+\newcommand*{\setsomething}[2]{%
+	\expandafter\ifx\csname ifgadse@#1#2sectionnumspace\endcsname\iftrue%
+		\expandafter\edef\csname#1#2sectionnum\endcsname{\csname gadse@#1#2sectionnum\endcsname\ }%
+	\else%
+		\expandafter\edef\csname#1#2sectionnum\endcsname{\csname gadse@#1#2sectionnum\endcsname}%
+	\fi%
+}%
+
+\expandafter\renewcommand\csname sectionformat\endcsname{}
+
+\newcommand{\notsubsub}[1]{
+
+	\setsomething{pre}{#1}%
+	\setsomething{after}{#1}%
+
+	\expandafter\renewcommand\expandafter*\csname #1sectionformat\endcsname{\setnumbers{0}{#1}%
+		{%
+			\expandafter\csname\csname gadse@#1sectionnumseries\endcsname\endcsname%
+			\csname pre#1sectionnum\endcsname%
+			\thesection%
+			\csname aftersectionnum\endcsname%
+		}%
+			\expandafter\csname\csname gadse@#1sectionseries\endcsname\endcsname%
+	}%
+}
+
+\notsubsub{}
+\notsubsub{sub}
+
+\setkomafont{disposition}{\raggedright\large\csname\gadse@sectionseries\endcsname}%
 
 \setlength\parindent{1em}
 \newcommand{\saveparinfos}{%
@@ -85,6 +192,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{tabularx, booktabs}
 \RequirePackage{multicol}
+\RequirePackage{marvosym}
 
 
 %%%%%%%%%%%%%%
@@ -129,7 +237,7 @@
 	}
 }
 
-\if\consecutivenumbering 0
+\if \gadse@consecutivenumbering 0
 	\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
 		%\setlength\parindent{1em}
 		\newcounter{#1#2number}[#1section]%
@@ -190,7 +298,7 @@
 %%% these environments I use %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\if\consecutivenumbering0%
+\if \gadse@consecutivenumbering0%
 	\newcommand{\myenvironment}[3]{%
 		\cachemyenvironment{}{#1}{#2}{#3}%
 		\cachemyenvironment{sub}{#1}{#2}{#3}%
@@ -250,7 +358,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\setnumbers}[2]{%
-	\if\consecutivenumbering0%
+	\if \gadse@consecutivenumbering0%
 		\setcounter{#2examplenumber}	{#1}%
 		\setcounter{#2tasknumber}	{#1}%
 		\setcounter{#2problemnumber}	{#1}%
