@@ -43,7 +43,7 @@ Vorlesung:
 	\item also schön Aufschreiben
 \end{itemize}
 
-Wenn wir einen Satz gezeigt bekommen, dann bekommen wir nicht die gescheiterten Jahrelangen Versuche zur Schau, sondern nur die Ausgearbeitete Lösung $\rightarrow$ also bei uns auch langer weg, aber Aufschreiben nur klein\\
+Wenn wir einen Satz gezeigt bekommen, dann bekommen wir nicht die gescheiterten Jahrelangen Versuche zur Schau, sondern nur die Ausgearbeitete Lösung $\rightarrow$ also bei uns auch langer weg, aber Aufschreiben nur klein
 
 Übungszettel:
 \begin{itemize}
@@ -125,7 +125,7 @@ Literaturempfehlung:
 \[ \R \coloneqq \{ \text{ reelle Zahlen } \} \]
 
 Wir besprechen gar nicht was eine Menge ist, das ist zu philosophisch\\
-Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiedersprüche\\
+Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiedersprüche
 
 \begin{itemize}
 	\item Notation: für $ x $ schreiben wir für eine Eigenschaft $ A $ ``$ A(x)$'', falls $ x $ $ A $ erfüllt.
@@ -144,7 +144,7 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 \end{itemize}
 
 \begin{subexample}[(gerade Zahlen)]
-	$ n \in \N_0 \text{ gerade } :\iff ( \exists k \in \N_0 : n = 2k) $\\
+	$ n \in \N_0 \text{ gerade } :\iff ( \exists k \in \N_0 : n = 2k) $
 	\begin{align}
 		M \coloneqq &\{ n \in \N_0 : \exists k \in \N_0 : n = 2k \}\\
 		=&\{2k : k \in \N_0
@@ -203,9 +203,11 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 			$ n = 2 \to n^2 = 4 \nless 4 = 2^2 $\\
 			$ n = 3 \to n^2 = 9 \nless < 2^3 $\\
 			$ n = 4 \to n^2 = 16 \nless 16 = 2^4 $\\
-			$ n = 5 \to n^2 25 < 32 = 2^5 $\\
+			$ n = 5 \to n^2 25 < 32 = 2^5 $
 	\end{itemize}
-	Wir versuchen die Aussage $ \forall n \geq 5 $ zu zeigen.\\
+
+	Wir versuchen die Aussage $ \forall n \geq 5 $ zu zeigen.
+
 	\begin{description}
 		\item[I.A.:] $ n = 5 : n^2 = 25 < 32 = 2^5 $
 		\item[I.S.:] Ang., Aussage gilt für $ n \geq 5 $. Wir müssen zeigen:
@@ -287,28 +289,35 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 \end{subdefinition}
 \begin{itemize}
 	\item Sei $ (A_i)_{i\in I} $ mit I Indexmenge eine Familie von Mengen. setze
-		\[ \text{Schnitt}_{i\in I} \coloneqq \{ x : (\forall i \in I: x \in A_i ) \} \]
-		\[ \text{Vereinigung}_{i\in I} \coloneqq \{ x : ( \exists i \in I: x \in A_i ) \} \]
+		\[ \bigcap_{i\in I} \coloneqq \{ x : (\forall i \in I: x \in A_i ) \}\quad\text{Schnitt} \]
+		\[ \bigcup_{i\in I} \coloneqq \{ x : ( \exists i \in I: x \in A_i ) \}\quad\text{Vereinigung} \]
 \end{itemize}
 
-prop\\
-Für eine Menge $ M \subset \R $ sind äquivalent
-\begin{enumerate}[label=(\roman*)]
-	\item \label{en:4}$ M = \N $
-	\item \label{en:5}Ist $ N \subset \R $ induktiv, so $ M \subset N $
-	\item \label{en:6}$ M = \text{Schnitt}_{N\subset\R} N \text{induktiv} $
-\end{enumerate}
+\begin{subproposition}
+	Für eine Menge $ M \subset \R $ sind äquivalent
+	\begin{enumerate}[label=(\roman*)]
+		\item \label{en:4}$ M = \N $
+		\item \label{en:5}Ist $ N \subset \R $ induktiv, so $ M \subset N $
+		\item \label{en:6}\[ M = \bigcap_{N\subset\R} N \text{ induktiv} \]
+	\end{enumerate}
 
-$\ref{en:4} \iff \ref{en:5} \iff \ref{en:6}$
-\begin{subproof}
-	\begin{description}
-		\item[`$\ref{en:4} \implies \ref{en:5}$':] Sei$ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{\ref{en:4}}{=} \N \subset N $\\
-		Aber $ I \in \N $, und $ I \in N $ (da $ N $ ind. ), Da $ N $ ind. ist, ist mit jeder nat. $ x \in \N $ also auch $ x \in N $. Damit \fbox{$\N \subset N.$}\\
-	\item[`$\ref{en:5} \implies \ref{en:6}$'] Wir zeigen: $\text{Schnitt}_{N \text{ ind. Menge}} N $ ist ind. Menge\\
-		$\overset{\ref{en:5}}{\implies} M \overset{\ref{en:5}}{\subset} N \subset M $. Also $ M = \text{ Schnitt}_{N \text{ ind.}} N $.\\
-			$\text{Schnitt}_{N \text{ ind}} N $ induktiv: \ref{en:4} $ ( \forall N \text{ ind: } I \in N) \implies I \in \text{ Schnitt}_{N \text{ ind.}} N $
-	\end{description}
+	$\ref{en:4} \iff \ref{en:5} \iff \ref{en:6}$
+	\begin{subproof}
+		\begin{description}
+			\item[`$\ref{en:4} \implies \ref{en:5}$':] Sei $ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{\ref{en:4}}{=} \N \subset N $\\
+			Aber $ 1 \in \N $, und $ 1 \in N $ (da $ N $ ind. ), Da $ N $ ind. ist, ist mit jeder nat. $ x \in \N $ also auch $ x \in N $. Damit $ x + 1 \in \N $ \fbox{$\N \subset N.$}
 
-\end{subproof}
+		\item[`$\ref{en:5} \implies \ref{en:6}$'] Wir zeigen: \[\bigcap_{N \text{ ind. Menge}} N \] ist ind. Menge\\
+			$\overset{\ref{en:5}}{\implies} M \overset{\ref{en:5}}{\subset} N \subset M $. Also \[ M = \bigcap_{N \text{ ind.}} N. \]
+				\[\bigcap_{N \text{ ind}} N \text{ induktiv:}\]
+				\begin{enumerate}[label=(\roman*)]
+					\item \[ ( \forall N \text{ ind: } 1 \in N) \implies 1 \in \bigcap_{N \text{ ind.}} N \]
+					\item \[ \forall x \in \R : x \in \bigcap_{ N \text{ ind.}} N \left( \implies x \in \bigcap_{N \text{ ind.}} N \right) \overset{\text{DEF.}}{\implies} \forall N \text{ ind.} : x + 1 \in N \implies x + 1 \in \bigcap_{N \text{ ind.}}\]
+				\end{enumerate}
+			\item['$\ref{en:6} \implies \ref{en:4}$'] Noch zu zeigen (blöd glaube ich oder ÜA, wir hatten auf jeden Fall keine Zeit in der Vorlesung) \qed
+		\end{description}
+
+	\end{subproof}
+\end{subproposition}
 
 \end{document}

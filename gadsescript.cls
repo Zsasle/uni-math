@@ -8,6 +8,8 @@
 }%
 
 \DeclareStringOption[0]{consecutivenumbering}[1]%
+\DeclareBoolOption[true]{printtitle}
+\DeclareBoolOption{printsubtitle}
 
 \DeclareStringOption{presectionnum}[{Section}]%
 \DeclareStringOption[.]{aftersectionnum}[:]%
@@ -325,20 +327,25 @@
 				{gadse-red!50!gadse-orange}%
 \myenvironment{problem}		{gadse-yellow}%
 				{gadse-orange}%
+%
 \myenvironment{definition}	{gadse-pink!50!gadse-white}%
 				{gadse-pink}%
-\myenvironment{theorem}		{gadse-dark-green!50!gadse-light-green}%
-				{gadse-dark-green!100!gadse-ligth-green}%
-\myenvironment{lemma}		{gadse-dark-green!25!gadse-light-green}%
-				{gadse-dark-green!75!gadse-light-green}%
-\myenvironment{conjecture}	{gadse-light-green}%
-				{gadse-dark-green!25!gadse-light-green}%
-\myenvironment{proof}		{gadse-light-green!50!gadse-white}%
-				{gadse-light-green!100!gadse-white}%
-\myenvironment{corollary}	{gadse-dark-green!75!gadse-light-green}%
-				{gadse-dark-green!75!gadse-black}%
 \myenvironment{axiom}		{gadse-dark-green!50!gadse-light-green}%
 				{gadse-dark-green!100!gadse-black}%
+%
+\myenvironment{theorem}		{gadse-dark-green!50!gadse-light-green}%
+				{gadse-dark-green!100!gadse-ligth-green}%
+\myenvironment{proposition}	{gadse-dark-green!25!gadse-light-green}%
+				{gadse-dark-green!75!gadse-light-green}%
+\myenvironment{lemma}		{gadse-light-green}%
+				{gadse-dark-green!25!gadse-light-green}%
+\myenvironment{conjecture}	{gadse-dark-green!75!gadse-light-green}%
+				{gadse-dark-green!75!gadse-black}%
+\myenvironment{corollary}	{gadse-light-green!50!gadse-white}%
+				{gadse-light-green!100!gadse-white}%
+%
+\myenvironment{proof}		{gadse-orange!50!gadse-light-blue!100!gadse-white}%
+				{gadse-red!50!gadse-dark-blue}%
 \myenvironment{algorithm}	{gadse-light-blue}%
 				{gadse-dark-blue}%
 
@@ -416,6 +423,7 @@
 	\expandafter\gdef\csname set#1\endcsname##1{%
 		\expandafter\gdef\csname #1\endcsname{##1}%
 	}%
+	\expandafter\gdef\csname #1\endcsname{#1}%
 }
 
 \definetitles{title}
@@ -441,17 +449,19 @@
 	\end{multicols}%
 	\hrule height 0.8pt%
 	%\setlength\topsep{0pt}%
+	\ifgadse@printtitle
 	\begin{center}%
 		\unskip%
-		\ifx\subtitle\undefined%
-		{\LARGE \title}\\%
-		\else%
+		\ifgadse@printsubtitle%
 		{\LARGE \title}\\[2pt]%
 		{\large \subtitle}\\%
+		\else%
+		{\LARGE \title}\\%
 		\fi%
 	\end{center}%
 	\endgroup%
 	\hrule%
+	\fi
 	\vskip 1cm
 	\thispagestyle{empty}%
 }
