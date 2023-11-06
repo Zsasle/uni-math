@@ -10,7 +10,7 @@
 		\begin{enumerate}[label=(\roman*)]
 			\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
 				Behauptung: $ \exists b \in \Z : \forall a \in \Z : b \mid a $:
-				\begin{proof}
+				\begin{proof*}
 					zu zeigen $\exists b \in \Z : \forall a \in \Z : b \mid a$\\
 					setze $ b \coloneqq 1 $, zu zeigen $ b \in \Z $ und $ \forall a \in \Z : b \mid a $.\\
 					Es gilt $  b = 1 \in \Z $, noch zu zeigen:\\
@@ -19,10 +19,10 @@
 					Setze $ c \coloneqq a $, zu zeigen $ c \in \Z $ und $ a = b \cdot c $:\\
 					$ c = a \in \Z $ gegeben\\
 					$ b \cdot c = 1 \cdot a = a $\qed
-				\end{proof}
+				\end{proof*}
 			\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
 				Behauptung $ \forall b \in \Z : \exists a \in \Z : b \mid a $
-				\begin{proof}
+				\begin{proof*}
 					Zu zeigem $ \forall b \in \Z : \exists a \in \Z : b \mid a $.\\
 					Sei ein $ b \in \Z $ gegeben, zeige $ \exists a \in \Z : b \mid a$\\
 					Setze $ a \coloneqq b $, zu zeigen $ a \in \Z $ und $ b \mid a $:\\
@@ -31,12 +31,12 @@
 					Setze $ c \coloneqq 1 $, zu zeigen $ c \in \Z $ und $ a = b \cdot c $\\
 					$ c = 1 \in \Z $ gegeben\\
 					$ b \cdot c = b \cdot 1 = b = a $\qed
-				\end{proof}
+				\end{proof*}
 
 		\end{enumerate}
 	\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
 		Behauptung: $ \forall n \in \N : \forall a \in \Z:\{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \} $\\
-		\begin{proof}
+		\begin{proof*}
 			Zu zeigen $ \forall n \in \N : \forall a \in \Z:\{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \}   $\\
 			Sei $n \in \N $ und $a \in \Z$ gegeben, zu zeigen:
 			\[ \{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \}, \]
@@ -59,7 +59,7 @@
 			$ c = -k \in \Z $ gegeben\\
 			$ n \cdot c \overset{\text{Def.}}{=} n \cdot (-k) = - n \cdot k = 0 - n \cdot k = (a - a) - n \cdot k = a - ( a + n \cdot k ) \overset{\text{Def.}}{=} a - x $\qed
 
-		\end{proof}
+		\end{proof*}
 
 \end{enumerate}
 

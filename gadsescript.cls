@@ -10,6 +10,7 @@
 \DeclareStringOption[0]{consecutivenumbering}[1]%
 \DeclareBoolOption[true]{printtitle}
 \DeclareBoolOption{printsubtitle}
+\DeclareBoolOption{transparentEnvironments}
 
 \DeclareStringOption{presectionnum}[{Section}]%
 \DeclareStringOption[.]{aftersectionnum}[:]%
@@ -222,29 +223,72 @@
 %%% environements I am using %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\myboxenvironment}[4]{ % tcolorbox-environment %
-	\newtcolorbox{cache#1#2box}[1]{
-		title		= ##1,
-		fonttitle	= \bfseries,
-		colback		= #3,
-		colframe	= #4,
-		sharp corners,
-		rounded corners	= northeast,
-		rounded corners	= southeast,
-		arc		= 2pt,
-		outer arc	= 2pt,
-		boxrule = 0pt,
-		leftrule = 4pt,
-		breakable
-	}
+\newcommand{\myboxenvironment}[5]{ % tcolorbox-environment %
+	\ifgadse@transparentEnvironments
+		\newtcolorbox{cache#1#2box}[1]{
+			standard jigsaw,%
+			opacityback	= 0,%
+			title		= ##1,
+			fonttitle	= \bfseries,
+			colback		= #3,
+			colframe	= #4,
+			sharp corners,
+			rounded corners	= northeast,
+			rounded corners	= southeast,
+			arc		= 2pt,
+			outer arc	= 2pt,
+			boxrule		= 0pt,
+			leftrule	= 4pt,
+			breakable
+		}
+	\else
+		\ifstrequal{#5}{true}{%
+			\newtcolorbox{cache#1#2box}[1]{
+				standard jigsaw,%
+				opacityback	= 0,%
+				title		= ##1,
+				fonttitle	= \bfseries,
+				colback		= #3,
+				colframe	= #4,
+				sharp corners,
+				rounded corners	= northeast,
+				rounded corners	= southeast,
+				arc		= 2pt,
+				outer arc	= 2pt,
+				boxrule		= 0pt,
+				leftrule	= 4pt,
+				breakable
+			}
+		}{
+			\newtcolorbox{cache#1#2box}[1]{
+				title		= ##1,
+				fonttitle	= \bfseries,
+				colback		= #3,
+				colframe	= #4,
+				sharp corners,
+				rounded corners	= northeast,
+				rounded corners	= southeast,
+				arc		= 2pt,
+				outer arc	= 2pt,
+				boxrule		= 0pt,
+				leftrule	= 4pt,
+				breakable
+			}
+		}
+	\fi
 }
 
 \if \gadse@consecutivenumbering 0
-	\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
+	\newcommand{\cachemyenvironment}[5]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
 		%\setlength\parindent{1em}
-		\newcounter{#1#2number}[#1section]%
-		\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}%
-		\myboxenvironment{#1}{#2}{#3}{#4}%
+		\ifstrequal{#1}{nosection}{
+			\newcounter{#1#2number}%
+			\expandafter\renewcommand\csname the#1#2number\endcsname{\arabic{#1#2number}}%
+		}{
+			\newcounter{#1#2number}[#1section]%
+			\expandafter\renewcommand\csname the#1#2number\endcsname{\csname the#1section\endcsname.\arabic{#1#2number}}%
+		}
+		\myboxenvironment{#1}{#2}{#3}{#4}{#5}%
 		\newenvironment{#1#2}[1][]{%
 			\refstepcounter{#1#2number}%
 			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}%
@@ -252,11 +296,17 @@
 			}{%
 			\end{cache#1#2box}%
 		}
+		\newenvironment{#1#2*}[1][]{%
+			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
 	}
 \else
-	\newcommand{\cachemyenvironment}[4]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
+	\newcommand{\cachemyenvironment}[5]{ % command to define \#1#2number, #1#2 tcolorbox, #1#2box %
 		%\setlength\parindent{1em}
-		\myboxenvironment{#1}{#2}{#3}{#4}%
+		\myboxenvironment{#1}{#2}{#3}{#4}{#5}%
 		\newenvironment{#1#2}[1][]{%
 			\refstepcounter{#1environmentnumber}%
 			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1environmentnumber\endcsname\quad{##1}}%
@@ -301,10 +351,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \if \gadse@consecutivenumbering0%
-	\newcommand{\myenvironment}[3]{%
-		\cachemyenvironment{}{#1}{#2}{#3}%
-		\cachemyenvironment{sub}{#1}{#2}{#3}%
-		\cachemyenvironment{subsub}{#1}{#2}{#3}%
+	\newcommand{\myenvironment}[4]{%
+		\cachemyenvironment{}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{sub}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{subsub}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{nosection}{#1}{#2}{#3}{#4}%
 	}%
 \else%
 	\newcounter{environmentnumber}[section]%
@@ -314,40 +365,53 @@
 		\expandafter\renewcommand\csname thesubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subenvironmentnumber}}%
 		\expandafter\renewcommand\csname thesubsubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subsubenvironmentnumber}}%
 
-	\newcommand{\myenvironment}[3]{%
-		\cachemyenvironment{}{#1}{#2}{#3}%
-		\cachemyenvironment{sub}{#1}{#2}{#3}%
-		\cachemyenvironment{subsub}{#1}{#2}{#3}%
+	\newcommand{\myenvironment}[4]{%
+		\cachemyenvironment{}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{sub}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{subsub}{#1}{#2}{#3}{#4}%
+		\cachemyenvironment{nosection}{#1}{#2}{#3}{#4}%
 	}
 \fi
 
 \myenvironment{example}		{gadse-orange}%
 				{gadse-red}%
+				{0}%
 \myenvironment{task}		{gadse-orange!50!gadse-yellow}%
 				{gadse-red!50!gadse-orange}%
+				{0}%
 \myenvironment{problem}		{gadse-yellow}%
 				{gadse-orange}%
+				{0}%
 %
 \myenvironment{definition}	{gadse-pink!50!gadse-white}%
 				{gadse-pink}%
+				{0}%
 \myenvironment{axiom}		{gadse-dark-green!50!gadse-light-green}%
 				{gadse-dark-green!100!gadse-black}%
+				{0}%
 %
 \myenvironment{theorem}		{gadse-dark-green!50!gadse-light-green}%
 				{gadse-dark-green!100!gadse-ligth-green}%
+				{0}%
 \myenvironment{proposition}	{gadse-dark-green!25!gadse-light-green}%
 				{gadse-dark-green!75!gadse-light-green}%
+				{0}%
 \myenvironment{lemma}		{gadse-light-green}%
 				{gadse-dark-green!25!gadse-light-green}%
+				{0}%
 \myenvironment{conjecture}	{gadse-dark-green!75!gadse-light-green}%
 				{gadse-dark-green!75!gadse-black}%
+				{0}%
 \myenvironment{corollary}	{gadse-light-green!50!gadse-white}%
 				{gadse-light-green!100!gadse-white}%
+				{0}%
 %
 \myenvironment{proof}		{gadse-orange!50!gadse-light-blue!100!gadse-white}%
 				{gadse-red!50!gadse-dark-blue}%
+				{true}%
 \myenvironment{algorithm}	{gadse-light-blue}%
 				{gadse-dark-blue}%
+				{0}%
 
 
 \newenvironment{indentpar}{%
