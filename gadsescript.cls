@@ -196,6 +196,7 @@
 \RequirePackage{tabularx, booktabs}
 \RequirePackage{multicol}
 \RequirePackage{marvosym}
+\RequirePackage{arydshln}
 
 
 %%%%%%%%%%%%%%

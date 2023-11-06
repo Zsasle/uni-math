@@ -80,6 +80,34 @@ Somit ist Term 2 logisch äquivalent zu Term 1.\\
 Neben einem direkten Beweis durch Termumformung, könnte man auch zwei Wertetabelle erstellen, zu je einem Term eine, und dann diese auf Gleichheit überprüfen.
 
 \section{Disjunktive und konjunktive Normalform}
+\begin{enumerate}[label=\alph*)]
+	\item Bei der disjunktiven Normalform, werden sich alle Argumenttermkombinationen angeschaut, welche zu einer wahren Aussage führen sollen. In diesen werden die Argumente so konjunktiv verknüpft, dass die Verknüpfung für die Argumenttermkombination wahr ist. Die gebildeten Verknüpfungen werden disjunktiv verknüpft.\\
+		Bei der konjunktiven Normalform, werden sich alle Argumenttermkombinationen angeschaut, welche zu einer falschen Aussage führen sollen. In diesen werden die Argumente so disjunktiv verknüpft, dass die Verknüpfung für die Argumenttermkombination falsch ist. Die gebildeten Verknüpfungen werden konjunktiv verknüpft.
+	\item Die disjunktive Normalform ist günstiger, wenn es weniger Argumenttermkombinationen gibt, welche zu einer wahren Aussage führen sollen, die konjunktive Normalfall dementsprechend im anderen Fall.
+	\item ~\\ \begin{tabular}{c|c|c||c|c|c||c}
+			$a$ 	& $b$	& $c$	& $ (b \wedge \neg a) $	& $ \vee $	& $ a \wedge b \wedge \neg c ) $	& $ f(a,b,c)$\\\hline\hline
+			0	& 0	& 0	& 0			& 0		& 0					& 0\\
+			0	& 0	& 1	& 0			& 0		& 0					& 0\\\hdashline
+			0	& 1	& 0	& 1			& 1		& 0					& 1\\
+			0	& 1	& 1	& 1			& 1		& 0					& 1\\\hdashline
+			1	& 0	& 0	& 0			& 0		& 0					& 0\\
+			1	& 0	& 1	& 0			& 0		& 0					& 0\\\hdashline
+			1	& 1	& 0	& 0			& 1		& 1					& 1\\
+			1	& 1	& 1	& 0			& 0		& 0					& 0\\
+	\end{tabular}
+		In dem Falle ist in den meisten Fällen wahrscheinlich die disjunktive Normalform am geschicktesten, sodass $ f(a,b,c) $ geschrieben werden kann, als $ f(a,b,c) = (\neg a \wedge b \wedge \neg c ) \vee ( \neg a \wedge b \wedge c ) \vee ( a \wedge b \wedge \neg c) $
+	\item
+		\begin{align*}
+			(b \wedge \neg a ) \vee ( a \wedge b \wedge \neg c ) &= \neg \neg \left( ( b \wedge \neg a ) \vee ( a \wedge b \wedge \neg c ) \right)\\
+			~&= \neg \left[ \neg ( \neg a \wedge b ) \wedge \neg ( a \wedge b \wedge \neg c ) \right]\\
+			~&= \neg \left[ \neg ( \neg a \wedge b ) \wedge \neg ( (a \wedge b) \wedge (\neg c) ) \right]\\
+			~&= \neg \left[ \neg ( \neg a \wedge b ) \wedge \neg ( \neg \neg (a \wedge b) \wedge (\neg c) )  \right]\\
+			~&= \neg \left[ ( \neg a \downarrow b ) \wedge ( \neg (a \downarrow b) \downarrow (\neg c) )  \right]\\
+			~&= ( \neg a \downarrow b ) \downarrow ( \neg (a \downarrow b) \downarrow (\neg c) ) \\
+			~&= ( \neg a \downarrow b ) \downarrow ( (a \downarrow b) \downarrow (a \downarrow b) \downarrow (c\downarrow c) )
+		\end{align*}
+
+\end{enumerate}
 
 
 \end{document}
