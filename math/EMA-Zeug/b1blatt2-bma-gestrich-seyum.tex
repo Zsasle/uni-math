@@ -1,0 +1,67 @@
+\documentclass{gadsescript}
+
+\settitle{BMA}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=(\alph*)]
+	\item
+		\begin{enumerate}[label=(\roman*)]
+			\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
+				Behauptung: $ \exists b \in \Z : \forall a \in \Z : b \mid a $:
+				\begin{proof}
+					zu zeigen $\exists b \in \Z : \forall a \in \Z : b \mid a$\\
+					setze $ b \coloneqq 1 $, zu zeigen $ b \in \Z $ und $ \forall a \in \Z : b \mid a $.\\
+					Es gilt $  b = 1 \in \Z $, noch zu zeigen:\\
+					$\forall a \in \Z : b \mid a $\\
+					sei ein  $ a \in \Z $ gegeben, zu zeigen $ b \mid a $, d.h. zu zeigen $ \exists c \in \Z : a = b \cdot c $:\\
+					Setze $ c \coloneqq a $, zu zeigen $ c \in \Z $ und $ a = b \cdot c $:\\
+					$ c = a \in \Z $ gegeben\\
+					$ b \cdot c = 1 \cdot a = a $\qed
+				\end{proof}
+			\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
+				Behauptung $ \forall b \in \Z : \exists a \in \Z : b \mid a $
+				\begin{proof}
+					Zu zeigem $ \forall b \in \Z : \exists a \in \Z : b \mid a $.\\
+					Sei ein $ b \in \Z $ gegeben, zeige $ \exists a \in \Z : b \mid a$\\
+					Setze $ a \coloneqq b $, zu zeigen $ a \in \Z $ und $ b \mid a $:\\
+					$ a = b \in \Z $ gegeben\\
+					zu zeigen $ b \mid a $, d.h. zu zeigen $ \exists c \in \Z : a = b \cdot c $:\\
+					Setze $ c \coloneqq 1 $, zu zeigen $ c \in \Z $ und $ a = b \cdot c $\\
+					$ c = 1 \in \Z $ gegeben\\
+					$ b \cdot c = b \cdot 1 = b = a $\qed
+				\end{proof}
+
+		\end{enumerate}
+	\item Voraussetzung: $\forall a,b \in \Z : \exists c \in \Z : \left( b \mid a \right) \implies \left( a = b \cdot c \right) $\\
+		Behauptung: $ \forall n \in \N : \forall a \in \Z:\{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \} $\\
+		\begin{proof}
+			Zu zeigen $ \forall n \in \N : \forall a \in \Z:\{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \}   $\\
+			Sei $n \in \N $ und $a \in \Z$ gegeben, zu zeigen:
+			\[ \{ b \in \Z : n \mid ( a - b ) \} = \{ a + k \cdot n : k \in \Z \}, \]
+			also zu zeigen
+			\[ \{ b \in \Z : n \mid ( a - b ) \} \subseteq \{ a + k \cdot n : k \in \Z \} \text{ und} \]
+			\[ \{ b \in \Z : n \mid ( a - b ) \} \supseteq \{ a + k \cdot n : k \in \Z \} \]\par
+			``$\subseteq$'':\\
+			Sei ein $ x $ in $ \{ b \in \Z : n \mid ( a - b ) \} $ gegeben, zu zeigen $ x $ in $ \{ a + k \cdot n : k \in \Z \} $\\
+			Also $ x \in \Z $ und $ \ n \mid ( a - x ) $ gegeben, zu zeigen $ a + k \cdot n = x$ und $ k \in \Z $.\\
+			Da $ n \mid ( a - x ) $, existiert ein Objekt $ c $ für das gilt $ ( a - x ) = n \cdot c $.\\
+			Setze $ k = - c$, zu zeigen $ k \in \Z $ und $ x = a + k \cdot n $\\
+			$ k = -c \in \Z $ gegeben\\
+			$ a + k \cdot n = a + (-c) \cdot n = a - c \cdot n = x $, was zu zeigen war\\\par
+			``$\supseteq$'':\\
+			Sei ein $ x $ in $ \{ a + k \cdot n : k \in \Z \} $ gegeben, zu zeigen $ x $ in $ \{ b \in \Z : n \mid ( a - b ) \} $\\
+			Es gilt $ x = a + k \cdot n $ für $ k \in \Z $, zu zeigen $ x \in \Z $ und $ n \mid ( a - x ) $.\\
+			Da $ n \in \N \subset \Z $ gegeben, ist $ a, n, k \in \Z $ gegeben, folgt $ x = a + k \cdot n \in \Z $ gegeben.\\
+			Zu zeigen $ n \mid ( a - x ) $, d.h. zu zeigen $ \exists c \in \Z : a - x = n \cdot c $.
+			Setze $ c \coloneqq -k$, zu zeigen $ c \in \Z $ und $ a - x = n \cdot c $:\\
+			$ c = -k \in \Z $ gegeben\\
+			$ n \cdot c \overset{\text{Def.}}{=} n \cdot (-k) = - n \cdot k = 0 - n \cdot k = (a - a) - n \cdot k = a - ( a + n \cdot k ) \overset{\text{Def.}}{=} a - x $\qed
+
+		\end{proof}
+
+\end{enumerate}
+
+\end{document}
+
