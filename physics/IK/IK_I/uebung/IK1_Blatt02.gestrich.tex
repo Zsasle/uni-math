@@ -1,0 +1,52 @@
+\documentclass[sectionformat = aufgabe]{gadsescript}
+
+\settitle{Übungsblatt Nr. 2}
+
+\begin{document}
+\maketitle
+
+\section{Orthonomalbasis}
+\begin{enumerate}[label=\alph*)]
+	\item 
+		\begin{alignat*}{3}
+			&\left( \vec e_1 + \vec e_2 \right) \cdot \vec e_3
+				&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&\vec e_1 \cdot \vec e_3 + \vec e_2 \cdot \vec e_3\\
+			&~&\omit\hfil$=$\hfil&\delta_{13} + \delta_{23}\\
+			&~&\omit\hfil$=$\hfil& 0 + 0\\
+			&~&\omit\hfil$=$\hfil&0
+		\end{alignat*}
+		\begin{alignat*}{3}
+			&\left(4\vec e_1 + 3 \vec e_2 \right) \cdot \left(7\vec e_1 - 16\vec e_3\right)
+				&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&\left( 4\vec e_1 + 3\vec e_2 \right) \cdot 7\vec e_1 - \left( 4\vec e_1 + 3\vec e_2 \right) \cdot 16\vec e_3\\
+			&~&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&28\vec e_1\vec e_1 + 21\vec e_1 \vec e_2 - 64\vec e_1\vec e_3 - 48\vec e_2 \vec e_3\\
+			&~&\omit\hfil$=$\hfil&28\delta_{11} + 21\delta_{12} - 64\delta_{13} - 48\delta_{23}\\
+			&~&\omit\hfil$=$\hfil&28
+		\end{alignat*}
+	\item Genau dann wenn zwei Vektoren orthogonal sind, oder wenn einer der Vektoren der Nullvektor is, dann ist das Skalarprodukt zweier Vektoren 0. Also wollen wir ein $X$ finden, wofür gilt:
+		\[ \vec a \cdot \vec b = \left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) = 0 \]
+		\begin{align*}
+			\left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) &= 0\\
+			\sum_{i = 0}{3}a_ib_i &= 0\\
+			2\cdot(-1) + (-5)\cdot2 + X\cdot(-3) &= 0\\
+			-2 -10 -3X &= 0\\
+			3X &= 12\\
+			X &= 4\\
+		\end{align*}
+		Also für $ X \coloneqq 4 $ sind die Vektoren $\vec a $ und $ \vec b $ parallel, oder einer der beiden ist der Nullvektor. Da aber $ \vec a \neq \vec0 $ und $ \vec b \neq \vec0 $ sind die Vektoren parallel
+	\item Genau dann, wenn die Vektoren $ \vec v $ und $ \vec w $ linear unabhängig sind, gilt:
+		\[ \forall \lambda_1,\lambda_2 \in \R : \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
+		Seien $ \lambda_1, \lambda_2 \in \R $ gegeben, zu zeigen:\\
+		$\lambda_1 \vec v + \lambda_2 \vec w \neq \vec 0 $, also
+		\begin{align*}
+			\lambda_1v_1\vec e_1 + \lambda_2w_1\vec e_1 &= 0,\\
+			\lambda_1v_2\vec e_2 + \lambda_2w_2\vec e_2 &= 0 \text{ und}\\
+			\lambda_1v_3\vec e_3 + \lambda_2w_3\vec e_3 &= 0\\
+		\end{align*}
+		also gilt für die erste Gleichung:
+		\begin{align*}
+			\lambda_1\cdot1\cdot\vec e_1 + \lambda_2w_1\vec e_1 &= 0,\\
+		\end{align*}
+
+\end{enumerate}
+
+\end{document}

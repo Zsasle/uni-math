@@ -68,9 +68,10 @@
 %%% title %%%
 %%%%%%%%%%%%%
 
-\xdef\temp@default{default}%
-\xdef\temp@missingargument{missing_argument}%
-\xdef\temp@exercise{exercise}%
+\edef\temp@default{default}%
+\edef\temp@missingargument{missing_argument}%
+\edef\temp@exercise{exercise}%
+\edef\temp@aufgabe{aufgabe}%
 
 \ifx\gadse@sectionformat\temp@default%
 \else%
@@ -88,6 +89,21 @@
 	\gadse@aftersectionnumspacetrue%
 
 	\gdef\gadse@presubsectionnum{Exercise}%
+	\gdef\gadse@aftersubsectionnum{:}%
+	\gdef\gadse@subsectionnumseries{bfseries}%
+	\gdef\gadse@subsectionseries{mdseries}%
+	\gadse@presubsectionnumspacetrue%
+	\gadse@aftersubsectionnumspacetrue%
+\else%
+\ifx\gadse@sectionformat\temp@aufgabe%
+	\gdef\gadse@presectionnum{Aufgabe}%
+	\gdef\gadse@aftersectionnum{:}%
+	\gdef\gadse@sectionnumseries{bfseries}%
+	\gdef\gadse@sectionseries{mdseries}%
+	\gadse@presectionnumspacetrue%
+	\gadse@aftersectionnumspacetrue%
+
+	\gdef\gadse@presubsectionnum{Aufgabe}%
 	\gdef\gadse@aftersubsectionnum{:}%
 	\gdef\gadse@subsectionnumseries{bfseries}%
 	\gdef\gadse@subsectionseries{mdseries}%
@@ -117,6 +133,7 @@
 \fi%
 \fi%
 \fi%
+\fi%
 
 \newcommand*{\setsomething}[2]{%
 	\expandafter\ifx\csname ifgadse@#1#2sectionnumspace\endcsname\iftrue%
@@ -133,15 +150,21 @@
 	\setsomething{pre}{#1}%
 	\setsomething{after}{#1}%
 
-	\expandafter\renewcommand\expandafter*\csname #1sectionformat\endcsname{\setnumbers{0}{#1}%
-		{%
-			\expandafter\csname\csname gadse@#1sectionnumseries\endcsname\endcsname%
-			\csname pre#1sectionnum\endcsname%
-			\thesection%
-			\csname aftersectionnum\endcsname%
+	\ifx\gadse@sectionformat\temp@default
+		\expandafter\renewcommand\expandafter*\csname #1sectionformat\endcsname{\setnumbers{0}{#1}%
+			\expandafter\csname the#1section\endcsname\ %
 		}%
-			\expandafter\csname\csname gadse@#1sectionseries\endcsname\endcsname%
-	}%
+	\else
+		\expandafter\renewcommand\expandafter*\csname #1sectionformat\endcsname{\setnumbers{0}{#1}%
+			{%
+				\expandafter\csname\csname gadse@#1sectionnumseries\endcsname\endcsname%
+				\csname pre#1sectionnum\endcsname%
+				\expandafter\csname the#1section\endcsname%
+				\csname aftersectionnum\endcsname%
+			}%
+				\expandafter\csname\csname gadse@#1sectionseries\endcsname\endcsname%
+		}%
+	\fi
 }
 
 \notsubsub{}
@@ -310,7 +333,14 @@
 		\myboxenvironment{#1}{#2}{#3}{#4}{#5}%
 		\newenvironment{#1#2}[1][]{%
 			\refstepcounter{#1environmentnumber}%
+			\label{\csname the#1environmentnumber\endcsname}
 			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1environmentnumber\endcsname\quad{##1}}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
+		\newenvironment{#1#2*}[1][]{%
+			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}%
 				\setlength\parindent{1em}%
 			}{%
 			\end{cache#1#2box}%
@@ -473,6 +503,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
 
 %%%%%%%%%%%%%
 %%% specs %%%
