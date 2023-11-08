@@ -34,18 +34,30 @@
 		\end{align*}
 		Also für $ X \coloneqq 4 $ sind die Vektoren $\vec a $ und $ \vec b $ parallel, oder einer der beiden ist der Nullvektor. Da aber $ \vec a \neq \vec0 $ und $ \vec b \neq \vec0 $ sind die Vektoren parallel
 	\item Genau dann, wenn die Vektoren $ \vec v $ und $ \vec w $ linear unabhängig sind, gilt:
-		\[ \forall \lambda_1,\lambda_2 \in \R : \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
-		Seien $ \lambda_1, \lambda_2 \in \R $ gegeben, zu zeigen:\\
-		$\lambda_1 \vec v + \lambda_2 \vec w \neq \vec 0 $, also
+		\[ \forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
+		Seien $ \lambda_1, \lambda_2 \in \R\setminus\{0\} $ gegeben, zu zeigen:\\
+		$\lambda_1 \vec v + \lambda_2 \vec w \neq \vec 0 $, wir führen einen Beweis durch Widerspruch und nehmen dazu an $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, dann gilt:
 		\begin{align*}
-			\lambda_1v_1\vec e_1 + \lambda_2w_1\vec e_1 &= 0,\\
-			\lambda_1v_2\vec e_2 + \lambda_2w_2\vec e_2 &= 0 \text{ und}\\
-			\lambda_1v_3\vec e_3 + \lambda_2w_3\vec e_3 &= 0\\
+			\lambda_1v_1 + \lambda_2w_1 &= 0,\\
+			\lambda_1v_2 + \lambda_2w_2 &= 0 \text{ und}\\
+			\lambda_1v_3 + \lambda_2w_3 &= 0.
 		\end{align*}
-		also gilt für die erste Gleichung:
+		Also gilt für die erste Gleichung:
 		\begin{align*}
-			\lambda_1\cdot1\cdot\vec e_1 + \lambda_2w_1\vec e_1 &= 0,\\
+			\lambda_1\cdot v_1 + \lambda_2w_1 &= 0\\
+			\lambda_1 \cdot 1 &= -\lambda_2\cdot (-3)\\
+			\lambda_1 &= 3\lambda_2.
 		\end{align*}
+		Dies in die zweite Gleichung eingesetzt ergibt:
+		\begin{align*}
+			\lambda_1v_2 + \lambda_2w_2 &= 0 \\
+			3\lambda_2v_2 + \lambda_2w_2 &= 0 \\
+			\lambda_2\left(3v_2 + w_2\right) &= 0 \\
+			\lambda_2\left(3 \cdot (-1) + 2\right) &= 0 \\
+			\lambda_2\left(-1\right) &= 0 \\
+			\lambda_2 &= 0
+		\end{align*}
+		Da aber $ \lambda_2 \neq 0 $ führt dies zu einem Widerspruch und die die Annahme $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, war falsch, also gilt $\forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 $.\qed
 
 \end{enumerate}
 
