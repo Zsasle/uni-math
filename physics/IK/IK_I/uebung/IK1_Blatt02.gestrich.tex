@@ -26,7 +26,7 @@
 		\[ \vec a \cdot \vec b = \left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) = 0 \]
 		\begin{align*}
 			\left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) &= 0\\
-			\sum_{i = 0}{3}a_ib_i &= 0\\
+			\sum_{i = 0}^{3}a_ib_i &= 0\\
 			2\cdot(-1) + (-5)\cdot2 + X\cdot(-3) &= 0\\
 			-2 -10 -3X &= 0\\
 			3X &= 12\\
@@ -58,7 +58,107 @@
 			\lambda_2 &= 0
 		\end{align*}
 		Da aber $ \lambda_2 \neq 0 $ führt dies zu einem Widerspruch und die die Annahme $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, war falsch, also gilt $\forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 $.\qed
+\end{enumerate}
 
+\section{Raketengleichung}
+\begin{enumerate}[label=\alph*)]
+	\item Aus der Vorlesung wissen wir, dass gilt im Allgemeinen:\\
+		\[ v(T) = - v_{rel} \cdot \ln{\frac{m_T}{m_0}} - gT \]
+		da die Rakete pro Zeiteinheit die Gasmenge $\alpha$ mit der Geschwindigkeit $v_0$ ausstößt und die Anfangsmasse $m_0$ hat, gilt für $m_T$:
+		\[ m_T = m_0 - \alpha t, \]somit gilt:
+		\[ v(T) = v_0 \cdot \ln(\frac{m_0 - \alpha T}{m_0}) - gT \]
+		für $T$, die Brenndauer.
+	\item $s(t) = \int_{t_0}^{t} v(T) dT$:
+		setze $ u \coloneqq \frac{m_0 - \alpha T}{m_0} $, dann gilt $ du = - \frac{\alpha dT}{m_0} $
+		\begin{align*}
+			v(T) &= - v_0\ln(\frac{m_0 - \alpha T}{m_0}) - gT\\
+			v(T)dT &= - v_0\ln(\frac{m_0 - \alpha T}{m_0})dT - gTdT\\
+			v(T)dT &= - v_0\ln(u)\frac{du}{du}dT - gTdT\\
+			v(T)dT &= - v_0\ln(u)\frac{du}{-\frac{\alpha dT}{m_0}}dT - gTdT\\
+			v(T)dT &= v_0\ln(u)\frac{m_0du}{\alpha} - gTdT\\
+			v(T)dT &= \frac{v_0m_0}{\alpha}\ln(u)du - gTdT\\
+			\int_0^t v(T)dT &= \frac{v_0m_0}{\alpha}\int_{u_0}^{u_t}\ln(u)du - \int_0^t gTdT\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[u_t(\ln(u_t) - 1) - u_0(\ln(u_0) - 1)\right] - \frac{1}{2}gt^2 + C
+		\end{align*}
+		setzte für $u_t \coloneqq \frac{m_0 - \alpha t}{m_0}$ und für $u_0 \coloneqq \frac{m_0 - \alpha 0}{m_0} = 1$
+
+		\begin{align*}
+			s(t) &= \frac{v_0m_0}{\alpha}\left[\frac{m_0 - \alpha t}{m_0}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) - (\ln(1) - 1)\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[\frac{m_0 - \alpha t}{m_0}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) + 1\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[\left( 1 - \frac{\alpha t}{m_0}\right)\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) + 1\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[ \ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1 - \frac{\alpha t}{m_0}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) + 1\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}%
+				\left[%
+					\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+					- \frac{\alpha t}{m_0}%
+					\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right)%
+				\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}%
+				\left[%
+					\left( 1 - \frac{\alpha t}{m_0} \right)%
+					\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+					 + \frac{\alpha t}{m_0}%
+				\right] - \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0}{\alpha}%
+				\left[%
+					\left( m_0 - \alpha t\right)%
+					\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				\right]%
+				+ v_0 t%
+				- \frac{1}{2}gt^2 + C\\
+			s(t) &= \frac{v_0m_0}{\alpha}%
+				\left(%
+					\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				\right)%
+				+ v_0\left(1 - \ln\left(\frac{m_0 - \alpha t}{m_0}\right)\right) t%
+				- \frac{1}{2}gt^2 + C\\
+			s(t) &= %
+				v_0\left(1 - \ln\left(\frac{m_0 - \alpha t}{m_0}\right)\right) t%
+				- \frac{1}{2}gt^2 + s_0
+		\end{align*}
+	\item Bei mehrstufigen Rakten wird Balast abgeworfen, wodurch das Gewicht verringert wird. Bei geringerem Gewicht muss nach $ F = m\cdot a \implies \frac{1}{m} \propto m $ bei gleicher Kraft, also bei gleicher Schubkraft.
+\end{enumerate}
+
+\section{Freier Fall}
+\begin{enumerate}[label=\alph*)]
+	\item 
+		\begin{align*}
+			\vec r(t) &= \int_{t_0}^{t} \vec v dt + h_0\\
+			\vec r(t) &= \int_{t_0}^{t} \left(\int_{t_0}^{t} \vec a dt + \vec v \right) dt + h_0\\
+			\vec r(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} \vec v dt + h_0\\
+		\end{align*}
+		Da wir annehmen, dass wir nicht nach oben oder unten springen gilt nach dem Superpositionsprinzip:
+			\[h(t) = -\frac{1}{2}gt^2 + h_0\]
+		Dabei ist $h_0 = \qty{8}{\metre}$. Um die Auftreffzeit zu berechnen, müssen wir $ h(t) = 0 $ setzten:
+		\begin{align*}
+			h(t) &= -\frac{1}{2}gt^2 + h_0\\
+			\qty{0}{\metre} &= -\frac{1}{2}gt^2 + \qty{8}{\metre}
+		\end{align*}
+		dann gilt nach der Binomischen Formel:
+		\begin{align*}
+			t_{1,2} &= \frac{-0 \pm \sqrt{0^2 + 2g\cdot \qty{8}{\metre}}}{2\cdot \left(-\frac{1}{2}g\right)}\\
+			t_{1,2} &= \frac{\mp \sqrt{g \cdot \qty{16}{\metre}}}{g}\\
+			t_{1,2} &= \frac{\mp 4\sqrt{\qty{10}{\square\metre\per\square\second}}}{\qty{10}{\metre\per\square\second}}
+		\end{align*}
+		\[ t_1 = \frac{- 4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} \]
+		\[ t_2 = \frac{4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} \]
+		Da $ t_1 $ eine negative Zeit ist, wir aber erst zur Zeit $ \qty{0}{\second} $ losspringen, kann dies nicht sein und die Auftreffzeit ist $ t_2 = \frac{4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} = \frac{2\sqrt{5}}{5}\unit{\second}$
+	\item Es gilt weiterhin
+		\begin{align*}
+			\vec r(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} \vec v dt + h_0\\
+		\end{align*}
+		und $ h_0 = \qty{8}{\metre} $, da für die Höhe nach dem Superpositionsprinip nur die Geschwindigkeit in die y-Richtung von Bedeutung ist, gilt für $ t_0 = \qty{0.5}{\second} $
+		\begin{align*}
+			h(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} v_y dt + h_0\\
+			h(t) &= - g(t- t_0)^2 + v_y \cdot (t-t_0) + \qty{8}{\metre}\\
+		\end{align*}
+		Dabei soll $ h(t_2) = \qty{0}{\metre} $, also:
+		\[\qty{0}{\metre}  = -g\left(\frac{2\sqrt{5}}{5}\unit{\second} - \qty{0.5}{\second} \right)^2 + v_0 \left(\frac{2\sqrt{5}}{5}\unit{\second} - \qty{0.5}{\second} \right)  + \qty{8}{\metre}\]
+		\[ \qty{10}{\metre\per\square\second}\cdot\left(%
+			\frac{4\cdot5}{25}\unit{\square\second} - 2\cdot\frac{2\sqrt{5}}{5}\cdot\qty{0.5}{\square\second} + \qty{0.25}{\square\second} \right)%
+			- \qty{8}{\metre} = v_0 \frac{2\sqrt{5}}{5}\unit{\second}\]
+		\[ \qty{10}{\metre}\cdot\left(\frac{4}{5} - \frac{2\sqrt{5}}{5} + 0.25 \right)-  \qty{8}{\metre} = v_0 \frac{2\sqrt{5}}{5}\unit{\second}\]
+		\[ \qty{8}{\metre} - \frac{4\sqrt{5}}\,\unit{\metre} + 2.5\,\unit{\metre} -  \qty{8}{\metre} = v_0 \frac{2\sqrt{5}}{5}\unit{\second}\]
 \end{enumerate}
 
 \end{document}
