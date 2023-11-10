@@ -232,6 +232,23 @@
 			t_{2} &= - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\\
 		\end{align*}
 		Setzen wir dies in $ r_x(t) $ ein ergibt sich:
+
+		\begin{align*}
+			r_x(t_2) &= v_xt + s_0\\
+			~&= \cos(\alpha)v \left( - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\
+			~&= \cos(\alpha)v \left( - \frac{\sin(\alpha)v+ \sqrt{\sin^2(\alpha)v^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\
+			~&= - \frac{\cos(\alpha)v \sin(\alpha)v}{2\cdot a} - \frac{ \cos(\alpha)v \sqrt{\sin^2(\alpha)v^2 - 4\cdot a_y\cdot h_0}}{2\cdot a} + s_0\\
+			~&= - \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} - \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a} + s_0
+		\end{align*}
+		Dies Abgeleitet ergibt und Null gesetzt um Extrema von $r_x(t_2)$ in abhängigkeit von $\alpha$ zu finden:
+		\begin{align*}
+			\frac{d}{d\alpha} r_x(t_2) &= -\frac{d}{d\alpha} \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} -\frac{d}{d\alpha} \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a}\\
+			0 &= -\frac{d}{d\alpha} \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} -\frac{d}{d\alpha} \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a}\\
+			0 &= \frac{d}{d\alpha} \cos(\alpha)\sin(\alpha)v + \frac{d}{d\alpha} \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}\\
+			0 &= \cos^2(\alpha)v - \sin^2(\alpha)v + \frac{1}{2 \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}\\
+			0 &= \cos^2(\alpha)v - \sin^2(\alpha)v + \frac{2cos^3(\alpha) - 2\cos^3(\alpha) + 2\sin(\alpha) \cdot 4 \cdot a_y \cdot h_0 }{2 \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}\\
+		\end{align*}
+
 		\begin{align*}
 			r_x(t_2) &= v_xt + s_0\\
 			~&= \sqrt{\vec v^2 - v_{y_0}^2} \left( - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\

@@ -240,12 +240,12 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 \begin{lemma}
 	Für alle $ n \in \N $ und alle $ k \in \{ 1, \dotsc, n \}: $
 	\[ \binom{n}{k} + \binom{n}{k-1} = \binom{ n+1}{k}\]
-	\begin{proof}
+	\begin{proof*}
 		\begin{align*}
 			\binom{n}{k} + \binom{n}{k-1} &= \frac{n!{\color{yellow}(n-k+1)}}{k! (n-k)!{\color{yellow} (n-k+1)}} + \frac{n!{\color{yellow}(k)}}{(k-1)! (n-(k-1)k)!{\color{yellow} (k)}}\\
 			= \frac{n!n + n!}{k!(n-k+1!} &= \frac{n!(n+1)}{k!(n-k+1)!} \qed
 		\end{align*}
-	\end{proof}
+	\end{proof*}
 \end{lemma}
 
 \begin{example}[(Binomische Formel)]
@@ -302,7 +302,7 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 	\end{enumerate}
 
 	$\ref{en:4} \iff \ref{en:5} \iff \ref{en:6}$
-	\begin{subproof}
+	\begin{subproof*}
 		\begin{description}
 			\item[`$\ref{en:4} \implies \ref{en:5}$':] Sei $ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{\ref{en:4}}{=} \N \subset N $\\
 			Aber $ 1 \in \N $, und $ 1 \in N $ (da $ N $ ind. ), Da $ N $ ind. ist, ist mit jeder nat. $ x \in \N $ also auch $ x \in N $. Damit $ x + 1 \in \N $ \fbox{$\N \subset N.$}
@@ -316,7 +316,7 @@ Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiederspr�
 				\end{enumerate}
 			\item['$\ref{en:6} \implies \ref{en:4}$'] Noch zu zeigen (blöd glaube ich oder ÜA, wir hatten auf jeden Fall keine Zeit in der Vorlesung) \qed
 		\end{description}
-	\end{subproof}
+	\end{subproof*}
 \end{subproposition}
 
 \section{Körper}
@@ -360,14 +360,14 @@ Kontinuumshypothese
 		\item $ x^n \cdot y^n = ( x \cdot y ) ^n $
 	\end{enumerate}
 	Ist zudem $ x, y \neq 0_K $, so gelten diese Identitäten auch für $n,m \in \Z $
-	\begin{proof}[i]
+	\begin{proof*}[i]
 		Fixiere $ n \in \N_0 $, nun Induktion nach $m$.
 		\begin{description}
 			\item[I.A.] $m = 0$. $x^n\cdot x^0 \overset{\text{Def.}}{=} x^n \cdot 1_K \overset{\text{(M2)}}{=} 1_K \cdot x^n \overset{\text{(M3)}}{=} x^n= x^{n+0} $
 			\item[I.S.] Gelte die Aussage für ein $m \in \N_0$. Zeige für $ m \curvearrowright m+1 $
 				\[ x^n \cdot x^{m+1} \overset{\text{Def.}}{=} x^n\left(x^m) \cdot x\right) \overset{\text{(M1)}}{=} \left( x^n\cdot x^m\right) \cdot x \overset{\text{IV}}{=} x^{n+m} \cdot x \overset{\text{Def.}}{=} x^{n+m+1} \qed \]
 		\end{description}
-	\end{proof}
+	\end{proof*}
 \end{lemma}
 
 \subsection{Angeordnete Körper}
@@ -423,20 +423,20 @@ Kontinuumshypothese
 			$ a + c < b + c $.
 		\item $ a < b \implies (-a) > (-b) $
 	\end{enumerate}
-	\begin{subproof}[(i)-(iii)]
+	\begin{subproof*}[(i)-(iii)]
 		\begin{enumerate}[label=(\roman*)]
 			\item Da $ a < b \iff 0_K < b - a $, folgt das aus Trichotomie und Def. von `$>$'.
 			\item zu zeigen: $ a y c $, d.h. $ 0_K < c-a$.
 				\[ c - a = ( c + 0_K ) - a = \underbrace{(c-b)}_{>0} + \underbrace{(b-a)}_{>0} > 0, \text{ d.h. } a < c \]
 			\item $ a > 0 $. Angenommen, $ (-a ) > 0. \overset{\text{Abg. Add.)}}{\implies} 0_K = a + (-a) > 0_K \overset{\text{Trich.}}{\implies} \Lightning $ Ist $-a = 0$, so $ a = 0 $, nach Trich. Wid. zu $ a > 0 $. Falls $ a < 0 $, analog.\qed
 		\end{enumerate}
-	\end{subproof}
+	\end{subproof*}
 \end{sublemma}
 \begin{subcorollary}
 	Es gibt keine Ordnung `$<$' auf $\F_2$, die $\F_2$ zu einem angeordneten Körper macht
-	\begin{proof}
+	\begin{proof*}
 		Angenommen, `$<$' sei Ordnung. Da $ 0_K \neq 1_K $, gilt entweder $ 0_K < 1_K $ oder $ 1_K < 0_K $ (nach Trich.). Falls $ 0_K < 1_K $. Dann $ 0_K = 1_K + 1_K $ damit $ 0_K = 1_K + 1_K > 0_K + 1 = 1_K $. Widerspruch für $1_K < 0_K$ argumentiere analog.
-	\end{proof}
+	\end{proof*}
 \end{subcorollary}
 \begin{itemize}
 	\item \textsc{Prinzip:} $\R \wedge \Q $ sind angeordnete Körper
@@ -477,17 +477,120 @@ Kontinuumshypothese
 		\item \textbf{nach unten beschränkt}, falls $ \exists c \in \R \forall x \in A: c \leq x $ `` untere Schranke''
 	\end{itemize}
 \end{subdefinition}
+
 \begin{subexample}
 	\begin{itemize}
 		\item $ A = N_0 $ durch $ 0 $ nach unten, nach oben unbegrenzt
 		\item $ A = \{ 1, 2, \dotsc, 10\} $ durch $ 1 $ nach unten, und durch $ 10, 11, \dotsc $ nach oben beschränkt
 	\end{itemize}
 \end{subexample}
+
 \begin{subdefinition}
 	Sei $ a \subset \R $ nichtleer
 	\begin{enumerate}[label=(\roman*)]
-		\item Ist $ A $ nach oben beschränkt, so heißt $ s ( \eqqcolon \operatorname{sup}A) $ \textbf{Supremum} von $ A $, falls $ s $ obere Schranke ist und \textbf{kleinste obere Schranke} ist d.d. $ \forall c \in \R : c $ obere Schranke von $ A \implies s \leq c $
+		\item Ist $ A $ nach oben beschränkt, so heißt $ s ( \eqqcolon \operatorname{sup}A) $ \textbf{Supremum} von $ A $, falls $ s $ obere Schranke ist \textit{und} \textbf{kleinste obere Schranke} ist d.h. $ \forall c \in \R : c $ obere Schranke von $ A \implies s \leq c $. Ist $ s \in A $ Supremum von $ A $, so heißt $ s $ \textbf{Maximum} von $ A $.
+		\item Ist $ A $ nach oben unbeschränkt, so sei $ + \infty $ das Supremum von $ A $.
+		\item Ist $ A $ nach unten beschränkt, so nennen wir $ s^\prime \in \R $ \textbf{Infimum} von $ A $, falls $ s^\prime$ untere Schranke und für jede andere untere Schranke $ d \in \R $ von $ A $: $ d \leq s^\prime $. Ist $ s^\prime \in A $ Infimum, so heißt $ s^\prime $ \textbf{Minimum} von $ A $.
+		\item Ist $ A $ nach unten unbeschränkt, so sei $ - \infty $ das Infimum von $ A $
 	\end{enumerate}
+	\textbf{Schreibweise}: $ \sup(A), \max(A), \inf(A), \min(A)$.
 \end{subdefinition}
+
+\begin{subexample}
+	Für $ a, b \in \R $ mit $ a y b $ sei $ ( a, b ) \coloneqq \{ \R : a < x < b \} $\\
+	Dann: $ \sup((a,b)) = b \wedge \inf((a,b)) = a $.
+	\begin{itemize}
+		\item Obere Schranke: $ \forall x \in (a,b) : x <  ) \implies b $ obere Schranke.
+		\item Ist $ d $ andere obere Schranke, so $ b \leq d $. Klar: $ d > a $, also angenommen $ a < d < b $.\\
+			Dann $ x \coloneqq \frac{d+b}{2} \in ( a, b), x > d. \implies d $ keine obere Schranke \Lightning\\
+			Weiter $ b \notin (a, b) $, also $ b $ Supremum, kein Maximum
+	\end{itemize}
+\end{subexample}
+
+\fbox{\textsc{Prinzip}} (Supremumseigenschaft)\\
+Jede nach oben beschränkte Menge $ A \subset \R $ hat ein Supremum in $ \R $
+\textbf{Informell}: $ ( 1, \sqrt{2} ) \cap \Q $ hat $\sup = \sqrt{2} $ (später). Aber $ \sqrt{2} \notin \Q $, also gilt die Supremumseigenschaft für $ \Q $ nicht.\par
+
+$ \R $ ist
+\begin{itemize}
+	\item Körper
+	\item angeordente Körper
+	\item bewerteter Körper
+	\item Archimedisch angeordnete Körper
+	\item \textbf{Supremumseigenschaft}
+\end{itemize}
+
+\section{Folgen und Konvergenz}
+\subsection{Reele Folgen und Konvergenz}
+Folge $ a: \N \ni n \mapsto a ( n ) \in \R $. Schreibweisen:
+\[ ( \underbrace{a_n}_{( = a(n))} )_{n \in \N} \text{( $ n $ Laufindex)}, (a_n) \]
+\begin{subexample}
+	\[ a_n \coloneqq 2  n \to \text{ Folge der geraden Zahlen} \]
+	\[ a_n \coloneqq 2n+1 \to \text{ Folge der ungeraden Zahlen} \]
+\end{subexample}
+
+\begin{subdefinition}[Konvergenz]
+	Sei $ (a_n) $ eine Folge in $ \R $ $ ( ( a_n ) \subset \R ) $ und $ a \in \R $. Wir sagen, dass $ ( a_n ) $ gegen $ a $ \textbf{konvergiert}, falls \fbox{ $ \forall\varepsilon>0 \exists N \in \N \forall n \geq N: \mid a_n - a \mid < \varepsilon $}\\
+	Wir nennen $ a $ dann den \textbf{Grenzwert} oder \textbf{Limes} von $ ( a_n ) $ und schreiben
+	\[ \lim_{n \to \infty} a \coloneqq a \]
+	Gibt es $ a\in \R $ so, dass $ ( a_n ) $,'gegen $ a $ konvergiert, so nennen wir $ ( a_n ) $ \textbf{konvergent}, andernfalls \textbf{divergent}.
+\end{subdefinition}
+\begin{sublemma}
+	Sei $ ( a_n ) \subset \R $ eine Folge, die gegen $ a, b \in \R $ konvergiert. Dann $ a = b $.
+	\begin{subproof*}
+		Sei $ \varepsilon > 0 $ bel.. Dann
+		\begin{multline}
+			\exists N \in \N \forall n \geq N : | a_n - a | < \frac{\varepsilon}{2} \wedge | a_n - b | < \frac{\varepsilon}{2}\\
+			\implies \forall n \geq N : | a - b | = | (a - a_n) + ( a_n - b ) | \leq | a_n - a | + | a_n - b | < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\\
+			\overset{\forall \varepsilon}{\implies} a = b.\qed
+		\end{multline}
+Für jedes $ \varepsilon > 0 $: Ab irgendeinem $ N $ bleibt die Folge für immer im $ \varepsilon $-Streifen um $ a $.
+	\end{subproof*}
+\end{sublemma}
+
+\begin{subexample}
+	$ (a_n)_{ n \in \N } = \left( \frac{1}{n} \right)_{n\in \N} $. Vermute: Limes $ \lim_{n \to \infty} \frac{1}{n} = 0 $. Sei $ \varepsilon > 0 $. Mit Archimedes $ \exists N \in \N : \frac{1}{\varepsilon} < N $. Dann $ \forall n \geq N : \left| \frac{1}{n} \right| = \frac{1}{n} \leq \frac{1}{N} < \varepsilon $.\qed
+\end{subexample}
+
+\begin{subexample}
+	$ \forall a \in \R : ( a_n ) = (a) $ (konstante Folge) konvergent gegeben $a$
+\end{subexample}
+\begin{subexample}
+	$ \lim_{n \to \infty} \frac{n}{2^n} = 0 $. Sei $ \varepsilon > 0 $. Nach \ref{1.2.3} $ \forall n \geq 5: n^2 < 2^n $. Nach Arch. $ \exists N \in \N : N \geq 5 \wedge \frac{1}{\varepsilon} < N. \implies \forall n \geq N : \left| \frac{n}{2^n} - 0 \right| = \frac{n}{2^n} \overset{\text{Ugl}}{<} \frac{1}{n} \overset{n\geq N}{\leq} \frac{1}{N} < \varepsilon $\qed
+\end{subexample}
+
+\begin{subexample}
+	$ (a_n)_{n\in\N} \coloneqq \left( (-1)^n\right)_{n\in \N} $\\
+	\textbf{Beh.:} $ \neg \exists a \in \R : (a_n)_{n\in\N} $ konv. gg $a$. Angenommen, es gäbe so ein $ a \in \R. $ Wähle $ 0 < \varepsilon < 1 $. Dann $\exists N \in \N \forall n \geq N : \left| (-1)^n - a \right| < \varepsilon. $\\
+	Dann: $ 2 = | 1- (-1) | \leq \underbrace{ | ( 1 - a ) |}{\leq \left| (-a)^n - a\right|} + \underbrace{ | a + 1 | }_{\left| a - (-1)^n \right|} < 2 \varepsilon < 2 $
+\end{subexample}
+
+\begin{subexample}
+	$ (a_n) $ reele Folge.
+	\begin{itemize}
+		\item $ \exists \varepsilon > 0 \exists N \in \N \forall n \geq N : | a_n - a | < \varepsilon.$\\
+			Für $ \varepsilon = 1 $ efüllt die Folge aus example \ref{3.1.7} dies!\\
+			Nicht äquivalent zu Konvergenz!
+		\item $ \forall \varepsilon > 0 \forall N \in \N \exists n \geq N : | a_n - a | < \varepsilon $\\
+			Folge aus example \ref{3.1.7} erülllt dies - nicht äquivalent!
+	\end{itemize}
+\end{subexample}
+
+\subsection{Rechenregeln für Grenzwerte}
+\begin{subtheorem}
+	Seien $ (a_n), (b_n) \subset \R $ konv. gegen $ a \in \R $ bzw. $ b \in \R $. Dann
+	\begin{enumerate}[label=(\roman*)]
+		\item $ (a_n+b_n) $ konvergiert gegen $ a+ b \lim_{(n\to\infty} ( a_n + b_n ) = \lim_{n\to\infty}a_n + \lim_{n\to\infty} $
+		\item $(a_n\cdot b_n) $ konvergiert gegen $ a\cdot b$
+		\item Ist $ b\neq 0 $ so existiert ein $ N \in \N $ mit $ n \geq N \implies b_ \neq 0 $, und es gilt:
+			\[ \left( \frac{a_n}{b_n} \right)_{n\geq N} \text{ konv gg } \frac{a}{b}. \]
+	\end{enumerate}
+\end{subtheorem}
+\begin{subproof*}
+	Sei $ \varepsilon > 0 $\\
+	Wg. Konv. $ a_n \to a \exists N_1 \in \N : \forall n \geq N_1 : | a_n - a| < \frac{\varepsilon}{2} $\\
+	Wg. Konv. $ b_n \to b \exists N_2 \in \N: \forall n \geq N_2 : | b_n - b | < \frac{\varepsilon}{2} $
+\end{subproof*}
+
 
 \end{document}
