@@ -258,6 +258,15 @@
 		\end{align*}
 		Um die weiteste Strecke zu finden, kann man die Änderung der Strecke in y-Richtung in Abhängigkeit von $ v_{y_0} $ auf Nullstellen überprüfen, d.h.
 		\begin{align*}
+			\frac{d}{d_{y_0}} r_x(t_2) &= \frac{v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right)}{\sqrt{\vec v^2 - v_{y_0}^2} \cdot 2 \cdot a} - \frac{\sqrt{\vec v^2 - v_{y_0}^2} + \frac{v_{y_0}\sqrt{\vec v^2 - v_{y_0}^2}}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}}}{2\cdot a}\\
+			0 &= v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right) - {\vec v^2 + v_{y_0}^2 - \frac{v_{y_0}\cdot\left(\vec v^2 - v_{»_0}^2\right)}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}}}\\
+			v_x^2 + \frac{v_yv_x^2}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}} &= v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right) \\
+			v_x^2 \left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right) &= v_{y_0}^2 \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}  + v_{y_0}^3 - v_{y_0} \cdot 4 \cdot a_y\cdot h_0\\
+			v_x &= \sqrt{\frac{v_{y_0}^2 \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}  + v_{y_0}^3 - v_{y_0} \cdot 4 \cdot a_y\cdot h_0}{\left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right)}}\\
+			v_x &= \sqrt{v_{y_0}^2 - \frac{v_{y_0} \cdot 4 \cdot a_y\cdot h_0}{\left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right)}}
+		\end{align*}
+
+		\begin{align*}
 			\frac{d}{dv_{y_0}} &= \frac{d}{dv_{y_0}}  \frac{\sqrt{v_{y_0}^2 - \vec v^2 } \cdot v_{y_0} + \sqrt{v_{y_0}^4 - v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2}}{2\cdot a} + \frac{d}{dv_{y_0}}s_0\\
 			0 &= \frac{d}{dv_{y_0}}  \frac{\sqrt{v_{y_0}^2 - \vec v^2 } \cdot v_{y_0}}{2\cdot a} + \frac{d}{dv_{y_0}}\frac{\sqrt{v_{y_0}^4 - v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2}}{2\cdot a} \\
 		\end{align*}
