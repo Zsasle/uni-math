@@ -1,0 +1,289 @@
+\documentclass[sectionformat = aufgabe]{gadsescript}
+
+\settitle{Übungsblatt Nr. 2}
+
+\begin{document}
+\maketitle
+
+\section{Orthonomalbasis}
+\begin{enumerate}[label=\alph*)]
+	\item 
+		\begin{alignat*}{3}
+			&\left( \vec e_1 + \vec e_2 \right) \cdot \vec e_3
+				&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&\vec e_1 \cdot \vec e_3 + \vec e_2 \cdot \vec e_3\\
+			&~&\omit\hfil$=$\hfil&\delta_{13} + \delta_{23}\\
+			&~&\omit\hfil$=$\hfil& 0 + 0\\
+			&~&\omit\hfil$=$\hfil&0
+		\end{alignat*}
+		\begin{alignat*}{3}
+			&\left(4\vec e_1 + 3 \vec e_2 \right) \cdot \left(7\vec e_1 - 16\vec e_3\right)
+				&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&\left( 4\vec e_1 + 3\vec e_2 \right) \cdot 7\vec e_1 - \left( 4\vec e_1 + 3\vec e_2 \right) \cdot 16\vec e_3\\
+			&~&\omit\hfil$\overset{\text{Distr.}}{=}$\hfil&28\vec e_1\vec e_1 + 21\vec e_1 \vec e_2 - 64\vec e_1\vec e_3 - 48\vec e_2 \vec e_3\\
+			&~&\omit\hfil$=$\hfil&28\delta_{11} + 21\delta_{12} - 64\delta_{13} - 48\delta_{23}\\
+			&~&\omit\hfil$=$\hfil&28
+		\end{alignat*}
+	\item Genau dann wenn zwei Vektoren orthogonal sind, oder wenn einer der Vektoren der Nullvektor is, dann ist das Skalarprodukt zweier Vektoren 0. Also wollen wir ein $X$ finden, wofür gilt:
+		\[ \vec a \cdot \vec b = \left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) = 0 \]
+		\begin{align*}
+			\left(2\vec e_1 - 5\vec e_2 + X\vec e_3 \right) \cdot \left( -\vec e_1 + 2\vec e_2 - 3\vec e_3 \right) &= 0\\
+			\sum_{i = 0}^{3}a_ib_i &= 0\\
+			2\cdot(-1) + (-5)\cdot2 + X\cdot(-3) &= 0\\
+			-2 -10 -3X &= 0\\
+			3X &= 12\\
+			X &= 4\\
+		\end{align*}
+		Also für $ X \coloneqq 4 $ sind die Vektoren $\vec a $ und $ \vec b $ parallel, oder einer der beiden ist der Nullvektor. Da aber $ \vec a \neq \vec0 $ und $ \vec b \neq \vec0 $ sind die Vektoren parallel
+	\item Genau dann, wenn die Vektoren $ \vec v $ und $ \vec w $ linear unabhängig sind, gilt:
+		\[ \forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
+		Seien $ \lambda_1, \lambda_2 \in \R\setminus\{0\} $ gegeben, zu zeigen:\\
+		$\lambda_1 \vec v + \lambda_2 \vec w \neq \vec 0 $, wir führen einen Beweis durch Widerspruch und nehmen dazu an $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, dann gilt:
+		\begin{align*}
+			\lambda_1v_1 + \lambda_2w_1 &= 0,\\
+			\lambda_1v_2 + \lambda_2w_2 &= 0 \text{ und}\\
+			\lambda_1v_3 + \lambda_2w_3 &= 0.
+		\end{align*}
+		Also gilt für die erste Gleichung:
+		\begin{align*}
+			\lambda_1\cdot v_1 + \lambda_2w_1 &= 0\\
+			\lambda_1 \cdot 1 &= -\lambda_2\cdot (-3)\\
+			\lambda_1 &= 3\lambda_2.
+		\end{align*}
+		Dies in die zweite Gleichung eingesetzt ergibt:
+		\begin{align*}
+			\lambda_1v_2 + \lambda_2w_2 &= 0 \\
+			3\lambda_2v_2 + \lambda_2w_2 &= 0 \\
+			\lambda_2\left(3v_2 + w_2\right) &= 0 \\
+			\lambda_2\left(3 \cdot (-1) + 2\right) &= 0 \\
+			\lambda_2\left(-1\right) &= 0 \\
+			\lambda_2 &= 0
+		\end{align*}
+		Da aber $ \lambda_2 \neq 0 $ führt dies zu einem Widerspruch und die die Annahme $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, war falsch, also gilt $\forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 $.\qed
+\end{enumerate}
+
+\section{Raketengleichung}
+\begin{enumerate}[label=\alph*)]
+	\item Aus der Vorlesung wissen wir, dass gilt im Allgemeinen:\\
+		\[ v(T) = - v_{rel} \cdot \ln{\frac{m_T}{m_0}} - gT \]
+		da die Rakete pro Zeiteinheit die Gasmenge $\alpha$ mit der Geschwindigkeit $v_0$ ausstößt und die Anfangsmasse $m_0$ hat, gilt für $m_T$:
+		\[ m_T = m_0 - \alpha t, \]somit gilt:
+		\[ v(T) = v_0 \cdot \ln(\frac{m_0 - \alpha T}{m_0}) - gT \]
+		für $T$, die Brenndauer.
+	\item $s(t) = \int_{t_0}^{t} v(T) dT$:
+		setze $ u \coloneqq \frac{m_0 - \alpha T}{m_0} $, dann gilt $ du = - \frac{\alpha dT}{m_0} $
+		\begin{align*}
+			v(T) &= - v_0\ln(\frac{m_0 - \alpha T}{m_0}) - gT\\
+			v(T)dT &= - v_0\ln(\frac{m_0 - \alpha T}{m_0})dT - gTdT\\
+			v(T)dT &= - v_0\ln(u)\frac{du}{du}dT - gTdT\\
+			v(T)dT &= - v_0\ln(u)\frac{du}{-\frac{\alpha dT}{m_0}}dT - gTdT\\
+			v(T)dT &= v_0\ln(u)\frac{m_0du}{\alpha} - gTdT\\
+			v(T)dT &= \frac{v_0m_0}{\alpha}\ln(u)du - gTdT\\
+			\int_0^t v(T)dT &= \frac{v_0m_0}{\alpha}\int_{u_0}^{u_t}\ln(u)du - \int_0^t gTdT\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[u_t(\ln(u_t) - 1) - u_0(\ln(u_0) - 1)\right] - \frac{1}{2}gt^2 + s_0
+		\end{align*}
+		setzte für $u_t \coloneqq \frac{m_0 - \alpha t}{m_0}$ und für $u_0 \coloneqq \frac{m_0 - \alpha 0}{m_0} = 1$%
+		%
+		\begin{align*}
+			s(t) &= \frac{v_0m_0}{\alpha}\left[%
+					\frac{m_0 - \alpha t}{m_0}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) - (\ln(1) - 1)%
+				\right]%
+				- \frac{1}{2}gt^2 + s_0\\
+			s(t) &= \frac{v_0m_0}{\alpha}\left[%
+					\frac{m_0 - \alpha t}{m_0}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) + 1)%
+				\right]%
+				- \frac{1}{2}gt^2 + s_0\\
+			s(t) &= \frac{v_0(m_0 - \alpha t)}{\alpha}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right) + \frac{v_0m_0}{\alpha}%
+				- \frac{1}{2}gt^2 + s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0(m_0 - \alpha t)}{\alpha}\left(\ln\left(\frac{m_0 - \alpha t}{m_0}\right) - 1\right)%
+				+ \frac{v_0m_0}{\alpha}%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0(m_0 - \alpha t)}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				- \frac{v_0(m_0 - \alpha t)}{\alpha}%
+				+ \frac{v_0m_0}{\alpha}%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0(m_0 - \alpha t)}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ \frac{v_0}{\alpha}(m_0 - ( m_0 - \alpha t))%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0(m_0 - \alpha t)}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ \frac{v_0\alpha t}{\alpha}%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0(m_0 - \alpha t)}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ v_0t%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0m_0}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				- \frac{v_0\alpha t}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ v_0t%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0m_0}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				- v_0t\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ v_0t%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0m_0}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ v_0t\left( 1 - \ln\left(\frac{m_0 - \alpha t}{m_0}\right) \right)%
+				+ s_0\\
+			s(t) &=%
+				- \frac{1}{2}gt^2%
+				+ \frac{v_0m_0}{\alpha}\ln\left(\frac{m_0 - \alpha t}{m_0}\right)%
+				+ v_0t\left( 1 - \ln\left(\frac{m_0 - \alpha t}{m_0}\right) \right)%
+				+ s_0\\
+		\end{align*}
+	\item Bei mehrstufigen Rakten wird Balast abgeworfen, wodurch das Gewicht verringert wird. Bei geringerem Gewicht muss nach $ F = m\cdot a \implies \frac{1}{m} \propto m $ bei gleicher Kraft, also bei gleicher Schubkraft.
+\end{enumerate}
+
+\section{Freier Fall}
+\begin{enumerate}[label=\alph*)]
+	\item 
+		\begin{align*}
+			\vec r(t) &= \int_{t_0}^{t} \vec v dt + h_0\\
+			\vec r(t) &= \int_{t_0}^{t} \left(\int_{t_0}^{t} \vec a dt + \vec v \right) dt + h_0\\
+			\vec r(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} \vec v dt + h_0\\
+		\end{align*}
+		Da wir annehmen, dass wir nicht nach oben oder unten springen gilt nach dem Superpositionsprinzip:
+			\[h(t) = -\frac{1}{2}gt^2 + h_0\]
+		Dabei ist $h_0 = \qty{8}{\metre}$. Um die Auftreffzeit zu berechnen, müssen wir $ h(t) = 0 $ setzten:
+		\begin{align*}
+			h(t) &= -\frac{1}{2}gt^2 + h_0\\
+			\qty{0}{\metre} &= -\frac{1}{2}gt^2 + \qty{8}{\metre}
+		\end{align*}
+		dann gilt nach der Binomischen Formel:
+		\begin{align*}
+			t_{1,2} &= \frac{-0 \pm \sqrt{0^2 + 2g\cdot \qty{8}{\metre}}}{2\cdot \left(-\frac{1}{2}g\right)}\\
+			t_{1,2} &= \frac{\mp \sqrt{g \cdot \qty{16}{\metre}}}{g}\\
+			t_{1,2} &= \frac{\mp 4\sqrt{\qty{10}{\square\metre\per\square\second}}}{\qty{10}{\metre\per\square\second}}
+		\end{align*}
+		\[ t_1 = \frac{- 4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} \]
+		\[ t_2 = \frac{4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} \]
+		Da $ t_1 $ eine negative Zeit ist, wir aber erst zur Zeit $ \qty{0}{\second} $ losspringen, kann dies nicht sein und die Auftreffzeit ist $ t_2 = \frac{4\sqrt{10}\,\unit{\metre\per\second}}{\qty{10}{\metre\per\square\second}} = \frac{2\sqrt{5}}{5}\unit{\second}$
+	\item Es gilt weiterhin
+		\begin{align*}
+			\vec r(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} \vec v dt + h_0\\
+		\end{align*}
+		und $ h_0 = \qty{8}{\metre} $, da für die Höhe nach dem Superpositionsprinip nur die Geschwindigkeit in die y-Richtung von Bedeutung ist, gilt für $ t_0 = \qty{0.5}{\second} $
+		\begin{align*}
+			h(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} v_{y_0} dt + h_0\\
+			h(t) &= - g(t- t_0)^2 + v_{y_0} \cdot (t-t_0) + \qty{8}{\metre}\\
+		\end{align*}
+		Dabei soll $ h(t_2) = \qty{0}{\metre} $, also:
+		\begin{align*}
+			\qty{0}{\metre}  &= -g\left(\frac{2\sqrt{5}}{5}\unit{\second} - \qty{0.5}{\second} \right)^2 + v_{y_0} \left(\frac{2\sqrt{5}}{5}\unit{\second} - \qty{0.5}{\second} \right)  + \qty{8}{\metre} \\
+			v_{y_0} \frac{2\sqrt{5}}{5}\unit{\second} &=%
+			\qty{10}{\metre\per\square\second}\cdot\left(%
+				\frac{4\cdot5}{25}\unit{\square\second} - 2\cdot\frac{2\sqrt{5}}{5}\cdot\qty{0.5}{\square\second} + \qty{0.25}{\square\second} \right)%
+				- \qty{8}{\metre}\\
+			v_{y_0} \frac{2\sqrt{5}}{5}\unit{\second} &= \qty{10}{\metre}\cdot\left(\frac{4}{5} - \frac{2\sqrt{5}}{5} + 0.25 \right)-  \qty{8}{\metre}\\
+			v_{y_0} \frac{2\sqrt{5}}{5}\unit{\second} &= \qty{8}{\metre} - 4\sqrt{5}\,\unit{\metre} + 2.5\,\unit{\metre} -  \qty{8}{\metre}\\
+			v_{y_0} \frac{2\sqrt{5}}{5}\unit{\second} &= - 4\sqrt{5}\,\unit{\metre} + 2.5\,\unit{\metre} \mid \cdot \frac{\sqrt{5}}{2}\unit{\per\second}\\
+			v_{y_0} &=  - 2\cdot5\,\unit{\metre\per\second} + 1.25\sqrt{5}\,\unit{\metre\per\second} \\
+			v_{y_0} &=  - \qty{10}{\metre\per\second} + 1.25\sqrt{5}\,\unit{\metre\per\second} \\
+			v_{y_0} &=  \frac{- 40 + 5\sqrt{5}}{4}\unit{\metre\per\second} \\
+		\end{align*}
+
+%
+%	\item Es gilt weiterhin
+%		\begin{align*}
+%			\vec r(t) &= \int_{t_0}^{t} \int_{t_0}^{t} \vec a dt^2 + \int_{t_0}^{t} \vec v dt + \vec r_0\\
+%		\end{align*}
+%		D.h.
+%		\begin{align*}
+%			\vec r(t) &= \begin{pmatrix} r_x(t)\\r_y(t)\end{pmatrix} \\
+%				~&= \begin{pmatrix}
+%					\int_{t_0}^{t} \int_{t_0}^{t} a_x dt^2 + \int_{t_0}^{t} v_x dt + s_0\\
+%					\int_{t_0}^{t} \int_{t_0}^{t} a_{y_0} dt^2 + \int_{t_0}^{t} v_y dt + h_0
+%				\end{pmatrix}
+%		\end{align*}
+%		Da die Beschleunigung in x-Richtung als $\qty{0}{\metre\per\square\second}$ angenommen werden kann und $v_x = const $, $ a_y = const $ und $ v_{y_0} = const$:
+%		\begin{align*}
+%			\vec r(t)&= \begin{pmatrix}
+%					v_xt + s_0\\
+%					a_yt^2 + v_{y_0}t + h_0
+%				\end{pmatrix}
+%		\end{align*}
+%		Sagen wir $ | \vec v | $ sei gegeben und wir wollen die größte Strecke in $ x $ herausfinden, die man Springen kann, dann gilt: $ v_x = \sqrt{ \vec v^2 - v_y^2 } $, und für die Zeit, zu der man im Fluss ankommt: $ r_y = 0 $:
+%		\begin{align*}
+%			r_x(t) &= a_yt^2 + v_{y_0}t + h_0\\
+%			\qty{0}{\metre} &= a_y t^2 + v_{y_0}t + h_0\\
+%		\end{align*}
+%		Daraus folgt nach der Mitternachtsformel:
+%		\begin{align*}
+%			t_{1,2} &= \frac{-v_{y_0} \pm \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\\
+%		\end{align*}
+%		Da $ a < 0 $, da wir annehmen, auf den Boden beschleunigt zu werden, gilt
+%		\begin{align*}
+%			v_0^2 &< v_0^2 - 4 \cdot a_y \cdot h_0\\
+%			v_0 &< \sqrt{v_0^2 - 4 \cdot a_y \cdot h_0}\\
+%			0 &< - v_0 + \sqrt{ v_0^2 - 4 \cdot a_y \cdot h_0} \qquad \mid \text{ da $ a < 0 $:}\\
+%			0 &> \frac{ - v_0 + \sqrt{ v_0^2 - 4 \cdot a_y \cdot h_0}}{2\cdot a}\\
+%		\end{align*}
+%		Da wir nur Zeiten größer \qty{0}{\second} betrachten, da wir zum Zeitpunkt $ t = 0 $ losspringen, also bleibt die Lösung:
+%		\begin{align*}
+%			t_{2} &= - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\\
+%		\end{align*}
+%		Setzen wir dies in $ r_x(t) $ ein ergibt sich:
+%
+%		\begin{align*}
+%			r_x(t_2) &= v_xt + s_0\\
+%			~&= \cos(\alpha)v \left( - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\
+%			~&= \cos(\alpha)v \left( - \frac{\sin(\alpha)v+ \sqrt{\sin^2(\alpha)v^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\
+%			~&= - \frac{\cos(\alpha)v \sin(\alpha)v}{2\cdot a} - \frac{ \cos(\alpha)v \sqrt{\sin^2(\alpha)v^2 - 4\cdot a_y\cdot h_0}}{2\cdot a} + s_0\\
+%			~&= - \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} - \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a} + s_0
+%		\end{align*}
+%		Dies Abgeleitet ergibt und Null gesetzt um Extrema von $r_x(t_2)$ in abhängigkeit von $\alpha$ zu finden:
+%		\begin{align*}
+%			\frac{d}{d\alpha} r_x(t_2) &= -\frac{d}{d\alpha} \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} -\frac{d}{d\alpha} \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a}\\
+%			0 &= -\frac{d}{d\alpha} \frac{\cos(\alpha)\sin(\alpha)v^2}{2\cdot a} -\frac{d}{d\alpha} \frac{ v \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}{2\cdot a}\\
+%			0 &= \frac{d}{d\alpha} \cos(\alpha)\sin(\alpha)v + \frac{d}{d\alpha} \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}\\
+%			0 &= \cos^2(\alpha)v - \sin^2(\alpha)v + \frac{1}{2 \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}\\
+%			0 &= \cos^2(\alpha)v - \sin^2(\alpha)v + \frac{2cos^3(\alpha) - 2\cos^3(\alpha) + 2\sin(\alpha) \cdot 4 \cdot a_y \cdot h_0 }{2 \sqrt{\cos^2(\alpha)\sin^2(\alpha)v^2 - \cos^2(\alpha)4\cdot a_y\cdot h_0}}\\
+%		\end{align*}
+%
+%		\begin{align*}
+%			r_x(t_2) &= v_xt + s_0\\
+%			~&= \sqrt{\vec v^2 - v_{y_0}^2} \left( - \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a}\right) + s_0\\
+%			~&= \sqrt{\vec v_{y_0}^2 - \vec v^2 } \cdot \frac{v_{y_0} + \sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a} + s_0\\
+%			~&= \frac{\sqrt{\vec v_{y_0}^2 - \vec v^2 } \cdot v_{y_0} + \sqrt{\vec v_{y_0}^2 - \vec v^2 }\sqrt{v_{y_0}^2 - 4\cdot a_y\cdot h_0}}{2\cdot a} + s_0\\
+%			~&= \frac{\sqrt{\vec v_{y_0}^2 - \vec v^2 } \cdot v_{y_0} + \sqrt{\vec v_{y_0}^4 - \vec v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2}}{2\cdot a} + s_0\\
+%		\end{align*}
+%		Um die weiteste Strecke zu finden, kann man die Änderung der Strecke in y-Richtung in Abhängigkeit von $ v_{y_0} $ auf Nullstellen überprüfen, d.h.
+%		\begin{align*}
+%			\frac{d}{d_{y_0}} r_x(t_2) &= \frac{v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right)}{\sqrt{\vec v^2 - v_{y_0}^2} \cdot 2 \cdot a} - \frac{\sqrt{\vec v^2 - v_{y_0}^2} + \frac{v_{y_0}\sqrt{\vec v^2 - v_{y_0}^2}}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}}}{2\cdot a}\\
+%			0 &= v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right) - {\vec v^2 + v_{y_0}^2 - \frac{v_{y_0}\cdot\left(\vec v^2 - v_{»_0}^2\right)}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}}}\\
+%			v_x^2 + \frac{v_yv_x^2}{\sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}} &= v_{y_0}\left ( v_{y_0} + \sqrt{v_{y_0}^2 - 4 \cdot a_y\cdot h_0} \right) \\
+%			v_x^2 \left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right) &= v_{y_0}^2 \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}  + v_{y_0}^3 - v_{y_0} \cdot 4 \cdot a_y\cdot h_0\\
+%			v_x &= \sqrt{\frac{v_{y_0}^2 \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0}  + v_{y_0}^3 - v_{y_0} \cdot 4 \cdot a_y\cdot h_0}{\left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right)}}\\
+%			v_x &= \sqrt{v_{y_0}^2 - \frac{v_{y_0} \cdot 4 \cdot a_y\cdot h_0}{\left( \sqrt{v_{y_0}^2 - 4 \cdot a_y \cdot h_0} + v_{y_0} \right)}}
+%		\end{align*}
+%
+%		\begin{align*}
+%			\frac{d}{dv_{y_0}} &= \frac{d}{dv_{y_0}}  \frac{\sqrt{v_{y_0}^2 - \vec v^2 } \cdot v_{y_0} + \sqrt{v_{y_0}^4 - v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2}}{2\cdot a} + \frac{d}{dv_{y_0}}s_0\\
+%			0 &= \frac{d}{dv_{y_0}}  \frac{\sqrt{v_{y_0}^2 - \vec v^2 } \cdot v_{y_0}}{2\cdot a} + \frac{d}{dv_{y_0}}\frac{\sqrt{v_{y_0}^4 - v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2}}{2\cdot a} \\
+%		\end{align*}
+%		Sei $ f(v_{y_0}) = v_{y_0}^2 - \vec v^2 $ und $ g(x) = \sqrt{x} $ und $ k(v_{y_0}) = {v_{y_0}^4 - v_{y_0}^2 \left( \vec v^2 + 4 \cdot a_y \cdot h_0 \right) + 4\cdot a_y\cdot h_0 \cdot \vec v^2} $, dann gilt:
+%		\begin{align*}
+%			0 &= \frac{d}{dv_{y_0}}  \frac{g(f(v_{y_0})) \cdot v_{y_0}}{2\cdot a} + \frac{d}{dv_{y_0}}\frac{g(k(v_{y_0})) }{2\cdot a} \\
+%			0 &=  \frac{g^\prime(f(v_{y_0}))\cdot f^\prime(v_{y_0}) \cdot v_{y_0} + g(f(v_{y_0})) \cdot 1}{2\cdot a} + \frac{g^\prime(k(v_{y_0}))\cdot k^\prime(v_{y_0}) }{2\cdot a} \\
+%			0 &=  \frac{g^\prime(f(v_{y_0}))\cdot f^\prime(v_{y_0}) \cdot v_{y_0}}{2\cdot a} + \frac{g(f(v_{y_0})) }{2\cdot a} + \frac{g^\prime(k(v_{y_0}))\cdot k^\prime(v_{y_0}) }{2\cdot a} \\
+%			0 &=  g^\prime(f(v_{y_0}))\cdot f^\prime(v_{y_0}) \cdot v_{y_0} + g(f(v_{y_0})) + g^\prime(k(v_{y_0}))\cdot k^\prime(v_{y_0})  \\
+%			0 &=  \frac{1}{2\sqrt{f(v_{y_0})}}\cdot 2v_{y_0} \cdot v_{y_0} + \sqrt{v_{y_0}^2 - \vec v^2} + \frac{1}{2 \sqrt{k(v_{y_0})}} \cdot (4 v_{y_0}^3 - 2v_{y_0} \left ( \vec v ^2 + 4 \cdot a_y \cdot_0 \right))  \\
+%			0 &=  \frac{v_{y_0}^2}{\sqrt{f(v_{y_0})}} + \sqrt{v_{y_0}^2 - \vec v^2} + \frac{(2 v_{y_0}^3 - v_{y_0} \left ( \vec v ^2 + 4 \cdot a_y \cdot_0 \right))}{\sqrt{k(v_{y_0})}}  \\
+%			0 &=  \left( v_{y_0}^2 + v_{y_0}^2 - \vec v^2 \right) \sqrt{k(v_{y_0})} + (2 v_{y_0}^3 - v_{y_0} \left ( \vec v ^2 + 4 \cdot a_y \cdot_0 \right))\sqrt{f(v_{y_0})}  \\
+%			0 &=  \left( 2v_{y_0}^2 - \vec v^2 \right) \sqrt{k(v_{y_0})} + (2 v_{y_0}^3 - v_{y_0} \left ( \vec v ^2 + 4 \cdot a_y \cdot_0 \right))\sqrt{f(v_{y_0})}  \\
+%		\end{align*}
+%
+\end{enumerate}
+
+\end{document}
