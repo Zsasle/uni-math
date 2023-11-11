@@ -34,8 +34,8 @@
 		\end{align*}
 		Also für $ X \coloneqq 4 $ sind die Vektoren $\vec a $ und $ \vec b $ parallel, oder einer der beiden ist der Nullvektor. Da aber $ \vec a \neq \vec0 $ und $ \vec b \neq \vec0 $ sind die Vektoren parallel
 	\item Genau dann, wenn die Vektoren $ \vec v $ und $ \vec w $ linear unabhängig sind, gilt:
-		\[ \forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
-		Seien $ \lambda_1, \lambda_2 \in \R\setminus\{0\} $ gegeben, zu zeigen:\\
+		\[ \forall \lambda_1,\lambda_2 \in \R : \neg(\lambda_1 = \lambda_2 = 0 ) \implies \lambda_1\vec v + \lambda_2\vec w \neq 0 \]
+		Seien $ \lambda_1, \lambda_2 \in \R \wedge \neg(\lambda_1 = \lambda_2 = 0)$ gegeben, zu zeigen:\\
 		$\lambda_1 \vec v + \lambda_2 \vec w \neq \vec 0 $, wir führen einen Beweis durch Widerspruch und nehmen dazu an $ \exists\lambda_1,\lambda_2\in\R:\neg(\lambda_1=\lambda_2=0)\wedge\lambda_1\vec v+\lambda_2\vec w = 0$, dann gilt:
 		\begin{align*}
 			\lambda_1v_1 + \lambda_2w_1 &= 0,\\
@@ -57,7 +57,7 @@
 			\lambda_2\left(-1\right) &= 0 \\
 			\lambda_2 &= 0
 		\end{align*}
-		Da aber $ \lambda_2 \neq 0 $ führt dies zu einem Widerspruch und die die Annahme $ \exists\lambda_1,\lambda_2\in\R\setminus\{0\}:\lambda_1\vec v+\lambda_2\vec w = 0$, war falsch, also gilt $\forall \lambda_1,\lambda_2 \in \R\setminus\{0\} : \lambda_1\vec v + \lambda_2\vec w \neq 0 $.\qed
+		Also $ \lambda_1 = \lambda_2 = 0 $. Da aber $ \neg( \lambda_1 = \lambda_2 = 0) $ führt dies zu einem Widerspruch und die die Annahme $ \exists\lambda_1,\lambda_2\in\R:\neg(\lambda_1 = \lambda_2 = 0) \wedge \lambda_1\vec v+\lambda_2\vec w = 0$, war falsch, also gilt $\forall \lambda_1,\lambda_2 \in \R : \neg(\lambda_1 = \lambda_2 = 0) \implies \lambda_1\vec v + \lambda_2\vec w \neq 0 $.\qed
 \end{enumerate}
 
 \section{Raketengleichung}
