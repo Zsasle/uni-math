@@ -20,7 +20,7 @@
 			\begin{description}
 				\item[Fall 1:] $ a - 1 \geq 2 $, also $ a \geq 3 $.\\
 					Wir führen einen Beweis durch Widerspruch und nehmen dazu an, $ a \in B $. Dann gilt insbesondere $ ( a \leq 2 ) \wedge ( a^2 - 1 < 0 ) $, also insbesondere $ a \leq 2 $, was im Widerspruch zu $ a \geq 3 $ steht. Also ist unsere Annahme falsch, dass $ a \in B $, folglich gilt $ a \notin B $.
-				\item[Fall 2:] $ - ( a - 1 ) \geq 2 $, also $ -a  +1 \geq 2 $, also $ a \leq -1 $, also $ -a \geq -(-1) = 1 $\\
+				\item[Fall 2:] $ - ( a - 1 ) \geq 2 $, also $ -a  +1 \geq 2 $, also $ a \leq -1 $, also $ -a \geq -(-1) = 1 $
 					\begin{align*}
 						a &\leq -1\\
 						a^2 &\geq -a \underbrace{\geq}_{\text{da $ -a \geq 1 $}} 1\\
@@ -35,25 +35,31 @@
 		\begin{proof*}
 			Zu zeigen $ X \setminus ( A \setminus B ) \subset ( X \setminus A ) \cup B $ und $ X \setminus ( A \setminus B ) \supset ( X \setminus A ) \cup B $
 			\begin{description}
-				\item[`$\subset$':] zu zeigen $ \forall x \in X \setminus ( A \setminus B ) : x \in ( X\setminus A) \cup B $, also gegeben $ x \in X \setminus ( A \setminus B ) $, also $ x \in X $ und $ x \notin A \setminus B $, also
+				\item[`$\subset$':] zu zeigen $ \forall x \in X \setminus ( A \setminus B ) : x \in ( X\setminus A) \cup B $, sei $ x \in X \setminus ( A \setminus B ) $ gegeben, also $ x \in X $ und $ x \notin A \setminus B $,
+					zu zeigen $ x \in ( X \setminus A ) \cup B $, also zu zeigen $ x \in ( X \setminus A ) \vee x \in B $, also zu zeigen $ \left( x \in X \wedge  x \notin A \right) \vee x \in B $.
+					Da $ x \in X $ und $ x \notin A \wedge x \in B $ gegeben, gilt $ ( x \in X \wedge x \notin A ) \vee x \in B $, also $ x \in (X\setminus A) \cup B$
 					\begin{align*}
 						x &\notin \{ a \in X : a \in A \wedge a \notin B \}\\
 						\neg &\left( x \in \{ a \in X : a \in A \wedge a \notin B \} \right)\\
 						\neg &\left( x \in A \wedge x \notin B \right)\\
 						x &\notin A \vee x \in B \\
+						\left( w \wedge x \notin A \right) \vee x \in B
 					\end{align*}
-					zu zeigen $ x \in ( X \setminus A ) \cup B $, also zu zeigen $ x \in ( X \setminus A ) $ oder $ x \in B $, also zu zeigen $ x \in X \wedge x \notin A $ oder $ x \in B $. Da $ x \in X $ und $ x \notin A \wedge x \in B $ gegeben, gilt $ ( x \in X \wedge x \notin A ) \vee x \in B $, also $ x \in (X\setminus A) \cup B$
+					Und da $ x \in X $ gegeben gilt: $ \left( x \in X \wedge x \notin A \right) \vee x \in B $, was zu zeigen war
 				\item[`$\supset$'] Also zu zeigen $ \forall x \in ( X \setminus A ) \cup B: x \in X \setminus ( A \setminus B )$.\\
-					Sei $ x \in ( X \setminus A ) \cup B $ gegeben,
-					dann gilt $ x \in X \setminus A \vee x \in B $,
-					da $ X \setminus A \subset X $ und $ B \subset X $ gilt, ist $ x \in X $ gegeben.
-					Außerdem $ ( x \in X \wedge x \notin A ) \vee x \in B $, es gilt:
-					\[ x \notin A \vee x \in B \]
-					\[ \neg \left ( x \in A \wedge x \notin B \right) \]
-					\[ \neg \left ( x \in \{a \in A \wedge a \notin B \} \right) \]
-					\[  x \notin \{a \in A \wedge a \notin B \} \]
-					\[ x \notin A \setminus B \]
-					Also $ x \in X \wedge ( x \notin A\setminus B $, also $ x \in X \setminus ( A \setminus B ) $.\qed
+					Sei \begin{equation} \label{eq:1} x \in ( X \setminus A ) \cup B \end{equation} gegeben,
+					zu zeigen $ x \in X \setminus ( A \setminus B ) $.\\
+					Aus $ X \setminus A \subset X $ und $ B \subset X $ folgt $ x \in X $.
+					Aus \eqref{eq:1} folgt:
+					\[ x \in X \setminus A \vee x \in B \mid \text{Def.} \]
+					\[ ( x \in X \wedge x \notin A ) \vee x \in B \mid \text{Distributivität}\]
+					\[ ( x \in X \vee x \in B ) \wedge ( x \notin A \vee x \in B ) \mid \text{Da $ B \subset X $}\]
+					\[ ( x \in X ) \wedge ( x \notin A \vee x \in B ) \mid \text{De Morgan}\]
+					\[ ( x \in X ) \wedge ( \neg \left ( x \in A \wedge x \notin B \right)) \mid \text{Definition}\]
+					\[ ( x \in X ) \wedge ( \neg \left ( x \in \{a \in A \wedge a \notin B \} \right) ) \]
+					\[ ( x \in X ) \wedge x \notin \{a \in A \wedge a \notin B \} ) \mid \text{Definition}\]
+					\[ ( x \in X ) \wedge ( x \notin A \setminus B ) \mid \text{Definition} \]
+					\[ x \in X \setminus ( A \setminus B ) \qed \]
 			\end{description}
 		\end{proof*}
 \end{enumerate}
