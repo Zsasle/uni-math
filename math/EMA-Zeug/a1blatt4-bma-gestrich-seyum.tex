@@ -1,0 +1,61 @@
+\documentclass{gadsescript}
+
+\settitle{BMA 4}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 4: Beweismechanik}
+\begin{enumerate}[label=\alph*)]
+	\item \textbf{Vor.:}
+		\[ A \coloneqq \{x \in \R : | x - 1 | \geq 2 \}, \]
+		\[ B \coloneqq \{x \in \R : (x \leq 2) \wedge ( x^2 - 1 < 0) \} \]
+		\textbf{Beh.:} $ A \subset \R \setminus B $
+		\begin{proof*}
+			Z.z $ \forall a \in A : a \in \R \setminus B $\\
+			Gegeben $ a \in A $, d.h. $ a \in \R $ und $ | a - 1 | \geq 2 $, zu zeigen $ a \in \R \setminus B $.\\
+			Also zu zeigen $ a \in \R $ und $ a \notin B $\\
+			$ a \in \R $ gegeben, noch zu zeigen $ a \notin B $.
+			Da $ | a - 1 | \geq 2 $ gegeben, gilt:\\
+			\begin{description}
+				\item[Fall 1:] $ a - 1 \geq 2 $, also $ a \geq 3 $.\\
+					Wir führen einen Beweis durch Widerspruch und nehmen dazu an, $ a \in B $. Dann gilt insbesondere $ ( a \leq 2 ) \wedge ( a^2 - 1 < 0 ) $, also insbesondere $ a \leq 2 $, was im Widerspruch zu $ a \geq 3 $ steht. Also ist unsere Annahme falsch, dass $ a \in B $, folglich gilt $ a \notin B $.
+				\item[Fall 2:] $ - ( a - 1 ) \geq 2 $, also $ -a  +1 \geq 2 $, also $ a \leq -1 $, also $ -a \geq -(-1) = 1 $\\
+					\begin{align*}
+						a &\leq -1\\
+						a^2 &\geq -a \underbrace{\geq}_{\text{da $ -a \geq 1 $}} 1\\
+						a^2 - 1 \geq 0
+					\end{align*}
+					Wir führen einen Beweis durch Widerspruch und nehmen dazu an, dass $ a \in B $. Dann gilt insbesondere $ ( a \leq 2 ) \wedge ( a^2 - 1 < 0 ) $, also insbesondere $ a^2 - 1 < 0 $, was in einem Widerspruch zu $ a^2 - 1 \geq 0 $ steht. Also war die Annahme falsch, dass $ a \in B $ und daraus folgt, dass $ a \notin B $ gilt. \qed
+			\end{description}
+		\end{proof*}
+	\item \textbf{Vor.:} $ X $ eine Menge und $ A, B \subset X $ zwei Teilmengen von $ X $.\\
+		\textbf{Beh.:}
+		\[ X \setminus ( A \setminus B ) = ( X \setminus A ) \cup B \]
+		\begin{proof*}
+			Zu zeigen $ X \setminus ( A \setminus B ) \subset ( X \setminus A ) \cup B $ und $ X \setminus ( A \setminus B ) \supset ( X \setminus A ) \cup B $
+			\begin{description}
+				\item[`$\subset$':] zu zeigen $ \forall x \in X \setminus ( A \setminus B ) : x \in ( X\setminus A) \cup B $, also gegeben $ x \in X \setminus ( A \setminus B ) $, also $ x \in X $ und $ x \notin A \setminus B $, also
+					\begin{align*}
+						x &\notin \{ a \in X : a \in A \wedge a \notin B \}\\
+						\neg &\left( x \in \{ a \in X : a \in A \wedge a \notin B \} \right)\\
+						\neg &\left( x \in A \wedge x \notin B \right)\\
+						x &\notin A \vee x \in B \\
+					\end{align*}
+					zu zeigen $ x \in ( X \setminus A ) \cup B $, also zu zeigen $ x \in ( X \setminus A ) $ oder $ x \in B $, also zu zeigen $ x \in X \wedge x \notin A $ oder $ x \in B $. Da $ x \in X $ und $ x \notin A \wedge x \in B $ gegeben, gilt $ ( x \in X \wedge x \notin A ) \vee x \in B $, also $ x \in (X\setminus A) \cup B$
+				\item[`$\supset$'] Also zu zeigen $ \forall x \in ( X \setminus A ) \cup B: x \in X \setminus ( A \setminus B )$.\\
+					Sei $ x \in ( X \setminus A ) \cup B $ gegeben,
+					dann gilt $ x \in X \setminus A \vee x \in B $,
+					da $ X \setminus A \subset X $ und $ B \subset X $ gilt, ist $ x \in X $ gegeben.
+					Außerdem $ ( x \in X \wedge x \notin A ) \vee x \in B $, es gilt:
+					\[ x \notin A \vee x \in B \]
+					\[ \neg \left ( x \in A \wedge x \notin B \right) \]
+					\[ \neg \left ( x \in \{a \in A \wedge a \notin B \} \right) \]
+					\[  x \notin \{a \in A \wedge a \notin B \} \]
+					\[ x \notin A \setminus B \]
+					Also $ x \in X \wedge ( x \notin A\setminus B $, also $ x \in X \setminus ( A \setminus B ) $.\qed
+			\end{description}
+		\end{proof*}
+\end{enumerate}
+
+\end{document}
