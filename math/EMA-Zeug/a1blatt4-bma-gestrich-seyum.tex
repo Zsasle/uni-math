@@ -37,13 +37,12 @@
 			\begin{description}
 				\item[`$\subset$':] zu zeigen $ \forall x \in X \setminus ( A \setminus B ) : x \in ( X\setminus A) \cup B $, sei $ x \in X \setminus ( A \setminus B ) $ gegeben, also $ x \in X $ und $ x \notin A \setminus B $,
 					zu zeigen $ x \in ( X \setminus A ) \cup B $, also zu zeigen $ x \in ( X \setminus A ) \vee x \in B $, also zu zeigen $ \left( x \in X \wedge  x \notin A \right) \vee x \in B $.
-					Da $ x \in X $ und $ x \notin A \wedge x \in B $ gegeben, gilt $ ( x \in X \wedge x \notin A ) \vee x \in B $, also $ x \in (X\setminus A) \cup B$
 					\begin{align*}
-						x &\notin \{ a \in X : a \in A \wedge a \notin B \}\\
-						\neg &\left( x \in \{ a \in X : a \in A \wedge a \notin B \} \right)\\
-						\neg &\left( x \in A \wedge x \notin B \right)\\
-						x &\notin A \vee x \in B \\
-						\left( w \wedge x \notin A \right) \vee x \in B
+						x \notin \{ a \in X : a \in A \wedge a \notin B \} &\mid \text{Def.}\\
+						\neg \left( x \in \{ a \in X : a \in A \wedge a \notin B \} \right) &\mid \text{Def.}\\
+						\neg \left( x \in A \wedge x \notin B \right) &\mid \text{De Morgan}\\
+						x \notin A \vee x \in B \\
+						\left( wahr \wedge x \notin A \right) \vee x \in B
 					\end{align*}
 					Und da $ x \in X $ gegeben gilt: $ \left( x \in X \wedge x \notin A \right) \vee x \in B $, was zu zeigen war
 				\item[`$\supset$'] Also zu zeigen $ \forall x \in ( X \setminus A ) \cup B: x \in X \setminus ( A \setminus B )$.\\
@@ -51,15 +50,17 @@
 					zu zeigen $ x \in X \setminus ( A \setminus B ) $.\\
 					Aus $ X \setminus A \subset X $ und $ B \subset X $ folgt $ x \in X $.
 					Aus \eqref{eq:1} folgt:
-					\[ x \in X \setminus A \vee x \in B \mid \text{Def.} \]
-					\[ ( x \in X \wedge x \notin A ) \vee x \in B \mid \text{Distributivität}\]
-					\[ ( x \in X \vee x \in B ) \wedge ( x \notin A \vee x \in B ) \mid \text{Da $ B \subset X $}\]
-					\[ ( x \in X ) \wedge ( x \notin A \vee x \in B ) \mid \text{De Morgan}\]
-					\[ ( x \in X ) \wedge ( \neg \left ( x \in A \wedge x \notin B \right)) \mid \text{Definition}\]
-					\[ ( x \in X ) \wedge ( \neg \left ( x \in \{a \in A \wedge a \notin B \} \right) ) \]
-					\[ ( x \in X ) \wedge x \notin \{a \in A \wedge a \notin B \} ) \mid \text{Definition}\]
-					\[ ( x \in X ) \wedge ( x \notin A \setminus B ) \mid \text{Definition} \]
-					\[ x \in X \setminus ( A \setminus B ) \qed \]
+					\begin{align*}
+						x \in X \setminus A \vee x \in B &\mid \text{Def.} \\
+						( x \in X \wedge x \notin A ) \vee x \in B &\mid \text{Distributivität}\\
+						( x \in X \vee x \in B ) \wedge ( x \notin A \vee x \in B ) &\mid \text{Da $ B \subset X $}\\
+						( x \in X ) \wedge ( x \notin A \vee x \in B ) &\mid \text{De Morgan}\\
+						( x \in X ) \wedge ( \neg \left ( x \in A \wedge x \notin B \right)) &\mid \text{Definition}\\
+					( x \in X ) \wedge ( \neg \left ( x \in \{a \in A \wedge a \notin B \} \right) ) \\
+						( x \in X ) \wedge x \notin \{a \in A \wedge a \notin B \} ) &\mid \text{Definition}\\
+						( x \in X ) \wedge ( x \notin A \setminus B ) &\mid \text{Definition}\\
+						x \in X \setminus ( A \setminus B ) \qed
+					\end{align*}
 			\end{description}
 		\end{proof*}
 \end{enumerate}

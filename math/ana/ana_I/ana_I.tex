@@ -592,5 +592,115 @@ Für jedes $ \varepsilon > 0 $: Ab irgendeinem $ N $ bleibt die Folge für immer
 	Wg. Konv. $ b_n \to b \exists N_2 \in \N: \forall n \geq N_2 : | b_n - b | < \frac{\varepsilon}{2} $
 \end{subproof*}
 
+$ (a_n), (b_n), a_n \to a, b_n \to b \implies a_n + b_n \to a + b $
+\begin{subdefinition}
+	Wir sagen, dass $ (a_n) \subset \R $ \textbf{beschränkt} ist, falls $ \exists M > 0 \forall n \in \N : | a_n | \leq M $.
+\end{subdefinition}
+\begin{sublemma}
+	Konvergente Folgen sind beschränkt.
+	\begin{subproof*}
+		Angenommen, $ (a_n) $ konvergiert gegen $ a \ni \R $. Mit $ \varepsilon = 1 $ ex. $N \in \N$:
+		\[ ( \forall n \geq N : | a_n - a | < 1 ) \implies \forall n \geq N : \left| |a_n| - |a| \right| < 1 \implies | a_n | \leq 1 + |a| \]
+		Setze $ M \coloneqq \max\{|a_1|, \dotsc, |a_N|, 1 + |a|\}$, so $ \forall n \in \N : | a_n | \leq M $.\qed
+	\end{subproof*}
+\end{sublemma}
+
+Zurück zum Beweis von Satz \ref{3.2.1} (b) und (c):
+\begin{subproof*}
+	\begin{enumerate}[label=(\alph*)]
+			\setcounter{enumi}{1}
+		\item zu zeigen $ a_n \to a \wedge b_n \to b \implies a_nb_n \to ab $\\
+			\begin{equation}
+				\label{eq:3.2.1.1}
+				| a_nb_n - ab | = | (a_nb_n - ab_n ) + (ab_n - ab)| \leq |b_n|\cdot|a_n-a| + |a||b_n-b|
+			\end{equation}
+			Sei $\varepsilon > 0$. Da $(b_n)$ beschr., ex. nach Lemma \ref{3.2.3} ein $ M > 0 : \forall n \in \N : |b_n| \leq M $. Da $ a_n \to a, b_n \to b $
+			\begin{enumerate}[label=(\arabic*)]
+				\item $\exists N_1 \in \N \forall n \geq N_1 : | a_n - a | \frac{\varepsilon}{2M} $
+				\item $\exists N_2 \in \N \forall n \geq N_2 : | a_n - a | \frac{\varepsilon}{1+|a|} $
+			\end{enumerate}
+			\[\eqref{eq:3.2.1.1} \implies \forall n \geq N \coloneqq \max\{ N_1,N_2\}: |a_nb_n - ab |\]
+			\[ \overset{\eqref{eq:3.2.1.1}}{\leq} M \cdot \frac{\varepsilon}{2M} + \underbrace{|a| \cdot \frac{\varepsilon}{2(1+|a|)}}_{< \frac{\varepsilon}{2}} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon. \]
+			Damit $(b)$.
+		\item $ a_n \to a, b_n \to b \neq 0 \implies \frac{a_n}{b_n} \to \frac{a}{b}$
+			\begin{enumerate}[label=(\arabic*)]
+				\item $ \exists n_0 \in \N \forall n \geq n_0 : | b_n | \neq 0 $.
+					\[ \forall \varepsilon > 0 \exists \widetilde{N} \forall n \geq \widetilde{N} : | b_n - b | < \varepsilon, \]
+					d.h. $ |b| - \varepsilon \leq |b_n| $\\
+					Wende Dies auf $ \varepsilon = \frac{|b|}{2} $ an.\\
+					Dann $ \forall n \geq \widetilde{N} : 0 < \frac{|b|}{2} \leq |b_n| $. setze nun $n_0 \coloneqq \widetilde{N} $
+				\item $ b_n \to b \neq 0, $ so $\frac{1}{b_n} \to \frac{1}{b}$.
+					\begin{equation}
+						\label{eq:3.2.1.2}
+						\left| \frac{1}{b_n} - \frac{1}{b} \right| = \left| \frac{b- b_n}{b_nb} \right| = \frac{|b_n -b|}{|b_n|\cdot|b|}
+					\end{equation}
+					Für $ n \widetilde{N} : \frac{|b|}{2} < |b_n| $, also $ \frac{1}{|b_n|} < \frac{2}{|b|} $, also $ \frac{1}{|b_n||b|} \frac{2}{|b|^2}$\\
+					Sei $\varepsilon > 0 $. Dann $\exists\widetilde{\widetilde{N}}\in \N : \forall n \geq \widetilde{\widetilde{N}} : | b_n - b | < \frac{\varepsilon |b|^2}{2} \cdot \frac{asd}{asdf}$
+				\item $ a_n $
+			\end{enumerate}
+	\end{enumerate}
+\end{subproof*}
+\begin{subexample}
+	something
+\end{subexample}
+\subsection{Stabilität der `$\leq$'-Relation unter Limesbildung}
+\begin{subtheorem}
+	Seien $(a_n), (b_n) $ zwei konvergente Folgen in $\R$: Seien $ a, b \in \R $
+	\begin{enumerate}[label=(\roman*)]
+		\item Gibt es $ N \in \N : \forall n \geq N : a_n \leq a $, so $ \lim_{n\to\infty} a_n \leq a $.
+		\item Gibt es $ N \in \N: \forall n \geq N : b \leq b_n $, so $ b \leq \lim_{n\to\infty} b_n $.
+	\end{enumerate}
+	\begin{subproof*}
+		Sei $\xi \coloneqq \lim_{n\to\infty} a_n$. Für $\varepsilon > 0 $ finden wir $ \widetilde{N} \in \N : n \geq \widetilde{N} : | a_n - \xi | < \varepsilon $. Damit
+		\[ \xi = ( \xi - a_n ) + a_n \leq | \xi - a_n | + a_n \leq \xi + a_n \leq a + \epsilon \implies \xi \leq a.\qed \]
+	\end{subproof*}
+	\textbf{Bemerkung:} Satz falsch für `$<$' Bsp.
+\end{subtheorem}
+
+\begin{subtheorem}[Sandwich-Thm]
+	Seien $(a_n), (c_n) \subset \R $ konv. Folgen: $ a_n,c_n \to a\in \R$ Ist $(b_n) \subset\R $, so dass $ \exists N \in \N \forall n \geq N: a_n \leq b_n \leq c_n $, so $b_n \to a$
+	\begin{subproof*}
+		$\forall \varepsilon > 0 \exists N \in \N \forall n \geq N : | a_n - a | < \frac{\varepsilon}{2} $, $|c_n - a | < \frac{\varepsilon}{2} $, Für solche n : $ a - \varepsilon < a_n - \frac{\varepsilon}{2} \leq b_n - \frac{\varepsilon}{2} \leq c_n - \frac{\varepsilon}{2} < a + \varepsilon \implies b_n \to a. $\qed
+	\end{subproof*}
+\end{subtheorem}
+
+\subsection{Monotone Konvergenz, $e$ und Wurzeln}
+\begin{subdefinition}
+	Eine Folge $(a_n)$ heißt
+	\begin{enumerate}[label=(\roman*)]
+		\item mon. wachsend $\iff \forall n \in \N a_n \leq a_{n+1} $
+		\item streng mon. wachsend $\iff \forall n \in \N a_n < a_{n+1} $
+		\item mon. fallend  $\iff \forall n \in \N a_n \geq a_{n+1} $
+		\item streng mon. fallend $\iff \forall n \in \N a_n > a_{n+1} $
+	\end{enumerate}
+\end{subdefinition}
+\begin{subtheorem}
+	Eine monotone beshcränkte Folge konvergiert.
+	\begin{subproof*}
+		\OE $(a_n)$ monoton wachsend und beschränkt, also existiert nach Supremumseigenschaft $ a \coloneqq \sup\{a_n : n \in \N \} < \infty $\\
+		Zu zeigen $ a_n \to a $. Sei $ \varepsilon 0 $ bel.. Dann nach Def. des Supremums $ \exists N \in \N : a - \varepsilon y a_N $. Für $ n \geq N $ gilt $ a_N \leq a_n $ wegen Monotonie $ \implies | a_n - a | = a_n - a = a - a_N + \underbrace{a_N - a_n}_{\leq 0} \leq a - a_n < \varepsilon $. Also $ a_n \to a $.\qed
+	\end{subproof*}
+\end{subtheorem}
+
+\begin{subcorollary}
+	Der Grenzwert $ e \coloneqq \lim_{n\to\infty} ( 1 + \frac{1}{n} )^n $ existiert.
+	Wir nennen $ e $ die \textbf{Eulerische Zahl}. Es gilt $ 2\leq e \leq 3 $.
+\end{subcorollary}
+\begin{sublemma}
+	Sei $n \in \N_0, x > -1$. Dann $ q + nx \leq ( 1 + x ) ^n $.
+\end{sublemma}
+\begin{subproof*}[Cor. \ref{3.4.4}]
+	zu zeigen: $ (a_n) = \left( \left(( 1 + \frac{1}{n} \right)^2\right) $ mon. wachs., beschr.
+	\[ \frac{a_n}{a_{n-1}} = \frac{\left( \frac{n+1}{n}\right)^2}{\left(\frac{n}{n-1} \right)^2} \overset{\text{Rechnen}}{=} \left( \frac{n^2-1}{n^2} \right)^n \cdot \frac{n}{n-1} = \left( 1 - \frac{1}{n^2} \right)^n \cdot \frac{n}{n-1} \overset{\text{Bernoulli mit $ x = -\frac{1}{n^2}$}}{\leq} \left( 1 - \frac{1}{n} \right) \cdot \frac{n}{n-1} = \frac{n-1}{n} \cdot \frac{n}{n-1} = 1 \] 
+	$\implies ( a_n ) $ mon. wachsend\\
+	Nun: $(a_n)$ beschränkt. Bin. Formel:
+	\[( x + y )^n = \sum_{k=0}^{n} \binom{n}{k} x^ky^{n-k}\]
+	\[ |a_n| = \left( 1 + \frac{1}{n} \right)^n = \sum_{k=0}^{n} \binom{n}{k}\frac{1}{n^k} = \dotsb \leq \frac{1}{k!}\]
+	\[ 2^{k-1} \leq k! \forall k \in \N \]
+	Damit
+	\[ \left(1+\frac{1}{n} \right)^n \overset{\text{von davor}}{\leq} 2 + \sum_{k=2}^{n} \binom{n}{k}\frac{1}{n^k} \leq 2 + 2 \cdot \sum_{k=2}{n}\frac{1}{2^k} \leq 2 + 2\lim_{n\to\infty} \sum_{k=1}^{n}\frac{1}{2^k} \leq 2 + 2 \cdot 1 = 4 \]
+	$\implies$ Zahl $e$ existiert! ( nach Thm. \ref{3.4.2} ) 
+\end{subproof*}
+
 
 \end{document}

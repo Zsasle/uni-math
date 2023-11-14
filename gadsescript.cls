@@ -382,12 +382,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \if \gadse@consecutivenumbering0%
-	\newcommand{\myenvironment}[4]{%
-		\cachemyenvironment{}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{sub}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{subsub}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{nosection}{#1}{#2}{#3}{#4}%
-	}%
 \else%
 	\newcounter{environmentnumber}[section]%
 	\newcounter{subenvironmentnumber}[subsection]%
@@ -395,14 +389,14 @@
 	\expandafter\renewcommand\csname theenvironmentnumber\endcsname{\csname thesection\endcsname.\arabic{environmentnumber}}%
 		\expandafter\renewcommand\csname thesubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subenvironmentnumber}}%
 		\expandafter\renewcommand\csname thesubsubenvironmentnumber\endcsname{\csname thesubsection\endcsname.\arabic{subsubenvironmentnumber}}%
-
-	\newcommand{\myenvironment}[4]{%
-		\cachemyenvironment{}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{sub}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{subsub}{#1}{#2}{#3}{#4}%
-		\cachemyenvironment{nosection}{#1}{#2}{#3}{#4}%
-	}
 \fi
+
+\newcommand{\myenvironment}[4]{%
+	\cachemyenvironment{}{#1}{#2}{#3}{#4}%
+	\cachemyenvironment{sub}{#1}{#2}{#3}{#4}%
+	\cachemyenvironment{subsub}{#1}{#2}{#3}{#4}%
+	\cachemyenvironment{nosection}{#1}{#2}{#3}{#4}%
+}
 
 \myenvironment{example}		{gadse-orange}%
 				{gadse-red}%
@@ -493,6 +487,11 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \DeclareRobustCommand{\qed}{%
+	\ifmmode \tag*{$\blacksquare$}%
+	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\blacksquare$}%
+	\fi%
+}
+\DeclareRobustCommand{\qed*}{%
 	\ifmmode \tag*{$\Box$}%
 	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\Box$}%
 	\fi%
