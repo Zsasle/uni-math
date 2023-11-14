@@ -1,0 +1,47 @@
+\documentclass[sectionformat = aufgabe]{gadsescript}
+
+\settitle{Übungsblatt Nr. 3}
+
+\begin{document}
+\maketitle
+
+\section{Begleitendes Dreibein}
+\begin{enumerate}[label=\alph*)]
+	\item $ s(t) = \int_0^t |\vec v(T) | dT = \int_0^t | \dot{\vec r} (T) | dT = \int_0^t \left| \left( -v_{0,r} \sin(\omega_cT),v_{0,r}\cos(\omega_cT), v_{0,z} \right) \right| dT = \int_0^t \sqrt{ v_{0,r}^2 + v_{0,z}^2} dT = \sqrt{v_{0,r}^2 + v_{0,z}^2} t$\\
+		Also $ t(s) = \frac{s}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} $, folglich:
+		\[ \vec r(s) = \left( \frac{v_{0,r}}{\omega_c} \cos\left(\frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right), \frac{v_{0,r}}{\omega_c} \sin\left(\frac{\omega_c}{\sqrt{ v_{0,r}^2 + v_{0,z}}} s \right), \frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right) \]
+	\item \[ \vec T = \frac{d\vec r}{ds} = \left( -\frac{v_{0,r}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \sin\left(\frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right), \frac{v_{0,r}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \cos\left(\frac{\omega_c}{\sqrt{ v_{0,r}^2 + v_{0,z}}} s \right), \frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \right) \]
+		\begin{align*}
+			\vec N &= \frac{\frac{dT}{ds}}{\left| \frac{dT}{ds}\right|}\\
+			 ~&= \frac{ \left(%
+			 -\frac{v_{0,r} \omega_c}{{v_{0,r}^2 + v_{0,z}^2}} \cos\left(\frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 -\frac{v_{0,r} \omega_c}{{v_{0,r}^2 + v_{0,z}^2}} \sin\left(\frac{\omega_c}{\sqrt{ v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 0 \right)}%
+			 {\sqrt{\frac{v_{0,r}^2\omega_c^2}{(v_{0,r}^2 + v_{0,z}^2)^2}}}\\
+			 ~&= \frac{ \left(%
+			 -\frac{v_{0,r} \omega_c}{{v_{0,r}^2 + v_{0,z}^2}} \cos\left(\frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 -\frac{v_{0,r} \omega_c}{{v_{0,r}^2 + v_{0,z}^2}} \sin\left(\frac{\omega_c}{\sqrt{ v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 0 \right)}%
+			 {\frac{v_{0,r}\omega_c}{v_{0,r}^2 + v_{0,z}^2}}\\
+			 ~&= \left(%
+			 -\cos\left(\frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 -\sin\left(\frac{\omega_c}{\sqrt{ v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			 0 \right)%
+		\end{align*}
+		\begin{align*}
+			\vec B &= \vec T \times \vec N \\
+			~&=  \Biggl(%
+			\frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \sin\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),\\
+			~&\phantom{=}%
+			- \frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \cos\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),\\
+			~&\phantom{=}%
+			\frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \sin^2\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right) -%
+			\left[ - \frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \cos^2\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right) \right]\Biggr)\\
+			~&=  \left(%
+			\frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \sin\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			- \frac{v_{0,z}}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} \cos\left( \frac{\omega_c}{\sqrt{v_{0,r}^2 + v_{0,z}^2}} s \right),%
+			1 \right)%
+		\end{align*}
+
+\end{enumerate}
+\end{document}

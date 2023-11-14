@@ -635,13 +635,19 @@ Zurück zum Beweis von Satz \ref{3.2.1} (b) und (c):
 						\left| \frac{1}{b_n} - \frac{1}{b} \right| = \left| \frac{b- b_n}{b_nb} \right| = \frac{|b_n -b|}{|b_n|\cdot|b|}
 					\end{equation}
 					Für $ n \widetilde{N} : \frac{|b|}{2} < |b_n| $, also $ \frac{1}{|b_n|} < \frac{2}{|b|} $, also $ \frac{1}{|b_n||b|} \frac{2}{|b|^2}$\\
-					Sei $\varepsilon > 0 $. Dann $\exists\widetilde{\widetilde{N}}\in \N : \forall n \geq \widetilde{\widetilde{N}} : | b_n - b | < \frac{\varepsilon |b|^2}{2} \cdot \frac{asd}{asdf}$
-				\item $ a_n $
+					Sei $\varepsilon > 0 $. Dann $\exists\widetilde{\widetilde{N}}\in \N : \forall n \geq \widetilde{\widetilde{N}} : | b_n - b | < \frac{\varepsilon |b|^2}{2} \cdot \frac{2}{|b|^2} = \varepsilon$
+				\item $ a_n \to a, b_n \to b \neq 0 \overset{(2)}{\implies} ( a_n \to a, \frac{1}{b_n} \to \frac{1}{b} ) \overset{(b)}{\implies}\frac{a_n}{b_n} \to \frac{a}{b}$\qed
 			\end{enumerate}
 	\end{enumerate}
 \end{subproof*}
 \begin{subexample}
-	something
+	$ a, b, c , d \in \R, c\neq 0, d \neq 0. $
+	\[\lim_{n\to\infty} \frac{an^2 + b}{cn^2 + d} = \lim_{n\to\infty} \frac{a + \frac{b}{n^2}}{c + \frac{d}{n^2}} = \lim_{n\to\infty} \frac{a_n}{b_n} \]
+	\begin{itemize}
+		\item $\frac{A}{n} \to 0 $, Thm. \ref{3.2.1} (b) : $ \frac{b}{n^2} \to 0 \cdot 0 = 0 \overset{\text{Thm. \ref{3.2.1} (b)}}{\implies}\frac{b}{2} \to 0 $\\
+			(+) Thm. \ref{3.2.1} (a): $ a + \frac{1}{n^2} \to a $
+		\item Nenner $ c + \frac{d}{n^2} \to c \overset{\text{Thm. \ref{3.2.1} (c)}}{\implies} \frac{a_n}{b_n} \to \frac{a}{c}. $\qed
+	\end{itemize}
 \end{subexample}
 \subsection{Stabilität der `$\leq$'-Relation unter Limesbildung}
 \begin{subtheorem}

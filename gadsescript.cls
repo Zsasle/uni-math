@@ -486,12 +486,13 @@
 %%% math commands %%%
 %%%%%%%%%%%%%%%%%%%%%
 
-\DeclareRobustCommand{\qed}{%
+\newcommand{\qed}{\@ifstar\@qedwhite\@qedblack}
+\DeclareRobustCommand{\@qedblack}{%
 	\ifmmode \tag*{$\blacksquare$}%
 	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\blacksquare$}%
 	\fi%
 }
-\DeclareRobustCommand{\qed*}{%
+\DeclareRobustCommand{\qedwhite}{%
 	\ifmmode \tag*{$\Box$}%
 	\else \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{$\Box$}%
 	\fi%
