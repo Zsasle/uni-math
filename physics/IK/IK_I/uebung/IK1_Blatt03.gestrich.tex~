@@ -50,6 +50,6 @@
 	\item $ F_{R,max} = \mu \cdot F_{N}$, also $ F_{E,max} = \frac{5}{8} \cdot ma\cos\alpha \approx \qty{9627.548}{\metre\per\square\second} $
 	\item $ F_{R,max} = \mu_G \cdot F_{N} $, also $ F_G\sin\alpha = 0.3 \cdot F_G\cos\alpha $, d.h. $ \tan\alpha = 0.3 \iff \alpha = \arctan 0.3 \approx \num{.29}$
 		Die Höhe des Kegels über dem Silo ist also $ \frac{d}{2}\sin\arctan 0.3 $ und das Volumen insgesamt ist:
-		\[ \frac{1}{3} \pi \cdot \left(\frac{d}{2}\right)^2 \cdot \frac{d}{2} \sin\arctan 0.3 + \pi \cdot \left(\frac{d}{2}\right)^2\cdot h = \pi \cdot \left(\frac{d}{2}\right)^2 \left( \frac{d}{6}\sin\arctan 0.3 + h \right) \approx \qty{2393.8}{\cubic\metre}\]
+		\[ \frac{1}{3} \pi \cdot \left(\frac{d}{2}\right)^2 \cdot \frac{d}{2} \sin\arctan 0.3 + \pi \cdot \left(\frac{d}{2}\right)^2\cdot h = \pi \cdot \left(\frac{d}{2}\right)^2 \left( \frac{d}{6}\sin\arctan 0.3 + h \right) \approx 2393.8\]
 \end{enumerate}
 \end{document}
