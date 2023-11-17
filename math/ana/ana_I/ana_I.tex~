@@ -817,10 +817,6 @@ es ist nicht so, dass alle Beschränkte Folgen, Cauchy-Folgen sind\\
 		\end{enumerate}
 	\end{subproof*}
 \end{subtheorem}
-\begin{subexample}[Beschränktheit und nicht Cauchy]
-	Betrachte $ (a_n) \coloneqq (-1)^n $. Dann ist $ |a_n| = 1 $ für alle $ n \in \N $ und speziell $ (a_n) $ beschränkt. Wähle $ 0 < \varepsilon < 2 $. Dann gilt für bel $ N \in \N $
-	\[ |a_n - a_{n+1}| = 2 > \varepsilon \]
-\end{subexample}
 
 
 \end{document}
