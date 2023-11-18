@@ -8,8 +8,10 @@
 }%
 
 \DeclareStringOption[0]{consecutivenumbering}[1]%
-\DeclareBoolOption[true]{printtitle}
+\DeclareBoolOption{printtitle}
 \DeclareBoolOption{printsubtitle}
+\DeclareBoolOption{printtitlelh}
+\DeclareBoolOption{printtitlerh}
 \DeclareBoolOption{transparentEnvironments}
 
 \DeclareStringOption{presectionnum}[{Section}]%
@@ -518,6 +520,7 @@
 \newcommand{\definetitles}[1]{%
 	\expandafter\gdef\csname set#1\endcsname##1{%
 		\expandafter\gdef\csname #1\endcsname{##1}%
+		\csname gadse@print#1true\endcsname%
 	}%
 	\expandafter\gdef\csname #1\endcsname{#1}%
 }
@@ -526,11 +529,19 @@
 \definetitles{subtitle}
 \definetitles{titlelh}
 \definetitles{titlerh}
+\definetitles{university}
+\definetitles{faculty}
+\definetitles{semester}
+
+\newcommand*{\defaulttitleh}{%
+	\setsemester{Winter Semester 2023/2024}%
+	\setuniversity{University of Konstanz}%
+	\setfaculty{Faculty of Science (Mathematics and Statistics)}%
+}
 
 % sets title headers
-\settitlelh{\today\\Wintersemester 2023/2024}
-
-\settitlerh{Universität Konstanz\\Fachbereich Mathematik und Statistik}
+\settitlelh{\today\\\semester}
+\settitlerh{\university\\\faculty}
 
 % sets maketitle
 \renewcommand{\maketitle}{%
