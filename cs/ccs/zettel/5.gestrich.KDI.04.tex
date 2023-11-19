@@ -35,16 +35,16 @@
 		\end{tikzpicture}
 	\item ~\\
 		\begin{tikzpicture}
-			\node (v1) [draw, circle, label=above: $v_1$, inner sep = 0, minimum size = 30] at (0,0) {$3$};
-			\node (v2) [draw, circle, label=above: $v_2$, inner sep = 0, minimum size = 30] at (2,2) {$2$};
-			\node (v3) [draw, circle, label=above: $v_3$, inner sep = 0, minimum size = 30] at (4,0) {$1$};
-			\node (v4) [draw, circle, label=above: $v_4$, inner sep = 0, minimum size = 30] at (6,2) {$1$};
+			\node (v1) [draw, circle, label=above: $v_1$, inner sep = 0, minimum size = 30] at (0,0) {$3_{\color{green}1}$};
+			\node (v2) [draw, circle, label=above: $v_2$, inner sep = 0, minimum size = 30] at (2,2) {$2_{\color{green}1}$};
+			\node (v3) [draw, circle, label=above: $v_3$, inner sep = 0, minimum size = 30] at (4,0) {$1_{\color{green}1}$};
+			\node (v4) [draw, circle, label=above: $v_4$, inner sep = 0, minimum size = 30] at (6,2) {$1_{\color{green}2}$};
 			\node (v5) [draw, circle, label=above: $v_5$, inner sep = 0, minimum size = 30] at (8,0) {$0$};
-			\node (v6) [draw, circle, label=above: $v_6$, inner sep = 0, minimum size = 30] at (10,2) {$1$};
-			\node (v7) [draw, circle, label=above: $v_7$, inner sep = 0, minimum size = 30] at (12,0) {$1$};
-			\node (v8) [draw, circle, label=above: $v_8$, inner sep = 0, minimum size = 30] at (2,-2) {$2$};
-			\node (v9) [draw, circle, label=above: $v_9$, inner sep = 0, minimum size = 30] at (6,-2) {$2$};
-			\node (v10) [draw, circle, label=above: $v_{10}$, inner sep = 0, minimum size = 30] at (10,-2) {$1$};
+			\node (v6) [draw, circle, label=above: $v_6$, inner sep = 0, minimum size = 30] at (10,2) {$1_{\color{green}3}$};
+			\node (v7) [draw, circle, label=above: $v_7$, inner sep = 0, minimum size = 30] at (12,0) {$1_{\color{green}4}$};
+			\node (v8) [draw, circle, label=above: $v_8$, inner sep = 0, minimum size = 30] at (2,-2) {$2_{\color{green}2}$};
+			\node (v9) [draw, circle, label=above: $v_9$, inner sep = 0, minimum size = 30] at (6,-2) {$2_{\color{green}3}$};
+			\node (v10) [draw, circle, label=above: $v_{10}$, inner sep = 0, minimum size = 30] at (10,-2) {$1_{\color{green}5}$};
 			\draw[->, thick] (v5) -- (v3);
 			\draw[->, thick] (v5) -- (v4);
 			\draw[->, thick] (v5) -- (v6);
