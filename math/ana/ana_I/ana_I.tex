@@ -1,4 +1,8 @@
 \documentclass[consecutivenumbering]{gadsescript}
+
+\KOMAoption{toc}{indent}
+\DeclareTOCStyleEntry[indent = 0cm, entryformat=\normalfont\bfseries, pagenumberformat=\normalfont\bfseries]{tocline}{section}
+
 \usepackage{hyperref}
 
 \settitle{Analysis I}
@@ -8,6 +12,9 @@
 
 \begin{document}
 \maketitle
+
+\tableofcontents
+\newpage
 
 \section*{Organisation, Tipps \& Tricks und Literaturhinweise}
 

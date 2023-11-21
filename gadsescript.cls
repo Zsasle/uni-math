@@ -56,8 +56,6 @@
 %%% layout %%%
 %%%%%%%%%%%%%%
 
-\RequirePackage{layout}
-\RequirePackage[top=3cm, left=2cm, right=2cm, bottom=2cm]{geometry}
 \RequirePackage[headsepline]{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \automark[section]{section}
@@ -65,6 +63,7 @@
 \ohead*{\pagemark}
 \chead{}
 \cfoot{}
+\RequirePackage[top=3cm, left=2cm, right=2cm, bottom=2cm]{geometry}
 
 %%%%%%%%%%%%%
 %%% title %%%
