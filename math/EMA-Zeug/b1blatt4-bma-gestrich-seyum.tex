@@ -1,0 +1,108 @@
+\documentclass{gadsescript}
+
+\settitle{BMA}
+\defaulttitleh
+\begin{document}
+\maketitle
+\textbf{Vor.:} $ X, Y $ Mengen und $ f : X \to Y $ eine Abbildung. $ \forall A: A \subset X : f[A] = \{ f(a) : a \in A \} $, $ \forall B: B \subset Y : f^{-1}[B] = \{ x \in X : f(x) \in B \} $.
+\begin{enumerate}[label=(\alph*)]
+	\item \textbf{Vor.:} $ f : \Z \times \Z \to \Z \times \Z, (x, y) \mapsto ( x + y, x - y) $\\
+		\textbf{Beh.:}
+		\begin{enumerate}[label=(\roman*)]
+			\item $ f $ nicht surjektiv, also $ \exists (a, b) \in \Z \times \Z : \forall (x, y) \in \Z \times \Z : (x + y, x - y) \neq (a, b) $
+			\item $ f $ injektiv, also $ \forall (x_1, y_1), (x_2, y_2) \in \Z \times \Z : f(x_1, y_1) = f(x_2, y_2) \implies (x_1, y_1) = (x_2, y_2)$
+			\item \[ f^{-1} [\{(a, b)\}] =
+				\begin{cases}
+					\{ (\frac{a+b}{2}, \frac{a-b}{2}) \} & \text{wenn } \frac{a + b}{2}, \frac{a - b}{2} \in \Z\\
+					\emptyset & \text{sonst}
+				\end{cases} \eqqcolon M
+				\]
+			\item $ f[\{(x,x)\}] = \{(2x, 0)\} $
+		\end{enumerate}
+		\begin{proof*}[(i) -]
+			\begin{enumerate}[label=(\roman*)]
+				\item setze $ (a, b) \coloneqq (1, 0) $, dann gilt $ (a, b) \in \Z \times \Z $, zu zeigen $ \forall (x, y) \in \Z \times \Z : (x + y, x - y) \neq (a, b) $,\\
+					sei $ x, y \in \Z $ gegeben, zu zeigen $ (x + y, x - y) \neq (1, 0) $,\\
+					wir führen einen Beweis durch Widerspruch und nehmen an $ ( x + y, x - y ) = ( a, b ) $, dann gilt insesondere $ x - y = 0 $, also $ x = y $,
+					außerdem gilt $ x + y = 1 $, also $ x + x = 1 $, also $ 2 \cdot x = 1 $ \Lightning gibt keine Lösung in $ \Z $, da im Allgemeinen keine Inverse in $\Z$ in der Multiplikation gibt. Also war unsere Annahme falsch, dass $ \exists x, y \in \Z : ( x + y, x - y ) = ( a , b ) $, also gilt $ \forall x, y \in \Z : ( x + y, x - y) \neq ( a + b) $\qed
+				\item Seien $(x_1, y_1), (x_2, y_2) \in \Z \times \Z : f(x_1, y_1) = f(x_2, y_2) $, zu zeigen $ (x_1, y_1) = (x_2, y_2) $.\\
+					Es gilt
+					\begin{align*}
+						f(x_1, y_1) &= f(x_2, y_2)\\
+						( x_1 + y_1, x_1 - y_1) &= ( x_2 + y_2, x_2 - y_2)
+					\end{align*}
+					also
+					\begin{align*}
+						x_1 - y_1 &= x_2 - y_2\\
+						x_1 - x_2 &= y_1 - y_2
+					\end{align*}
+					und
+					\begin{align*}
+						x_1 + y_1 &= x_2 + y_2\\
+						\underbrace{x_1 - x_2}_{y_1 - y_2} &= y_2 - y_1\\
+						y_1 - y_2 &= y_2 - y_1\\
+						2y_1 &= 2y_2\\
+						y_1 &= y_2
+					\end{align*}
+					Außerdem
+					\begin{align*}
+						x_1 + \underbrace{y_1}_{y_2} &= x_2 + y_2\\
+						x_1 + y_2 &= x_2 + y_2\\
+						x_1 &= x_2
+					\end{align*}
+					Also gilt $ x_1 = x_2 $ und $ y_1 = y_2 $ und somit $ (x_1, y_1) = (x_2, y_2) $\qed
+				\item Mengengleichheit: 
+					\begin{description}
+						\item[``$\subset$''] $M \subset f^{-1}[\{(a, b)\}]$\\
+							Fall 1: $\frac{a + b}{2}, \frac{a - b}{2} \in \Z $\\
+							zu zeigen $ \{ (\frac{a+b}{2}, \frac{a-b}{2}) \} \subset f^{-1}[\{(a, b)\}]$\\
+							also zu zeigen $ (\frac{a+b}{2}, \frac{a-b}{2}) \in f^{-1}[\{(a, b)\}]$,
+							also zu zeigen $(\frac{a+b}{2}, \frac{a-b}{2}) \in \Z\times\Z $ und $ f(\frac{a+b}{2}, \frac{a-b}{2}) \subset \{ (a, b) \} $,
+							da $\frac{a + b}{2}, \frac{a - b}{2} \in \Z $, gilt $ (\frac{a+b}{2}, \frac{a-b}{2}) \in \Z\times\Z $ und $ (\frac{a+b}{2} + \frac{a-b}{2}, \frac{a+b}{2}) - \frac{a-b}{2} ) = (a,b) $, was zu zeigen war.\\\par
+							Fall 2:\\
+							zu zeigen $ \emptyset \subset f^{-1}[\{(a, b)\}] $, gegeben.
+						\item[``$\supset$''] $M \supset f^{-1}[\{(a, b)\}]$\\
+							Fall 1: $\frac{a + b}{2}, \frac{a - b}{2} \in \Z $\\
+							Da $ f $ injektiv, gibt es zu jedem Bild genau ein Urbild, also ist, das oben genannte Urbild $(\frac{a+b}{2}, \frac{a-b}{2})$, das einzige.\\
+							Fall 2:\\
+							sei $g : \Q \times \Q \to \Q \times \Q, (x, y) \mapsto (x + y, x - y) $, dann gilt analog zu $(i)$, dass $ g $ injektiv.\\
+							$ \{ (\frac{a+b}{2}, \frac{a-b}{2}) \} \subset g^{-1}[\{(a, b)\}]$\\
+							also $ (\frac{a+b}{2}, \frac{a-b}{2}) \in g^{-1}[\{(a, b)\}]$,
+							also $(\frac{a+b}{2}, \frac{a-b}{2}) \in \Q\times\Q $ und $ g(\frac{a+b}{2}, \frac{a-b}{2}) \subset \{ (a, b) \} $,\\
+							da $a, b, 2 \in \Z$, gilt $\frac{a + b}{2}, \frac{a - b}{2} \in \Q $, gilt $ (\frac{a+b}{2}, \frac{a-b}{2}) \in \Q\times\Q $ und $ (\frac{a+b}{2} + \frac{a-b}{2}, \frac{a+b}{2}) - \frac{a-b}{2} ) = (a,b) $, und da $ g$ injektiv, existiert nur diese eine Lösung. Da aber $\frac{a + b}{2}\notin \Z $, oder $ \frac{a - b}{2} \notin \Z $, ist $ (\frac{a+b}{2}, \frac{a-b}{2}) \notin \Z\times\Z $ also ist das Urbild leer\qed
+					\end{description}
+				\item zu zeigen $ \{(2x, 0)\} = \{ f(a,b) : (a, b) \in \{(x, x)\} \}$\\
+					$ \{ f(a, b) : (a,b) \in \{(x, x)\} \} = \{ f(a, b) : (a, b) = (x, x) \} = \{ f(x, x)\} = \{ ( x + x, x -x) \} = \{ 2x, 0\} $\qed
+			\end{enumerate}
+		\end{proof*}
+
+	\item 
+		\begin{enumerate}[label=(\roman*)]
+			\item \textbf{Beh.:} Für alle teilmengen $B_1,B_2 \subset Y$ gilt $f^{-1}[B_1 \cap B_2] = f^{-1}[B_1] \cap f^{-1}[B_2] $
+				\begin{proof*}
+					zu zeigen \[ f^{-1}[B_1 \cap B_2] = f^{-1}[B_1] \cap f^{-1}[B_2] \]
+					\begin{align*}
+						f^{-1}[B_1 \cap B_2] &= \{ x \in X : f(x) \in B_1 \cap B_2 \} \\
+						~&= \{x \in X : f(x) \in B_1 \wedge f(x) \in B_2\}\\
+						~&= \{ x \in X : f(x) \in B_1\} \cap \{ x \in X : f(x) \in B_2\}\\
+						~&= f^{-1} [B_1] \cap f^{-1} [B_2]\qed
+					\end{align*}
+				\end{proof*}
+			\item \textbf{Beh.:} \[ A_1, A_2 \subset X \text{ gilt } f[A_1] \setminus f[A_2] \subset f[A_1 \setminus A_2] \text{, also} \]
+				\[ \forall y \in Y : y \in f[A_1] \setminus f[A_2]  \implies y \in f[A_1 \setminus A_2] \]
+				\begin{proof*}
+					Sei $ y \in f[A_1] \setminus f[A_2] $ gegeben, dann gilt:
+					\begin{align*}
+						~& y \in f[A_1] \setminus f[A_2]\\
+						\iff& y \in f[A_1] \wedge y \notin f[A_2]\\
+						\iff& y \in \{ f(x) : x \in A_1 \} \wedge y \notin \{ f(x) : x \in A_2\}
+					\end{align*}
+					Also existiert ein $ x_1 \in A_1 : f(x_1) = y $ und für alle $ x_2 \in A_2 : f(x_2) \neq y $, also gilt insbesondere $ x_1 \notin A_2 $, da sonst $ f(x_1) \neq y $.\\
+					Zu zeigen $ y \in f[A_1 \setminus A_2] $, also $ y \in \{ f(x) : x \in A_1 \setminus A_2 \} $, also zu zeigen $ \exists x \in A_1 \setminus A_2 $ mit $ f(x) = y $.\\
+					Setze $ x \coloneqq x_1 $, zu zeigen $ x \in A_1 \setminus A_2 $ und $ f(x) = y $ dann gilt $ x = x_1 \in A_1 $ und $ x = x_1 \notin A_2 $, also $ x \in A_1\setminus A_2 $, was zu zeigen war.\\
+					$ f(x) = f(x_1) = y $ \qed
+				\end{proof*}
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}
