@@ -253,7 +253,7 @@
 
 \newcommand{\myboxenvironment}[5]{ % tcolorbox-environment %
 	\ifgadse@transparentEnvironments
-		\newtcolorbox{cache#1#2box}[1]{
+		\newtcolorbox{cache#1#2box}[2]{
 			standard jigsaw,%
 			opacityback	= 0,%
 			title		= ##1,
@@ -267,14 +267,15 @@
 			outer arc	= 2pt,
 			boxrule		= 0pt,
 			leftrule	= 4pt,
-			breakable
+			breakable,
+			##2
 		}
 	\else
 		\ifstrequal{#5}{true}{%
-			\newtcolorbox{cache#1#2box}[1]{
+			\newtcolorbox{cache#1#2box}[2]{
 				standard jigsaw,%
 				opacityback	= 0,%
-				title		= ##1,
+				title = ##1,%
 				fonttitle	= \bfseries,
 				colback		= #3,
 				colframe	= #4,
@@ -285,10 +286,11 @@
 				outer arc	= 2pt,
 				boxrule		= 0pt,
 				leftrule	= 4pt,
-				breakable
+				breakable,
+				##2
 			}
 		}{
-			\newtcolorbox{cache#1#2box}[1]{
+			\newtcolorbox{cache#1#2box}[2]{
 				title		= ##1,
 				fonttitle	= \bfseries,
 				colback		= #3,
@@ -300,7 +302,8 @@
 				outer arc	= 2pt,
 				boxrule		= 0pt,
 				leftrule	= 4pt,
-				breakable
+				breakable,
+				##2
 			}
 		}
 	\fi
@@ -319,13 +322,19 @@
 		\myboxenvironment{#1}{#2}{#3}{#4}{#5}%
 		\newenvironment{#1#2}[1][]{%
 			\refstepcounter{#1#2number}%
-			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1#2number\endcsname\quad{##1}}{}%
 				\setlength\parindent{1em}%
 			}{%
 			\end{cache#1#2box}%
 		}
 		\newenvironment{#1#2*}[1][]{%
-			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}{}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
+		\newenvironment{#1#2-headless}{%
+			\begin{cache#1#2box}{}{title = }%
 				\setlength\parindent{1em}%
 			}{%
 			\end{cache#1#2box}%
@@ -338,13 +347,19 @@
 		\newenvironment{#1#2}[1][]{%
 			\refstepcounter{#1environmentnumber}%
 			\label{\csname the#1environmentnumber\endcsname}
-			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1environmentnumber\endcsname\quad{##1}}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \csname the#1environmentnumber\endcsname\quad{##1}}{}%
 				\setlength\parindent{1em}%
 			}{%
 			\end{cache#1#2box}%
 		}
 		\newenvironment{#1#2*}[1][]{%
-			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}%
+			\begin{cache#1#2box}{\MakeUppercase#2 \quad{##1}}{}%
+				\setlength\parindent{1em}%
+			}{%
+			\end{cache#1#2box}%
+		}
+		\newenvironment{#1#2-headless}{%
+			\begin{cache#1#2box}{}{title = }%
 				\setlength\parindent{1em}%
 			}{%
 			\end{cache#1#2box}%
