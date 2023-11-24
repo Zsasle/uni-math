@@ -1,0 +1,70 @@
+\documentclass[sectionformat = aufgabe]{gadsescript}
+
+\defaulttitleh
+\settitle{Übungsblatt Nr. 3}
+\setsubtitle{Jörg und Elias}
+\setfaculty{Faculty of Science (Physics)}
+
+\begin{document}
+\maketitle
+
+\section{Newtonsche Reibung}
+\begin{enumerate}[label=\alph*)]
+	\item $ F_{ges} = F_g + \kappa v^2 $
+	\item für die Endgeschwindigkeit gilt $ a = \qty{0}{\metre\per\square\second} $, also
+		\begin{align*}
+			F_{ges} &= \qty{0}{\kilogram\metre\per\square\second}\\
+			F_g + \kappa v_{\infty}^2 &= \qty{0}{\kilogram\metre\per\square\second}\\
+			\kappa v_\infty^2 &= -F_g\\
+			v^2 &= -\frac{F_g}{\kappa}\\
+			|v_\infty| &= \sqrt{-\frac{F_g}{\kappa}}
+		\end{align*}
+	\item $ u \coloneqq \sqrt{-\frac{\kappa}{F_g}} v, \xi \coloneqq \sqrt{-\frac{m}{4\kappa a}}, \tau \coloneqq u - 1, \vartheta \coloneqq u + 1 $, daraus folgt:\\
+		$ v = \sqrt{-\frac{F_g}{\kappa}}, dv = \sqrt{-\frac{\kappa}{F_g}} du, du = d\tau, du = d\vartheta $
+		Es gilt:
+		\begin{align*}
+			F_{ges} &= F_g + \kappa v^2\\
+			m \frac{dv}{dt} &= F_g + \kappa v^2\\
+			dt &= \frac{m}{F_g + \kappa v^2} dv &&| \text{ Substitution}\\
+			dt &= \frac{m}{F_g ( 1 - u^2)} \sqrt{-\frac{F_g}{\kappa}} du\\
+			dt &=  \sqrt{-\frac{m}{4\kappa a}} \cdot \frac{2}{ 1 - u^2} du\\
+			dt &=  \xi \cdot \frac{2}{u^2 - 1} du\\
+			\frac{1}{x}dt &=  \cdot \frac{2}{u^2 - 1} du\\
+		\end{align*}
+		Da
+		\begin{align*}
+			\frac{1}{\tau} d\tau - \frac{1}{\vartheta}d\vartheta &= \frac{1}{u - 1}du - \frac{1}{u + 1}du\\
+			~&= \left(\frac{1}{u - 1} - \frac{1}{u + 1}\right)du\\
+			~&= \left(\frac{u + 1  - (u - 1)}{(u - 1) (u + 1)}\right)du\\
+			~&= \frac{2}{u^2 - 1}du\\
+		\end{align*}
+		gilt:
+		\begin{align*}
+			\frac{1}{\xi}dt &= \frac{2}{u^2 - 1} du\\
+			\frac{1}{\xi}dt &= \frac{1}{\tau} d\tau - \frac{1}{\vartheta}d\vartheta\\
+			\int_{t_0}^{t_1} \frac{1}{\xi}dt &= \int_{\tau_0}^{\tau_1} \frac{1}{\tau} d\tau - \int_{\vartheta_0}^{\vartheta_1} \frac{1}{\vartheta}d\vartheta\\
+			\frac{1}{\xi} t &= \ln |\tau_1| - \ln |\tau_0| - \left( \ln |\vartheta_1| - \ln |\vartheta_0| \right)
+		\end{align*}
+		Durch Rücksubstituieren erhält man:
+		\begin{align*}
+			\frac{1}{\xi} t &= \ln |u_1 - 1| - \ln |u_0 - 1| - \left( \ln |u_1 + 1| - \ln |u_0 + 1| \right)\\
+			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - \ln |\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} - 1| - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - \ln |\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} + 1| \right)\\
+			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - \ln |-1| - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - \ln |1| \right)\\
+			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - 0 - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - 0 \right)\\
+			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|  - \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|\\
+			\frac{1}{\xi} t &= \ln \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}\\
+			- \frac{1}{\xi} t &= \ln \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}\\
+			\exp(- \frac{1}{\xi} t) &= \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}\\
+			\exp(- \frac{1}{\xi} t) &= \frac{| v_1 + \sqrt{-\frac{F_g}{\kappa}}|}{| v_1 - \sqrt{-\frac{F_g}{\kappa}}|}\\
+		\end{align*}
+		Nach der b) ist $ |v_1| <= \sqrt{-\frac{F_g}{\kappa}} $ und da $a <= 0 $, also $ -v_1 <= \sqrt{ - \frac{F_g}{\kappa}} $ und $ v_1 - \sqrt{ - \frac{F_g}{\kappa}} <= 0 $:
+		\begin{align*}
+			\exp\left(- \frac{1}{\xi} t\right) &= \frac{| v_1 + \sqrt{-\frac{F_g}{\kappa}}|}{| v_1 - \sqrt{-\frac{F_g}{\kappa}}|}\\
+			\exp\left(- \frac{1}{\xi} t\right) &= \frac{ v_1 + \sqrt{-\frac{F_g}{\kappa}}}{ - v_1 + \sqrt{-\frac{F_g}{\kappa}}|}\\
+			-v_1 \exp\left(- \frac{1}{\xi} t\right) + sqrt{- \frac{F_g}{\kappa}} \exp\left(-\frac{1}{\xi}t\right) &= v_1 + \sqrt{-\frac{F_g}{\kappa}}\\
+			v_1 \left(\exp\left(- \frac{1}{\xi} t\right) + 1\right) &= \sqrt{-\frac{F_g}{\kappa}} \left(\exp\left(-\frac{1}{\xi}t\right) - 1 \right)\\
+			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \cdot \frac{\exp\left(-\frac{1}{\xi}t\right) - 1 }{\exp\left(- \frac{1}{\xi} t\right) + 1} \\
+			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \tanh-\frac{1}{2\xi} t
+		\end{align*}
+\end{enumerate}
+\end{document}
