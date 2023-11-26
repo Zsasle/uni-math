@@ -1,10 +1,7 @@
 \documentclass[sectionformat = aufgabe]{gadsescript}
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-
 \defaulttitleh
-\settitle{Übungsblatt Nr. 3}
+\settitle{Übungsblatt Nr. 4}
 \setsubtitle{Jörg und Elias}
 \setfaculty{Faculty of Science (Physics)}
 
@@ -13,15 +10,20 @@
 
 \section{Newtonsche Reibung}
 \begin{enumerate}[label=\alph*)]
-	\item $ F_{ges} = F_g + \kappa v^2 $
+	\item $ F_{ges} = F_g + \kappa v^2 $, also
+		\[ m \ddot z = ma + \kappa \dot z^2 \]
 	\item für die Endgeschwindigkeit gilt $ a = \qty{0}{\metre\per\square\second} $, also
 		\begin{align*}
 			F_{ges} &= \qty{0}{\kilogram\metre\per\square\second}\\
 			F_g + \kappa v_{\infty}^2 &= \qty{0}{\kilogram\metre\per\square\second}\\
 			\kappa v_\infty^2 &= -F_g\\
 			v^2 &= -\frac{F_g}{\kappa}\\
-			|v_\infty| &= \sqrt{-\frac{F_g}{\kappa}}
+			\left|v_\infty\right| &= \sqrt{-\frac{F_g}{\kappa}} \quad | \quad \text{ da die Fallschirmspringerin nach unten fällt}\\
+			v_\infty &= - \sqrt{-\frac{F_g}{\kappa}}\\
+			v_\infty &= - \sqrt{-\frac{\qty{65}{\kilogram} \cdot \left( \qty{-10}{\metre\per\second} \right)}{\qty{0.26}{\kilogram\per\metre}}}\\
+			v_\infty &= \qty{-50}{\metre\per\second}
 		\end{align*}
+		Die Endgeschwindigkeit beträgt demnach $\qty{-50}{\metre\per\second} $
 	\item $ u \coloneqq \sqrt{-\frac{\kappa}{F_g}} v, \xi \coloneqq \sqrt{-\frac{m}{4\kappa a}}, \tau \coloneqq u - 1, \vartheta \coloneqq u + 1 $, daraus folgt:\\
 		$ v = \sqrt{-\frac{F_g}{\kappa}}, dv = \sqrt{-\frac{\kappa}{F_g}} du, du = d\tau, du = d\vartheta $
 		Es gilt:
@@ -46,30 +48,36 @@
 			\frac{1}{\xi}dt &= \frac{2}{u^2 - 1} du\\
 			\frac{1}{\xi}dt &= \frac{1}{\tau} d\tau - \frac{1}{\vartheta}d\vartheta\\
 			\int_{t_0}^{t_1} \frac{1}{\xi}dt &= \int_{\tau_0}^{\tau_1} \frac{1}{\tau} d\tau - \int_{\vartheta_0}^{\vartheta_1} \frac{1}{\vartheta}d\vartheta\\
-			\frac{1}{\xi} t &= \ln |\tau_1| - \ln |\tau_0| - \left( \ln |\vartheta_1| - \ln |\vartheta_0| \right)
+			\frac{1}{\xi} t &= \ln \left|\tau_1\right| - \ln \left|\tau_0\right| - \left( \ln \left|\vartheta_1\right| - \ln \left|\vartheta_0\right| \right)
 		\end{align*}
 		Durch Rücksubstituieren erhält man:
 		\begin{align*}
-			\frac{1}{\xi} t &= \ln |u_1 - 1| - \ln |u_0 - 1| - \left( \ln |u_1 + 1| - \ln |u_0 + 1| \right)\\
-			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - \ln |\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} - 1|\\
-			~&\phantom{=} - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - \ln |\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} + 1| \right)\\
-			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - \ln |-1| - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - \ln |1| \right)\\
-			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1| - 0 - \left( \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1| - 0 \right)\\
-			\frac{1}{\xi} t &= \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|  - \ln |\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|\\
-			\frac{1}{\xi} t &= \ln \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}\\
-			- \frac{1}{\xi} t &= \ln \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}\\
-			\exp(- \frac{1}{\xi} t) &= \frac{|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1|}{|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1|}\\
-			\exp(- \frac{1}{\xi} t) &= \frac{| v_1 + \sqrt{-\frac{F_g}{\kappa}}|}{| v_1 - \sqrt{-\frac{F_g}{\kappa}}|}
-		\end{align*}
-		Nach der b) ist $ |v_1| <= \sqrt{-\frac{F_g}{\kappa}} $ und da $a <= 0 $, also $ -v_1 <= \sqrt{ - \frac{F_g}{\kappa}} $ und $ v_1 - \sqrt{ - \frac{F_g}{\kappa}} <= 0 $:
+			\frac{1}{\xi} t &= \ln \left|u_1 - 1\right| - \ln \left|u_0 - 1\right| - \left( \ln \left|u_1 + 1\right| - \ln |u_0 + 1| \right)\\
+			\frac{1}{\xi} t &= \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right| - \ln \left|\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} - 1\right|\\
+			~&\phantom{=} - \left( \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right| - \ln \left|\underbrace{\sqrt{-\frac{\kappa}{F_g}} v_0}_{=0} + 1\right| \right)\\
+			\frac{1}{\xi} t &= \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right| - \ln \left|-1\right| - \left( \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right| - \ln \left|1\right| \right)\\
+			\frac{1}{\xi} t &= \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right| - 0 - \left( \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right| - 0 \right)\\
+			\frac{1}{\xi} t &= \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right|  - \ln \left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right|\\
+			\frac{1}{\xi} t &= \ln \frac{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right|}{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right|}\\
+			- \frac{1}{\xi} t &= \ln \frac{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right|}{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right|}\\
+			\exp(- \frac{1}{\xi} t) &= \frac{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 + 1\right|}{\left|\sqrt{-\frac{\kappa}{F_g}} v_1 - 1\right|}\\
+			\exp(- \frac{1}{\xi} t) &= \frac{\left| v_1 + \sqrt{-\frac{F_g}{\kappa}}\right|}{\left| v_1 - \sqrt{-\frac{F_g}{\kappa}}\right|}
+		\end{align*}%
+
+		Nach der b) ist
+		$ |v_1| <= \sqrt{-\frac{F_g}{\kappa}} $
+		und da $a <= 0 $, also $ -v_1 <= \sqrt{ - \frac{F_g}{\kappa}} $
+		und $ v_1 - \sqrt{ - \frac{F_g}{\kappa}} <= 0 $:
 		\begin{align*}
-			\exp\left(- \frac{1}{\xi} t\right) &= \frac{| v_1 + \sqrt{-\frac{F_g}{\kappa}}|}{| v_1 - \sqrt{-\frac{F_g}{\kappa}}|}\\
-			\exp\left(- \frac{1}{\xi} t\right) &= \frac{ v_1 + \sqrt{-\frac{F_g}{\kappa}}}{ - v_1 + \sqrt{-\frac{F_g}{\kappa}}|}\\
-			-v_1 \exp\left(- \frac{1}{\xi} t\right) + sqrt{- \frac{F_g}{\kappa}} \exp\left(-\frac{1}{\xi}t\right) &= v_1 + \sqrt{-\frac{F_g}{\kappa}}\\
+			\exp\left(- \frac{1}{\xi} t\right) &= \frac{\left| v_1 + \sqrt{-\frac{F_g}{\kappa}}\right|}{\left| v_1 - \sqrt{-\frac{F_g}{\kappa}}\right|}\\
+			\exp\left(- \frac{1}{\xi} t\right) &= \frac{ v_1 + \sqrt{-\frac{F_g}{\kappa}}}{ - v_1 + \sqrt{-\frac{F_g}{\kappa}}}\\
+			 v_1 + \sqrt{-\frac{F_g}{\kappa}} &= -v_1 \exp\left(- \frac{1}{\xi} t\right) + \sqrt{- \frac{F_g}{\kappa}} \exp\left(-\frac{1}{\xi}t\right)\\
 			v_1 \left(\exp\left(- \frac{1}{\xi} t\right) + 1\right) &= \sqrt{-\frac{F_g}{\kappa}} \left(\exp\left(-\frac{1}{\xi}t\right) - 1 \right)\\
 			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \cdot \frac{\exp\left(-\frac{1}{\xi}t\right) - 1 }{\exp\left(- \frac{1}{\xi} t\right) + 1} \\
 			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \tanh-\frac{1}{2\xi} t\\
-			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \tanh-\sqrt{-\frac{\kappa a}{m}} t
+			v_1 &= \sqrt{-\frac{F_g}{\kappa}} \tanh-\sqrt{-\frac{\kappa a}{m}} t \quad | \quad \text{einsetzen}\\
+			v_1 &= - \qty[exponent-mode = input]{50}{\metre\per\second}  \tanh\sqrt{-\frac{\qty[exponent-mode = input]{0.26}{\kilogram\per\metre} \qty[exponent-mode = input]{-10}{\metre\per\square\second}}{\qty[exponent-mode = input]{65}{\kilogram}}} t\\
+			v_1 &= - \qty{50}{\metre\per\second}  \tanh \left( \qty{0.2}{\per\second} \cdot t \right)
 		\end{align*}
 		Noch Substiution mit $ x \coloneqq - \sqrt{-\frac{\kappa a}{m}} t \implies dt = - \sqrt{-\frac{m}{\kappa a}} $
 		\begin{align*}
@@ -80,13 +88,46 @@
 			z &= \sqrt{-\frac{F_g}{\kappa}} \cdot \left( - \sqrt{-\frac{m}{\kappa a}} \right) \ln \cosh - \sqrt{-\frac{\kappa a}{m}} t_1 - \ln \cosh \underbrace{- \sqrt{-\frac{\kappa g}{m}} t_0}_{=0}\\
 			z &= - \sqrt{\frac{m^2}{\kappa^2}} \ln \cosh - \sqrt{-\frac{\kappa a}{m}} t_1 - 0\\
 			z &= - \frac{m}{\kappa} \ln \cosh - \sqrt{-\frac{\kappa a}{m}} t_1\\
+			z &= - \frac{m}{\kappa} \ln \cosh \sqrt{-\frac{\kappa a}{m}} t_1\\
+			z &= - \frac{\qty{65}{\kilogram}}{\qty{0.26}{\kilogram\per\metre}} \ln \cosh \left( \qty{0.2}{\per\second} \cdot t_1 \right) \\
+			z &= \qty{-250}{\metre} \ln \cosh \left( \qty{0.2}{\per\second} \cdot t_1 \right) \\
 		\end{align*}
+		Für $ v_0 = \qty{0}{\metre\per\second} $ und $ z_0 = \qty{0}{\metre\per\second} $ gilt also:
+		Die Geschwindigkeitsgleichung lautet:
+		\[ v = - \qty{50}{\metre\per\second}  \tanh \left( \qty{0.2}{\per\second} \cdot t \right) \]
+		Und die Strecke in Abhängikeit von der Zeit:
+		\[ z = \qty{-250}{\metre} \ln \cosh \left( \qty{0.2}{\per\second} \cdot t_1 \right) \]
+		\newpage
 	\item ~\\
 		\begin{tikzpicture}[scale = 1, domain = 0:20, samples = 100]
-			\begin{axis}[width = 0.8\linewidth, xmin = 0, xmax = 20, xlabel = {$t$ in $\unit{\second}$}, ylabel = {\color{red} $z$ in $\unit{\metre}$}]
+			\begin{axis}[%
+					width = 0.8\linewidth,%
+					xmin = 0,%
+					xmax = 20,%
+					xlabel = {$t$ in $\unit{\second}$},%
+					ylabel = {\color{red} $z$ in $\unit{\metre}$},%
+					xtick={0, 2, 6, ...,18},%
+					ytick={-900,-700,...,-100,0},%
+					minor xtick = {4, 8, ..., 16},%
+					minor ytick = {-800, -600, ..., -200}%
+					]
 				\addplot[mark = none, color = red] (\x,{-(65/0.26)*ln(cosh(-sqrt(0.26*10/65)*\x))});
 			\end{axis}
-			\begin{axis}[width = 0.8\linewidth, xmin = 0, xmax = 20, ymin = -55, ymax = 5, axis x line = none, axis y line = right, axis y label/.append style = {violet}, ylabel = {\color{violet} $v$ in $\unit{\metre\per\second}$}]
+		\end{tikzpicture}\\
+		\begin{tikzpicture}[scale = 1, domain = 0:20, samples = 100]
+			\begin{axis}[%
+					width = 0.8\linewidth,%
+					xmin = 0,%
+					xmax = 20,%
+					ymin = -55,%
+					ymax = 5,%
+					xlabel = {$t$ in $\unit{\second}$},%
+					ylabel = {\color{violet} $v$ in $\unit{\metre\per\second}$},%
+					xtick={0, 2, 6, ...,18},%
+					ytick={-50,-40, ..., -10, -5, 0},%
+					minor xtick = {4, 8, ..., 16},%
+					minor ytick = {-45, -35, ..., -15}%
+					]
 				\addplot[mark = none, color = violet] (\x,{sqrt(65 * 10/0.26)*tanh(-sqrt(0.26*10/65)*\x)});
 			\end{axis}
 		\end{tikzpicture}

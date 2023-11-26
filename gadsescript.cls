@@ -173,6 +173,9 @@
 
 \setkomafont{disposition}{\raggedright\large\csname\gadse@sectionseries\endcsname}%
 
+\KOMAoption{toc}{indent}
+\DeclareTOCStyleEntry[indent = 0cm, entryformat=\normalfont\bfseries, pagenumberformat=\normalfont\bfseries]{tocline}{section}
+
 \setlength\parindent{1em}
 \newcommand{\saveparinfos}{%
 	\edef\myindent{\the\parindent}%
@@ -213,6 +216,8 @@
 }
 \RequirePackage{tikz}
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 %not math
 \RequirePackage[ngerman, english]{babel}
@@ -224,6 +229,7 @@
 \RequirePackage{multicol}
 \RequirePackage{marvosym}
 \RequirePackage{arydshln}
+\RequirePackage{hyperref}
 
 
 %%%%%%%%%%%%%%

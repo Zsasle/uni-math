@@ -7,7 +7,7 @@
 \section{Recursion}
 \begin{enumerate}[label=\alph*)]
 	\item 
-	\begin{enumerate}[label=\alph*.]
+	\begin{enumerate}[label=\roman*.]
 		\item 2 - 5 - 6 - 4 - 9 - 8 - 12 - 11 - 7
 		\item 7 - 4 - 2 - 6 - 5 - 11 - 8 - 9 - 12
 		\item 2 - 4 - 5 - 6 - 7 - 8 - 9 - 11 - 12
@@ -16,65 +16,65 @@
 
 \section{Diveide and Conquer}
 \begin{enumerate}[label=\alph*)]
-	\item 
-		\begin{multline*}
-			[12, 10, 3, 21, 17, 5, 9]\\
-			[12, 10, 3, 21]\\
-			[12, 10]\\
-			[12]\\
-			[12]\\
-			[10]\\
-			[10]\\
-			[10, 12]\\
-			[3, 21]\\
-			[3]\\
-			[3]\\
-			[21]\\
-			[21]\\
-			[3, 21]\\
-			[3, 10, 12 ,21]\\
-			[17, 5, 9]\\
-			[17, 5]\\
-			[17]\\
-			[17]\\
-			[5]\\
-			[5]\\
-			[5, 17]\\
-			[9]\\
-			[9]\\
-			[5, 9, 17]\\
-			[3, 5, 9, 10, 12, 17, 21]\\
-		\end{multline*}
+	\item ~\\
+		\begin{tabular}{| c | c | c | c | c | c | c |}
+			\hline
+			12	&10	&3	&21	&17	&5	&9\\\hline
+			12	&10	&3	&~	&~	&~	&~\\\hline
+			12	&~	&~	&~	&~	&~	&~\\\hline
+			12	&~	&~	&~	&~	&~	&~\\\hline
+			~	&10	&3	&~	&~	&~	&~\\\hline
+			~	&10	&~	&~	&~	&~	&~\\\hline
+			~	&10	&~	&~	&~	&~	&~\\\hline
+			~	&~	&3	&~	&~	&~	&~\\\hline
+			~	&~	&3	&~	&~	&~	&~\\\hline
+			~	&3	&10	&~	&~	&~	&~\\\hline
+			3	&10	&12	&~	&~	&~	&~\\\hline
+			~	&~	&~	&21	&17	&5	&9\\\hline
+			~	&~	&~	&21	&17	&~	&~\\\hline
+			~	&~	&~	&21	&~	&~	&~\\\hline
+			~	&~	&~	&21	&~	&~	&~\\\hline
+			~	&~	&~	&~	&17	&~	&~\\\hline
+			~	&~	&~	&~	&17	&~	&~\\\hline
+			~	&~	&~	&17	&21	&~	&~\\\hline
+			~	&~	&~	&~	&~	&5	&9\\\hline
+			~	&~	&~	&~	&~	&5	&~\\\hline
+			~	&~	&~	&~	&~	&5	&~\\\hline
+			~	&~	&~	&~	&~	&~	&9\\\hline
+			~	&~	&~	&~	&~	&~	&9\\\hline
+			~	&~	&~	&~	&~	&5	&9\\\hline
+			~	&~	&~	&5	&9	&17	&21\\\hline
+			3	&5	&9	&10	&12	&17	&21\\\hline
+		\end{tabular}
 	\item
 		\begin{multline*}
-			[10, 7, 5, 15, 13, 3, 6, 11, 4]\\
-			[7, 5, 3, 6, 4]\\
-			[5, 3, 6, 4]\\
-			[3, 4]\\
-			[]\\
-			[]\\
-			[4]\\
-			[4]\\
-			[3, 4]\\
-			[6]\\
-			[6]\\
-			[3, 4, 5, 6]\\
-			[]\\
-			[]\\
-			[3, 4, 5, 6, 7]\\
-			[15, 13, 11]\\
-			[13, 11]\\
-			[11]\\
-			[11]\\
-			[]\\
-			[]\\
-			[11, 13]\\
-			[]\\
-			[]\\
-			[11, 13, 15]\\
-			[3, 4, 5, 6, 7, 10, 11, 13, 15]\\
+			[{\color{violet}10}, 7, 5, 15, 13, 3, 6, 11, 4]\\
+			[7, 5, 3, 6, 4, \mathbf{10}, 15, 13, 11]\\
+			[{\color{violet}7}, 5, 3, 6, 4, \mathbf{10}, 15, 13, 11]\\
+			[5, 3, 6, 4, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[{\color{violet}5}, 3, 6, 4, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[3, 4, \mathbf{5}, 6, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[\mathbf{3}, 4, \mathbf{5}, 6, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, 6, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, 15, 13, 11]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, {\color{violet}15}, 13, 11]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, 13, 11, \mathbf{15}]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, {\color{violet}13}, 11, \mathbf{15}]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, 11, \mathbf{13}, \mathbf{15}]\\
+			[\mathbf{3}, \mathbf{4}, \mathbf{5}, \mathbf{6}, \mathbf{7}, \mathbf{10}, \mathbf{11}, \mathbf{13}, \mathbf{15}]\\
 		\end{multline*}
-	\item $ [0, 0] $
+	\item $ [0, 0] $, da:
+		\begin{multline*}
+			l = 0, r = 1, p = \text{element } l, i = l + 1, j = r\\
+			[\underset{\underset{l}{\uparrow}}{0_0}, \underset{\underset{i,j}{\uparrow}}{0_1}] \quad | \quad \text{\textbf{while} } i \leq j \text{ \textbf{and} } \text{element } i \leq p\\
+			[\underset{\underset{l}{\uparrow}}{0_0}, \underset{\underset{j}{\uparrow}}{0_1}]\underset{\underset{i}{\uparrow}}{\phantom{0_0}} \quad | \quad i \nleq j\\
+			[\underset{\underset{l}{\uparrow}}{0_0}, \underset{\underset{j}{\uparrow}}{0_1}]\underset{\underset{i}{\uparrow}}{\phantom{0_0}} \quad | \quad \text{da } l < j\\
+			[\underset{\underset{l}{\uparrow}}{0_1}, \underset{\underset{j}{\uparrow}}{0_0}]\underset{\underset{i}{\uparrow}}{\phantom{0_0}}\\
+			\text{\textit{new quicksort:}}\\
+			l = 0, r = 0, p = \text{element } l, i = l + 1, j = r \quad | \quad \text{da } l \nless r\\
+			\text{\textit{end $\rightsquigarrow$ old quicksort:} } (l = 0, r = 1, p = \text{element } l, i = 2, j = 1) \quad | \quad \text{da: } j \nless r\\
+			end\\
+		\end{multline*}
 \end{enumerate}
 
 \end{document}
