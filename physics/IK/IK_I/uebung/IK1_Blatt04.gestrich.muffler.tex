@@ -98,39 +98,48 @@
 		Und die Strecke in Abhängikeit von der Zeit:
 		\[ z = \qty{-250}{\metre} \ln \cosh \left( \qty{0.2}{\per\second} \cdot t_1 \right) \]
 		\newpage
-	\item ~\\
-		\begin{tikzpicture}[scale = 1, domain = 0:20, samples = 100]
-			\begin{axis}[%
-					width = 0.8\linewidth,%
-					xmin = 0,%
-					xmax = 20,%
-					xlabel = {$t$ in $\unit{\second}$},%
-					ylabel = {\color{red} $z$ in $\unit{\metre}$},%
-					xtick={0, 2, 6, ...,18},%
-					ytick={-900,-700,...,-100,0},%
-					minor xtick = {4, 8, ..., 16},%
-					minor ytick = {-800, -600, ..., -200}%
-					]
-				\addplot[mark = none, color = red] (\x,{-(65/0.26)*ln(cosh(-sqrt(0.26*10/65)*\x))});
-			\end{axis}
-		\end{tikzpicture}\\
-		\begin{tikzpicture}[scale = 1, domain = 0:20, samples = 100]
-			\begin{axis}[%
-					width = 0.8\linewidth,%
-					xmin = 0,%
-					xmax = 20,%
-					ymin = -55,%
-					ymax = 5,%
-					xlabel = {$t$ in $\unit{\second}$},%
-					ylabel = {\color{violet} $v$ in $\unit{\metre\per\second}$},%
-					xtick={0, 2, 6, ...,18},%
-					ytick={-50,-40, ..., -10, -5, 0},%
-					minor xtick = {4, 8, ..., 16},%
-					minor ytick = {-45, -35, ..., -15}%
-					]
-				\addplot[mark = none, color = violet] (\x,{sqrt(65 * 10/0.26)*tanh(-sqrt(0.26*10/65)*\x)});
-			\end{axis}
-		\end{tikzpicture}
+	\item ~
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale = 1.4]
+				\begin{axis}[%
+						xmin = 0,%
+						xmax = 20,%
+						axis lines = left,%
+						xlabel = {$t$ in $\unit{\second}$},%
+						ylabel = {\color{red} $z$ in $\unit{\metre}$},%
+						xtick={0, 2, 6, ...,18},%
+						ytick={-900,-700,...,-100,0},%
+						minor xtick = {4, 8, ..., 16},%
+						minor ytick = {-800, -600, ..., -200},%
+						title = {\color{red}Strecke über der Zeit},%
+						]
+					\addplot[mark = none, color = red, domain = 0:20, samples = 100] {-250 * ln(cosh(0.2 * x)))};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
+		\vspace{10pt}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale = 1.4]
+				\begin{axis}[%
+						xmin = 0,%
+						xmax = 20,%
+						ymin = -55,%
+						ymax = 5,%
+						axis lines = left,%
+						xlabel = {$t$ in $\unit{\second}$},%
+						ylabel = {\color{violet} $v$ in $\unit{\metre\per\second}$},%
+						xtick={0, 2, 6, ...,18},%
+						ytick={-50,-40, ..., -10, -5, 0},%
+						minor xtick = {4, 8, ..., 16},%
+						minor ytick = {-45, -35, ..., -15},%
+						title = {\color{violet}Geschwindigkeit über der Zeit}
+						]
+					\addplot[mark = none, color = violet, domain = 0:20] (\x,{sqrt(65 * 10/0.26)*tanh(-sqrt(0.26*10/65)*\x)});
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
 	\item Zeitpunkt zudem sie $95\%$ ihrer Geschwindigkeit erreicht hat:
 		\begin{align*}
 			t &= \xi \ln \left| \frac{-0.95 \cdot \sqrt{\frac{\frac{\kappa}{F_g}}{\frac{\kappa}{F_g}}} - 1}{-0.95 \cdot \sqrt{\frac{\frac{\kappa}{F_g}}{\frac{\kappa}{F_g}}} + 1}\right| \\
@@ -146,7 +155,7 @@
 		\end{align*}
 \end{enumerate}
 
-\section{Zylinderkoordinate}
+\section{Zylinderkoordinaten}
 \begin{enumerate}[label=\alph*)]
 	\item $ \rho = \sqrt{ \left(\frac{v_{0,r}}{\omega_c}\right)^2 \sin^2 \omega_c t + \left(\frac{v_{0,r}}{\omega_c}\right)^2 \cos^2 \omega_c t} = \frac{v_{0,r}}{\omega_c} $,\\
 		$ \varphi = \arccos \frac{\frac{v_{0,r}}{\omega_c} \cos \omega_c t}{\frac{v_{0,r}}{\omega_c}} = \arccos \cos \omega_c t = \omega_c t $, \\

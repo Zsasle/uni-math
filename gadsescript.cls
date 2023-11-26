@@ -218,6 +218,17 @@
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\makeatletter
+\def\pgfplotsforeachtodomain@@.#1\relax{%
+	\pgf@xa=0.#1pt %   
+		\ifdim\pgf@xa>0.01pt  % % <----corrected \ifdim instead of ifnum
+			\def\pgfplotsretval{}%
+			\def\pgfplotsretvalb{}%
+		\else
+			\edef\pgfplotsretvalb{\the\c@pgf@counta}%
+		\fi
+}%
+\makeatletter
 
 %not math
 \RequirePackage[ngerman, english]{babel}
@@ -230,6 +241,7 @@
 \RequirePackage{marvosym}
 \RequirePackage{arydshln}
 \RequirePackage{hyperref}
+\RequirePackage{float}
 
 
 %%%%%%%%%%%%%%
