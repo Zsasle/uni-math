@@ -1,0 +1,277 @@
+\section{Folgen und Konvergenz}
+\subsection{Reele Folgen und Konvergenz}
+Folge $ a: \N \ni n \mapsto a ( n ) \in \R $. Schreibweisen:
+\[ ( \underbrace{a_n}_{( = a(n))} )_{n \in \N} \text{( $ n $ Laufindex)}, (a_n) \]
+\begin{subexample}
+	\[ a_n \coloneqq 2  n \to \text{ Folge der geraden Zahlen} \]
+	\[ a_n \coloneqq 2n+1 \to \text{ Folge der ungeraden Zahlen} \]
+\end{subexample}
+
+\begin{subdefinition}[Konvergenz]
+	Sei $ (a_n) $ eine Folge in $ \R $ $ ( ( a_n ) \subset \R ) $ und $ a \in \R $. Wir sagen, dass $ ( a_n ) $ gegen $ a $ \textbf{konvergiert}, falls \fbox{ $ \forall\varepsilon>0 \exists N \in \N \forall n \geq N: \mid a_n - a \mid < \varepsilon $}\\
+	Wir nennen $ a $ dann den \textbf{Grenzwert} oder \textbf{Limes} von $ ( a_n ) $ und schreiben
+	\[ \lim_{n \to \infty} a \coloneqq a \]
+	Gibt es $ a\in \R $ so, dass $ ( a_n ) $,'gegen $ a $ konvergiert, so nennen wir $ ( a_n ) $ \textbf{konvergent}, andernfalls \textbf{divergent}.
+\end{subdefinition}
+\begin{sublemma}
+	Sei $ ( a_n ) \subset \R $ eine Folge, die gegen $ a, b \in \R $ konvergiert. Dann $ a = b $.
+	\begin{subproof*}
+		Sei $ \varepsilon > 0 $ bel.. Dann
+		\begin{multline}
+			\exists N \in \N \forall n \geq N : | a_n - a | < \frac{\varepsilon}{2} \wedge | a_n - b | < \frac{\varepsilon}{2}\\
+			\implies \forall n \geq N : | a - b | = | (a - a_n) + ( a_n - b ) | \leq | a_n - a | + | a_n - b | < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\\
+			\overset{\forall \varepsilon}{\implies} a = b.\qed
+		\end{multline}
+Für jedes $ \varepsilon > 0 $: Ab irgendeinem $ N $ bleibt die Folge für immer im $ \varepsilon $-Streifen um $ a $.
+	\end{subproof*}
+\end{sublemma}
+
+\begin{subexample}
+	$ (a_n)_{ n \in \N } = \left( \frac{1}{n} \right)_{n\in \N} $. Vermute: Limes $ \lim_{n \to \infty} \frac{1}{n} = 0 $. Sei $ \varepsilon > 0 $. Mit Archimedes $ \exists N \in \N : \frac{1}{\varepsilon} < N $. Dann $ \forall n \geq N : \left| \frac{1}{n} \right| = \frac{1}{n} \leq \frac{1}{N} < \varepsilon $.\qed
+\end{subexample}
+
+\begin{subexample}
+	$ \forall a \in \R : ( a_n ) = (a) $ (konstante Folge) konvergent gegeben $a$
+\end{subexample}
+\begin{subexample}
+	$ \lim_{n \to \infty} \frac{n}{2^n} = 0 $. Sei $ \varepsilon > 0 $. Nach \ref{1.2.3} $ \forall n \geq 5: n^2 < 2^n $. Nach Arch. $ \exists N \in \N : N \geq 5 \wedge \frac{1}{\varepsilon} < N. \implies \forall n \geq N : \left| \frac{n}{2^n} - 0 \right| = \frac{n}{2^n} \overset{\text{Ugl}}{<} \frac{1}{n} \overset{n\geq N}{\leq} \frac{1}{N} < \varepsilon $\qed
+\end{subexample}
+
+\begin{subexample}
+	$ (a_n)_{n\in\N} \coloneqq \left( (-1)^n\right)_{n\in \N} $\\
+	\textbf{Beh.:} $ \neg \exists a \in \R : (a_n)_{n\in\N} $ konv. gg $a$. Angenommen, es gäbe so ein $ a \in \R. $ Wähle $ 0 < \varepsilon < 1 $. Dann $\exists N \in \N \forall n \geq N : \left| (-1)^n - a \right| < \varepsilon. $\\
+	Dann: $ 2 = | 1- (-1) | \leq \underbrace{ | ( 1 - a ) |}{\leq \left| (-a)^n - a\right|} + \underbrace{ | a + 1 | }_{\left| a - (-1)^n \right|} < 2 \varepsilon < 2 $
+\end{subexample}
+
+\begin{subexample}
+	$ (a_n) $ reele Folge.
+	\begin{itemize}
+		\item $ \exists \varepsilon > 0 \exists N \in \N \forall n \geq N : | a_n - a | < \varepsilon.$\\
+			Für $ \varepsilon = 1 $ efüllt die Folge aus example \ref{3.1.7} dies!\\
+			Nicht äquivalent zu Konvergenz!
+		\item $ \forall \varepsilon > 0 \forall N \in \N \exists n \geq N : | a_n - a | < \varepsilon $\\
+			Folge aus example \ref{3.1.7} erülllt dies - nicht äquivalent!
+	\end{itemize}
+\end{subexample}
+
+\subsection{Rechenregeln für Grenzwerte}
+\begin{subtheorem}
+	Seien $ (a_n), (b_n) \subset \R $ konv. gegen $ a \in \R $ bzw. $ b \in \R $. Dann
+	\begin{enumerate}[label=(\roman*)]
+		\item $ (a_n+b_n) $ konvergiert gegen $ a+ b \lim_{(n\to\infty} ( a_n + b_n ) = \lim_{n\to\infty}a_n + \lim_{n\to\infty} $
+		\item $(a_n\cdot b_n) $ konvergiert gegen $ a\cdot b$
+		\item Ist $ b\neq 0 $ so existiert ein $ N \in \N $ mit $ n \geq N \implies b_ \neq 0 $, und es gilt:
+			\[ \left( \frac{a_n}{b_n} \right)_{n\geq N} \text{ konv gg } \frac{a}{b}. \]
+	\end{enumerate}
+\end{subtheorem}
+\begin{subproof*}
+	Sei $ \varepsilon > 0 $\\
+	Wg. Konv. $ a_n \to a \exists N_1 \in \N : \forall n \geq N_1 : | a_n - a| < \frac{\varepsilon}{2} $\\
+	Wg. Konv. $ b_n \to b \exists N_2 \in \N: \forall n \geq N_2 : | b_n - b | < \frac{\varepsilon}{2} $
+\end{subproof*}
+
+$ (a_n), (b_n), a_n \to a, b_n \to b \implies a_n + b_n \to a + b $
+\begin{subdefinition}
+	Wir sagen, dass $ (a_n) \subset \R $ \textbf{beschränkt} ist, falls $ \exists M > 0 \forall n \in \N : | a_n | \leq M $.
+\end{subdefinition}
+\begin{sublemma}
+	Konvergente Folgen sind beschränkt.
+	\begin{subproof*}
+		Angenommen, $ (a_n) $ konvergiert gegen $ a \ni \R $. Mit $ \varepsilon = 1 $ ex. $N \in \N$:
+		\[ ( \forall n \geq N : | a_n - a | < 1 ) \implies \forall n \geq N : \left| |a_n| - |a| \right| < 1 \implies | a_n | \leq 1 + |a| \]
+		Setze $ M \coloneqq \max\{|a_1|, \dotsc, |a_N|, 1 + |a|\}$, so $ \forall n \in \N : | a_n | \leq M $.\qed
+	\end{subproof*}
+\end{sublemma}
+
+Zurück zum Beweis von Satz \ref{3.2.1} (b) und (c):
+\begin{subproof*}
+	\begin{enumerate}[label=(\alph*)]
+			\setcounter{enumi}{1}
+		\item zu zeigen $ a_n \to a \wedge b_n \to b \implies a_nb_n \to ab $
+			\begin{equation}
+				\label{eq:3.2.1.1}
+				| a_nb_n - ab | = | (a_nb_n - ab_n ) + (ab_n - ab)| \leq |b_n|\cdot|a_n-a| + |a||b_n-b|
+			\end{equation}
+			Sei $\varepsilon > 0$. Da $(b_n)$ beschr., ex. nach Lemma \ref{3.2.3} ein $ M > 0 : \forall n \in \N : |b_n| \leq M $. Da $ a_n \to a, b_n \to b $
+			\begin{enumerate}[label=(\arabic*)]
+				\item $\exists N_1 \in \N \forall n \geq N_1 : | a_n - a | \frac{\varepsilon}{2M} $
+				\item $\exists N_2 \in \N \forall n \geq N_2 : | a_n - a | \frac{\varepsilon}{1+|a|} $
+			\end{enumerate}
+			\[\eqref{eq:3.2.1.1} \implies \forall n \geq N \coloneqq \max\{ N_1,N_2\}: |a_nb_n - ab |\]
+			\[ \overset{\eqref{eq:3.2.1.1}}{\leq} M \cdot \frac{\varepsilon}{2M} + \underbrace{|a| \cdot \frac{\varepsilon}{2(1+|a|)}}_{< \frac{\varepsilon}{2}} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon. \]
+			Damit $(b)$.
+		\item $ a_n \to a, b_n \to b \neq 0 \implies \frac{a_n}{b_n} \to \frac{a}{b}$
+			\begin{enumerate}[label=(\arabic*)]
+				\item $ \exists n_0 \in \N \forall n \geq n_0 : | b_n | \neq 0 $.
+					\[ \forall \varepsilon > 0 \exists \widetilde{N} \forall n \geq \widetilde{N} : | b_n - b | < \varepsilon, \]
+					d.h. $ |b| - \varepsilon \leq |b_n| $\\
+					Wende Dies auf $ \varepsilon = \frac{|b|}{2} $ an.\\
+					Dann $ \forall n \geq \widetilde{N} : 0 < \frac{|b|}{2} \leq |b_n| $. setze nun $n_0 \coloneqq \widetilde{N} $
+				\item $ b_n \to b \neq 0, $ so $\frac{1}{b_n} \to \frac{1}{b}$.
+					\begin{equation}
+						\label{eq:3.2.1.2}
+						\left| \frac{1}{b_n} - \frac{1}{b} \right| = \left| \frac{b- b_n}{b_nb} \right| = \frac{|b_n -b|}{|b_n|\cdot|b|}
+					\end{equation}
+					Für $ n \widetilde{N} : \frac{|b|}{2} < |b_n| $, also $ \frac{1}{|b_n|} < \frac{2}{|b|} $, also $ \frac{1}{|b_n||b|} \frac{2}{|b|^2}$\\
+					Sei $\varepsilon > 0 $. Dann $\exists\widetilde{\widetilde{N}}\in \N : \forall n \geq \widetilde{\widetilde{N}} : | b_n - b | < \frac{\varepsilon |b|^2}{2} \cdot \frac{2}{|b|^2} = \varepsilon$
+				\item $ a_n \to a, b_n \to b \neq 0 \overset{(2)}{\implies} ( a_n \to a, \frac{1}{b_n} \to \frac{1}{b} ) \overset{(b)}{\implies}\frac{a_n}{b_n} \to \frac{a}{b}$\qed
+			\end{enumerate}
+	\end{enumerate}
+\end{subproof*}
+\begin{subexample}
+	$ a, b, c , d \in \R, c\neq 0, d \neq 0. $
+	\[\lim_{n\to\infty} \frac{an^2 + b}{cn^2 + d} = \lim_{n\to\infty} \frac{a + \frac{b}{n^2}}{c + \frac{d}{n^2}} = \lim_{n\to\infty} \frac{a_n}{b_n} \]
+	\begin{itemize}
+		\item $\frac{A}{n} \to 0 $, Thm. \ref{3.2.1} (b) : $ \frac{b}{n^2} \to 0 \cdot 0 = 0 \overset{\text{Thm. \ref{3.2.1} (b)}}{\implies}\frac{b}{2} \to 0 $\\
+			(+) Thm. \ref{3.2.1} (a): $ a + \frac{1}{n^2} \to a $
+		\item Nenner $ c + \frac{d}{n^2} \to c \overset{\text{Thm. \ref{3.2.1} (c)}}{\implies} \frac{a_n}{b_n} \to \frac{a}{c}. $\qed
+	\end{itemize}
+\end{subexample}
+\subsection{Stabilität der `\mathsec{\leq}{leq}'-Relation unter Limesbildung}
+\begin{subtheorem}
+	Seien $(a_n), (b_n) $ zwei konvergente Folgen in $\R$: Seien $ a, b \in \R $
+	\begin{enumerate}[label=(\roman*)]
+		\item Gibt es $ N \in \N : \forall n \geq N : a_n \leq a $, so $ \lim_{n\to\infty} a_n \leq a $.
+		\item Gibt es $ N \in \N: \forall n \geq N : b \leq b_n $, so $ b \leq \lim_{n\to\infty} b_n $.
+	\end{enumerate}
+	\begin{subproof*}
+		Sei $\xi \coloneqq \lim_{n\to\infty} a_n$. Für $\varepsilon > 0 $ finden wir $ \widetilde{N} \in \N : n \geq \widetilde{N} : | a_n - \xi | < \varepsilon $. Damit
+		\[ \xi = ( \xi - a_n ) + a_n \leq | \xi - a_n | + a_n \leq \xi + a_n \leq a + \varepsilon \implies \xi \leq a.\qed \]
+	\end{subproof*}
+	\textbf{Bemerkung:} Satz falsch für `$<$' Bsp.
+\end{subtheorem}
+
+\begin{subtheorem}[Sandwich-Thm]
+	Seien $(a_n), (c_n) \subset \R $ konv. Folgen: $ a_n,c_n \to a\in \R$ Ist $(b_n) \subset\R $, so dass $ \exists N \in \N \forall n \geq N: a_n \leq b_n \leq c_n $, so $b_n \to a$
+	\begin{subproof*}
+		$\forall \varepsilon > 0 \exists N \in \N \forall n \geq N : | a_n - a | < \frac{\varepsilon}{2} $, $|c_n - a | < \frac{\varepsilon}{2} $, Für solche n : $ a - \varepsilon < a_n - \frac{\varepsilon}{2} \leq b_n - \frac{\varepsilon}{2} \leq c_n - \frac{\varepsilon}{2} < a + \varepsilon \implies b_n \to a. $\qed
+	\end{subproof*}
+\end{subtheorem}
+
+\subsection{Monotone Konvergenz, \mathsec{e}{e} und Wurzeln}
+\begin{subdefinition}
+	Eine Folge $(a_n)$ heißt
+	\begin{enumerate}[label=(\roman*)]
+		\item mon. wachsend $\iff \forall n \in \N a_n \leq a_{n+1} $
+		\item streng mon. wachsend $\iff \forall n \in \N a_n < a_{n+1} $
+		\item mon. fallend  $\iff \forall n \in \N a_n \geq a_{n+1} $
+		\item streng mon. fallend $\iff \forall n \in \N a_n > a_{n+1} $
+	\end{enumerate}
+\end{subdefinition}
+\begin{subtheorem}
+	Eine monotone beshcränkte Folge konvergiert.
+	\begin{subproof*}
+		\OE $(a_n)$ monoton wachsend und beschränkt, also existiert nach Supremumseigenschaft $ a \coloneqq \sup\{a_n : n \in \N \} < \infty $\\
+		Zu zeigen $ a_n \to a $. Sei $ \varepsilon 0 $ bel.. Dann nach Def. des Supremums $ \exists N \in \N : a - \varepsilon y a_N $. Für $ n \geq N $ gilt $ a_N \leq a_n $ wegen Monotonie $ \implies | a_n - a | = a_n - a = a - a_N + \underbrace{a_N - a_n}_{\leq 0} \leq a - a_n < \varepsilon $. Also $ a_n \to a $.\qed
+	\end{subproof*}
+\end{subtheorem}
+
+\begin{subcorollary}
+	Der Grenzwert $ e \coloneqq \lim_{n\to\infty} ( 1 + \frac{1}{n} )^n $ existiert.
+	Wir nennen $ e $ die \textbf{Eulerische Zahl}. Es gilt $ 2\leq e \leq 3 $.
+\end{subcorollary}
+\begin{sublemma}
+	Sei $n \in \N_0, x > -1$. Dann $ q + nx \leq ( 1 + x ) ^n $.
+\end{sublemma}
+\begin{subproof*}[Cor. \ref{3.4.4}]
+	zu zeigen: $ (a_n) = \left( \left(( 1 + \frac{1}{n} \right)^2\right) $ mon. wachs., beschr.
+	\begin{alignat*}{2}
+		&\frac{a_n}{a_{n-1}} &\omit\hfill$=$\hfill& \frac{\left( \frac{n+1}{n}\right)^2}{\left(\frac{n}{n-1} \right)^2}\\
+		&~&\omit\hfill$\overset{\text{Rechnen}}{=}$\hfill& \left( \frac{n^2-1}{n^2} \right)^n \cdot \frac{n}{n-1}\\
+		&~&\omit\hfill$=$\hfill& \left( 1 - \frac{1}{n^2} \right)^n \cdot \frac{n}{n-1}\\
+		&~&\omit\hfill$\overset{\text{Bernoulli mit $ x = -\frac{1}{n^2}$}}{\leq}$\hfill& \left( 1 - \frac{1}{n} \right) \cdot \frac{n}{n-1}\\
+		&~&\omit\hfill$=$\hfill& \frac{n-1}{n} \cdot \frac{n}{n-1}\\
+		&~&\omit\hfill$=$\hfill& 1
+	\end{alignat*}
+	$\implies ( a_n ) $ mon. wachsend\\
+	Nun: $(a_n)$ beschränkt. Bin. Formel:
+	\[( x + y )^n = \sum_{k=0}^{n} \binom{n}{k} x^ky^{n-k}\]
+	\[ |a_n| = \left( 1 + \frac{1}{n} \right)^n = \sum_{k=0}^{n} \binom{n}{k}\frac{1}{n^k} = \dotsb \leq \frac{1}{k!}\]
+	\[ 2^{k-1} \leq k! \forall k \in \N \]
+	Damit
+	\[ \left(1+\frac{1}{n} \right)^n \overset{\text{von davor}}{\leq} 2 + \sum_{k=2}^{n} \binom{n}{k}\frac{1}{n^k} \leq 2 + 2 \cdot \sum_{k=2}{n}\frac{1}{2^k} \leq 2 + 2\lim_{n\to\infty} \sum_{k=1}^{n}\frac{1}{2^k} \leq 2 + 2 \cdot 1 = 4 \]
+	$\implies$ Zahl $e$ existiert! ( nach Thm. \ref{3.4.2} ) 
+\end{subproof*}
+
+\textbf{Wiederholung}:
+\begin{itemize}
+	\item Konvergent $\implies$ Beschränkt
+	\item Monoton + Beschränkt $\implies$ Konvergent
+\end{itemize}
+
+\begin{subcorollary}[Existenz von Quadratwurzeln]
+	Sei $ a\geq 0 $, Dann existiert ein $  x \in \R $ mit $ x^2 = a $. Speziell gilt:
+	Ist $ x_0 > 0 $ so konvergiert die durch
+	\[ x_{n+1} = \frac{1}{2} \left( x_n + \frac{a}{x_n} \right) \]
+	definierte Folge gegen die \textbf{eindeutige} positive Lösung $ x \in \R_{>0} $ der Gleichung $ x^2 = a $
+	\begin{subproof*}
+		\begin{enumerate}[label=(\roman*)]
+			\item Beschränkt nach unten: Wir zeigen induktiv $ x_1 > 0 $ für alle $ n \in \N $
+				\begin{description}
+					\item[I.A.:] $ x_0 > 0 $ nach Voraussetzung
+					\item[I.S.:] Gelte $ x_n > 0 $ für ein $ n \in \N $ (I.V.). Dann ist
+						\[ x_{n+1} = \frac{1}{2} \left( \underbrace{x_n}_{>0} + \frac{\overbrace{a}^{\geq0}}{\underbrace{x_n}_{>0}} \right) \]
+				\end{description}
+			\item Monoton fallend: 
+				\begin{align*}
+					x_{n+1} - x_n &= \frac{1}{2} \left( x_n + \frac{a}{x_n} \right) - x_n\\
+					~&= \frac{1}{2} \left( \frac{a}{x_n} - x_n \right)\\
+					~&= \frac{1}{2\underbrace{x_n}_{>0 \text{ nach (i)}}} \left( a - x_n^2 \right) \text{ für alle } n \in \N
+				\end{align*}
+				Es ist
+				\begin{align*}
+					a- x_{n+1}^{2} &= a - \frac{1}{4} \left( x_n + \frac{a}{x_n} \right)^2\\
+					~&= a - \frac{1}{4}x_n^2 - \frac{1}{2} a - \frac{1}{4} \cdot \frac{a^2}{x_n^2}\\
+					~&= \frac{1}{2}a - \frac{1}{4}\left(x_n^2 + \frac{a^2}{x_n^2}\right)\\
+					~&= - \frac{1}{4} \left( x_n - \frac{a}{x_n} \right)^2 \leq 0
+				\end{align*}
+				Also ist $(x_n)$ monoton fallend.
+			\item Es gilt $ l \coloneqq \lim_{n\to\infty} x_n $ und $ l = \lim_{n\to\infty} x_{n+1} $.\\
+				Es folgt wegen $ x_n x_{n+1} = \frac{1}{2} \left( x_n^2 + a \right) $, dass $ l^2 = \frac{1}{2} \left( l^2 + a \right) $ und damit $ l^2 = a $.
+			\item \textbf{Eindeutigkeit:} Seien $ x, y > 0 $ seien zwei Lösungen zu
+				\[ x^2 = y^2 = a \]
+				Dann gilt $ 0 = x^2 - y^2 = \underbrace{(x+y)}_{>0}(x-y) $. Also ist $ x - y = 0 $,\qed
+		\end{enumerate}
+	\end{subproof*}
+\end{subcorollary}
+
+\subsection{Einige Grenzwerte - alt und neu}
+\begin{itemize}
+	\item Für $ k \in \N $ gilt $ \lim_{n\to\infty} \frac{1}{n^k} = 0 $ (Heratives Anwenden von Satz \ref{3.2.1}(i))
+\end{itemize}
+\begin{subdefinition}[Bestimmte Divergenz]
+	Eine Folge $ (a_n)\subset \R $ heißt
+	\begin{itemize}
+		\item Bestimmt divergent gegen $+\infty$ (in Symbolen $ \lim_{n\to\infty} a_n = \infty $), flls zu jedem $ k > 0 $ ein $ N \in \N $ existiert mit $ a_n \geq k $ für alle $ n \geq \N $
+		\item Bestimmt divergent gegen $ - \infty $ ( in Symbolen $ \lim_{n\to\infty} a_n = -\infty $), falls zu jedem $ k < 0 $ ein $ N \in \N $ existiert mit $ a_n \leq k $ für alle $ n \geq N $.
+		\item Ist $ (a_n) $ weder konvergent noch bestimmt divergent, so nennen wir $ (a_n) $ \textbf{unbestimmt divergent} und sagen ``$\lim_{n\to\infty} a_n$ existiert nicht''.
+	\end{itemize}
+\end{subdefinition}
+
+\begin{itemize}
+	\item Es gilt
+		\[ \lim_{n\to\infty} x^n =
+		\begin{cases}
+			+\infty	& \text{falls } x > 1\\
+			1	& \text{falls } x = 1\\
+			0	& \text{falls } |x| < 1\\
+			-\infty	& \text{falls } x \geq -1\\
+		\end{cases}
+		\]
+		\begin{itemize}
+			\item Für $ x > 1 $ setzte $ y \coloneqq x - 1$, mit Bernoullischer Ungleichung:
+				\[ x^n = (1+y)^n \geq 1 + ny \to\infty \]
+			\item Für $ x = 1 $ gilt für alle $ n \in \N $ $ x^n = 1 $.
+			\item Für $ |x^{-1} > 1 $ ( falls $ x \neq 0 $) Sei $ \varepsilon > 0 $\\
+				Also gilt es existiert ein $ N \in \N $, so das für alle $ n \geq N $ gilt $ | x^{-n} | \geq \frac{1}{\varepsilon} $, damit $ |x^n| < \varepsilon $ für alle $ n \geq N $
+			\item Rest folgt mit Beispiel \ref{3.1.7}
+			\item \[ \lim_{n\to\infty} \sum_{k=0}^n x^k =
+				\begin{cases}
+					+\infty			& \text{falls } x \geq 1\\
+					\frac{1}{1-x} 		& \text{falls } |x| < 1\\
+					\text{existiert nicht}	& \text{falls } x \leq -1
+				\end{cases}
+				\]
+		\end{itemize}
+\end{itemize}
+

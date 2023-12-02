@@ -1,0 +1,98 @@
+\documentclass[sectionformat = aufgabe]{gadsescript}
+
+\defaultphysicstitle
+\settitle{Übungsblatt Nr. 5}
+\setsubtitle{Jörg und Elias}
+\setfaculty{Faculty of Science (Physics)}
+
+\begin{document}
+\maketitle
+
+\section{Freier Fall auf einem rotierenden Planeten}
+\begin{enumerate}[label=\alph*)]
+	\item Für ein Bezugsystem $ S' $, welches sich mit der Winkelgeschwindigkeit $ \omega $ um eine Achse dreht, gilt im Verhältnis zum Inerzialsystem $ S $: $ \vec a^\prime = \vec a - 2 \vec \omega \times \vec v^\prime - \vec \omega \times ( \vec \omega \times \vec r^\prime ) $.
+		Hier haben wir speziell die Erde in deren Bezugsystem sich ruhende Objekte gegebenüber einem Inerzialsyste,
+		mit der Winkelgeschwindigkeit $ \omega = \frac{2\pi}{\qty{86400}{\second}} \approx \qty{0.00007272}{\per\second} $ bei kleinen Geschwindigkeiten ist also $ 2 \vec \omega \times \vec v ^\prime $ sehr klein und für Objekte am Äquator gilt $ r \approx \qty{6.3e6}{\metre} $,
+		dann gilt am Äquator,
+		da $ \vec \omega $ und $ \vec r $ orthogonal: $ | 2 \vec \omega \times ( \vec \omega \times \vec r' ) | = 2 \omega^2 r \approx \qty{0.067}{\metre\per\square\second} $ also auch klein.
+	\item Wenn ein Körper aus Ruhe von der Höhe $ h $ fallen gelassen wird, braucht er auf der Erde die Zeit $ t = \sqrt{\frac{2h}{a}} $, um auf der Erdoberfläche zu landen.
+		Es gilt
+		\[ \vec F^\prime = \vec F + \vec F_{C} + \vec F_{ZF} \]
+		Da die Corioliskraft in Richtung der Schwerkraft vernachlässigt werden kann und die Zentrifugalkraft parallel zur Schwerkraft ist, gilt für die Kraft in Richtung der Schwerkraft:
+		\begin{align*}
+			\vec F_z^\prime &= \vec F + \vec F_{ZF}\\
+			ma_z^\prime &= -mg + m\omega^2 r^\prime\\
+			a_z^\prime &\approx -g\\
+		\end{align*}
+		D.h. wenn sich das Objekt zu begin in Stillstand auf der Höhe $ h $ befand, gilt
+		\begin{align*}
+			v_z^\prime &\approx -gt\\
+			z^\prime + h &\approx -\frac{1}{2} gt^2 + h
+		\end{align*}
+		D.h. wenn das Objekt die Höhe $ \qty{0}{\metre} $ hat, dann ist die Zeit $ t = \sqrt{\frac{2h}{g}} $ verstrichen.\\
+		Es gilt für die Kraft orthogonal der Schwerkraft:
+		\begin{align*}
+			\vec F_y^\prime &= \vec F_{C}\\
+			ma_y^\prime &= - m \vec \omega \times \vec v^\prime\\
+			a_y^\prime &= - \vec \omega \times (\vec v_z^\prime + \vec v_y^\prime)\\
+			a_y^\prime &= - \vec \omega \times \vec v_z^\prime - \vec \omega \times v_y^\prime\\
+		\end{align*}
+		Und da das Kreuzprodukt von $ \vec \omega $ und $ \vec v_y $ parallel zur Schwerkraft ist, also vernachlässigbar und $ \vec v_z $ orthogonal zu $ \vec \omega $:
+		\begin{align*}
+			a_y^\prime &= - \vec \omega \times \vec v_z^\prime - \vec \omega \times v_y^\prime\\
+			\vec a_y^\prime &= - \omega v_z^\prime\\
+			\frac{dv_y^\prime}{dt} &= - \omega v_z^\prime\\
+			\int_{v_{y_0} = 0}^{v_y} dv_y^\prime &= - \int_{t_0 = 0}^{t} \omega v_z^\prime dt^\prime\\
+			v_y^\prime &= - \omega z^\prime\\
+			v_y^\prime &\approx \omega \frac{1}{2} gt^2\\
+			z_y^\prime &\approx - \frac{1}{6} \omega gt^3\\
+			~&\approx - \frac{2\pi g\sqrt{2h\omega}^3}{86400 * 6 * \sqrt{g}^3} \; \unit{\per\second}
+		\end{align*}
+	\item Da dann $ \vec r^\prime $ und $ \vec \omega $ nicht mehr orthogonal zueinaner stehen würden, wäre die Zentrifugalkraft kleiner, also die scheinbare Schwerkraft wäre größer.
+		Und da das Objekt in Richtung der Schwerkraft beschleunigt wird, und diese parallel zu $ \vec r^\prime $ ist, ist auch die Corioliskraft kleiner.
+\end{enumerate}
+
+\section{Einwegachterbahn}
+Es gilt:
+\begin{align*}
+	E_1 &= E_0\\
+	mgh_1 + \frac{1}{2} m v_1^2 &= mgh_0 + \frac{1}{2} m v_1^2\\
+	mgh_1 + \frac{1}{2} m v_1^2 &= mgh_0\\
+	v_1^2 &= 2g(h_0 - h_1)\\
+	v_1 &= \sqrt{2g(h_0 - h_1)}\\
+\end{align*}
+
+\begin{enumerate}[label=\alph*)]
+	\item $ v_1 = \sqrt{2g(h_0 - 2R)} $ Wenn $ 2R > h_0 $ dann steht etwas negatives unter der Wurzel, das ist nicht so schön...\\
+		$ R_{max} = \frac{1}{2} h_0 $
+	\item $ v_3 = \sqrt{2g(h_0 - h_3)} = \sqrt{2g(h_0 - (h_0 - h_0 \cos \alpha)} = \sqrt{2gh_0 \cos \alpha} $, also:
+		\[ \vec v = \sqrt{2gh_0\cos\alpha} \begin{pmatrix}
+			\cos\alpha\\
+			\sin\alpha
+		\end{pmatrix}
+		\]
+	\item 
+		\begin{align*}
+			v_y &= \sqrt{2gh_0\cos\alpha} \sin(\alpha) -gt \\
+			h &= \sqrt{2gh_0\cos\alpha} \sin(\alpha) t - \frac{1}{2} gt^2 + h_0(1 - \cos\alpha)\\
+		\end{align*}
+		wenn also das Teilchen auf Höhe 0 ist:
+		\begin{align*}
+			0 &= \sqrt{2gh_0\cos\alpha} \sin(\alpha) t - \frac{1}{2} gt^2 + h_0(1 - \cos\alpha)\\
+			t &= \frac{\sqrt{2gh_0\cos\alpha}\sin(\alpha) + \sqrt{ 2gh_0\cos\alpha\sin^2\alpha + 2gh_0(1 - \cos\alpha)}}{g}\\
+			t &= \sqrt{\frac{2h_0}{g}} \cdot \left( \sqrt{\cos\alpha}\sin(\alpha) + \sqrt{ \cos\alpha\sin^2\alpha + (1 - \cos\alpha)} \right)\\
+			t &= \sqrt{\frac{2h_0}{g}} \cdot \left( \sqrt{\cos\alpha}\sin(\alpha) + \sqrt{ \cos\alpha(1- \cos^2\alpha) + 1 - \cos\alpha}\right)\\
+			t &= \sqrt{\frac{2h_0}{g}} \cdot \left( \sqrt{\cos\alpha}\sin(\alpha) + \sqrt{ \cos\alpha - \cos^3\alpha + 1 - \cos\alpha} \right) \\
+			t &= \sqrt{\frac{2h_0}{g}} \cdot \left( \sqrt{\cos\alpha}\sin(\alpha) + \sqrt{ 1 - \cos^3\alpha } \right)\\
+		\end{align*}
+		und dann hat es die Strecke $ \delta x = v_3 \cos(\alpha) t $ zurückgelegt:
+		\begin{align*}
+			\delta x &= \sqrt{2gh_0\cos\alpha} \cos\alpha \cdot \sqrt{\frac{2h_0}{g}} \cdot \left(\sqrt{\cos\alpha}\sin(\alpha) + \sqrt{ 1 - \cos^3\alpha } \right)\\
+			\delta x &= 2gh_0 \cdot \sqrt{\cos^3\alpha} \cdot \left( \sqrt{\cos\alpha}\sin\alpha + \sqrt{ 1 - \cos^3\alpha } \right)\\
+			\delta x &= 2gh_0 \cdot \left( \sqrt{\cos^4\alpha}\sin\alpha + \sqrt{ \cos^3\alpha - \cos^6\alpha } \right)\\
+			\delta x &= 2gh_0 \cdot \left( \sin\alpha\cos^2\alpha + \sqrt{ \cos^3\alpha - \cos^6\alpha } \right)\\
+		\end{align*}
+		was quasi zu zeigen war
+\end{enumerate}
+
+\end{document}

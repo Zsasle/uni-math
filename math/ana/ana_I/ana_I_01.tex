@@ -1,0 +1,203 @@
+\section{Natürliche Zahlen und elemntare Begriffe}
+\subsection{Zahlbereiche}
+\[ \N \coloneqq \{ 1, 2, 3, \dotsc \} \]
+\[ \N_0 \coloneqq \{ 0, 1, 2, 3, \dotsc \} \]
+\[ \Z \coloneqq \{ \dotsc, -3, -2, -1, 0, 1, 2, 3, \dotsc \} \]
+\[ \Q \coloneqq \{ \frac{p}{q} : p \in \Z, q \in \N \} \]
+\[ \R \coloneqq \{ \text{ reelle Zahlen } \} \]
+
+Wir besprechen gar nicht was eine Menge ist, das ist zu philosophisch\\
+Es ist schwierig Mengen zu Definieren, man kommt schnell auf logische Wiedersprüche
+
+\begin{itemize}
+	\item Notation: für $ x $ schreiben wir für eine Eigenschaft $ A $ ``$ A(x)$'', falls $ x $ $ A $ erfüllt.
+	\item[$\rightarrow$] Menge aller Objekte $ x $ mit $ A(x) $
+		\[ \{ x : A(x) \} \]
+	\item[$\rightarrow$] gibt es kein $ x$ mit $ A(x) $, so nennen wir die Menge leer, ``$\emptyset$''
+\end{itemize}
+
+\begin{itemize}
+	\item $\exists \hat= \text{ Existenzquantor, ``es existiert''}$
+	\item $ A, B, $ Eig., $M\coloneqq \{ x : x \text{ erf. } A \}$\\
+		$N \coloneqq \{ x : \text{ erf. } B \} $\\
+	$ M \subset N$, falls $ \forall x \in M : x \in N $
+	\item $ M = N $, falls $ M \subset N \vee N \subset M $
+	\item ``Echte Tielmenge'': $ M \nsubseteqq N$, falls $ M \subset N, N \neq N.$
+\end{itemize}
+
+\begin{subexample}[(gerade Zahlen)]
+	$ n \in \N_0 \text{ gerade } :\iff ( \exists k \in \N_0 : n = 2k) $
+	\begin{align}
+		M \coloneqq &\{ n \in \N_0 : \exists k \in \N_0 : n = 2k \}\\
+		=&\{2k : k \in \N_0
+	\end{align}
+\end{subexample}
+
+\begin{example}[$ \N \subsetneqq \N_0 \subsetneqq \Z \subsetneqq \Q \subsetneqq \R $]
+	Zu $ \Q \subsetneqq \R : \sqrt{2} \notin \Q $. Widerspruchsbeweis: Ang.,
+	$ \sqrt{2} \in \Q $, so $ \sqrt{2} = \frac{p}{q} $, mit $ p \in \N_0, q \in \N $. \OE $ p, q $ teilerfremd (d.h. Bruch ist vollständig gekürzt).. Also $ p^2 = 2q^2 $\\
+	$\implies$ $ p $ ist gerade. Also $ p = 2l $ mit $l \in N_0$.\\
+	$\implies$ $ 4l^2 = p^2 = 2q^2 \implies 2l^2 = q^2 \implies q $ gerade.\\
+	$ \implies $ $ p, q $ gerade. $ \implies p, q $ nicht teilerfremd. \qed
+\end{example}
+
+\subsection{Vollständige Induktion}
+\begin{itemize}
+	\item Ziel: Beweis von Aussagen für alle $ n \in \N_0 $
+\end{itemize}
+\textbf{Dominoprinzip}: Wenn alle Steine umfallen sollen,
+\begin{itemize}
+	\item müssen wir den 1. Stein umwerfen,
+	\item muss stehts der $n$-te Stein den $(n+1)$-ten umwerfen.
+\end{itemize}
+
+\textbf{Prinzip (vollst. Ind.)} Wollen wir eine Aussage $ A(n) \forall n \in \N $ zeigen; so zeigen wir
+\begin{enumerate}[label=(\roman*)]
+	\item $ A(1) $ gilt (Induktionsanfang)
+	\item Aus $ A(n) $ für $ n \in \N $ stets $ A(n+1) $ folgt. (Induktionsschritt)
+\end{enumerate}
+
+\begin{definition}[Summen]
+	Für $x_-1, \dotsc, x_n \in \R $ definieren wir
+	\[ \sum_{k = 1}^{n} x_k \coloneqq x_1 + \dotsc + x_n \]
+\end{definition}
+
+\begin{example}[Geometrische Summe]
+	\[ \forall n \in \N : \]
+	\begin{equation}
+		\underbrace{\sum_{k=0}^{n} x^k}_{x^0 + x^1 + ... + x^n} =  \frac{1-x^{n+1}}{1-x}
+	\end{equation}
+	
+	\begin{description}
+		\item[I.A. $n = 1$]
+			\[ \sum_{k=0}^{1}x^k = x^0 + x^1 = 1+x = \frac{(1-x)(1+x)}{1-x} = \frac{1-x^2}{1-x} \]
+		\item[I.S.]
+			\[ n \to n+1 \] Angenommen, (equation) gilt für ein $n \in \N $.
+			z.z. (equation) gilt für $ n + 1 $
+			\[ \sum_{k=0}^{n+1}x^k = \left( \sum_{k=0}^{n}x^k\right) + x^{n+1} =  \frac{1 - x^{n + 1}}{1 - x} + x^{n + 1}\]
+			...
+	\end{description}
+\end{example}
+
+\begin{example}[Für welche $ n \in \N $ gilt $ n^2 < 2^n $?]
+	\begin{itemize}
+		\item $n = 1 \to 1 < 2$\\
+			$ n = 2 \to n^2 = 4 \nless 4 = 2^2 $\\
+			$ n = 3 \to n^2 = 9 \nless < 2^3 $\\
+			$ n = 4 \to n^2 = 16 \nless 16 = 2^4 $\\
+			$ n = 5 \to n^2 25 < 32 = 2^5 $
+	\end{itemize}
+
+	Wir versuchen die Aussage $ \forall n \geq 5 $ zu zeigen.
+
+	\begin{description}
+		\item[I.A.:] $ n = 5 : n^2 = 25 < 32 = 2^5 $
+		\item[I.S.:] Ang., Aussage gilt für $ n \geq 5 $. Wir müssen zeigen:
+			\[ ( n + 1 )^2 < 2^{n + 1} \]
+			$ ( n + 1 ) ^2 = \underbrace{n^2}_{<2^n} + 2n + 1 < 2^n + 2n + 1 \mid \overset{?}{<} 2^{ n  + 1} $
+			Angenommen, es gilt 
+			\begin{equation}
+				\label{eq:heart} \forall n \geq 5 : 2n + 1 < 2^n
+			\end{equation}
+			Dann: $ ( n + 1)^2 < ... < 2^n + 2n + 1 = 2 * 2^n = 2^{n+1} $
+			\begin{itemize}
+				\item Wir zeigen (\ref{eq:heart}) wiederum mit voll. Ind.
+					\begin{description}
+						\item[I.A.:] $ n = 5 2n + 1 = 11 < 32 = 2^5 $
+						\item[I.S.:] Ang., (\ref{eq:heart}) gilt für $n \in \N $. Dann gilt:
+							$ 2(n+1) + 1 = 2n + 3 = (2n + 1) + 2 < 2^n + 2 < 2^n + 2^n = 2*2^n = 2^{n+1} $.\\
+							Damit folgt (\ref{eq:heart} und damit die eigentliche Aussage \qed
+					\end{description}
+			\end{itemize}
+	\end{description}
+
+\end{example}
+
+\begin{definition}
+	für $ n \in \N_0 $ definieren wir die \textit{Fakultät} via $n! \coloneqq n \times (n-1) \times \dotsb \times 2 \times 1 $, falls $n \geq 1 $, und $0! \coloneqq 1 $.
+	Für $ k \in \{ 0, \dotsc, n\} $ definieren wir den \textit{Binomialkoeffizienten}
+	\[ \binom{n}{k} \coloneqq \frac{ n!}{k!(n-k)!}.\]
+\end{definition}
+
+\begin{lemma}
+	Für alle $ n \in \N $ und alle $ k \in \{ 1, \dotsc, n \}: $
+	\[ \binom{n}{k} + \binom{n}{k-1} = \binom{ n+1}{k}\]
+	\begin{proof*}
+		\begin{align*}
+			\binom{n}{k} + \binom{n}{k-1} &= \frac{n!{\color{yellow}(n-k+1)}}{k! (n-k)!{\color{yellow} (n-k+1)}} + \frac{n!{\color{yellow}(k)}}{(k-1)! (n-(k-1)k)!{\color{yellow} (k)}}\\
+			= \frac{n!n + n!}{k!(n-k+1!} &= \frac{n!(n+1)}{k!(n-k+1)!} \qed
+		\end{align*}
+	\end{proof*}
+\end{lemma}
+
+\begin{example}[(Binomische Formel)]
+	Für $ x, y \in \R $ und $ n \in \N_0 $:
+	\[ (x+y)^n ? \sum_{k=0}^{n} \binom{n}{k}x^ky^{n-k}. \]
+	Sei also $ x, y \in \R $.
+	\begin{description}
+		\item[I.A.:] $n=0$. $(x+y)^0 = 1 = \binom{0}{0} x^0y^0 $
+		\item[I.S.:] Gelte die Aussage für $ n \in \N_0 $
+			\begin{align}
+				\label{eq:3}
+				(x+y)^{n-1} = (x+y)(x+y)^n &= (x+y)\sum_{k=0}^{n}\binom{n}{k}x^ky^{n-k}\\
+				~&= x\sum_{k=0}^{n}\binom{n}{k}x^ky^{n-k} + y\sum_{k=0}^{n}\binom{n}{k}x^ky^{n-k}\\
+				\label{eq:7}~&=\sum_{k=0}^{n}\binom{n}{k}x^{k+1}y^{n-k} + \sum_{k=0}^{n}\binom{n}{k}x^ky^{n+1-k}
+			\end{align}
+			Indexverschiebung: $ l = k+1 $. $l \in \{ 1, \dotsc, n+1\} $
+			\begin{align*}
+				(\ref{eq:7}) &=\underbrace{\sum_{l=1}^{n}\binom{n}{l-i}x^ly^{n+1-l}}_{\text{Hier Indexverschiebung}} + \underbrace{\sum_{l=0}^{n}\binom{n}{l}x^ly^{n+1-l}}_{\text{Hier nennen wir einfach $ k = l $}}\\
+				~&= \binom{n}{n}x^{n+1}y^0 + \left(\sum_{k=0}^{n}\left(\binom{n}{l-1}+\binom{n}{l}\right)x^ly^{n+1-l} \right) + \binom{n}{0}x^0 y^{n+1}\\
+				~&= \binom{n+1}{n+1}x^{n+1}y^{0} + \left( \sum_{l=1}^{n}\binom{n+1}{l}x^ly^{(n+1)-l} \right) + \binom{n+1}{0}x^0y^{n+1}\\
+				~&= \sum_{l=0}^{n+1} \binom{n+1}{l} x^ly^{(n+1)-l} \qed
+			\end{align*}
+	\end{description}
+\end{example}
+
+\subsubsection{Characterisierung der natürlichen Zahlen}
+\begin{subdefinition}
+	Eine Teilmenge $ M \subset \R $ heißt induktiv, falls
+	\begin{enumerate}[label=(\roman*)]
+		\item \label{en:1}$ 1 \in M $
+		\item \label{en:2}$ \forall x \in M : x + 1 \in M $
+	\end{enumerate}
+	\begin{subexample}
+		\begin{enumerate}[label=(\alph*)]
+			\item $ \N $ sind ind. Menge.
+			\item $ A \coloneqq \{ 2n : n \in \N_0 \} $ nicht ind. Menge, da \ref{en:1} $ 1 \neq A $, \ref{en:2} $2n + 1 $ ist immer ungerade
+			\item $ B \coloneqq \{ 2n + 1 : n \in \N_0 \} $ nicht ind.: \ref{en:1}, aber $ 2n + 1 + 1 = 2 (n+1) $
+			\item $\Q^+ \coloneqq \{ x \in \Q: q > 0 \} $ ist ind. Teilmenge
+		\end{enumerate}
+	\end{subexample}
+\end{subdefinition}
+\begin{itemize}
+	\item Sei $ (A_i)_{i\in I} $ mit I Indexmenge eine Familie von Mengen. setze
+		\[ \bigcap_{i\in I} \coloneqq \{ x : (\forall i \in I: x \in A_i ) \}\quad\text{Schnitt} \]
+		\[ \bigcup_{i\in I} \coloneqq \{ x : ( \exists i \in I: x \in A_i ) \}\quad\text{Vereinigung} \]
+\end{itemize}
+
+\begin{subproposition}
+	Für eine Menge $ M \subset \R $ sind äquivalent
+	\begin{enumerate}[label=(\roman*)]
+		\item \label{en:4}$ M = \N $
+		\item \label{en:5}Ist $ N \subset \R $ induktiv, so $ M \subset N $
+		\item \label{en:6}\[ M = \bigcap_{N\subset\R} N \text{ induktiv} \]
+	\end{enumerate}
+
+	$\ref{en:4} \iff \ref{en:5} \iff \ref{en:6}$
+	\begin{subproof*}
+		\begin{description}
+			\item[`$\ref{en:4} \implies \ref{en:5}$':] Sei $ N \subset \R $ beliebige ind. Teilmengen von $\R$. Zu zeigen: $ M \overset{\ref{en:4}}{=} \N \subset N $\\
+			Aber $ 1 \in \N $, und $ 1 \in N $ (da $ N $ ind. ), Da $ N $ ind. ist, ist mit jeder nat. $ x \in \N $ also auch $ x \in N $. Damit $ x + 1 \in \N $ \fbox{$\N \subset N.$}
+
+		\item[`$\ref{en:5} \implies \ref{en:6}$'] Wir zeigen: \[\bigcap_{N \text{ ind. Menge}} N \] ist ind. Menge\\
+			$\overset{\ref{en:5}}{\implies} M \overset{\ref{en:5}}{\subset} N \subset M $. Also \[ M = \bigcap_{N \text{ ind.}} N. \]
+				\[\bigcap_{N \text{ ind}} N \text{ induktiv:}\]
+				\begin{enumerate}[label=(\roman*)]
+					\item \[ ( \forall N \text{ ind: } 1 \in N) \implies 1 \in \bigcap_{N \text{ ind.}} N \]
+					\item \[ \forall x \in \R : x \in \bigcap_{ N \text{ ind.}} N \left( \implies x \in \bigcap_{N \text{ ind.}} N \right) \overset{\text{DEF.}}{\implies} \forall N \text{ ind.} : x + 1 \in N \implies x + 1 \in \bigcap_{N \text{ ind.}}\]
+				\end{enumerate}
+			\item['$\ref{en:6} \implies \ref{en:4}$'] Noch zu zeigen (blöd glaube ich oder ÜA, wir hatten auf jeden Fall keine Zeit in der Vorlesung) \qed
+		\end{description}
+	\end{subproof*}
+\end{subproposition}
+

@@ -1,0 +1,24 @@
+\section{Elementare topologische Konzepte in \mathsec{\R}{R}}
+\subsection{Offene und abgeschlossene Mengen}
+\begin{subdefinition}
+	Eine Menge $ A \subset \R $ heißt \textbf{abgeschlossen} falls der Grenzwert jeder konvergenten Folge $ (x_n) \subset \R $ auch zu $ A $ gehört: $ x_1, x_2, \dotsc \in A $ und $ x_n \to x \in \R \implies x \in A $. Ist hingegen $ \R\setminus A $ abgeschlossen, so heißt $ A $ \textbf{offen}.
+\end{subdefinition}
+
+\begin{subexample}
+	$ a < b $, $ A \coloneqq [a, b] \coloneqq \{ x \in \R : a \leq x \leq b \} $
+	Sei $ (x_n) \subset A $, d.h., $ x_1, x_2, \dotsc \in A $ mit $ x_n \to x ( x = \lim_{n\to\infty} x_n ) $
+\end{subexample}
+Stabilität von `$\leq$', `$\geq$' unter Limesbildung $ \underset{a\leq x_n \leq b }{\implies} a \leq x, x \leq b \implies x \in A \implies A \text{ abgeschlossen} $.
+Setzte für $ \varepsilon > 0, x \in \R: B_{\varepsilon}(x) \coloneqq \{ y \in \R : | x - y | < \varepsilon \} $ ``offener $\varepsilon$-Ball um $x$''
+
+\begin{sublemma}
+	Eine Menge $ A \subset \R $ ist offen genau dann, wenn
+	\[ \forall x \in A \exists \varepsilon > 0 : B_{\varepsilon} (x) \subset A \]
+\end{sublemma}
+
+\begin{subproof*}[Lemma \ref{6.1.3}]
+	``$\implies$'' Angenommen $ \exists x \in A \forall \varepsilon > 0 : B_{\varepsilon}(x) \not\subset A $\\
+	$\implies \exists x \in A \forall n \in \N : \exists x_n \in B_{\frac{1}{n}}(x) \cap ( \R \setminus A ).$
+	$\implies (x_n) \subset \R \setminus A \wedge x_n \to x \in A $. Also kann $ \R \setminus A $ nicht abgeschlossen sein, also $A $ nicht offen. $ \implies ( A \text{ offen } \implies \text{Bedinung gilt} ) $\qed
+\end{subproof*}
+

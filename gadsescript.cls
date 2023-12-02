@@ -57,7 +57,8 @@
 %%%%%%%%%%%%%%
 
 \RequirePackage[headsepline]{scrlayer-scrpage}
-\pagestyle{scrheadings}
+\clearpairofpagestyles
+%\pagestyle{scrheadings}
 \automark[section]{section}
 \ihead{\normalfont\scshape\headmark}
 \ohead*{\pagemark}
@@ -173,8 +174,10 @@
 
 \setkomafont{disposition}{\raggedright\large\csname\gadse@sectionseries\endcsname}%
 
-\KOMAoption{toc}{indent}
-\DeclareTOCStyleEntry[indent = 0cm, entryformat=\normalfont\bfseries, pagenumberformat=\normalfont\bfseries]{tocline}{section}
+%\unsettoc{toc}{noindent}
+\DeclareTOCStyleEntry[entryformat=\normalfont\bfseries, pagenumberformat=\normalfont\bfseries]{tocline}{section}
+\DeclareTOCStyleEntries[dynindent, indent = 0.5cm, indentfollows = {section, subsection, subsubsection}]{tocline}{section, subsection, subsubsection}
+\DeclareTOCStyleEntry[entryformat=\normalfont\bfseries, pagenumberformat=\normalfont\bfseries]{tocline}{part}
 
 \setlength\parindent{1em}
 \newcommand{\saveparinfos}{%
@@ -541,6 +544,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\mathsec}[2]{\texorpdfstring{$#1$}{#2}}
 
 %%%%%%%%%%%%%
 %%% specs %%%
@@ -568,10 +572,20 @@
 \definetitles{faculty}
 \definetitles{semester}
 
-\newcommand*{\defaulttitleh}{%
+\newcommand*{\defaultmathtitle}{%
 	\setsemester{Winter Semester 2023/2024}%
 	\setuniversity{University of Konstanz}%
 	\setfaculty{Faculty of Science (Mathematics and Statistics)}%
+}
+\newcommand*{\defaultphysicstitle}{%
+	\setsemester{Winter Semester 2023/2024}%
+	\setuniversity{University of Konstanz}%
+	\setfaculty{Faculty of Science (Physics)}%
+}
+\newcommand*{\defaultcomputersciencetitle}{%
+	\setsemester{Winter Semester 2023/2024}%
+	\setuniversity{University of Konstanz}%
+	\setfaculty{Faculty of Science\\(Computer and Information Science)}%
 }
 
 % sets title headers

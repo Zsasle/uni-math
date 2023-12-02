@@ -1,0 +1,53 @@
+\documentclass{gadsescript}
+\defaultmathtitle
+\settitle{BMA}
+
+\begin{document}
+\maketitle
+
+\textbf{Vor.:} $ (a_n)_{n\in\N} $ und $ \N_{\ge N} = \{ n \in \N : n \geq N \} $\\
+\begin{enumerate}[label=(\arabic*)]
+	\item \textbf{Beh.:} für $ a_n \coloneqq 8 $ gilt $ \exists a \in \R : \forall \varepsilon > 0 : \forall N \in \N : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $
+	\item \textbf{Beh.:} für $ a_n \coloneqq (-1)^n \cdot 8 $ gilt $ \exists a \in \R : \exists \varepsilon > 0 : \exists N \in \N : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $
+	\item \textbf{Beh.:} für $ a_n \coloneqq \frac{1}{n} \cdot 8 $ gilt $ \exists a \in \R : \forall \varepsilon > 0 : \exists N \in \N : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $
+	\item \textbf{Beh.:} für
+		\[ a_n \coloneqq
+		\begin{cases}
+		8 & \text{für } n = 1\\
+		0 & \text{sonst}\end{cases} 
+		\]
+		gilt $ \exists a \in \R : \exists N \in \N : \forall \varepsilon > 0 : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $
+\end{enumerate}
+\begin{proof*}
+\begin{enumerate}[label=(\arabic*)]
+	\item setze $ a \coloneqq 8 $, zu zeigen $ a \in \R $ und $ \forall \varepsilon > 0 : \forall N \in \N : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $.\\
+		$ a = 8 \in \R $ gegeben\\
+		Sei $\forall \varepsilon > 0, N \in \N $ und $ n \in \N_{\geq N} $ gegeben, zu zeigen: $ |a_n - a| < \varepsilon $, es gilt:
+		$ | a_n - a | = | 8 - 8 | = 0 \overset{\text{Def.}}{<} \varepsilon $\qed
+	\item setze $ a \coloneqq 8, \varepsilon \coloneqq 32 $ und $ N \coloneqq 16 $
+		zu zeigen: $ a \in \R, \varepsilon > 0, N \in \N $ und $ |a_n - a| < \varepsilon $, es gilt:\\
+		$ a = 8 \in \R, \varepsilon = 32 > 0 $ und $ N = 16 \in \N $ gegeben.\\
+		$ | a_n - a | = | (-1)^n \cdot 8 - 8 | \overset{\text{Dreiecksungleichung}}{\leq} | (-1)^n \cdot 8 | + | 8 | = 8 + 8 = 16 < 32 = \varepsilon $\qed
+	\item setze $ a \coloneqq 0 $, zu zeigen $ a \in \R $ und $ \forall \varepsilon > 0 : \exists N \in \N : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $.\\
+		$ a = 0 \in \R $ gegeben\\
+		Sei $\forall \varepsilon > 0 $ gegeben, zu zeigen:
+		$ \exists N \in \N : \forall n \in \N_{\geq N} :
+		|a_n - a| < \varepsilon $,
+		nach Archi $ \exists N \in \N > \frac{1}{\varepsilon} $,
+		also $ \frac{1}{N} < \varepsilon $,
+		wähle ein solches $ N $,
+		zu zeigen $ \forall n \in \N_{\geq N} : | a_n - a | < \varepsilon $:\\
+		Sei $ n \in \N_{\geq N} $ gegeben, zu zeigen $ | a_n - a | < \varepsilon $, es gilt:
+		\[ | a_n - a | = | \frac{1}{n} - 0 |
+		= \frac{1}{n}
+		\overset{\text{da $ n \geq N $}}{\leq} \frac{1}{N}
+		< \varepsilon\qed
+		\]
+	\item setze $ a \coloneqq 0 $ und $ N = 2 $, zu zeigen $ a \in \R $, $ N \in \N $ und $ \forall \varepsilon > 0 : \forall n \in \N_{\geq N} : |a_n - a| < \varepsilon $.\\
+		$ a = 0 \in \R, N = 2 \in \N $ gegeben\\
+		Sei $\forall \varepsilon > 0 $ und $ n \in \N_{\geq N} $ gegeben, zu zeigen: $ |a_n - a| < \varepsilon $
+		\[ | a_n - a | \overset{\text{da} n \geq 2}{=} | 0 - 0 | = 0 \overset{\text{Def.}}{<} \varepsilon\qed \]
+\end{enumerate}
+\end{proof*}
+
+\end{document}

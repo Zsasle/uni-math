@@ -1,0 +1,201 @@
+\section{Körper}
+\subsection{Was sind Strukturen?}
+\subsection{Körper}
+\begin{subdefinition}[Körper]
+	in script of Prof. and on paper
+\end{subdefinition}
+\begin{subexample}
+	in script of Prof. and on paper
+\end{subexample}
+\begin{subexample}
+	in script of Prof. and on paper
+\end{subexample}
+\begin{sublemma}
+	in script of Prof. and on paper
+\end{sublemma}
+\begin{sublemma}
+	in script of Prof. and on paper
+\end{sublemma}
+\begin{tabular}{cc}
+	$\Q$ & $\R$\\
+	$\uparrow $ & $\uparrow $\\
+	abzählbar & nicht abzählbar\\
+\end{tabular}
+Kontinuumshypothese
+\hrule
+\begin{definition}
+	In der Situation von definition \ref{2.2.1} sei $ n \in \N $, sowie $ x_1, \dotsc, x_n \in K $. Wir definieren rekursiv $ x_1 + \dotsb + x_n \coloneqq ( x_1 + \dotsb + x_{n-1} ) + x_n, x: \cdot \dotsb \cdot x_n \coloneqq ( x_1 \cdot \dotsb x_{n-1} ) \cdot x_n $
+\end{definition}
+\begin{definition}
+	In der Situation von Definition \ref{2.2.1} sei $ n \in \N_0 $ und $ x \in K $. Wir definieren
+	\[ x^0 \coloneqq 1_K \text{ und } x^n \coloneqq ( x^{n-1} \cdot x, n \in \N \]
+	Ist $ x \in K\setminus\{0\} $, so sei für $ n \in \N : x^{-n} \coloneqq ( x^{-1})^n $.
+\end{definition}
+\begin{lemma}
+	Für alle $ x, y \in K, \quad m, n \in \N_0 $:
+	\begin{enumerate}[label=\roman*)]
+		\item $x^n\cdot x^m = x^{n+m}$,
+		\item $(x^n)^m = x^{n\cdot m} $,
+		\item $ x^n \cdot y^n = ( x \cdot y ) ^n $
+	\end{enumerate}
+	Ist zudem $ x, y \neq 0_K $, so gelten diese Identitäten auch für $n,m \in \Z $
+	\begin{proof*}[i]
+		Fixiere $ n \in \N_0 $, nun Induktion nach $m$.
+		\begin{description}
+			\item[I.A.] $m = 0$. $x^n\cdot x^0 \overset{\text{Def.}}{=} x^n \cdot 1_K \overset{\text{(M2)}}{=} 1_K \cdot x^n \overset{\text{(M3)}}{=} x^n= x^{n+0} $
+			\item[I.S.] Gelte die Aussage für ein $m \in \N_0$. Zeige für $ m \curvearrowright m+1 $
+				\[ x^n \cdot x^{m+1} \overset{\text{Def.}}{=} x^n\left(x^m) \cdot x\right) \overset{\text{(M1)}}{=} \left( x^n\cdot x^m\right) \cdot x \overset{\text{IV}}{=} x^{n+m} \cdot x \overset{\text{Def.}}{=} x^{n+m+1} \qed \]
+		\end{description}
+	\end{proof*}
+\end{lemma}
+
+\subsection{Angeordnete Körper}
+\begin{itemize}
+	\item Ziel Vergleich von Elementen hinsichtlich ``Größe''
+\end{itemize}
+\begin{subdefinition}
+	Eine \textbf{Relation} auf einer Menge $M$ ist eine Teilmenge $ R\subset M\times M $. Ist $ ( x, y ) \in R $, so schreiben wir auch $xRy$ oder $ R(x,y) $ und sagen, dass $x $ und $ y $ über $ R $ in Relation stehen.
+\end{subdefinition}
+\begin{subexample}
+	$ M = \text{ Stidierende im Hörsaal,}$\\
+	$ (x,y) \in M \times M : x R y :\iff x $ kennt den Namen von $ y $
+	\begin{itemize}
+		\item $ R $ \textbf{reflexiv}? (d.h. $\forall x \in M : x R y $ ) \qquad Ja
+		\item $ R $ \textbf{symmetrisch}? ( d.h. $\forall x, y \in M : x R y \iff y R x ) $ ) \qquad Nein
+		\item $ R $ \textbf{transitiv}? ( d.h. $ \forall x, y, z \in M : xRy \wedge yRx \implies xRz $ ) \qquad \textbf{Nein}
+	\end{itemize}
+\end{subexample}
+\begin{subdefinition}
+	Sei $ R $ eine Relation auf einem Kürper $ K $. $ R $ heiß \textbf{Ordnung} auf $ K $, falls gilt
+	\begin{enumerate}[label=(\roman*)]
+		\item \textbf{Trichotomie:} $ \forall x \in K: $ Entweder $ 0_K Rx, x R0_K $ oder $ x = 0_K $
+		\item \textbf{Abgeschlossenheit bezüglich Addition} $ \forall x,y \in K : 0_K R x, 0_K R y \implies 0_K R (x+y)$
+		\item \textbf{Abgeschlossenheit bezüglich Multiplikation} $ \forall x, y \in K: 0_K R x, 0_KRy \implies 0_K R (x\cdot y) $
+	\end{enumerate}
+	Das Tupel $ ( K, R ) $ heißt \textbf{angeordneter Körper.} (\textbf{Schreibe} auch `$<$' für  $ R $).
+	\begin{description}
+		\item[Setze für $a,b \in K $:]
+			\begin{align*}
+				a < b &:\iff 0_K < ( b- a )\\
+				a > b &:\iff b < a\\
+				a \leq b &:\iff a < b \vee a = b\\
+				b \geq a &:\iff a \leq b\\
+			\end{align*}
+	\end{description}
+\end{subdefinition}
+
+\begin{sublemma}
+	Sei $ ( K, < ) $ angeordneter Körper, $ a, b, c \in K $
+	\begin{enumerate}[label=(\roman*)]
+		\item Entweder $ a > b, a = b \vee a < b $.
+		\item $ a < b \wedge b < c \implies a < c $
+		\item $ ( a > 0 \implies (-a) < 0) \wedge ( a < 0 \implies (-a) > 0) $
+		\item Gilt $ a < b $, so ist
+			\begin{align*}
+				ac < bc, & \qquad c>0\\
+				ac > bc, & \qquad c < 0\\
+				a^2 > 0, & \qquad a \neq 0\\
+			\end{align*}
+			\[ a > 0 \implies a^{-1} > 0 \]
+			\[ a < 0 \implies a^{-1} < 0 \]
+			$ b^{-1} < a^{-1} $, falls $ a > 0 $\\
+			$ a + c < b + c $.
+		\item $ a < b \implies (-a) > (-b) $
+	\end{enumerate}
+	\begin{subproof*}[(i)-(iii)]
+		\begin{enumerate}[label=(\roman*)]
+			\item Da $ a < b \iff 0_K < b - a $, folgt das aus Trichotomie und Def. von `$>$'.
+			\item zu zeigen: $ a y c $, d.h. $ 0_K < c-a$.
+				\[ c - a = ( c + 0_K ) - a = \underbrace{(c-b)}_{>0} + \underbrace{(b-a)}_{>0} > 0, \text{ d.h. } a < c \]
+			\item $ a > 0 $. Angenommen, $ (-a ) > 0. \overset{\text{Abg. Add.)}}{\implies} 0_K = a + (-a) > 0_K \overset{\text{Trich.}}{\implies} \Lightning $ Ist $-a = 0$, so $ a = 0 $, nach Trich. Wid. zu $ a > 0 $. Falls $ a < 0 $, analog.\qed
+		\end{enumerate}
+	\end{subproof*}
+\end{sublemma}
+\begin{subcorollary}
+	Es gibt keine Ordnung `$<$' auf $\F_2$, die $\F_2$ zu einem angeordneten Körper macht
+	\begin{proof*}
+		Angenommen, `$<$' sei Ordnung. Da $ 0_K \neq 1_K $, gilt entweder $ 0_K < 1_K $ oder $ 1_K < 0_K $ (nach Trich.). Falls $ 0_K < 1_K $. Dann $ 0_K = 1_K + 1_K $ damit $ 0_K = 1_K + 1_K > 0_K + 1 = 1_K $. Widerspruch für $1_K < 0_K$ argumentiere analog.
+	\end{proof*}
+\end{subcorollary}
+\begin{itemize}
+	\item \textsc{Prinzip:} $\R \wedge \Q $ sind angeordnete Körper
+\end{itemize}
+
+\subsection{Der Betrag}
+(`Abstand zur Null')
+\begin{subdefinition}
+	Für $ x \in \R $ definieren wir den Betrag $|x| \coloneqq \begin{cases}x,&x\geq0,\\-x,&x<0\end{cases}$
+\end{subdefinition}
+\begin{sublemma}
+	Der in Def 2.4.1 eingeführte Betrag erfüllt
+	\begin{enumerate}[label=(\roman*)]
+		\item $ forall x \in \R |x| \geq 0$
+		\item $ |x| = 0 \iff x = 0 $
+		\item Multiplikativität: $ \forall x,y \in \R : | x\cdot y | = | x | \cdot | y | $
+		\item {\color{yellow} \textbf{Dreiecksungleichung:} $ \forall x, < \in \R: | x + y | \leq | x | + | y |$ }
+		\item $ \forall x \in \R : | -x| = | x | $
+		\item $ \forall x, y \in \R :  y \neq 0 \implies \left| \frac{x}{y} \right| = \frac{|x|}{|y|} $
+	\end{enumerate}
+\end{sublemma}
+
+\subsection{Das Archimedische Axiom}
+\textsc{Prinzip}-Arch. Axiom: $ \forall x \in \R, x > 0 \exists n \in \N : x < n $\\
+.\qquad.\qquad.\qquad.\qquad.\qquad.\quad$\underset{x}{|}$ $\underset{n}{.}$
+\begin{itemize}
+	\item Das muss gefordert werden
+\end{itemize}
+
+\subsection{Supremum, Infimum und die Supremumseigenschaft}
+\begin{itemize}
+	\item \textbf{Ziel}: Entscheidende Eigenschaft von $\R$
+\end{itemize}
+\begin{subdefinition}
+	Eine nichtleere Teilmenge $ A \subset \R $ heißt
+	\begin{itemize}
+		\item \textbf{nach oben beschränkt}, falls $\exists c \in \R \forall x \in A: x \leq c $. Ein solches c ``obere Schranke''
+		\item \textbf{nach unten beschränkt}, falls $ \exists c \in \R \forall x \in A: c \leq x $ `` untere Schranke''
+	\end{itemize}
+\end{subdefinition}
+
+\begin{subexample}
+	\begin{itemize}
+		\item $ A = N_0 $ durch $ 0 $ nach unten, nach oben unbegrenzt
+		\item $ A = \{ 1, 2, \dotsc, 10\} $ durch $ 1 $ nach unten, und durch $ 10, 11, \dotsc $ nach oben beschränkt
+	\end{itemize}
+\end{subexample}
+
+\begin{subdefinition}
+	Sei $ a \subset \R $ nichtleer
+	\begin{enumerate}[label=(\roman*)]
+		\item Ist $ A $ nach oben beschränkt, so heißt $ s ( \eqqcolon \operatorname{sup}A) $ \textbf{Supremum} von $ A $, falls $ s $ obere Schranke ist \textit{und} \textbf{kleinste obere Schranke} ist d.h. $ \forall c \in \R : c $ obere Schranke von $ A \implies s \leq c $. Ist $ s \in A $ Supremum von $ A $, so heißt $ s $ \textbf{Maximum} von $ A $.
+		\item Ist $ A $ nach oben unbeschränkt, so sei $ + \infty $ das Supremum von $ A $.
+		\item Ist $ A $ nach unten beschränkt, so nennen wir $ s^\prime \in \R $ \textbf{Infimum} von $ A $, falls $ s^\prime$ untere Schranke und für jede andere untere Schranke $ d \in \R $ von $ A $: $ d \leq s^\prime $. Ist $ s^\prime \in A $ Infimum, so heißt $ s^\prime $ \textbf{Minimum} von $ A $.
+		\item Ist $ A $ nach unten unbeschränkt, so sei $ - \infty $ das Infimum von $ A $
+	\end{enumerate}
+	\textbf{Schreibweise}: $ \sup(A), \max(A), \inf(A), \min(A)$.
+\end{subdefinition}
+
+\begin{subexample}
+	Für $ a, b \in \R $ mit $ a y b $ sei $ ( a, b ) \coloneqq \{ \R : a < x < b \} $\\
+	Dann: $ \sup((a,b)) = b \wedge \inf((a,b)) = a $.
+	\begin{itemize}
+		\item Obere Schranke: $ \forall x \in (a,b) : x <  ) \implies b $ obere Schranke.
+		\item Ist $ d $ andere obere Schranke, so $ b \leq d $. Klar: $ d > a $, also angenommen $ a < d < b $.\\
+			Dann $ x \coloneqq \frac{d+b}{2} \in ( a, b), x > d. \implies d $ keine obere Schranke \Lightning\\
+			Weiter $ b \notin (a, b) $, also $ b $ Supremum, kein Maximum
+	\end{itemize}
+\end{subexample}
+
+\fbox{\textsc{Prinzip}} (Supremumseigenschaft)\\
+Jede nach oben beschränkte Menge $ A \subset \R $ hat ein Supremum in $ \R $
+\textbf{Informell}: $ ( 1, \sqrt{2} ) \cap \Q $ hat $\sup = \sqrt{2} $ (später). Aber $ \sqrt{2} \notin \Q $, also gilt die Supremumseigenschaft für $ \Q $ nicht.\par
+
+$ \R $ ist
+\begin{itemize}
+	\item Körper
+	\item angeordente Körper
+	\item bewerteter Körper
+	\item Archimedisch angeordnete Körper
+	\item \textbf{Supremumseigenschaft}
+\end{itemize}
+
