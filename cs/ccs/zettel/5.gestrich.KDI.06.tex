@@ -1,6 +1,6 @@
 \documentclass[sectionformat = exercise]{gadsescript}
 \defaultcomputersciencetitle
-\settitle{Recursion, Devide and Conquer}
+\settitle{Heapsort \mathsec{\mathcal{O}}{O}-notation \& Complexity}
 \setsubtitle{Elias Gestrich}
 
 \begin{document}
@@ -10,21 +10,30 @@
 	\item 
 		\begin{enumerate}[label=\Alph*.]
 			\item It is not a Heap, because there is a hole where the fifth node should be, but there is a sixth one.
-			\item It is a Heap because it has no holes and every parent is greater than it's childs.
+			\item It is a Heap because it has no holes and every parent is greater than it's children.
 			\item It is not a Heap, because there is a hole where the fifth node should be, but there is a sixth one.
 			\item It is not a Heap, because the third node is smaller than it's child.
 		\end{enumerate}
-	\item 
-		\[ [10,  5, 0,  12, 11, 7, 9,  8, 3, 4, 6] \]
-		\[ [10,  5, 9,  12, 11, 7, 0,  8, 3, 4, 6] \]
-		\[ [10,  5, 9,  12, 11, 7, 6,  8, 3, 4, 0] \]
-		\[ [10,  12, 9,  5, 11, 7, 6,  8, 3, 4, 0] \]
-		\[ [10,  12, 9,  8, 11, 7, 6,  5, 3, 4, 0] \]
-		\[ [12,  10, 9,  8, 11, 7, 6,  5, 3, 4, 0] \]
-		\[ [12,  11, 9,  8, 10, 7, 6,  5, 3, 4, 0] \]
+	\item
+		\[ [10, 5, 0, 3, 11, 7, 9, 8, 12, 4, 6] \]
+		\[ [10, 5, 0, 12, 11, 7, 9, 8, 3, 4, 6] \]
+		\[ [10, 5, 9, 12, 11, 7, 0, 8, 3, 4, 6] \]
+		\[ [10, 12, 9, 8, 11, 7, 0, 5, 3, 4, 6] \]
+		\[ [12, 11, 9, 8, 10, 7, 0, 5, 3, 4, 6] \]
+		\[ [11, 10, 9, 8, 6, 7, 0, 5, 3, 4, {\color{violet} 12} ] \]
+		\[ [10, 8, 9, 5, 6, 7, 0, 4, 3, {\color{violet} 11, 12} ] \]
+		\[ [9, 8, 7, 5, 6, 3, 0, 4, {\color{violet} 10, 11, 12} ] \]
+		\[ [8, 6, 7, 5, 4, 3, 0, {\color{violet} 9, 10, 11, 12} ] \]
+		\[ [7, 6, 3, 5, 4, 0, {\color{violet} 8, 9, 10, 11, 12} ] \]
+		\[ [6, 5, 3, 0, 4, {\color{violet} 7, 8, 9, 10, 11, 12} ] \]
+		\[ [5, 4, 3, 0, {\color{violet} 6, 7, 8, 9, 10, 11, 12} ] \]
+		\[ [4, 0, 3, {\color{violet} 5, 6, 7, 8, 9, 10, 11, 12} ] \]
+		\[ [3, 0, {\color{violet} 4, 5, 6, 7, 8, 9, 10, 11, 12} ] \]
+		\[ [0, {\color{violet} 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} ] \]
+		\[ [{\color{violet} 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} ] \]
 \end{enumerate}
 
-\section{$\mathcal{O}$-notation}
+\section{\mathsec{\mathcal{O}}{O}-notation}
 \begin{enumerate}[label=\alph*)]
 	\item to be proofen: $ \exists c > 0 : \exists n_0 : \forall n > n_0 : |105n + 100| \leq c \cdot n^2$\\
 		let $ c \coloneqq 205, n_0 \coloneqq 1 $ so that:\\
@@ -44,7 +53,7 @@
 		\[ [ 1, 5_{\color{violet} 1}, 3, 5_{\color{violet} 0}, 8 ] \]
 		\[ [ 1, 3, 5_{\color{violet} 1}, 5_{\color{violet} 0}, 8 ] \]
 		\[ [ 1, 3, 5_{\color{violet} 1}, 5_{\color{violet} 0}, 8 ] \]
-	\item The result is an ordert Array
+	\item The result is an ordered Array
 	\item One has to change the $\geq$ sign in line 4 to $ > $
 \end{enumerate}
 

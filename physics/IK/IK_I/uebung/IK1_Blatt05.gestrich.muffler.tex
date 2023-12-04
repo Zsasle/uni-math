@@ -15,41 +15,57 @@
 		mit der Winkelgeschwindigkeit $ \omega = \frac{2\pi}{\qty{86400}{\second}} \approx \qty{0.00007272}{\per\second} $ bei kleinen Geschwindigkeiten ist also $ 2 \vec \omega \times \vec v ^\prime $ sehr klein und für Objekte am Äquator gilt $ r \approx \qty{6.3e6}{\metre} $,
 		dann gilt am Äquator,
 		da $ \vec \omega $ und $ \vec r $ orthogonal: $ | 2 \vec \omega \times ( \vec \omega \times \vec r' ) | = 2 \omega^2 r \approx \qty{0.067}{\metre\per\square\second} $ also auch klein.
-	\item Wenn ein Körper aus Ruhe von der Höhe $ h $ fallen gelassen wird, braucht er auf der Erde die Zeit $ t = \sqrt{\frac{2h}{a}} $, um auf der Erdoberfläche zu landen.
+	\item Wenn ein Körper aus Ruhe von der Höhe $ h $ fallen gelassen wird, braucht er auf der Erde die Zeit $ t = \sqrt{-\frac{2h}{a}} $, um auf der Erdoberfläche zu landen.
 		Es gilt
 		\[ \vec F^\prime = \vec F + \vec F_{C} + \vec F_{ZF} \]
 		Da die Corioliskraft in Richtung der Schwerkraft vernachlässigt werden kann und die Zentrifugalkraft parallel zur Schwerkraft ist, gilt für die Kraft in Richtung der Schwerkraft:
 		\begin{align*}
 			\vec F_z^\prime &= \vec F + \vec F_{ZF}\\
-			ma_z^\prime &= -mg + m\omega^2 r^\prime\\
-			a_z^\prime &\approx -g\\
+			m\vec a_z^\prime &= m\vec a - m\vec \omega \times ( \vec \omega \times \vec r^\prime)\\
+		\end{align*}
+		und da $ \vec \omega $ nach Norden, $\vec r^\prime$ orthogonal dazu nach oben und somit $\vec \omega \times \vec r^\prime $ nach Osten, zeigt $ \vec \omega \times ( \vec \omega \times \vec r^\prime ) $ nach unten, mit dem negativen Vorzeichen, wiederrum nach oben und da $\vec \omega, \vec r^\prime, \vec \omega \times \vec r^\prime $ orthogonal zueinander stehen gilt
+		\begin{align*}
+			a_z^\prime &= a + \omega^2 r^\prime\\
 		\end{align*}
 		D.h. wenn sich das Objekt zu begin in Stillstand auf der Höhe $ h $ befand, gilt
 		\begin{align*}
-			v_z^\prime &\approx -gt\\
-			z^\prime + h &\approx -\frac{1}{2} gt^2 + h
+			v_z^\prime &= a^\prime t + \underbrace{v_0}_{=\qty{0}{\metre\per\second}}\\
+			z^\prime &= \frac{1}{2} a^\prime t + \underbrace{z_0}_{=h}\\
 		\end{align*}
-		D.h. wenn das Objekt die Höhe $ \qty{0}{\metre} $ hat, dann ist die Zeit $ t = \sqrt{\frac{2h}{g}} $ verstrichen.\\
+		D.h. wenn das Objekt die Höhe $ \qty{0}{\metre} $ hat, dann ist die Zeit $ t = \sqrt{\frac{-2h}{a^\prime}} $ verstrichen.\\
+		Die Corioliskraft, die orthogonal zu Schwerkraft zeigt, bekommt man durch:
+		\begin{align*}
+			\vec F_C &= - 2m \vec \omega \times \vec v^\prime\\
+			\vec F_C &= - 2m\vec \omega \times (\vec v_z^\prime + \vec v_y^\prime)\\
+			\vec F_C &= \underbrace{- 2m\vec \omega \times \vec v_z^\prime}_{=\vec F_{C_y}} \underbrace{- 2m\vec \omega \times \vec v_y^\prime}_{=F_{C_z}}\\
+		\end{align*}
 		Es gilt für die Kraft orthogonal der Schwerkraft:
 		\begin{align*}
-			\vec F_y^\prime &= \vec F_{C}\\
-			ma_y^\prime &= - m \vec \omega \times \vec v^\prime\\
-			a_y^\prime &= - \vec \omega \times (\vec v_z^\prime + \vec v_y^\prime)\\
-			a_y^\prime &= - \vec \omega \times \vec v_z^\prime - \vec \omega \times v_y^\prime\\
+			\vec F_y^\prime &= \vec F_{C_y}\\
+			m \vec a_y^\prime &= - 2m\vec \omega \times \vec v_z^\prime\\
+			\vec a_y^\prime &= - 2\vec \omega \times \vec v_z^\prime\\
+			\frac{dv_y^\prime}{dt} &= - 2\vec \omega \times \vec a_z^\prime t\\
+			dv_y^\prime &= - 2\vec \omega \times a_z^\prime t dt\\
+			\int_{v_{y_0} = 0}^{v_y} dv_y^\prime &= - 2\int_{t_0 = 0}^{t} \vec \omega \times \vec a_z^\prime t^\prime d t^\prime\\
+			\vec v_y^\prime &= - \vec \omega \times \vec a_z^\prime t^2\\
+			\frac{d \vec z_y^\prime}{dt} &= - \vec \omega \times \vec a_z^\prime t^2\\
+			\int_{z_{y_0} = \qty{0}{\metre}}^{z_y} d \vec z_y^\prime &= - \int_0^t \vec \omega \times \vec a_z^\prime {t^\prime}^2 dt^\prime\\
+			\vec z_y &= - \frac{1}{3} \vec \omega \times \vec a_z^\prime t^3\\
 		\end{align*}
-		Und da das Kreuzprodukt von $ \vec \omega $ und $ \vec v_y $ parallel zur Schwerkraft ist, also vernachlässigbar und $ \vec v_z $ orthogonal zu $ \vec \omega $:
+		Und da $\vec \omega$ orthogonal zu $\vec a_z$:
 		\begin{align*}
-			a_y^\prime &= - \vec \omega \times \vec v_z^\prime - \vec \omega \times v_y^\prime\\
-			\vec a_y^\prime &= - \omega v_z^\prime\\
-			\frac{dv_y^\prime}{dt} &= - \omega v_z^\prime\\
-			\int_{v_{y_0} = 0}^{v_y} dv_y^\prime &= - \int_{t_0 = 0}^{t} \omega v_z^\prime dt^\prime\\
-			v_y^\prime &= - \omega z^\prime\\
-			v_y^\prime &\approx \omega \frac{1}{2} gt^2\\
-			z_y^\prime &\approx - \frac{1}{6} \omega gt^3\\
-			~&\approx - \frac{2\pi g\sqrt{2h\omega}^3}{86400 * 6 * \sqrt{g}^3} \; \unit{\per\second}
+			z_y &= - \frac{1}{3}\omega a^\prime t^3\\
+			z_y &= - \frac{1}{3} \omega a^\prime \sqrt{ -\frac{2^3h^3}{ {a^\prime}^3 } }\\
+			z_y &= - \frac{2}{3} \omega \sqrt{ -\frac{2h^3}{ {a^\prime} } }\\
 		\end{align*}
+		Die Richtung kann erlesen werden aus
+		\[ \vec z_y = -\frac{1}{3}\vec\omega\times\vec a_{z}^{\prime} t^3 \]
+		Da nämlich $ \vec \omega $ Richtung Norden und $ a_z^\prime $ gen Erdmittelpunkt zeigt, zeigt $ \vec \omega \times \vec a_z^\prime $ Richtung Westen.
 	\item Da dann $ \vec r^\prime $ und $ \vec \omega $ nicht mehr orthogonal zueinaner stehen würden, wäre die Zentrifugalkraft kleiner, also die scheinbare Schwerkraft wäre größer.
-		Und da das Objekt in Richtung der Schwerkraft beschleunigt wird, und diese parallel zu $ \vec r^\prime $ ist, ist auch die Corioliskraft kleiner.
+		Und da das Objekt in Richtung der Schwerkraft beschleunigt wird,
+		und diese parallel zu $ \vec r^\prime $ ist,
+		ist auch die Corioliskraft $ \vec F_C = 2 \vec \omega \times \vec v^\prime $ kleiner,
+		und die Ablenkung wird geringer.
 \end{enumerate}
 
 \section{Einwegachterbahn}
