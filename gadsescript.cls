@@ -544,6 +544,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\OO}{\emptyset}
 \newcommand{\mathsec}[2]{\texorpdfstring{$#1$}{#2}}
 
 %%%%%%%%%%%%%

@@ -1,18 +1,18 @@
 # Snippets for braces
-snippet "(^|[^A-Za-z])rr" "round paranthesis" Ar
+snippet "(^|[^A-Za-z])brr" "round paranthesis" Ar
 `!p snip.rv = match.group(1)`($1)$0
 endsnippet
 
-snippet "(^|[^A-Za-z])cc" "curly bracket" Ar
+snippet "(^|[^A-Za-z])bcc" "curly bracket" Ar
 `!p snip.rv = match.group(1)`{$1}$0
 endsnippet
 
-snippet "(^|[^A-Za-z])ssp" "yeah" Ar
+snippet "(^|[^A-Za-z])bs" "yeah" Ar
 `!p snip.rv = match.group(1)`[$1]$0
 endsnippet
 
 priority 1
-snippet "\{cc" "curly brackets with lb" !Ar
+snippet "\{bcc" "curly brackets with lb" !Ar
 {
 	$1
 $0

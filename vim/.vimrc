@@ -10,7 +10,7 @@ let g:UltiSnipsJumpForwardTrigger	= '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger	= '<c-k>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
-ino ( ()<Left>
-ino [ []<Left>
-ino { {}<Left>
-ino {<CR> {<CR>}<ESC>O
+" ino ( ()<Left>
+" ino [ []<Left>
+" ino { {}<Left>
+" ino {<CR> {<CR>}<ESC>O
