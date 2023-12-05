@@ -245,6 +245,7 @@
 \RequirePackage{arydshln}
 \RequirePackage{hyperref}
 \RequirePackage{float}
+\usepackage[style=iso]{datetime2}
 
 
 %%%%%%%%%%%%%%
