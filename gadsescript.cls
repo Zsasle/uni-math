@@ -66,6 +66,13 @@
 \cfoot{}
 \RequirePackage[top=3cm, left=2cm, right=2cm, bottom=2cm]{geometry}
 
+\def\figcaption{ %
+	\H@refstepcounter{figure} %
+	\@dblarg{\@caption{figure}} %
+} %
+
+\RequirePackage{hyperref}
+
 %%%%%%%%%%%%%
 %%% title %%%
 %%%%%%%%%%%%%
@@ -221,7 +228,7 @@
 \newcommand{\mynode}[2]{\tikz[remember picture]{\node[inner sep = 0pt](#1){#2};}}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\makeatletter
+%\makeatletter
 \def\pgfplotsforeachtodomain@@.#1\relax{%
 	\pgf@xa=0.#1pt %   
 		\ifdim\pgf@xa>0.01pt  % % <----corrected \ifdim instead of ifnum
@@ -231,7 +238,9 @@
 			\edef\pgfplotsretvalb{\the\c@pgf@counta}%
 		\fi
 }%
-\makeatletter
+%\makeatletter
+
+\DeclareMathOperator{\diam}{diam}
 
 %not math
 \RequirePackage[ngerman, english]{babel}
@@ -243,7 +252,6 @@
 \RequirePackage{multicol}
 \RequirePackage{marvosym}
 \RequirePackage{arydshln}
-\RequirePackage{hyperref}
 \RequirePackage{float}
 \usepackage[style=iso]{datetime2}
 

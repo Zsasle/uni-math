@@ -170,3 +170,46 @@ Dichtheit bezieht sich auf Approximierbarkeit.\\
 	\end{itemize}
 \end{subtheorem}
 
+\begin{subtheorem}[Dezimaldarstellungen]
+	\begin{equation}
+		\forall x \in [0, 1] \forall k \in \N  \exists ! a_k \in \left\{ 0, \dotsc, 9 \right\} : x = \sum_{k=1}^{\infty} a_k 10^{-k}.
+		\label{eq:thm.6.3.3.1}
+	\end{equation}
+\end{subtheorem}
+
+\begin{subproof*}[Satz 6.3.3]
+	\ref{eq:thm.6.3.3.1} entspricht $ 0, a_1 a_2 a_3 a_4 \dotsc $\\
+	(Übungsblatt 6 Aufgabe 3)\qed
+\end{subproof*}
+
+\begin{subproof*}[Satz 6.3.2]
+	Sei $  x \in  [0, 1] \wedge x = \sum_{k=1}^{\infty} a_k 10^{-k} $ die Dezimaldarstellung aus Satz \ref{6.3.3}. Definiere $ (x_n) $ via $ x_n \coloneqq \sum_{k=1}^{\infty} a_k 10^{-k} \in \Q  $. Aber $ x = \lim_{n \to \infty} x_n $, also ist $ \Q \cap [0, 1] $ dicht in $ [0, 1] $. Ist $ x \in  \R  $, so sei $ m \in  \Z  $ die größte ganze Zahl mit $ m \leq x $. Dann $ x = m + \Theta, \Theta \in  (0, 1] $. Nach erstem Teil $ \exists (\Theta_n) \subset \Q  \cap  [0, 1]: \lim_{n \to \infty}  \Theta_n $. Dann $ (m + \Theta_n) \subset  \Q  \wedge x = \lim_{n \to \infty} \underbrace{m + \Theta_n}_{\in \Q } $.
+	Also $ \Q  $ dicht in $ \R  $.\qed
+	\textbf{Erinnerung:} $ \Q  $ abzählbar (Cantorsches Diagonalschema, Kapitel 1)
+\end{subproof*}
+
+\begin{subtheorem}
+	$ \R  $ ist überabzählbar
+\end{subtheorem}
+\begin{subproof}[Satz \ref{6.3.4}]
+	Angenommen $ \R  $ abzählbar, so auch $ (0, 1) $. Dann $ \exists x_n \subset (0, 1): \forall x \in  (0, 1) \exists n \in  \N : x = x_n $. Nach \ref{6.3.3} knnen wir schreiben:\\
+	$ \forall a_{ij} \in \left\{ 0, \dotsc, 9 \right\}  $
+	\begin{align*}
+		x_1 &= 0, a_{11} a_{12} a_{13} \dotso \\
+		x_2 &= 0, a_{21} a_{22} a_{23} \dotso \\
+		x_3 &= 0, a_{31} a_{32} a_{33} \dotso \\
+		\vdots &= ~ \\
+	\end{align*}
+	
+	\[
+		b_{jj} \coloneqq \begin{cases}
+			a_{jj} + 2 &= \text{falls} a_{jj} \leq 5 \\
+			a_{jj} - 2 &= \text{falls} a_{jj} > 5 \\
+		\end{cases}
+	\]
+	Betrachte $ z \coloneqq 0, b_{11} b_{22} b_{33} b_{44} \dotso $.
+	Damit $ \forall j \in \N : \left | z - x_j \right| \geq 10^{-j} $, also $ \forall j \in \N : x_j \neq z $.\\
+	$ \implies \R  $ ist überabzählbar.\qed
+\end{subproof}
+\framebox{ $ \left| \sum_{k=1}^{\infty} b_kk 10^{-k} - \sum_{k=1}^{\infty} a_{jk} 10^{-k} \right| = something $}
+
