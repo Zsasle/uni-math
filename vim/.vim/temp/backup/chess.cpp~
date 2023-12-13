@@ -1,0 +1,169 @@
+#include <iostream>
+
+class Piece {
+ public:
+  virtual char get_piece_c() { return ' '; }
+  virtual int get_player() { return -1; }
+  virtual ~Piece() = default;
+
+ protected:
+  int player = -1;
+};
+
+class King : public Piece {
+ public:
+  explicit King(int player) { this->player = player; }
+  char get_piece_c() override { return 'k' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~King() override = default;
+};
+
+class Rook : public Piece {
+ public:
+  explicit Rook(int player) { this->player = player; }
+  char get_piece_c() override { return 'r' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~Rook() override = default;
+};
+
+class Bishop : public Piece {
+ public:
+  explicit Bishop(int player) { this->player = player; }
+  char get_piece_c() override { return 'b' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~Bishop() override = default;
+};
+
+class Queen : public Piece {
+ public:
+  explicit Queen(int player) { this->player = player; }
+  char get_piece_c() override { return 'q' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~Queen() override = default;
+};
+
+class Knight : public Piece {
+ public:
+  explicit Knight(int player) { this->player = player; }
+  char get_piece_c() override { return 'n' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~Knight() override = default;
+};
+
+class Pawn : public Piece {
+ public:
+  explicit Pawn(int player) { this->player = player; }
+  char get_piece_c() override { return 'p' + this->player * ('A' - 'a'); }
+  int get_player() override { return this->player; }
+  ~Pawn() override = default;
+};
+
+class Chess {
+ public:
+  explicit Chess(int num_of_players = 2, int turn = 1);
+  Piece *get_piece_from_tile(char file, char rank);
+  Chess print();
+  Chess chessmove(char piece, char file_origin, char rank_origin, char file_outlet, char rank_outlet, bool capture);
+  Chess undo();
+
+ private:
+  Piece *pieces[2][16];
+  Piece *chessboard[8][8];
+  int num_of_players = -1;
+  int turn = -1;
+  struct History {
+    History() {
+      this->chessboard = new Piece **[8];
+      for (int i = 0; i < 8; ++i) this->chessboard[i] = new Piece *[8];
+    }
+    Piece ***chessboard = NULL;
+    History *before = NULL;
+  };
+  History *history = new History();
+};
+
+Chess::Chess(int num_of_players, int turn) {
+  for (int i = 0; i < 8; ++i)
+    for (int j = 0; j < 8; ++j) this->chessboard[i][j] = new Piece();
+  for (int i = 0; i < 8; ++i) {
+    this->pieces[0][i + 8] = new Pawn(0);
+    this->chessboard[i][6] = this->pieces[0][i + 8];
+    this->pieces[1][i + 8] = new Pawn(1);
+    this->chessboard[i][1] = this->pieces[1][i + 8];
+  }
+  for (int i = 0; i <= 1; ++i) {
+    this->pieces[i][0] = new King(i);
+    this->chessboard[4][7 - 7 * i] = this->pieces[i][0];
+    this->pieces[i][1] = new Queen(i);
+    this->chessboard[3][7 - 7 * i] = this->pieces[i][1];
+    for (int j = 0; j <= 1; ++j) {
+      this->pieces[i][2 + j] = new Rook(i);
+      this->chessboard[j * 7][7 - 7 * i] = this->pieces[i][2 + j];
+      this->pieces[i][4 + j] = new Bishop(i);
+      this->chessboard[2 + j * 3][7 - 7 * i] = this->pieces[i][4 + j];
+      this->pieces[i][6 + j] = new Knight(i);
+      this->chessboard[1 + j * 5][7 - 7 * i] = this->pieces[i][6 + j];
+    }
+  }
+  this->num_of_players = num_of_players;
+  this->turn = turn;
+}
+
+Piece *Chess::get_piece_from_tile(char file, char rank) {
+  if (file < 'a' || 'h' < file || rank < '1' || '9' < rank) return NULL;
+  return this->chessboard[file - 'a'][rank - '1'];
+}
+
+Chess Chess::print() {
+  for (int i = 7; i >= 0; --i) {
+    for (int j = 0; j < 8; ++j) std::cout << this->chessboard[j][i]->get_piece_c();
+    std::cout << std::endl;
+  }
+  return *this;
+}
+
+Chess Chess::chessmove(char piece, char file_origin, char rank_origin, char file_outlet, char rank_outlet,
+                       bool capture) {
+  Piece *origin = this->get_piece_from_tile(file_origin, rank_origin);
+  Piece *outlet = this->get_piece_from_tile(file_outlet, rank_outlet);
+  if (origin == NULL || outlet == NULL || origin->get_piece_c() != piece || this->turn != origin->get_player())
+    return *this;
+  if (capture == (outlet->get_piece_c() == ' ') || (capture && (outlet->get_player() == this->turn))) return *this;
+  History *new_history = new History();
+  for (int i = 0; i < 8; ++i)
+    for (int j = 0; j < 8; ++j) new_history->chessboard[i][j] = this->chessboard[i][j];
+  new_history->before = this->history;
+  this->history = new_history;
+  this->chessboard[file_outlet - 'a'][rank_outlet - '1'] = origin;
+  this->chessboard[file_origin - 'a'][rank_origin - '1'] = new Piece();
+  this->turn = (this->turn + 1) % this->num_of_players;
+  return *this;
+}
+
+Chess Chess::undo() {
+  if (this->history->before == NULL) return *this;
+  for (int i = 0; i < 8; ++i)
+    for (int j = 0; j < 8; ++j) this->chessboard[i][j] = this->history->chessboard[i][j];
+  this->history = this->history->before;
+  this->turn = (this->turn + 1) % this->num_of_players;
+  return *this;
+}
+
+int main() {
+  Chess chess;
+  std::string line;
+  while (std::getline(std::cin, line)) {
+    if (line == "print") {
+      chess.print();
+      continue;
+    }
+    if (line == "undo") {
+      chess.undo();
+      continue;
+    }
+    if (static_cast<int>(line.length()) < 4) continue;
+    bool capture = (line[3] == 'x');
+    if (static_cast<int>(line.length()) != (5 + capture)) continue;
+    chess.chessmove(line[0], line[1], line[2], line[3 + capture], line[4 + capture], capture);
+  }
+}

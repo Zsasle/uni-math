@@ -1,0 +1,4 @@
+#include "./normalcar.h"
+std::string NormalCar::drive() const { return "roowr"; }
+NormalCar::NormalCar() { Vehicle::wheels_ = 4; }
+NormalCar::~NormalCar() {}

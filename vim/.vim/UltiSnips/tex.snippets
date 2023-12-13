@@ -9,52 +9,32 @@ def env(name):
 	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
 	return x != '0' and y != '0'
 
-def create_matrix_placeholders(snip):
+def convert_to_tabstop(snip):
 	anon_snippet_body = ""
-	# Get start and end line number of expanded snippet
 	start = snip.snippet_start[0]
 	end = snip.snippet_end[0]
-  # Append current line into anonymous snippet
 	for i in range(start, end + 1):
 		anon_snippet_body += snip.buffer[i]
 		anon_snippet_body += "" if i == end else "\n"
-# Delete expanded snippet line till second to last line
 	for i in range(start, end):
 		del snip.buffer[start]
-	# Empty last expanded snippet line while preserving the line
 	snip.buffer[start] = ''
-	# Expand anonymous snippet
 	snip.expand_anon(anon_snippet_body)
 
 endglobal
 
 
 snippet template "Basic template" b
-\documentclass[a4paper]{article}
+\\documentclass{${1:gadsescript}}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[dutch]{babel}
-\usepackage{amsmath, amssymb}
+\\setsemester{Winter Semester 2023/2024}%
+\\setuniversity{University of Konstanz}%
+\\setfaculty{Faculty of Science\\\\${2:(Mathematics and Statistics)}}%
 
-
-% figure support
-\usepackage{import}
-\usepackage{xifthen}
-\pdfminorversion=7
-\usepackage{pdfpages}
-\usepackage{transparent}
-\newcommand{\incfig}[1]{%
-	\def\svgwidth{\columnwidth}
-	\import{./figures/}{#1.pdf_tex}
-}
-
-\pdfsuppresswarningpagegroup=1
-
-\begin{document}
+\\begin{document}
+	\\maketitle
 	$0
-\end{document}
+\\end{document}
 endsnippet
 
 snippet begg "begin{} / end{}" bA
@@ -127,7 +107,7 @@ snippet iff "iff" Ai
 \iff $0
 endsnippet
 
-snippet "([^\\]\$|[^\w]mk)" "Math" Ar
+snippet "((^|[^\\])\$|(^|[^\w])mk)" "Math" Ar
 `!p
 if match.group(1).endswith("mk"):
 	snip.rv = match.group(1)[:-2]
@@ -147,12 +127,7 @@ $$0
 endsnippet
 
 snippet "(^|\b)dm" "Math" Ar
-`!p
-if match.group(1) == "dm":
-	snip.rv = ''
-else:
-	snip.rv = match.group(1)[:-2] + '\n'
-`\[
+\[
 	${1:${VISUAL}}
 \]
 $0
@@ -547,7 +522,7 @@ endsnippet
 
 context "math()"
 snippet set "set" wA
-\\left{ $1 \\right} $0
+\\left\\{ $1 \\right\\} $0
 endsnippet
 
 snippet || "mid" iA
@@ -747,7 +722,7 @@ snippet "(^|l)left" "\left\right" Ar
 \left$1 $2 \right$1$0
 endsnippet
 
-post_jump "create_matrix_placeholders(snip)"
+post_jump "convert_to_tabstop(snip)"
 snippet 'matr?i?x? (\d+) (\d+)' "LaTeX array" br
 `!p
 res = ""

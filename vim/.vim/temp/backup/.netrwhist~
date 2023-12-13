@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/mnt/c/Users/gadse/Documents'
+let g:netrw_dirhist_9='/home/gadse/.vim/UltiSnips'
+let g:netrw_dirhist_8='/home/gadse/.vim/UltiSnips/UltiSnips/UltiSnips'
+let g:netrw_dirhist_7='/home/gadse/.vim/UltiSnips/UltiSnips'
+let g:netrw_dirhist_6='/home/gadse/.vim/UltiSnips'
+let g:netrw_dirhist_5='/home/gadse/.vim/UltiSnips/UltiSnips'
+let g:netrw_dirhist_4='/home/gadse/.vim/UltiSnips'
+let g:netrw_dirhist_3='/home/gadse/.vim/UltiSnips/UltiSnips/UltiSnips'
+let g:netrw_dirhist_2='/home/gadse/.vim/UltiSnips/UltiSnips'
+let g:netrw_dirhist_1='/home/gadse/.vim/UltiSnips'

@@ -1,0 +1,67 @@
+\documentclass[sectionformat = exercise]{gadsescript}
+
+\setsemester{Winter Semester 2023/2024}%
+\setuniversity{University of Konstanz}%
+\setfaculty{Faculty of Science\\(Computer and Information Science)}%
+
+\begin{document}
+\maketitle
+\section{Analyzing an Algorithm}
+\begin{enumerate}[label=\alph*)]
+	\item A suitable loop invariant $ \mathcal{INV}  $ is: \begin{enumerate}[label=(\roman*)]
+			\item $ A[i, \dotsc, n] $ is sorted non-descended
+			\item $ \forall k,l \in \N : 1 \leq k < i \wedge i \leq j \leq n \implies A[k] \leq A[l] $
+		\end{enumerate}
+	\item Prove through Induction:
+		\begin{description}
+			\item[base case:] $ i = n $
+				\begin{enumerate}[label=(\roman*)]
+					\item $ A[i, \dotsc, n] = A[n, \dotsc, n] = A[n] $, an one-element array is always sorted
+					\item $ \forall k,l \in \N : 1 \leq k < i \wedge i \leq  l \leq n: A[k] \leq A[l] $\\
+						$ \iff \forall k, l \in \N : 1 \leq k < n \wedge n \leq  j \leq n \implies A[k] \leq A[l] $. Let $ A[m] $ be the greatest element in $ A $, that means $ A[(m+1)-1] \geq A[m + 1] $, so it would be moved to the next index, after increasing $ i, j, m $, by one this would repeat until $ j=n $ and $ A[m] $ was moved to the last index.
+				\end{enumerate}
+			\item[induction step:] $ i \curvearrowright i - 1 $
+				\begin{description}
+					\item[induction hypothesis] ~
+						\begin{enumerate}[label=(\roman*)]
+							\item $ A[i, \dotsc, n] $ is sorted non-descended
+							\item $ \forall k,l \in \N : 1 \leq k < i \wedge i \leq  j \leq n \implies A[k] \leq A[j] $
+						\end{enumerate}
+				\end{description}
+				Because of the induction hypothesis we now that $ A[i, \dotsc, n] $ is sorted non-descending (i) and that $ A[i - 1] \leq A[i] $ (ii), so $ A[i-1, \dotsc, n] $ is sorted non-descending.
+				Let $ A[m] $ be the greatest element in $ A[1, \dotsc, i] $, that means $ A[(m+1)-1] \geq A[m + 1] $, so it would be moved to the next index, after increasing $ i, j, m $, by one this would repeat until $ j=i $ and $ A[m] $ was moved to the index $ i $.
+				So that $ \forall k \in \N : 1 \leq k < i : A[k] \leq A[i] $.
+				And because we know that $ \forall k,l \in \N : 1 \leq k < i \wedge i \leq  j \leq n \implies A[k] \leq A[j] $, because of the induction hypothesis, we have now proven (i) and (ii).\qed
+		\end{description}
+	\item \begin{enumerate}[label=(\roman*)]
+		\item We have proven, that $ \mathcal{INV}  $ is a loop invariant.
+		\item In the beginning the Array is unsorted, but the sorted area is empty, so the $ \mathcal{INV} $ is true
+		\item after the $ n-1 $th iteration the Array $ A[1, \dotsc, n] $ is sorted non-descending because the Array $ A[2, \dotsc, n] $ is sorted non-descending and the element $ A[1] $ is not greater than every element in the Array $ A[2, \dotsc, n] $.
+		\item the loop terminates after $ n-1 $ iterations
+	\end{enumerate}
+\end{enumerate}
+	
+\section{Hoar-Logic - Analysis}
+\begin{enumerate}[label=\alph*)]
+	\item $ x - 2 < 0 \iff x < 2 $ 
+	\item $ z - 5 > 5 \iff z > 10 $
+\end{enumerate}
+
+\section{Dynamic Programming - Knapsack}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+	\hline
+	B 	& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
+	\hline
+	$ I_1 $ & 0 & 2 & 4 & 6 & 7 & 9 & 11 \\\hline
+	$ I_2 $ & 0 & 2 & 4 & 6 & 7 & 9 & 11 \\\hline
+	$ I_3 $ & 0 & 1 & 4 & 5 & 7 & 9 & 10 \\\hline
+	$ I_4 $ & 0 & 1 & 4 & 5 & 7 & 9 & 10 \\\hline
+	\textit{using only other items}
+		& 0 & 1 & 4 & 5 & 7 & 8 & 9 \\\hline
+
+	
+\end{tabular}
+
+
+\end{document}
+

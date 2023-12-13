@@ -1,0 +1,5 @@
+#include "./motorbike.h"
+
+#include <string>
+std::string MotorBike::drive() const { return "NÖÖÖN"; }
+MotorBike::MotorBike() { Vehicle::wheels_ = 2; }

@@ -1,0 +1,35 @@
+#pragma once
+#include <iostream>
+#include <numeric>
+class fraction {
+ public:
+  int numerator = 0;
+  int denominator = 1;
+  fraction() {
+    this->numerator = 0;
+    this->denominator = 1;
+  }
+  fraction(int numerator, int denominator = 1);
+  double to_double() const;
+  fraction inv() const;
+  fraction inv_add() const;
+  const fraction &operator=(const fraction &frac);
+  const fraction operator+(const fraction &frac) const;
+  const fraction operator-(const fraction &frac) const;
+  const fraction operator*(const fraction &frac) const;
+  const fraction operator/(const fraction &frac) const;
+  fraction operator+() const;
+  fraction operator-() const;
+  fraction &operator+=(const fraction &frac);
+  fraction &operator-=(const fraction &frac);
+  fraction &operator*=(const fraction &frac);
+  fraction &operator/=(const fraction &frac);
+  bool operator==(const fraction &frac) const;
+  bool operator!=(const fraction &frac) const;
+  bool operator<(const fraction &frac) const;
+  bool operator>(const fraction &frac) const;
+  bool operator<=(const fraction &frac) const;
+  bool operator>=(const fraction &frac) const;
+  std::ostream friend &operator<<(std::ostream &os, const fraction &frac);
+  ~fraction() = default;
+};

@@ -16,8 +16,6 @@ syntax on
 filetype plugin indent on
 colorscheme gadse
 
-set showcmd
-
 set undofile
 set undolevels=1000
 set undoreload=10000

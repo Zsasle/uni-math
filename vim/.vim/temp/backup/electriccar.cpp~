@@ -1,0 +1,6 @@
+#include "./electriccar.h"
+
+#include <string>
+std::string ElectricCar::drive() const { return "zzzzz"; }
+ElectricCar::ElectricCar() { Vehicle::wheels_ = 4; }
+ElectricCar::~ElectricCar() {}

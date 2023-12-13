@@ -66,12 +66,11 @@
 \cfoot{}
 \RequirePackage[top=3cm, left=2cm, right=2cm, bottom=2cm]{geometry}
 
-%\RequirePackage{graphicx}
-%\counterwithin{figure}{section}
+\RequirePackage{graphicx}
+\counterwithin{figure}{section}
 \RequirePackage[plainpages=false, pdfpagelabels]{hyperref}
-\RequirePackage{caption}
 %\renewcommand\theHfigure{\thesection.\arabic{figure}}
-%\newsubfloat{figure}
+\newsubfloat{figure}
 
 %%%%%%%%%%%%%
 %%% title %%%

@@ -1,0 +1,13 @@
+#pragma once
+#include <string>
+
+#include "./electriccar.h"
+#include "./normalcar.h"
+class HybridCar : public ElectricCar, public NormalCar {
+ public:
+  std::string drive() const override;
+  ~HybridCar();
+
+ protected:
+  int wheels_ = 4;
+};

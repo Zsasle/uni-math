@@ -1,0 +1,62 @@
+#include "./fraction.h"
+
+#include <iostream>
+#include <numeric>
+
+fraction::fraction(int numerator, int denominator) {
+  if (denominator > 0) {
+    this->numerator = numerator / std::gcd(numerator, denominator);
+    this->denominator = denominator / std::gcd(numerator, denominator);
+  } else {
+    this->numerator = -numerator / std::gcd(numerator, denominator);
+    this->denominator = -denominator / std::gcd(numerator, denominator);
+  }
+}
+fraction fraction::inv() const {
+  if (this->numerator > 0) return fraction(this->denominator, this->numerator);
+  return fraction(-this->denominator, -this->numerator);
+}
+fraction fraction::inv_add() const { return fraction(-this->numerator, this->denominator); }
+const fraction &fraction::operator=(const fraction &frac) {
+  this->numerator = frac.numerator;
+  this->denominator = frac.denominator;
+  return *this;
+}
+const fraction fraction::operator+(const fraction &frac) const {
+  return fraction(this->numerator * frac.denominator + this->denominator * frac.numerator,
+                  this->denominator * frac.denominator);
+}
+const fraction fraction::operator*(const fraction &frac) const {
+  return fraction(this->numerator * frac.numerator, this->denominator * frac.denominator);
+}
+fraction &fraction::operator+=(const fraction &frac) {
+  *this = *this + frac;
+  return *this;
+}
+fraction &fraction::operator*=(const fraction &frac) {
+  *this = *this * frac;
+  return *this;
+}
+std::ostream &operator<<(std::ostream &os, const fraction &frac) {
+  os << frac.numerator << "/" << frac.denominator;
+  return os;
+}
+double fraction::to_double() const { return 1.0 * this->numerator / this->denominator; }
+const fraction fraction::operator-(const fraction &frac) const { return *this + frac.inv_add(); }
+const fraction fraction::operator/(const fraction &frac) const { return *this * frac.inv(); }
+fraction fraction::operator+() const {
+  if (this->numerator >= 0) return fraction(this->numerator, this->denumerator);
+  return fraction(-this->numerator, this->denominator);
+}
+fraction fraction::operator-() const {
+  if (this->numerator > 0) return fraction(-this->numerator, this->denumerator);
+  return fraction(this->numerator, this->denominator);
+}
+fraction &fraction::operator-=(const fraction &frac) { return *this += frac.inv_add(); }
+fraction &fraction::operator/=(const fraction &frac) { return *this *= frac.inv(); }
+bool fraction::operator==(const fraction &frac) const { return this->to_double() == frac.to_double(); }
+bool fraction::operator!=(const fraction &frac) const { return this->to_double() != frac.to_double(); }
+bool fraction::operator<(const fraction &frac) const { return this->to_double() < frac.to_double(); }
+bool fraction::operator>(const fraction &frac) const { return this->to_double() > frac.to_double(); }
+bool fraction::operator<=(const fraction &frac) const { return !(*this > frac); }
+bool fraction::operator>=(const fraction &frac) const { return !(*this < frac); }
