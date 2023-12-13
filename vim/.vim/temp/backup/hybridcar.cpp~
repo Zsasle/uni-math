@@ -1,7 +1,0 @@
-#include "./hybridcar.h"
-HybridCar::HybridCar(){Vehicle::wheels_ = 4} std::string HybridCar::drive() const {
-  std::string result = ElectricCar::drive();
-  result += NormalCar::drive();
-  return result;
-}
-HybridCar::~HybridCar() {}

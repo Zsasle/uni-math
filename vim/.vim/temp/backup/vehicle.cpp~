@@ -1,3 +1,0 @@
-int Vehicle::get_number_of_wheels() const { return this->wheels_; }
-std::string Vehicle::drive() const { return "wroom"; }
-Vehicle::~Vehicle() = default;
