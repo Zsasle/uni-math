@@ -1,0 +1,37 @@
+\documentclass[sectionformat = exercise]{gadsescript}
+
+\setsemester{Winter Semester 2023/2024}%
+\setuniversity{University of Konstanz}%
+\setfaculty{Faculty of Science\\(Computer Science)}%
+\settitle{Programming Paradigms \& Recap}
+\setsubtitle{Elias Gestrich}
+
+\begin{document}
+\maketitle
+\section{Programming Paradigms}
+\begin{enumerate}[label=\alph*)]
+	\item The imperative programming paradigm is based on instructions and there are control and data structures and functions and procedures to control and structure the instructions.
+	\item Procedural programming paradigm is a subclass of imperative programming and are in general more structured (e.g. having if/for/while blocks instead of goto statements)
+	\item The functional programming paradigm has (mathematical) functions as base and in pure form there are no variables or assignments.
+	\item Logical programming paradigms are heavily based on the logic used in mathematics or theoretic computer science, and as such includes constants, predicates, functions, variables, logical connectives (e.g. conjunction) and quantifiers (e.g. uniqueness quantifier) 
+\end{enumerate}
+
+\section{Reading Code}
+No matter what, in the if statement \texttt{if rand = guess} the program either jumps to \texttt{correct} and there jumps to the end (that'd be fine), or jumps to \texttt{wrong} and therefor jumps to the beginning of the \texttt{loop}, so that the programs jumps, no matter what, past the check if one had already 10 guesses, so if one incorrectly guesses over ten times, one will still have to guess further.
+
+\section{QuickSort}
+\begin{tabular}{ccccccc}
+	\hline
+	$\underset{p}{10}$ & $\underset{i}{4}$ & 13 & 5 & 1 & 6 & $\underset{j}{3}$ \\
+	$\underset{p}{10}$ & 4 & $\underset{i}{3}$ & 5 & 1 & 6 & $\underset{j}{13}$ \\
+	$\underset{p}{6}$ & $\underset{i}{4}$ & 3 & 5 & $\underset{j}{1}$ & {\color{violet}10} & 13 \\
+	$\underset{p}{1}$ & $\underset{i}{4}$ & 3 & $\underset{j}{5}$ & {\color{violet}6} & {\color{violet}10} & 13 \\
+	{\color{violet}1} & $\underset{p}{4}$ & $\underset{i}{3}$ & $\underset{j}{5}$ & {\color{violet}6} & {\color{violet}10} & 13 \\
+	{\color{violet}1} & $\underset{p,i,j}{3}$ & {\color{violet}4} & 5 & {\color{violet}6} & {\color{violet}10} & 13 \\
+	{\color{violet}1} & {\color{violet}3} & {\color{violet}4} & $\underset{p,i,j}{5} $ & {\color{violet}6} & {\color{violet}10} & 13 \\
+	{\color{violet}1} & {\color{violet}3} & {\color{violet}4} & {\color{violet}5} & {\color{violet}6} & {\color{violet}10} & $\underset{p,i,j}{13}$ \\
+	\hline
+\end{tabular}
+
+
+\end{document}

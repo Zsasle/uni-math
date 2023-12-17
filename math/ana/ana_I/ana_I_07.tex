@@ -248,7 +248,7 @@ Funktionen $ f,g: \R \to \R  $ können multipliziert und addiert werden.
 	Dann $ \exists x_0 \in [a, b] : f(x) = 0 $
 \end{subtheorem}
 
-\begin{subproof}[Theorem \ref{7.4.1}]
+\begin{subproof*}[Theorem \ref{7.4.1}]
 	\OE $ f(a) < 0 $ und $ f(b) > 0 $ (ansonsten betrachte $ -f $).\\
 	Es sei $ I_0 \coloneqq [a, b] $.
 	Ist $ I_n = [a_n, b_n] $ für $ n \in \N  $ definiert, so sezte
@@ -264,5 +264,28 @@ Funktionen $ f,g: \R \to \R  $ können multipliziert und addiert werden.
 		0 \leq \lim_{n \to \infty} f(b_n) = f(x) = \lim_{n \to \infty} a_n \leq  0
 	\]
 	
-\end{subproof}
+\end{subproof*}
+
+\begin{subexample}[Eindimensionaler Brouwer]
+	Sei $ f:[0,1] \to [0, 1] $ stetig. Dann hat $ f $ einen Fixpunkt d.h. es gibt ein $ x_0 \in [0,1] $ mit $ f(x_0) = x_0 $, denn die Hilfsfunktion $ g(x) \coloneqq f(x) - x $. Diese ist stetig und es gibt $ \exists \varepsilon > 0: \forall \delta > 0 : \exists x,y \in K: | x-y| < \delta  $ und $ |f(x) - f(y)| \geq \varepsilon  $.\\
+	Wähle solches $ \varepsilon > 0 $. Dann finden wir für alle $ n \in \N  $ $ x_n, y_n \in K $ mit $ |x_n - y_n| < 2^{-n} $ und $ |f(x_n) - f(y_n)| \geq \varepsilon  $. Da $ K $ kompakt, hat $ (x_n) $ eine konvergente Teilfolge $ (x_{n_k}) $ mit Grenzwert $ x \in K $. Nun ist
+	\[
+		\left| y_{n_k} - x  \right| \leq \left| y_{n_k} - x_{n_k} \right| + \left| x_{n_k} - k \right| \to 0.
+	\]
+	Also konvergiert auch $ (y_{n_k}) $ gegen $ x $.
+\end{subexample}
+
+\begin{subtheorem}
+	weiß nicht könnte alles sein
+\end{subtheorem}
+
+\begin{subtheorem}
+	Sei $ K \subseteq \R  $ kompakt und $ f:K\to \R  $ stetig. Dann nimmt $ f $ sowohl Maximum als auch Minimum in $ K $ an.
+\end{subtheorem}
+\begin{subproof*}[Theorem \ref{7.4.4}]
+	Wir zeigen, $ f(K) $ ist kompakt. Sei $ (y_n) \subset f(K) $ eine Folge. Nach Def. des Bildes gibt es also zu jedem $ n \in \N $ ein $ x_n \in K $ mit $ f(x_n) = y_n $.
+	Da $ K $ kompakt ist, gibt es eine konvergente Teilfolge $ (x_{n_k}) \subset K $ mit Grenzwert $ x \in K $. Da $ f $ stetig ist, folgt $ f(x) = f(\lim_{n_k \to \infty} x_{n_k}) \overset{\text{stetig} }{=} \lim_{n_k \to \infty} f(x_{n_k}) = \lim_{n_k \to \infty} y_{n_k} $
+\end{subproof*}
+
+
 

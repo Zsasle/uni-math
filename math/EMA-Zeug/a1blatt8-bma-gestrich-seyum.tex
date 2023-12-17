@@ -2,8 +2,6 @@
 \defaultmathtitle
 \settitle{BMA}
 
-\DeclareMathOperator{\diam}{diam}
-
 \begin{document}
 \maketitle
 
@@ -90,14 +88,14 @@
 					\end{align*}
 			\end{description}
 			Also $ \lim_{n \to \infty} a_nb_n = a_1b_1 $\\
-			Also $ a_1b_1 = \lim_{n \to \infty} a_nb_n = \lim_{n \to \infty} a_n \lim_{n \to \infty} b_n = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} a_n = \left( \lim_{n \to \infty} a_n \right) $\\
+			Also $ a_1b_1 = \lim_{n \to \infty} a_nb_n = \lim_{n \to \infty} a_n \lim_{n \to \infty} b_n = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} a_n = \left( \lim_{n \to \infty} a_n \right)^2 $\\
 			Also $ \lim_{n \to \infty} b_n = \lim_{n \to \infty} a_n = \sqrt{a_1b_1} = x$\\
 			Also $ x \geq a_n $ und $ x \leq b_n $, also $ x \in \bigcap_{n \in \N } [a_n, b_n] $. Noch zu zeigen Eindeutigkeit von $ x $\\
 			Da $ \lim_{n \to \infty} \diam([a_n, b_n]) = \lim_{n \to \infty} (b_n - a_n) = 0 $ gilt das Intervallschachtelungsprinzip, also $ \exists ! guenter \in \bigcap_{n \in \N } [a_n, b_n] $, also folgt für ein soches $ guenter $, $ x = guenter $ und da $ guenter $ eindeutig ist, ist auch $ x $ eindeutig.\qed
 	\end{enumerate}
 \end{proof*}
 \begin{enumerate}[label=(\alph*)]
-	\setcounter{enumi}{4}
+	\setcounter{enumi}{3}
 	\item 
 		\begin{align*}
 			[a_1,b_1]&=[1,2]\\
