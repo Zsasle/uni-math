@@ -1,0 +1,91 @@
+\documentclass{gadsescript}
+
+\setsemester{Winter Semester 2023/2024}%
+\setuniversity{University of Konstanz}%
+\setfaculty{Faculty of Science\\(Mathematics and Statistics)}%
+\settitle{BMA}
+
+\begin{document}
+\maketitle
+\begin{enumerate}[label=(\roman*)]
+	\item \textbf{Vor.:} $ V $ ein $ \R  $-Vektorraum und $ u, v, w \in V $ linear unabhängig\\
+		\textbf{Beh.:} $ \forall x_1,x_2,x_3\in \R : x_1(u+v) + x_2(v+w) + x_3(w+u) \implies x_1 = x_2 = x_3 = 0 $ 
+		\begin{proof*}
+			Es gilt
+			\begin{align*}
+				0&= x_1(u+v) + x_2(v+w) + x_3(w+u) \\
+				~&= x_1u + x_1v + x_2v + x_2w + x_3w + x_3u \\
+				~&= (x_1+ x_3)u + (x_1 + x_2) v + (x_2 + x_3) w \\
+			\end{align*}
+			Da $ u, v, w $ linear unabhängig und $ x_1+x_3,x_1+x_2,x_2+x_3 \in \R  $ gilt:
+			$ x_1+x_3 = x_1+x_2 = x_2+x_3 = 0 $. Dazu können wir dieses Gleichungssystem in eine Matrix überführen, sodass
+			\[
+				\left(\begin{array}{c c c | c} 1 & 0 & 1 &0\\ 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 0\end{array}\right) \rightsquigarrow
+				\left(\begin{array}{c c c | c} 1 & 0 & 1 &0\\ 0 & 1 & -1 & 0 \\ 0 & 1 & 1 & 0\end{array}\right) \rightsquigarrow
+				\left(\begin{array}{c c c | c} 1 & 0 & 1 &0\\ 0 & 1 & -1 & 0 \\ 0 & 0 & 2 & 0\end{array}\right) \rightsquigarrow
+			\]
+			\[
+				\left(\begin{array}{c c c | c} 1 & 0 & 1 &0\\ 0 & 1 & -1 & 0 \\ 0 & 0 & 1 & 0\end{array}\right) \rightsquigarrow
+				\left(\begin{array}{c c c | c} 1 & 0 & 0 &0\\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0\end{array}\right) 
+			\]
+			Also existiert nur die trivieale Lösung, sodass $ x_1 = x_2 = x_3 = 0 $, also sind $ u+v, v+w, w+u $ linear unabhängig\qed
+		\end{proof*}
+	\item \textbf{Vor.:} $ a,b,c \in \R  $ und 
+		\[
+			v_1 \coloneqq \begin{pmatrix} 1 \\ a \\ a^2 \end{pmatrix} , v_2 \coloneqq \begin{pmatrix} 1 \\ b \\ b^2 \end{pmatrix} , v_3 \coloneqq \begin{pmatrix} 1 \\ c \\ c^2 \end{pmatrix} 
+		\]
+		\textbf{Beh.:} $ v_1, v_2, v_3 $ sind genau dann linear unabhängig, wenn die reellen Zahlen $ a, b, c $ paarweise verschieden sind
+		\begin{proof*}
+			
+			\begin{description}
+				\item[``$ \implies  $''] Wir führen einen Beweis durch Kontraposition, also zu zeigen, falls $ a=b \vee b = c \vee c = a \implies \exists x_1, x_2, x_3 \in \R : x_1 \neq 0 \vee x_2 \neq 0 \vee x_3 \neq \implies x_1v_1 + x_2v_2 + x_3v_3 = 0$\\
+					Fall 1: $ a = b $, wähle $ x_1 = 1, x_2 = -1, x_3 = 0 $, dann gilt $ x_1,x_2,x_3 \in \R  $ und $ x_1 \neq 0 \vee x_2 \neq 0 \vee x_3 \neq 0$, außerdem gilt:\\
+					$ v_1 = v_2 $, also 
+					\begin{align*}
+						x_1v_1 + x_2v_2 + x_3v_3 &= 1v_1 - 1v_1 + 0v_3 \\
+						~&= 0 \\
+					\end{align*}
+					wie gewünscht.
+					Analog für $ b = c, c = a $, da $ a,b,c \in \R  $ beliebig.
+				\item[``$ \impliedby  $''] Wir nehmen an, dass $ a \neq b, b\neq c, c \neq a $, zu zeigen $ v_1, v_2, v_3 $ linear unabhängig, dafür reicht zu zeigen $ v_1, v_2 $ linear unabhängig und $ \forall x_1, x_2 \in \R : x_1v_1 + x_2v_2 \neq v_3 $.\\
+					Um zu zeigen, dass $ v_1, v_2 $ linear Unabhängig sind, reicht zu zeigen $ \forall c \in \R : v_1 \neq cv_2 $,
+					wir führen einen Beweis durch Widerspruch und nehmen dazu an $ \exists c \in \R : v_1 = c v_2 $, wähle ein solches $ c $, dann gilt insbesondere: $ 1 = c \cdot 1 $, also $ c = 1 $, dann gilt aber insbesondere $ a = c \cdot b = b $ \Lightning steht im Widerspruch zur Annahme $ a \neq b $.
+					Noch zu zeigen: $ \forall x_1, x_2 \in \R : x_1v_1 + x_2v_2 \neq v_3 $.\\
+					Wir führen einen Beweis durch Widerspruch und nehmen dazu an, dass $ \exists x_1, x_2 \in \R : x_1v_1 + x_2v_2 = v_3 $.\\
+					Dann gilt insbesondere $ 1 \cdot x_1 + 1 \cdot x_2 = 1 $, also $ x_2 = 1 - x_1 $. Also gilt:
+					\begin{align*}
+						c &= x_1 \cdot a + x_2 \cdot b\\
+						~&= x_1 a + (1 - x_1 )b \\
+						~&= x_1 a - x_1b + b \\
+						~&= x_1 ( a - b) + b \\
+					\end{align*}
+					Außerdem:
+					\begin{align*}
+						c^2 &= x_1 \cdot a^2 + x_2 b^2 \\
+						(x_1 ( a - b ) + b)^2 &= x_1 \cdot a^2 + (1 - x_1)b^2\\
+						x_1^2 ( a - b ) ^2 + 2 x_1(a-b)b + b^2 &= x_1 \cdot a^2 - x_1 \cdot b^2 + b^2 \\
+						0 &= x_1^2 (a - b)^2 + x_1( 2(a-b)b - a^2 + b^2) + b^2 - b^2  \\
+						0 &= x_1^2 (a - b)^2 + x_1(- b^2 + 2ab - a^2) \\
+						0 &= x_1 ( x_1(a - b)^2 - (a - b)^2 \\
+					\end{align*}
+					Da $ \R  $ integer gilt $ x_1 = 0 \vee x_1(a-b)^2 - (a - b)^2 = 0 $.
+					Fall 1: $ x_1 = 0 $, dann gilt $ 0 \cdot v_1 + 1 \cdot v_2 = v_3 $, also insbesondere $ 0 \cdot a + b = b = c $ \Lightning, was im Widerspruch zu $ b \neq c $ steht.\\
+					Fall 2: $ x_1(a-b)^2 - (a-b)^2 = 0 $, dann gilt:
+					\begin{align*}
+						x_1(a-b)^2 - (a - b)^2 &= 0 \\
+						x_1(a-b)^2 &= (a-b)^2 \quad | \text{ da } a \neq b \iff a-b \neq 0\\
+						x_1 &= \frac{(a-b)^2}{ (a-b)^2 }  \\
+						x_1 &= 1 \\
+					\end{align*}
+					dann gilt $ 1 \cdot v_1 + 0 \cdot v_2 = v_3 $, also insbesondere $ a + 0 \cdot b = a = c $ \Lightning, was im Widerspruch zu $ a \neq c $ steht.\\
+					Also ist $ v_3  $ nicht linear darstellbar durch $ v_1 $ und $ v_2 $, also sind $ v_1, v_2, v_3 $ linear unabhänig \qed
+			\end{description}
+			
+		\end{proof*}
+		
+		
+
+	\end{enumerate}
+
+
+\end{document}
