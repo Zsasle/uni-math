@@ -38,4 +38,5 @@
 \contentsline {section}{\numberline {8}Funktionenfolgen und deren Konvergenz}{55}{section.8}%
 \contentsline {subsection}{\numberline {8.1}Funktionenfolgen und deren Konvergenz}{55}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Normierte Vektorräume stetiger Funktionen}{56}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Potenzreihen}{59}{section.9}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

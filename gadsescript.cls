@@ -241,6 +241,19 @@
 %\makeatletter
 
 \DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+\DeclareMathOperator{\arccoth}{arccoth}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imaginary}{Im}
 
 %not math
 \RequirePackage[ngerman, english]{babel}

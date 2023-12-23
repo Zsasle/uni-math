@@ -219,3 +219,26 @@ $ \left|\left| \cdot  \right|\right|_{\infty, \Omega} $ ``Supremumsnorm'' ( $ \w
 	
 \end{subexample}
 
+\section{Potenzreihen}
+$ a_0 + a_1x + a_2 x^2 + \dotsc + a_N x^N = \sum_{n=0}^{N} a_nx^n $ 
+\begin{subdefinition}
+	Sei $ (a_n)_{n \in \N_0} \subset \R \wedge x_0 \in \R  $. Dann heißt der \textbf{formale Ausdruck}  
+	\[
+		f(x) = \sum_{n=0}^{\infty} a_n(x - x_0)^n
+	\]
+	\textbf{Potenzreihe} mit \textbf{Entwicklungspunkt} $ x_0 $.
+	Die \textbf{Konvergenzmenge} von $ f $ ist
+	\[
+		D_f \coloneqq \left\{ x \in \R : \sum_{n=0}^{\infty} a_n(x-x_0)^n \text{ konv.}  \right\} 
+	\]
+	Wir nennen dann $ f: D_f \to \R  $ die durch die Potenzreihe \textbf{dargestellte Funktion} (kurz auch Potenzreihe)
+\end{subdefinition}
+
+\begin{subexample}
+	\[
+		f(x) = \sum_{n=0}^{\infty} x^n.
+	\]
+	Dies konvergiert genau dann wenn $ |x| < 1 $.\\
+	Geometrische Reihe: $ f(x) = \frac{ 1 }{ 1 - x } = \underbrace{\underbrace{1 + x} + x^2 + \dotsc} $
+\end{subexample}
+

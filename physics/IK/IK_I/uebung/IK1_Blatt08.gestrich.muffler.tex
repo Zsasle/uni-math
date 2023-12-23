@@ -1,0 +1,136 @@
+\documentclass[sectionformat = exercise]{gadsescript}
+
+\setsemester{Winter Semester 2023/2024}%
+\setuniversity{University of Konstanz}%
+\setfaculty{Faculty of Science\\(Physics)}%
+\settitle{Übungsblatt No 8}
+
+\begin{document}
+\maketitle
+\section{Glühwein im U-Rohr}
+\begin{enumerate}[label=\alph*)]
+	\item Linke Seite $ F_l = m_la = - V_l\rho g = - \left(\frac{ L }{ 2 } +x\right) \cdot  A \cdot \rho g $ \\
+		Rechte Seite $ F_r = m_ra = - V_r \rho g = - \left( \frac{ L }{ 2 } - x \right) \cdot  A \cdot  \rho g $\\
+		Also ist die Resultierende Kraft ist dann $ F_l - F_r = - \left(\frac{ L }{ 2 } +x\right) \cdot A \cdot \rho g + \left(\frac{ L }{ 2 } +x\right) \cdot A \cdot \rho g = - \left( \frac{ L }{ 2 } + x - \frac{ L }{ 2 } + x \right) \cdot A \rho g = - 2x\cdot A\cdot \rho \cdot g $
+	\item Aus a) gilt: $ - 2 x \cdot A \rho \cdot g = m \cdot \ddot x $ 
+		also
+		\begin{align*}
+			0 &= L \cdot A \cdot \rho \cdot \ddot x + 2 x \cdot A \cdot \rho \cdot g\\
+			0 &= \ddot x + x \cdot \frac{ 2g }{ L } \\
+		\end{align*}
+		und da die Gleichung eine Linearkombination von Ableitungen von $ x $ gleich $ 0 $ ist, ist es eine Bewegungsgleichung eines harmonischen Oszillators.
+		Also ist $ w_0^2 = \frac{2g}{ L } \iff w_0 = \sqrt{ \frac{ 2g }{ L } }  $
+	\item also einfach mal $ z(t) = A \exp(\lambda t) $ eingesetzt ergibt sich das charakteristische Polynom:
+		\begin{align*}
+			 0 &= A\lambda^2 \exp(\lambda t) + \omega_0^2 A\exp(\lambda t) \\
+			 0 &= \lambda^2 + \omega_0^2 \\
+			 \lambda^2 &= - \omega_0^2 \\
+			 \lambda &= \pm\omega_0 i \\
+		\end{align*}
+		zwei Lösungen, also $ \lambda_1 = i\omega_0 $, $ \lambda_2 = -i\omega_0 $ 
+		also 
+		\begin{align*}
+			x(t) &= \Real(z(t)) \\
+			~ &= \Real(A_1\exp(\lambda_1 t ) + A_2\exp(\lambda_2 t )) \\
+			~ &= \Real(A_1(\cos(\omega_0 t) + i\sin(\omega_0 t )) + A_2(\cos(-\omega_0 t) + i\sin(-\omega_0 t )) \\
+			~ &= \Real(A_1)\cos(\omega_0 t) + \Imaginary(A_1)\sin(\omega_0 t )) + \Real(A_2)\cos(\omega_0 t) - \Imaginary(A_2)\sin(\omega_0 t ) \\
+			~ &= \Real(A_1 + A_2)\cos(\omega_0 t) + \Imaginary(A_1 - A_2)\sin(\omega_0 t ) \\
+		\end{align*}
+		
+		\begin{align*}
+			x(t=0) &= x_0 \\
+			x_0 &= \Real(A_1 + A_2)\cos(\omega_0 0) + \Imaginary(A_1 - A_2)\sin(\omega_0 0 ) \\
+			x_0 &= \Real(A_1 + A_2) \\
+		 \end{align*}
+		 und für $ v_0 $
+		 \begin{align*}
+			v(t=0) &= v_0 \\
+			v_0 &= -\Real(A_1 + A_2)\omega_0\sin(\omega_0 0) + \Imaginary(A_1 - A_2)\omega_0\cos(\omega_0 0 ) \\
+			v_0 &= \Imaginary(A_1 - A_2)\omega_0 \\
+			\frac{ v_0 }{ \omega_0 } &= \Imaginary(A_1 - A_2) \\
+		\end{align*}
+\end{enumerate}
+
+\section{Rutschendes Geschenkband}
+Die Masse $ m_{wwhw} $, des Bandes über dem Tisch lässt sich berechnen mit $ \frac{ l }{ l - x } = \frac{m_{ges}}{ m_{wwhw} } \iff m_{wwhw} = \frac{m_{ges}}{ l } \cdot (l - x) $,
+für die Reibungskraft gilt $ F_{r} = \mu \cdot F_{Norm} = \mu m_{ges} \cdot \frac{ l - x }{ l } \cdot g $
+also gilt
+\begin{align*}
+	F_{ges} &= F_g - F_r \\
+	m_{ges} \ddot x &= m_{ges} \cdot \frac{ x }{ l } \cdot g - \mu g \cdot m_{ges} \frac{l - x}{ l }  \\
+	0 &= \ddot x - \frac{ xg }{ l } + \mu g \cdot \frac{l - x}{ l } \\
+	0 &= \ddot x - \frac{ xg }{ l } - \mu g \cdot \frac{x}{ l } + \mu g \\
+	- \mu g &= \ddot x - \frac{ xg }{ l } - \mu g \cdot \frac{x}{ l } \\
+	- \mu g &= \ddot x - x \cdot ( 1 + \mu) \cdot \frac{g}{ l } \\
+	\frac{ d }{ dt } - \mu g &= \frac{ d }{ dt } \left( \ddot x - x \cdot ( 1 + \mu) \cdot \frac{g}{ l } \right) \\
+	0 &= \dddot x - \dot x \cdot ( 1 + \mu) \cdot \frac{g}{ l } \\
+\end{align*}
+mit $ z(t) = A \exp(\lambda t) $ eingesetzt für $ \dot x $ und $ \omega_0^2 = \frac{(1 + \mu)g}{ l }  $
+\begin{align*}
+	\lambda^2 A\exp(\lambda t) - \omega_0^2A\exp(\lambda t) &= 0 \\
+	\lambda^2 &= \omega_0^2 \\
+	\lambda &= \pm\omega_0 \\
+\end{align*}
+Mit $ \lambda_1 = \omega_0, \lambda_2 = -\omega $, also
+\begin{align*}
+	\dot x(t) &= \Real(A_1 \exp(\lambda_1 t) + A_2 \exp(\lambda_2 t))\\
+	v(t) &= \Real(A_1) \exp(\omega_0 t) + \Real(A_2) \exp(-\omega_0 t)\\
+\end{align*}
+Also gilt, da das Band zu Beginn in Ruhe ist:
+\begin{align*}
+	v(0) &= \Real(A_1) \exp(\omega_0 0) + \Real(A_2) \exp(-\omega_0 0)\\
+	\qty{ 0 }{ \metre\per\second }  &= \Real(A_1) + \Real(A_2) \\
+	\Real(A_2) &= - \Real(A_1) \\
+\end{align*}
+Also gilt für $ x(t) $:
+\begin{align*}
+	x(t) &= \int_{0}^{t}v(t^\prime) dt^\prime + x_0 \\
+	x(t) &= \int_{0}^{t} \Real(A_1) \exp(\omega_0 t^\prime) + \Real(A_2) \exp(-\omega_0 t^\prime) dt^\prime + x_0\\
+	x(t) &= \left[\frac{\Real(A_1)}{ \omega_0 }  \exp(\omega_0 t^\prime) + \frac{\Real(A_1)}{ \omega_0 } \exp(-\omega_0 t^\prime) \right]_{0}^{t}  + x_0\\
+	x(t) &= \frac{\Real(A_1)}{ \omega_0 }  \exp(\omega_0 t) + \frac{\Real(A_1)}{ \omega_0 } \exp(-\omega_0 t) - \left[ \frac{\Real(A_1)}{ \omega_0 } \exp(\omega_0 0) + \frac{\real(A_1)}{ \omega_0 } \exp(-\omega_0 0) \right] + x_0\\
+	x(t) &= \frac{\Real(A_1)}{ \omega_0 } \left( \exp(\omega_0 t) + \exp(-\omega_0 t) \right) - \frac{2\Real(A_1)}{ \omega_0 } + x_0\\
+\end{align*}
+es gilt
+\[
+	\ddot x(t) = \frac{ d }{ dt } v(t) \\
+\]
+und da 
+\[
+	\ddot x(t) = x(t) \cdot \frac{(1+\mu)g}{ l } - \mu g \\
+\]
+gilt:
+\begin{align*}
+	\ddot x(0) &= \frac{ d }{ dt } \Real(A_1) \left( \exp(\omega_0 0) - \exp(-\omega_0 0) \right) \\
+	x(0) \cdot ( 1 + \mu) \cdot \frac{ g }{ l } - \mu g &= \Real(A_1)\omega_0 \left( \exp(\omega_0 t) + \exp(-\omega_0 t) \right) \\
+	x_0 \cdot ( 1 + \mu) \cdot \frac{ g }{ l } - \mu g &= 2\Real(A_1)\omega_0 \\
+	x_0 \cdot ( 1 + \mu) \cdot \frac{ g }{ 2l\omega_0 } - \frac{\mu g}{ 2\omega_0 }  &= \Real(A_1)\\
+\end{align*}
+Also:
+\begin{align*}
+	\frac{\Real(A_1)}{ \omega_0 } &= \frac{x_0 \cdot ( 1 + \mu) \cdot \frac{ g }{ 2l\omega_0 } - \frac{\mu g}{ 2\omega_0 }}{ \omega_0 } \\
+	~ &= x_0 \cdot ( 1 + \mu) \cdot \frac{ g }{ 2l\omega_0^2 } - \frac{\mu g}{ 2\omega_0^2 } \\
+	~ &= x_0 \cdot \frac{ 1 + \mu }{ 2 } - \frac{\mu l}{ 2 } \\
+\end{align*}
+Sei $ x(t_1) $ der Zeitpunkt zu dem das Geschenkband den Tisch herunterrutscht, also $ x(t_1) = l $, dann gilt für $ t_1 $ folgendes:
+\begin{align*}
+	x(t_1) &= \left(x_0 \cdot \frac{ 1 + \mu }{ 2 } - \frac{\mu l}{ 2 }\right) \left( \exp(\omega_0 t_1) + \exp(-\omega_0 t_1) \right) - 2\left(x_0 \cdot \frac{ 1 + \mu }{ 2 } - \frac{\mu l}{ 2 }\right) + x_0\\
+	x(t_1) &= \frac{ 1 }{ 2 } \left(x_0 \cdot (1 + \mu ) - \mu l\right) \left( \exp(\omega_0 t_1) + \exp(-\omega_0 t_1) \right) - \left(x_0 \cdot ( 1 + \mu ) - \mu l\right) + x_0\\
+	l &= \frac{ 1 }{ 2 } \left(x_0 - \mu (l - x_0) \right) \left( \exp(\omega_0 t_1) + \exp(-\omega_0 t_1) \right) - \left(x_0 - \mu (l - x_0)\right) + x_0\\
+	l &= \frac{ 1 }{ 2 } \left(x_0 - \mu (l - x_0) \right) \left( \exp(\omega_0 t_1) + \exp(-\omega_0 t_1) \right) + \mu (l - x_0)\\
+	l - \mu (l - x_0) &= \left(x_0 - \mu (l - x_0) \right) \cosh(\omega_0 t_1) \\
+	\cosh(\omega_0 t_1) &= \frac{l - \mu (l - x_0) }{ x_0 - \mu (l - x_0) } \\
+	\omega_0 t_1 &= \arccosh\left(\frac{l - \mu (l - x_0) }{ x_0 - \mu (l - x_0) }\right) \\
+	t_1 &= \frac{ 1 }{ \omega_0 } \cdot \arccosh\left(\frac{l - \mu (l - x_0) }{ x_0 - \mu (l - x_0) }\right) \\
+\end{align*}
+$ x_0 $ darf nicht so groß sein, dass die Reibungskraft gleich der Gewichtskraft des Herunterhängendem Teils ist, also gilt für den Grenzfall $ F_g > F_r $:
+\begin{align*}
+	F_g &> F_r \\
+	\frac{ m_{ges} g x_0 }{ l } &> \frac{\mu \cdot m_{ges} g ( l - x_0 )}{ l } \\
+	x_0 &> \mu ( l - x_0 ) \\
+	x_0 &> \mu l - \mu x_0 ) \\
+	x_0 ( 1 + \mu) &= \mu l \\
+	x_0 &> \frac{\mu l}{ 1 + \mu }  \\
+\end{align*}
+Somit muss $ x_0 $ größer sein als $ \frac{\mu l}{ 1 + \mu } $.
+
+\end{document}
